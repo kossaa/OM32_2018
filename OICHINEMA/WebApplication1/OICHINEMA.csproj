@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Style.css" />
+    <Content Include="Top.aspx" />
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
   </ItemGroup>
@@ -76,6 +77,13 @@
     </Compile>
     <Compile Include="Schedule.aspx.designer.cs">
       <DependentUpon>Schedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Top.aspx.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Top.aspx.designer.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

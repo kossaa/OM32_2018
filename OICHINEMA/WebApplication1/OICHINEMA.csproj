@@ -57,33 +57,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Content Include="App_Data\BookingDB.accdb" />
-    <Content Include="Event.aspx" />
-=======
-    <Content Include="Member_MyPage.aspx" />
->>>>>>> 76cecafb51481fc08193a05eaaa1e363d7ad9250
     <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Event.aspx.cs">
-      <DependentUpon>Event.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Event.aspx.designer.cs">
-      <DependentUpon>Event.aspx</DependentUpon>
-=======
-    <Compile Include="Member_MyPage.aspx.cs">
-      <DependentUpon>Member_MyPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Member_MyPage.aspx.designer.cs">
-      <DependentUpon>Member_MyPage.aspx</DependentUpon>
->>>>>>> 76cecafb51481fc08193a05eaaa1e363d7ad9250
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OICHINEMA.Master.cs">
       <DependentUpon>OICHINEMA.Master</DependentUpon>
@@ -109,7 +87,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

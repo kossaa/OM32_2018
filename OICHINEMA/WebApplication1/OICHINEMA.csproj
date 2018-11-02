@@ -58,7 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Style.css" />
+<<<<<<< HEAD
     <Content Include="Top.aspx" />
+=======
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
   </ItemGroup>
@@ -78,6 +81,7 @@
     <Compile Include="Schedule.aspx.designer.cs">
       <DependentUpon>Schedule.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Top.aspx.cs">
       <DependentUpon>Top.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -85,6 +89,8 @@
     <Compile Include="Top.aspx.designer.cs">
       <DependentUpon>Top.aspx</DependentUpon>
     </Compile>
+=======
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
   </ItemGroup>
   <ItemGroup>
     <Content Include="OICHINEMA.Master" />

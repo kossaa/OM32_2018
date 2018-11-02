@@ -37,6 +37,7 @@ div{
 /* トップメニューバー設定
 ----------------------------------------------------------*/
 
+<<<<<<< HEAD
 .NavigationMenu{
     width:50vh;
 }
@@ -44,13 +45,22 @@ div{
 div.hideSkiplink/*メニューバーの背景*/
 {
     background-color:gray; 
+=======
+div.hideSkiplink/*メニューバーの背景*/
+{
+    background-color:#9F81F7; 
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
     width:100%;
 }
 
 div.menu
 {
+<<<<<<< HEAD
     padding: 0px 0px 0px 0px;
     width:100%;
+=======
+    padding: 4px 0px 4px 8px;
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
 }
 
 div.menu ul
@@ -63,11 +73,19 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
+<<<<<<< HEAD
     height:50px;
     font-size:30px;
     font-weight: 400;
     background-color: #808080;  /*ボタンの枠内の色*/
     /*border: 1px #4e667d solid;*/
+=======
+    height:30px;
+    font-size:20px;
+    font-weight: 400;
+    background-color: #808080;  /*ボタンの枠内の色*/
+    border: 1px #4e667d solid;
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
     color: #ffffff;             /*文字の色*/
     display: block;
     line-height: 1.35em;
@@ -92,20 +110,27 @@ div.menu ul li a:active
 
 /*映画タイトルと映画の座席状況
 -----------------------------------------------------------------*/
+<<<<<<< HEAD
 div.MTitle{
     margin-top:33%;
     margin-left:5%;
 }
 div.MSeet{}
 
+=======
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
 div.PanelMName{
     float:left;
     text-align:center;
 }
 div.PanelSeet{
+<<<<<<< HEAD
     margin-right:20px;
 }
 .TSeet{
     width:30%;
     margin-right:20px;
+=======
+    float:right;
+>>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
 }

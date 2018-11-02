@@ -26,14 +26,6 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="ReservationSeatLabel" runat="server" Text="予約席："></asp:Label>
-            </td>
-            <td>                
-                <asp:TextBox ID="ReservationSeatTextbox" runat="server" Width="300px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
                 <asp:Label ID="MailAddressLabel" runat="server" Text="メールアドレス："></asp:Label>
             </td>
             <td>                
@@ -50,6 +42,14 @@
                  <asp:TextBox ID="ReservationDateEndTextbox" runat="server" Width="139px"></asp:TextBox>
              </td>
          </tr>
+        <tr>
+            <td>
+                <asp:Label ID="ReservationSeatLabel" runat="server" Text="予約席："></asp:Label>
+            </td>
+            <td>                
+                <asp:TextBox ID="ReservationSeatTextbox" runat="server" Width="300px"></asp:TextBox>
+            </td>
+        </tr>
          <tr>
              <td colspan="2">
                  <asp:Label ID="ConfirmLabel" runat="server" Text="以上の内容でよろしいでしょうか"></asp:Label>

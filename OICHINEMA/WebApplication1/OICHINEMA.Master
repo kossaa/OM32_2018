@@ -80,14 +80,23 @@
 
     <style type="text/css">
         .auto-style1 {
-            height: 30px;
+            height: 52px;
         }
         .auto-style2 {
             height: 22px;
+            width: 101px;
         }
         .auto-style3 {
             height: 22px;
             width: 67px;
+        }
+        .auto-style7 {
+            width: 114px;
+            height: 22px;
+        }
+        .auto-style8 {
+            height: 22px;
+            width: 109px;
         }
     </style>
 
@@ -96,18 +105,21 @@
     <div>
     
     </div>
-        <asp:Button ID="BackBtn" runat="server" ForeColor="Red" Text="◀" />
-        <asp:Button ID="DayBtn1" runat="server" Text="XX月YY日" />
-        <asp:Button ID="DayBtn2" runat="server" Text="XX月YY日" />
-        <asp:Button ID="DayBtn3" runat="server" Text="XX月YY日" />
-        <asp:Button ID="DayBtn4" runat="server" Text="XX月YY日" />
-        <asp:Button ID="GoBtn" runat="server" ForeColor="Red" Text="▶" />
+        <asp:Button ID="BackBtn" runat="server" ForeColor="Red" Text="◀" Width="94px" />
+        <asp:Button ID="DayBtn1" runat="server" Text="XX月YY日" Width="124px" />
+        <asp:Button ID="DayBtn2" runat="server" Text="XX月YY日" Width="122px" />
+        <asp:Button ID="DayBtn3" runat="server" Text="XX月YY日" Width="130px" />
+        <asp:Button ID="DayBtn4" runat="server" Text="XX月YY日" Width="148px" />
+        <asp:Button ID="GoBtn" runat="server" ForeColor="Red" Text="▶" Width="97px" />
         <br />
         
         <div>
         <p>
             <asp:Image ID="MovieImage" runat="server" />
+
             <asp:Label ID="Label1" runat="server" Text="映画タイトル"></asp:Label>
+            <br />
+         
             <asp:LinkButton ID="DetailsLinkBtn" runat="server">作品詳細</asp:LinkButton>
         </p>
         <asp:Label ID="ScreenLabel" runat="server" Text="スクリーン名"></asp:Label>
@@ -117,18 +129,18 @@
                    <table border="1">
                         <tr>
                             <td class="auto-style2" bgcolor="#8fbc8f">テーブル1</td>
-                            <td class="auto-style2" bgcolor="#8fbc8f">テーブル2</td>
-                            <td class="auto-style3" bgcolor="#ffff00">テーブル3</td>
+                            <td class="auto-style8" bgcolor="#8fbc8f">テーブル2</td>
+                            <td class="auto-style7" bgcolor="#ffff00">テーブル3</td>
                         </tr>
                             <tr>
                             <td class="auto-style2" bgcolor="#8fbc8f">テーブル1</td>
-                            <td class="auto-style2" bgcolor="#8fbc8f">テーブル2</td>
-                            <td class="auto-style3" bgcolor="#ffff00">テーブル3</td>
+                            <td class="auto-style8" bgcolor="#8fbc8f">テーブル2</td>
+                            <td class="auto-style7" bgcolor="#ffff00">テーブル3</td>
                         </tr>
                             <tr>
                             <td class="auto-style2" bgcolor="#ff0000">テーブル1</td>
-                            <td class="auto-style2" bgcolor="#ffff00">テーブル2</td>
-                            <td class="auto-style3" bgcolor="#ffff00">テーブル3</td>
+                            <td class="auto-style8" bgcolor="#ffff00">テーブル2</td>
+                            <td class="auto-style7" bgcolor="#ffff00">テーブル3</td>
                         </tr>
                     </table>
                 </td>

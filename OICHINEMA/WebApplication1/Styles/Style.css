@@ -90,25 +90,21 @@ div.menu ul li a:active
     text-decoration: none;
 }
 
-/*スケジュール画面
-    映画タイトルと映画の座席状況
+/*アクセス画面
 -----------------------------------------------------------------*/
-div.MTitle{
-    margin-top:33%;
-    margin-left:5%;
-}
-div.MSeet{}
 
-div.PanelMName{
+
+.ImagePanel{
+    margin-left:5%;
     float:left;
-    text-align:center;
+    width:40%;
+    height:auto;
 }
-div.PanelSeet{
-    margin-right:20px;
-}
-.TSeet{
-    margin-right:20px;
-}
+
+.TextPanel{
+    float:right;
+    width:50%;
+    }
 
 /*トップ画面
 広告

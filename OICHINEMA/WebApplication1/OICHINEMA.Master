@@ -35,10 +35,7 @@
                 <div class="login">
                     <table id="login" style="width:100%;">
                         <tr>
-<<<<<<< HEAD
                             <td></td>
-=======
->>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
                             <td class="auto-style3">
                                 <asp:LinkButton ID="LinkButton2" runat="server" Width="80px">ログイン</asp:LinkButton>
                             </td>
@@ -50,11 +47,7 @@
                     </table>
                 </div>
                 <div class="clear hideSkiplink">
-<<<<<<< HEAD
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-=======
-                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" style="width:100%;">
->>>>>>> 1d6b2546e8700765b0658ce9c68ae209f90d35e2
                         <Items>
                             <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="トップ"/>
                             <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="会員ページ"/>

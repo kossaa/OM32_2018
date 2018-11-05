@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <p>
-        <asp:Label ID="Label1" runat="server" Text="Label" Font-Size="50px">アクセス</asp:Label>
+        <asp:Label CssClass="AccessLabel" runat="server" Text="Label" Font-Size="50px">アクセス</asp:Label>
     </p>
     <asp:Panel CssClass="ImagePanel" runat="server">
         <asp:Image CssClass="AccessImage" runat="server" ImageUrl="~/Image/アクセス画像.jpg" Width="100%" BorderStyle="Solid"/>

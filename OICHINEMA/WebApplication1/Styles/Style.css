@@ -17,17 +17,21 @@ h1
     background-color:black;
     text-decoration:none;
     display:block;
-    width:300px;
+    width:30%;
     padding-top:10px;
     padding-bottom:10px;
     text-align:center;
     border:2px solid;
     border-color:#aaaaaa #444444 #444444 #aaaaaa;
 }
+.TitleLabel{
+    text-decoration:none;
+    color:white;
+}
 
 /*ログインボタン設定
 -----------------------------------------------------*/
-div{
+.LoginButton,.Signup{
     text-decoration:none;
     color:black;
     margin-left:auto;
@@ -92,7 +96,9 @@ div.menu ul li a:active
 
 /*アクセス画面
 -----------------------------------------------------------------*/
-
+.AccessLabel{
+    margin-left:5%;
+}
 
 .ImagePanel{
     margin-left:5%;

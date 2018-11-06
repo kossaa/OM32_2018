@@ -1,0 +1,7 @@
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojAssemblyReference.cache
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csproj.CoreCompileInputs.cache
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\kosak\OneDrive\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

@@ -3,15 +3,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <p>
-        <asp:Label ID="Label1" runat="server" Text="Label" Font-Size="50px">アクセス</asp:Label>
+        <asp:Label ID="Label1" CssClass="AccessLabel" runat="server" Text="Label" Font-Size="50px">アクセス</asp:Label>
     </p>
     <asp:Panel CssClass="ImagePanel" runat="server">
         <asp:Image CssClass="AccessImage" runat="server" ImageUrl="~/Image/アクセス画像.jpg" Width="100%" BorderStyle="Solid"/>
     </asp:Panel>
     <asp:Panel CssClass="TextPanel" runat="server">
-        <asp:Label ID="Label2" runat="server" Text="Label">
+        <asp:Label ID="Label2" runat="server" Text="Label" Font-Size="17px">
 住所：543-0001　大阪市天王寺区上本町６-８-４ <br />
-TEL　06-6772-2233 FAX　06-6772-1272<br />
+TEL：06-6772-2233　FAX：06-6772-1272<br />
 <br />
 阪神なんば線<br />
 阪神本線・三宮、西宮、尼崎から大阪上本町まで直通<br />

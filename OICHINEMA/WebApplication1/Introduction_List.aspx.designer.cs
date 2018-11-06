@@ -10,24 +10,15 @@
 namespace WebApplication1 {
     
     
-    public partial class Top {
+    public partial class Introduction_List {
         
         /// <summary>
-        /// ImageButton1 コントロール。
+        /// Panel2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
-        
-        /// <summary>
-        /// PriceGridView コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PriceGridView;
+        protected global::System.Web.UI.WebControls.Panel Panel2;
     }
 }

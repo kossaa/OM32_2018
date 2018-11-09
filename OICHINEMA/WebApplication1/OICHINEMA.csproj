@@ -57,9 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reservation_Confirm_Input_Information.aspx" />
+    <Content Include="Reservation_Ticket_Selection.aspx" />
     <Content Include="Reservation_Receipt_Confirmation.aspx" />
     <Content Include="Styles\Style.css" />
+    <Content Include="Reservation_Confirm_Input_Information.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -71,12 +72,12 @@
     <Compile Include="OICHINEMA.Master.designer.cs">
       <DependentUpon>OICHINEMA.Master</DependentUpon>
     </Compile>
-    <Compile Include="Reservation_Confirm_Input_Information.aspx.cs">
-      <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
+    <Compile Include="Reservation_Ticket_Selection.aspx.cs">
+      <DependentUpon>Reservation_Ticket_Selection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservation_Confirm_Input_Information.aspx.designer.cs">
-      <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
+    <Compile Include="Reservation_Ticket_Selection.aspx.designer.cs">
+      <DependentUpon>Reservation_Ticket_Selection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reservation_Receipt_Confirmation.aspx.cs">
       <DependentUpon>Reservation_Receipt_Confirmation.aspx</DependentUpon>
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Reservation_Receipt_Confirmation.aspx.designer.cs">
       <DependentUpon>Reservation_Receipt_Confirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation_Confirm_Input_Information.aspx.cs">
+      <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation_Confirm_Input_Information.aspx.designer.cs">
+      <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

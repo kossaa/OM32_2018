@@ -10,7 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class test {
+    public partial class Reservation_Ticket_Selection {
         
         /// <summary>
         /// Table1 コントロール。

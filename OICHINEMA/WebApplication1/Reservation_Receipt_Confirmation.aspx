@@ -6,6 +6,9 @@
         <tr>
             <td>
                 <h2>予約を受け付けました</h2>
+                <asp:Label ID="BookingIDLabel" runat="server"></asp:Label>
+                <br />
+                <asp:Label ID="BookingMailAddressLabel" runat="server"></asp:Label>
                 <p><a href="https://www.yahoo.co.jp/">TOPへ戻る</a></p>
             </td>
         </tr>

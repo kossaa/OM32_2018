@@ -2,6 +2,9 @@
 
 <!DOCTYPE html>
 
+
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -11,51 +14,37 @@
     
     <asp:ContentPlaceHolder ID="headContents" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .auto-style3 {
-            width: 75px;
-        }
-        .auto-style5 {
-            width: 15px;
-        }
-        .auto-style6 {
-            width: 25px;
-        }
-    </style>
+
 </head>
+
+
+
+
 <body>
     <form id="form1" runat="server">
         <div class="page">
             <div class="header">
                 <div class="title">
-                    <h1>
-                        &nbsp;<asp:LinkButton ID="TitleLabel" runat="server">OICINEMA</asp:LinkButton>
-                    </h1>
+                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server">OICINEMA</asp:LinkButton>
                 </div>
                 <div class="login">
-                    <table id="login" style="width:100%;">
-                        <tr>
-                            <td class="auto-style3">
-                                <asp:LinkButton ID="LinkButton2" runat="server" Width="80px">ログイン</asp:LinkButton>
-                            </td>
-                            <td class="auto-style6">/</td>
-                            <td class="auto-style5">
-                                <asp:LinkButton ID="LinkButton1" runat="server" Width="80px">新規登録</asp:LinkButton>
-                            </td>
-                        </tr>
-                    </table>
+                    <asp:Panel ID="Panel1" CssClass="Login" runat="server">
+                        <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
+                        <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
+                        <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server">新規登録</asp:LinkButton>
+                    </asp:Panel>
                 </div>
                 <div class="clear hideSkiplink">
-                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" style="width:100%;">
-                        <Items>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="トップ"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="会員ページ"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="スケジュール"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="作品案内"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="イベント"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="販売"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="予約確認"/>
-                            <asp:MenuItem NavigateUrl="~/WebForm1.aspx" Text="アクセス"/>
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                          <Items>
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ" />
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="会員ページ"/>
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
+                            <asp:MenuItem NavigateUrl="~/Introduction_list.aspx" Text="作品案内"/>
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="イベント"/>
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="販売"/>
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="予約確認"/>
+                            <asp:MenuItem NavigateUrl="~/Access.aspx" Text="アクセス"/>
                         </Items>
                     </asp:Menu>
                 </div>

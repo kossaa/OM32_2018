@@ -82,7 +82,7 @@ namespace WebApplication1
             }
             //空席の有無           
         }    
-        //※※※※※※初回クリック時にイベントが動作しない※※※※※※※※
+
 
         protected void ImageBtnSeat_Click(object sender, ImageClickEventArgs e)
         {
@@ -91,6 +91,7 @@ namespace WebApplication1
             //複数選択された場合
             Label2.Text = ((ImageButton)sender).ID + "が選択中です";
 
+            
             //クリックされたら色を変える
             if (((ImageButton)sender).CssClass == "SeatImg2")
             {
@@ -110,7 +111,10 @@ namespace WebApplication1
                     {
                        counter++;
                     }
-
+                    //┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+                    //┃6席目でonloadが表示されるはずなのに表示されない ┃
+                    //┃PostBackが原因？　　　　　　                    ┃
+                    //┗━━━━━━━━━━━━━━━━━━━━━━━━┛
                     if(counter == SeatMax)
                     {
                         //javascriptでonloadを表示させる

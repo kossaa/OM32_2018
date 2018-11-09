@@ -10,8 +10,8 @@
             <asp:Button ID="Button2" runat="server" Height="70px" Text="〇〇月××日" Width="150px" BorderStyle="Solid" />
             <asp:Button ID="Button3" runat="server" Height="70px" Text="〇〇月××日" Width="150px" BorderStyle="Solid" />
             <asp:Button ID="Button4" runat="server" Height="70px" Text="〇〇月××日" Width="150px" BorderStyle="Solid" />
+            <asp:Button ID="Button6" runat="server" BorderStyle="Solid" Height="70px" Text="▶" Width="150px" />
             <asp:Button ID="Button5" runat="server" Height="70px" Text="〇〇月××日" Width="150px" BorderStyle="Solid" />
-            <asp:Button ID="Button6" runat="server" Height="70px" Text="▶" Width="150px" BorderStyle="Solid" />
         </asp:Panel>
     </asp:Panel>
 

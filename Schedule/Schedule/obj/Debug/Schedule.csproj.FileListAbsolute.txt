@@ -1,0 +1,6 @@
+C:\Users\b6116\Desktop\Schedule\Schedule\bin\Schedule.dll.config
+C:\Users\b6116\Desktop\Schedule\Schedule\bin\Schedule.dll
+C:\Users\b6116\Desktop\Schedule\Schedule\bin\Schedule.pdb
+C:\Users\b6116\Desktop\Schedule\Schedule\obj\Debug\Schedule.csprojResolveAssemblyReference.cache
+C:\Users\b6116\Desktop\Schedule\Schedule\obj\Debug\Schedule.dll
+C:\Users\b6116\Desktop\Schedule\Schedule\obj\Debug\Schedule.pdb

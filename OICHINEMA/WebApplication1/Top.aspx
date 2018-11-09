@@ -8,11 +8,14 @@
         </div>
 
         <div class="MainMovie">
+            <asp:Label ID="Label2" CssClass="MainMText" runat="server" Width="180px">注目の映画</asp:Label>
             <asp:GridView CssClass="MainMovieInfo" runat="server"></asp:GridView>
         </div>
 
         <div class="Price">
+            <asp:Label ID="Label1" Cssclass="PriceText" runat="server" Width="170px">料金</asp:Label>
             <asp:GridView ID="PriceGridView" runat="server"></asp:GridView>
         </div>
     </div>
+
 </asp:Content>

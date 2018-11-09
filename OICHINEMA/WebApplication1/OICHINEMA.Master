@@ -27,12 +27,14 @@
                 <div class="title">
                         &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server">OICINEMA</asp:LinkButton>
                 </div>
-                <div class="login">
-                    <asp:Panel ID="Panel1" CssClass="Login" runat="server">
-                        <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
-                        <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
-                        <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server">新規登録</asp:LinkButton>
-                    </asp:Panel>
+
+                <div class="MemberOperation">
+                        <asp:Panel ID="Panel1" CssClass="Login" runat="server">
+                            <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
+                            <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
+                            <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server">新規登録</asp:LinkButton>
+                            <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server">ログアウト</asp:LinkButton>
+                        </asp:Panel>
                 </div>
                 <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">

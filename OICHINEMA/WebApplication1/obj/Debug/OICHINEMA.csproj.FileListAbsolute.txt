@@ -4,3 +4,15 @@ C:\Users\b6220\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\bin\WebAppli
 C:\Users\b6220\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
 C:\Users\b6220\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\b6220\Documents\GitHub\OM32_2018\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+K:\システム開発演習Ⅱ\2018-11-02\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+K:\システム開発演習Ⅱ\2018-11-02\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+K:\システム開発演習Ⅱ\2018-11-02\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+K:\システム開発演習Ⅱ\2018-11-02\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+K:\システム開発演習Ⅱ\2018-11-02\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+K:\システム開発演習Ⅱ\2018-11-02\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

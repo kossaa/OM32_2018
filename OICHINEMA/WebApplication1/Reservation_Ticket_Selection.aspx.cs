@@ -11,8 +11,6 @@ namespace WebApplication1
 {
     public partial class Reservation_Ticket_Selection : System.Web.UI.Page
     {
-        OleDbConnection cn;
-        OleDbDataAdapter da;
         OleDbCommand cmd;
         DataSet ds;
         int seatcount = 0;
@@ -27,15 +25,40 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            ////cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|\\stusrv\システム開発演習\OM-32\データベース\BookingDB.accdb;");
-            //da = new OleDbDataAdapter("SELECT ISNULL()EVENT_STARTDAY,EVENT_NAME FROM TBL_EVENT", cn);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //for (int i = 0; dt.Rows[i] == null; i++)
-            //{
+            //結合準備中
+            Session["ScheduleID"] = "0000005";
+            Session["ScheduleEnd"] = DateTime.Parse("2018/10/25 14:25:00");
 
-            //}
+            
+            DateTime time = (DateTime)Session["ScheduleEnd"];
+            OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+            ////cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|\\stusrv\システム開発演習\OM-32\データベース\BookingDB.accdb;");
+            OleDbDataAdapter daEvent = new OleDbDataAdapter("SELECT EVENT_ID,EVENT_NAME,EVENT_RATE,SCHEDULE_ID,EVENT_STARTDAY,EVENT_ENDDAY,RATE_ID FROM TBL_EVENT WHERE SCHEDULE_ID='" + (string)Session["ScheduleID"] + "' OR EVENT_STARTDAY<=#" + (DateTime)Session["ScheduleEnd"] + "# AND EVENT_ENDDAY>=#" + (DateTime)Session["ScheduleEnd"] + "#", cn);
+            DataTable dtEvent = new DataTable();
+            daEvent.Fill(dtEvent);
+            OleDbDataAdapter daRate = new OleDbDataAdapter("SELECT * FROM TBL_RATE WHERE RATE_START<=#" + ((DateTime)Session["ScheduleEnd"]).TimeOfDay + "# AND RATE_END>=#" + ((DateTime)Session["ScheduleEnd"]).TimeOfDay + "#", cn);
+            DataTable dtRate = new DataTable();
+            daEvent.Fill(dtRate);
+            //ClientScriptManager cs = Page.ClientScript;
+            //Type csType = this.GetType();
+            //cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('"+表示したい値+"');</script>");
+            if (dtRate.Rows.Count != 0)//イベントテーブルに該当するイベントが登録されていたら
+            {
+                ClientScriptManager cs = Page.ClientScript;
+                Type csType = this.GetType();
+                cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('" + dtRate.Rows.Count + "');</script>");
+            }
+
+
+
+            //イベントテーブル
+            //選択されたスケジュール番号が登録されているかどうかをチェックし、なければ現在の日付がイベントの開始日と終了日の間に入っているかをチェック。
+            //料金番号がallの場合表示される全ての料金をイベント料金に置き換える
+            //料金番号がaddの場合イベント料金の置き換えは発生させずにチケット一覧に追加する
+
+            //料金テーブル
+            //設定時間のうちイベントテーブルをチェックした結果変更されなかった料金番号を表示する
+            
 
             //画面結合時に前の画面からデータを継承する
             //ログイン中の場合会員情報を取得する
@@ -172,6 +195,7 @@ namespace WebApplication1
                 Table1.Rows.AddAt(seatcount + 3, tableRow);
                 return;
             }
+            Session["BookingMail"] = MailAddressTextbox.Text;
             Response.Redirect("Reservation_Confirm_Input_Information.aspx");
         }
 

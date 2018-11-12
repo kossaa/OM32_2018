@@ -12,7 +12,7 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             BookingIDLabel.Text = "予約番号：";
-            BookingMailAddressLabel.Text = "にメールを送信しました";
+            BookingMailAddressLabel.Text = Session["BookingMail"].ToString()+"にメールを送信しました";
         }
     }
 }

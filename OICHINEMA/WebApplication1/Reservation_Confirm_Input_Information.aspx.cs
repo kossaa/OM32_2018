@@ -88,7 +88,7 @@ namespace WebApplication1
             tableCell.Text = "メールアドレス：";
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();
-            tableCell.Text = "セル2";
+            tableCell.Text = Session["BookingMail"].ToString();
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);

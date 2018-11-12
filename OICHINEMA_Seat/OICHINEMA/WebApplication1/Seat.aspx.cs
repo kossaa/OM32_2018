@@ -15,7 +15,20 @@ namespace WebApplication1
         string[] seatall = new string[SeatMax];
 
         protected void Page_Load(object sender, EventArgs e)
-        {       
+        {
+            /*//PostBack処理
+            // 毎回行う初期化処理
+            if (!IsPostBack)
+            {
+                // 最初のアクセス時にのみ行う初期化処理
+
+            }
+            else
+            {
+                // ポストバック時にのみ行う初期化処理
+
+            }*/
+
             //tableのRowとCellを宣言
             TableRow tableRow;
             TableCell tableCell;

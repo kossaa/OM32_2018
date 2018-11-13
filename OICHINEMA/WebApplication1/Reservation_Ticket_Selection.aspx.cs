@@ -42,12 +42,12 @@ namespace WebApplication1
             //ClientScriptManager cs = Page.ClientScript;
             //Type csType = this.GetType();
             //cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('"+表示したい値+"');</script>");
-            if (dtRate.Rows.Count != 0)//イベントテーブルに該当するイベントが登録されていたら
-            {
-                ClientScriptManager cs = Page.ClientScript;
-                Type csType = this.GetType();
-                cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('" + dtRate.Rows.Count + "');</script>");
-            }
+            //if (dtRate.Rows.Count != 0)//イベントテーブルに該当するイベントが登録されていたら
+            //{
+            //    ClientScriptManager cs = Page.ClientScript;
+            //    Type csType = this.GetType();
+            //    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('" + dtRate.Rows.Count + "');</script>");
+            //}
 
 
 
@@ -125,9 +125,7 @@ namespace WebApplication1
             MailAddressTextbox.MaxLength = 50;
             //IMEMODEをDisableに設定する
             //MailAddressTextbox.CssClass = "disabled";
-            //MailAddressTextbox.Style.Add("ime-mode", "disabled");
-            //入力可能文字を数字のみにする
-            //MailAddressTextbox.TextChanged += new System.EventHandler(this.MailAddressTextbox_TextChanged);
+            //MailAddressTextbox.Style.Add("ime-mode","disabled");
             MailAddressTextbox.Width = 296;//セルのサイズが300の場合そこに入る最大サイズが296
             tableCell.Controls.Add(MailAddressTextbox);
             tableCell.Width = Cell2Width;
@@ -160,6 +158,27 @@ namespace WebApplication1
 
         protected void NextBtn_Click(object sender, EventArgs e)
         {
+            int noSelectflag = 0;
+            for (int i = 0; i < seatname.Length; i++)
+            {
+                if (TicketDDL[i].SelectedIndex == 0)
+                {
+                    noSelectflag = 1;
+                    break;//for文のチェックを抜ける
+                }
+            }
+            if (noSelectflag == 1)
+            {
+                TableRow tableRow;
+                TableCell tableCell;
+                tableRow = new TableRow();
+                tableCell = new TableCell();
+                tableCell.Text = "チケットの種類を選択してください";
+                tableCell.ColumnSpan = 2;
+                tableRow.Cells.Add(tableCell);
+                Table1.Rows.AddAt(seatcount + 3, tableRow);
+                return;
+            }
             if (MailAddressTextbox.Text == "")
             {
                 TableRow tableRow;
@@ -173,23 +192,13 @@ namespace WebApplication1
                 return;
             }
             //MailAddressTextboxに全角が含まれている場合はtableCell.Text = "半角英数字と記号のみ使用できます";
-            //Reservation_Enter_Reservation_Information.aspxを再表示する
-            int noSelectflag=0;
-            for(int i=0;i<seatname.Length;i++)
-            {
-                if(TicketDDL[i].SelectedIndex==0)
-                {
-                    noSelectflag=1;
-                    break;//for文のチェックを抜ける
-                }
-            }
-            if(noSelectflag==1)
+            if (CheckMailAddressFormat(MailAddressTextbox.Text) == false)
             {
                 TableRow tableRow;
                 TableCell tableCell;
                 tableRow = new TableRow();
                 tableCell = new TableCell();
-                tableCell.Text = "チケットの種類を選択してください";
+                tableCell.Text = "正しいメールアドレスではありません";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
                 Table1.Rows.AddAt(seatcount + 3, tableRow);
@@ -197,6 +206,21 @@ namespace WebApplication1
             }
             Session["BookingMail"] = MailAddressTextbox.Text;
             Response.Redirect("Reservation_Confirm_Input_Information.aspx");
+        }
+
+        bool CheckMailAddressFormat(string address) 
+        {
+            try
+            {
+                System.Net.Mail.MailAddress mailAddress = new System.Net.Mail.MailAddress(address);
+            }
+            catch (FormatException)
+            {
+                //メールアドレスとしての文法エラー
+                return false;
+            }
+            //文法エラーなし
+            return true;
         }
 
         protected void MemberFormLinkBtn_Click(object sender, EventArgs e)

@@ -60,7 +60,7 @@
     <Content Include="Access.aspx" />
     <Content Include="Image\avengers.JPG" />
     <Content Include="Image\アクセス画像.jpg" />
-    <Content Include="Introduction_List.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Top.aspx" />
     <Content Include="Web.config" />
@@ -73,12 +73,12 @@
     <Compile Include="Access.aspx.designer.cs">
       <DependentUpon>Access.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Introduction_List.aspx.cs">
-      <DependentUpon>Introduction_List.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Introduction_List.aspx.designer.cs">
-      <DependentUpon>Introduction_List.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OICHINEMA.Master.cs">

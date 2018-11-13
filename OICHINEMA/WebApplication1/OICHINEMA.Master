@@ -12,8 +12,7 @@
     
     <link href="~/Styles/Style.css" rel="stylesheet" type="text/css" />
     
-    <asp:ContentPlaceHolder ID="headContents" runat="server">
-    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="headContents" runat="server"></asp:ContentPlaceHolder>
 
 </head>
 
@@ -25,12 +24,12 @@
         <div class="page">
             <div class="header">
                 <div class="title">
-                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server">OICINEMA</asp:LinkButton>
+                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server" PostBackUrl="~/Top.aspx">OICINEMA</asp:LinkButton>
                 </div>
 
                 <div class="MemberOperation">
                         <asp:Panel ID="Panel1" CssClass="Login" runat="server">
-                            <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
+                            <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton" PostBackUrl="~/Login.aspx">ログイン</asp:LinkButton>
                             <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
                             <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server">新規登録</asp:LinkButton>
                             <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server">ログアウト</asp:LinkButton>
@@ -42,7 +41,7 @@
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ" />
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="会員ページ"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
-                            <asp:MenuItem NavigateUrl="~/Introduction_list.aspx" Text="作品案内"/>
+                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="作品案内"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="イベント"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="販売"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="予約確認"/>
@@ -54,7 +53,7 @@
         </div>
 
     <div class="main">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
     </div>
     <div class="footer">
      

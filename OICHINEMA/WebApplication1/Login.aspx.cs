@@ -14,7 +14,7 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Visible = false;
+            Messe_lbl.Visible = false;
         }
 
         protected void Login_btn_Click(object sender, EventArgs e)
@@ -29,14 +29,14 @@ namespace WebApplication1
 
             if (dt.Rows.Count > 0)    //該当するものがあれば
             {
-                Session["UserID"] = userid;
+                Session["UserNo"] = dt.Rows[0][0];
                 FormsAuthentication.RedirectFromLoginPage(userid, false);
                 Response.Redirect("Member_MyPage.aspx");
             }
             else
             {
-                Label1.Text = "ユーザー名、パスワードを確認してください。";
-                Label1.Visible = true;
+                Messe_lbl.Text = "ユーザーID、パスワードを確認してください。";
+                Messe_lbl.Visible = true;
             }
         }
 

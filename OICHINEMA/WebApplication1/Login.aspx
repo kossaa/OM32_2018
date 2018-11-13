@@ -11,17 +11,19 @@
     </tr>
     <tr>
         <td style="text-align: center">
+            <asp:Label ID="Label2" runat="server" Text="ユーザーID"></asp:Label>
             <asp:TextBox ID="MemMail_tb" runat="server"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td style="text-align: center">
+            <asp:Label ID="Label3" runat="server" Text="パスワード"></asp:Label>
             <asp:TextBox ID="Pass_tb" runat="server"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td style="text-align: center">
-            <asp:Label ID="Label1" runat="server"></asp:Label>
+            <asp:Label ID="Messe_lbl" runat="server"></asp:Label>
         </td>
     </tr>
     <tr>

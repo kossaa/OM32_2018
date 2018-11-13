@@ -21,7 +21,8 @@
         </tr>
         <tr>
             <td rowspan="2" class="auto-style7">
-                <table style="width:100%;" rules="all">
+                <%--<table style="width:100%;" rules="all">--%>
+                <table style="width: 100%;">
                     <tr>
                         <td colspan="2">プロフィール</td>
                     </tr>
@@ -76,7 +77,8 @@
                 </table>
             </td>
             <td>
-                　<table style="width:50%;" rules="all">
+                <%--<table style="width:50%;" rules="all">--%>
+                <table style="width:50%;">
                     <tr>
                         <td>保有ポイント：</td>
                         <td>
@@ -93,20 +95,20 @@
         </tr>
         <tr>
             <td>
-                <table style="width:50%;">
+                <table style="width: 50%;">
                     <tr>
                         <td>
-                            <asp:LinkButton ID="Purchaselog_linkbtn" runat="server">チケット購入履歴</asp:LinkButton>
+                            <asp:LinkButton ID="Purchaselog_linkbtn" runat="server" OnClick="Purchaselog_linkbtn_Click1">チケット購入履歴</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:LinkButton ID="Profile_linkbtn" runat="server">プロフィール変更</asp:LinkButton>
+                            <asp:LinkButton ID="Profile_linkbtn" runat="server" OnClick="Profile_linkbtn_Click1">プロフィール変更</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:LinkButton ID="Password_linkbtn" runat="server">パスワード変更</asp:LinkButton>
+                            <asp:LinkButton ID="Password_linkbtn" runat="server" OnClick="Password_linkbtn_Click1">パスワード変更</asp:LinkButton>
                         </td>
                     </tr>
                 </table>
@@ -116,7 +118,7 @@
             <td>
                 &nbsp;</td>
             <td style="text-align: center">
-                            <asp:Button ID="Withdrawal_btn" runat="server" Text="退会" style="text-align: left" />
+                            <asp:Button ID="Withdrawal_btn" runat="server" Text="退会" style="text-align: left" OnClick="Withdrawal_btn_Click1" />
                         </td>
         </tr>
         </table>

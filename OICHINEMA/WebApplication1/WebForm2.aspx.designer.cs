@@ -10,69 +10,105 @@
 namespace WebApplication1 {
     
     
-    public partial class Login {
+    public partial class WebForm2 {
         
         /// <summary>
-        /// Label2 コントロール。
+        /// MemID_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox MemID_tb;
         
         /// <summary>
-        /// MemMail_tb コントロール。
+        /// MemName_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MemMail_tb;
+        protected global::System.Web.UI.WebControls.TextBox MemName_tb;
         
         /// <summary>
-        /// Label3 コントロール。
+        /// MemNameKana_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.TextBox MemNameKana_tb;
         
         /// <summary>
-        /// Pass_tb コントロール。
+        /// MemBirth_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Pass_tb;
+        protected global::System.Web.UI.WebControls.TextBox MemBirth_tb;
         
         /// <summary>
-        /// Messe_lbl コントロール。
+        /// MemGender_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Messe_lbl;
+        protected global::System.Web.UI.WebControls.TextBox MemGender_tb;
         
         /// <summary>
-        /// Login_btn コントロール。
+        /// MemTel_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Login_btn;
+        protected global::System.Web.UI.WebControls.TextBox MemTel_tb;
         
         /// <summary>
-        /// Signup_btn コントロール。
+        /// MemPost_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Signup_btn;
+        protected global::System.Web.UI.WebControls.TextBox MemPost_tb;
+        
+        /// <summary>
+        /// MemAdr_tb コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MemAdr_tb;
+        
+        /// <summary>
+        /// Back_btn コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Back_btn;
+        
+        /// <summary>
+        /// Cancel_btn コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Cancel_btn;
+        
+        /// <summary>
+        /// Update_btn コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Update_btn;
     }
 }

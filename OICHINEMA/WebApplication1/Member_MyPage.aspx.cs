@@ -16,10 +16,9 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
-                String userID = (string)Session["UserID"];
+                String userNo = (string)Session["UserNo"];
                 OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-                //OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_MAIL = '"+ a +"'", cn);
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_MAIL = '"+ userID +"'", cn);
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -44,25 +43,25 @@ namespace WebApplication1
 
         }
 
-        protected void Purchaselog_linkbtn_Click(object sender, EventArgs e)
+        protected void Purchaselog_linkbtn_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm1.aspx");
+        }
+
+        protected void Profile_linkbtn_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm2.aspx");
+        }
+
+        protected void Password_linkbtn_Click1(object sender, EventArgs e)
         {
 
         }
 
-        protected void Profile_linkbtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Password_linkbtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Withdrawal_btn_Click(object sender, EventArgs e)
+        protected void Withdrawal_btn_Click1(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
-            Session["UserID"] = null;
+            Session["UserNo"] = null;
             Response.Redirect("Login.aspx");
         }
 

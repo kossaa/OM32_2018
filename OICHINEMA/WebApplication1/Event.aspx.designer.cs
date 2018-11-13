@@ -22,15 +22,6 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// TestLabel コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TestLabel;
-        
-        /// <summary>
         /// DayLabel1 コントロール。
         /// </summary>
         /// <remarks>

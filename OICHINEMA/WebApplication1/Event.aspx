@@ -38,9 +38,9 @@
        .auto-style14 {
            height: 51px;
        }
-       .auto-style15 {
-           height: 21px;
-           text-align: center;
+       .auto-style16 {
+           height: 31px;
+           width: 182px;
        }
    </style>
 </asp:Content>
@@ -50,11 +50,15 @@
         <tr>
             <td style="background-color: #FFFFFF">
                 <asp:Label ID="Label11" runat="server" Font-Size="50pt" Text="イベント一覧"></asp:Label>
-                <asp:Label ID="TestLabel" runat="server" Font-Size="100pt" Text="TEST"></asp:Label>
             </td>
         </tr>
     </table>
+
    <table style="width:100%;">
+       <tr>
+           <td class="auto-style16" style="background-color: #c0c0c0; font-size: x-large;">イベント開始日</td>
+           <td style="background-color: #c0c0c0; font-size: x-large;"></td>
+       </tr>
        <tr>
            <td class="auto-style7" style="background-color: #c0c0c0">
                <asp:Label ID="DayLabel1" runat="server" Font-Size="15pt"></asp:Label>
@@ -110,7 +114,7 @@
            </td>
        </tr>
         <tr>
-           <td class="auto-style15" style="background-color: #c0c0c0">
+           <td class="auto-style8" style="background-color: #c0c0c0">
                <asp:Label ID="DayLabel4" runat="server" Font-Size="15pt"></asp:Label>
                <br />
                <asp:Label ID="WeekDayLabel4" runat="server"></asp:Label>

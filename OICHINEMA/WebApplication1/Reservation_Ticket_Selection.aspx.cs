@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -38,16 +39,14 @@ namespace WebApplication1
             daEvent.Fill(dtEvent);
             OleDbDataAdapter daRate = new OleDbDataAdapter("SELECT * FROM TBL_RATE WHERE RATE_START<=#" + ((DateTime)Session["ScheduleEnd"]).TimeOfDay + "# AND RATE_END>=#" + ((DateTime)Session["ScheduleEnd"]).TimeOfDay + "#", cn);
             DataTable dtRate = new DataTable();
-            daEvent.Fill(dtRate);
+            daRate.Fill(dtRate);
             //ClientScriptManager cs = Page.ClientScript;
             //Type csType = this.GetType();
             //cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('"+表示したい値+"');</script>");
-            //if (dtRate.Rows.Count != 0)//イベントテーブルに該当するイベントが登録されていたら
-            //{
-            //    ClientScriptManager cs = Page.ClientScript;
-            //    Type csType = this.GetType();
-            //    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('" + dtRate.Rows.Count + "');</script>");
-            //}
+            if (dtRate.Rows.Count != 0)//イベントテーブルに該当するイベントが登録されていたら
+            {
+                
+            }
 
 
 
@@ -93,8 +92,8 @@ namespace WebApplication1
                 tableCell = new TableCell();
                 TicketDDL[i] = new DropDownList();
                 TicketDDL[i].Items.Add("チケットの種類を選択してください");
-                TicketDDL[i].Items.Add("1");
-                TicketDDL[i].Items.Add("2");
+                for (int j = 0; j < dtRate.Rows.Count; j++)
+                    TicketDDL[i].Items.Add(dtRate.Rows[j][1].ToString());
                 tableCell.Controls.Add(TicketDDL[i]);
                 tableRow.Cells.Add(tableCell);
                 Table1.Rows.Add(tableRow);
@@ -123,9 +122,6 @@ namespace WebApplication1
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();
             MailAddressTextbox.MaxLength = 50;
-            //IMEMODEをDisableに設定する
-            //MailAddressTextbox.CssClass = "disabled";
-            //MailAddressTextbox.Style.Add("ime-mode","disabled");
             MailAddressTextbox.Width = 296;//セルのサイズが300の場合そこに入る最大サイズが296
             tableCell.Controls.Add(MailAddressTextbox);
             tableCell.Width = Cell2Width;
@@ -191,7 +187,18 @@ namespace WebApplication1
                 Table1.Rows.AddAt(seatcount+3,tableRow);
                 return;
             }
-            //MailAddressTextboxに全角が含まれている場合はtableCell.Text = "半角英数字と記号のみ使用できます";
+            if (!isHankaku(MailAddressTextbox.Text))
+            {
+                TableRow tableRow;
+                TableCell tableCell;
+                tableRow = new TableRow();
+                tableCell = new TableCell();
+                tableCell.Text = "半角英数字記号のみ使用できます";
+                tableCell.ColumnSpan = 2;
+                tableRow.Cells.Add(tableCell);
+                Table1.Rows.AddAt(seatcount + 3, tableRow);
+                return;
+            }
             if (CheckMailAddressFormat(MailAddressTextbox.Text) == false)
             {
                 TableRow tableRow;
@@ -226,6 +233,15 @@ namespace WebApplication1
         protected void MemberFormLinkBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("MemberForm.aspx");
+        }
+
+        static Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");//文字コードを指定する
+
+        //半角文字が含まれているかどうかを判定
+        public static bool isHankaku(string str)
+        {
+            int num = sjisEnc.GetByteCount(str);
+            return num == str.Length;
         }
     }
 }

@@ -5,15 +5,18 @@
     
     <!-- CSS設定 -->
     <style type ="text/css" >
-        .SeatImg{background-color:gray}
-        .SeatImg2{background-color:none}
+        .ChoiceSeat{background-color:gray}
+        .FreeSeat{background-color:none}
+        .SoldSeat{background-color:red}
     </style>
 
     <div>
+        <asp:Label ID="Label1" runat="server" Text="選択中の席"></asp:Label>
+        <br />
+        <br />
   
-      <asp:Table ID="Table1" runat="server" BorderColor="#3333CC" BorderWidth="1px" GridLines="Both">
-      </asp:Table>
-
+        <asp:Table ID="Table1" runat="server" BorderColor="#3333CC" BorderWidth="1px" GridLines="Both">
+        </asp:Table>
         &emsp;
         &emsp;   
         &emsp;
@@ -25,15 +28,12 @@
         &emsp;
         <asp:Button ID="Button2" runat="server" Text="戻る" Height="50px" Width="100px" OnClick="Button2_Click" /> 
         <br /> 
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        <br />
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-        <br />
-        <br />
-        <br />
-        <br />
-        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-        <br />
-        <br />    
+        <br /> 
+        <br /> 
+        <asp:Label ID="Label2" runat="server" Text="label2"></asp:Label>
+        <br /> 
+        <br /> 
+        <asp:Label ID="Label3" runat="server" Text="label3"></asp:Label>
+        
     </div>
 </asp:Content>

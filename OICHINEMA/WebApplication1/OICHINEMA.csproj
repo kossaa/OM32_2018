@@ -60,6 +60,7 @@
     <Content Include="img\isu.png" />
     <Content Include="img\isuSentaku.png" />
     <Content Include="img\tuuro.png" />
+    <Content Include="ScheduleForm.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Seat.aspx" />
     <Content Include="Web.config" />
@@ -72,6 +73,13 @@
     </Compile>
     <Compile Include="OICHINEMA.Master.designer.cs">
       <DependentUpon>OICHINEMA.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForm.aspx.cs">
+      <DependentUpon>ScheduleForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ScheduleForm.aspx.designer.cs">
+      <DependentUpon>ScheduleForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seat.aspx.cs">
       <DependentUpon>Seat.aspx</DependentUpon>

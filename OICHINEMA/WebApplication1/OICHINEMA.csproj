@@ -57,7 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Access.aspx" />
+    <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="Image\avengers.JPG" />
     <Content Include="Image\アクセス画像.jpg" />
     <Content Include="Login.aspx" />
@@ -66,13 +66,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access.aspx.cs">
-      <DependentUpon>Access.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Access.aspx.designer.cs">
-      <DependentUpon>Access.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OICHINEMA.Master" />
+    <Content Include="App_Data\BookingDB.laccdb" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -239,20 +239,14 @@ div.menu ul li a:active
     padding-bottom:10px;
 }
 .AdmissionText{
-    margin-left:45%;
+    margin-left:43%;
     text-align:center;
     font-size:30px;
 }
-.FullNamePanel{
-    width:100%;
-    height:40px;
-}
-.FullNamePanel{
-    float:left;
-}
+
 .NameText{
     font-size:30px;
-    width:15%;
+    width:100%;
     float:left;
 }
 .NameTextBox {
@@ -263,11 +257,43 @@ div.menu ul li a:active
 }
 .KanjiPanel{
     float:left;
-    width:auto;
+    width:40%;
+    clear:both;
 }
 .KanaPanel{
     float:right;
-    width:auto;
+    width:60%;
 }
 .NameInPanel{
+    width:100%;
+    background-color:#00dbe2;
+}
+.TextBox{
+    width:200px;
+    height:30px;
+    font-size:30px;
+}
+.BirthTextBox{
+    width:80px;
+    height:30px;
+    font-size:30px;
+}
+
+.SexPanel{
+    width:100%;
+    background-color:#ed7f07;
+}
+.BirthPanel{
+    background-color:#c9fa00;
+}
+.AddressPanel{
+    background-color:#eef100;
+}
+.TODOHUKEN{
+    float:left;
+    width:40%;
+}
+.SI-KU-GUN{
+    float:right;
+    width:60%;
 }

@@ -35,5 +35,10 @@
         <br /> 
         <asp:Label ID="Label3" runat="server" Text="label3"></asp:Label>
         
+        <br />
+        <br />
+        <asp:Table ID="Table2" runat="server" CssClass="SoldSeat">
+        </asp:Table>
+        
     </div>
 </asp:Content>

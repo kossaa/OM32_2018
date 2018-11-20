@@ -59,6 +59,13 @@
   <ItemGroup>
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="Event.aspx" />
+    <Content Include="Images\Avengers.jpg" />
+    <Content Include="Images\FiveHeadJAWS.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark.jpg" />
+    <Content Include="Images\Soranokanata.jpg" />
+    <Content Include="Images\spidermen.jpg" />
+    <Content Include="Images\WildSpeed.jpg" />
+    <Content Include="Introduction_List.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
@@ -70,6 +77,13 @@
     </Compile>
     <Compile Include="Event.aspx.designer.cs">
       <DependentUpon>Event.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Introduction_List.aspx.cs">
+      <DependentUpon>Introduction_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Introduction_List.aspx.designer.cs">
+      <DependentUpon>Introduction_List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OICHINEMA.Master.cs">

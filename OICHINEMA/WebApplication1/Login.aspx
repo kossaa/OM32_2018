@@ -19,21 +19,37 @@
             <asp:Panel ID="Panel4" CssClass="KanaPanel" runat="server">
                 <asp:Label ID="Label1" runat="server" Text="カナ"></asp:Label>
                 <br />
-                <asp:TextBox ID="TextBox1" CssClass="TextBox" runat="server" Text="姓"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" CssClass="TextBox" runat="server" Text="セイ"></asp:TextBox>
                 <br />
-                <asp:TextBox ID="TextBox4" CssClass="TextBox" runat="server" Text="名"></asp:TextBox>
+                <asp:TextBox ID="TextBox4" CssClass="TextBox" runat="server" Text="メイ"></asp:TextBox>
             </asp:Panel>
         </asp:Panel>
         <asp:Panel ID="Panel6" CssClass="SexPanel" runat="server">
             <asp:Label ID="Label5" CssClass="NameText" runat="server" Text="性別（※）"></asp:Label>
-            <asp:DropDownList ID="DropDownList1" CssClass="BirthTextBox" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList1" CssClass="BirthTextBox" runat="server">
+                <asp:ListItem>男</asp:ListItem>
+                <asp:ListItem>女</asp:ListItem>
+            </asp:DropDownList>
         </asp:Panel>
         <asp:Panel ID="Panel7" CssClass="BirthPanel" runat="server">
             <asp:Label ID="Label6" CssClass="NameText" runat="server" Text="生年月日（※）"></asp:Label>
             <asp:Label ID="Label7" runat="server" Text="（西暦）" Font-Size="30px"></asp:Label>
-            <asp:DropDownList ID="DropDownList2" CssClass="BirthTextBox" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList2" CssClass="BirthTextBox" runat="server" AutoPostBack="True"></asp:DropDownList>
             <asp:Label ID="Label10" runat="server" Text="年" Font-Size="30px"></asp:Label>
-            <asp:DropDownList ID="DropDownList3" CssClass="BirthTextBox" runat="server" ></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList3" CssClass="BirthTextBox" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" AutoPostBack="True" >
+                <asp:ListItem>1</asp:ListItem>
+                <asp:ListItem>2</asp:ListItem>
+                <asp:ListItem>3</asp:ListItem>
+                <asp:ListItem>4</asp:ListItem>
+                <asp:ListItem>5</asp:ListItem>
+                <asp:ListItem>6</asp:ListItem>
+                <asp:ListItem>7</asp:ListItem>
+                <asp:ListItem>8</asp:ListItem>
+                <asp:ListItem>9</asp:ListItem>
+                <asp:ListItem>10</asp:ListItem>
+                <asp:ListItem>11</asp:ListItem>
+                <asp:ListItem>12</asp:ListItem>
+            </asp:DropDownList>
             <asp:Label ID="Label8" runat="server" Text="月" Font-Size="30px"></asp:Label>
             <asp:DropDownList ID="DropDownList4" CssClass="BirthTextBox" runat="server"></asp:DropDownList>
             <asp:Label ID="Label9" runat="server" Text="日" Font-Size="30px"></asp:Label>
@@ -50,40 +66,41 @@
             <asp:Panel ID="Panel8" CssClass="TODOHUKEN" runat="server">
                 <asp:Label ID="Label13" runat="server" Text="都道府県"></asp:Label>
                     <br />
-                <asp:TextBox ID="TextBox6"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox6" CssClass="TextBox" runat="server"></asp:TextBox>
             </asp:Panel>
             <asp:Panel ID="Panel9" CssClass="SI-KU-GUN" runat="server">
                 <asp:Label ID="Label14" runat="server" Text="市区郡"></asp:Label>
                     <br />
-                <asp:TextBox ID="TextBox7"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox7" CssClass="TextBox" runat="server"></asp:TextBox>
             </asp:Panel>
             <asp:Panel ID="Panel10" CssClass="CHOUSON-BANTI" runat="server">
                 <asp:Label ID="Label15" runat="server" Text="町村・番地・建物名"></asp:Label>
                     <br />
-                <asp:TextBox ID="TextBox8"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox8" CssClass="TextBox" runat="server"></asp:TextBox>
             </asp:Panel>
             <asp:Label ID="Label16" runat="server" Text="電話番号"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox9"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox9" CssClass="TextBox" runat="server"></asp:TextBox>
                 <br />
             <asp:Label ID="Label17" runat="server" Text="メールアドレス"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox10"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox10" CssClass="TextBox" runat="server"></asp:TextBox>
                  <br />
             <asp:Label ID="Label18" runat="server" Text="パスワード"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox11"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox11" CssClass="TextBox" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="Label19" runat="server" Text="パスワード（確認）"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox12"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox12" CssClass="TextBox" runat="server"></asp:TextBox>
         </asp:Panel>
 
-        <asp:Button ID="Button2" runat="server" Text="確定" OnClick="Button2_Click" />
 
 
-
+        <asp:Panel ID="Panel11" runat="server">
+        <asp:Button ID="Button2" CssClass="EnterButton" runat="server" Text="確定" OnClick="Button2_Click" />
         <asp:Label ID="Label20" runat="server" Text="Label"></asp:Label>
+        </asp:Panel>
 
 
 

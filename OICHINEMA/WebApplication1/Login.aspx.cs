@@ -14,6 +14,8 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CalenderAddYear();
+            CalenderAddDay();
             Label20.Visible = false;
         }
 
@@ -23,19 +25,16 @@ namespace WebApplication1
         public OleDbCommand command;
         public OleDbDataAdapter dbAdapter;
         public OleDbConnection cn;
-        public bool DB_Connection_Open(){
-            try
-            {
+        public bool DB_Connection(){
+            try{
                 //コネクションの作成
                 cn = new OleDbConnection();
                 command = new OleDbCommand();
 
                 cn.ConnectionString=@"Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;";
-                //コネクションを開く
-                cn.Open();
+
             }
-            catch (Exception)
-            {
+            catch (Exception){
                 Label20.Text = "DB接続×";
                 Label20.Visible = true;
                 return false;
@@ -45,64 +44,185 @@ namespace WebApplication1
         }
 
 
+        /*=====================================================
+         * ドロップダウンの年に当年までの年を追加
+         ======================================================*/
+        private void CalenderAddYear(){
+            int nowyear = Today.Year;
+            int year = 1920;//年カウント開始日
+
+            for (int i = year; i <= nowyear; i++){
+                DropDownList2.Items.Add(i.ToString());
+            }
+        }
+
+        /*=====================================================
+         * ドロップダウンの日に当月の日を追加
+         ======================================================*/
+        private void CalenderAddDay()
+        {
+            int year = int.Parse(DropDownList2.Text);
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
+              /*うるう年*/
+                if (DropDownList3.Text == "2")
+                {/*2月なら*/
+                    for (int i = 1; i <= 29; i++){
+                        DropDownList4.Items.Add(i.ToString());
+                    }
+                }
+                else if (DropDownList3.Text == "4" || DropDownList3.Text == "6" || DropDownList3.Text == "9" || DropDownList3.Text == "11")
+                {/*4,6,9,11月なら*/
+                    for (int i = 1; i <= 30; i++){
+                        DropDownList4.Items.Add(i.ToString());
+                    }
+                }
+                else
+                {/*1,3,5,7,8,10,12月なら*/
+                    for (int i = 1; i <= 31; i++){
+                        DropDownList4.Items.Add(i.ToString());
+
+                    }
+                }
+            }
+            else/*うるう年じゃない*/
+            {
+                if (DropDownList3.Text == "2")
+                {/*2月なら*/
+                    for (int i = 1; i <= 28; i++)
+                    {
+                        DropDownList4.Items.Add(i.ToString());
+                    }
+                }
+                else if (DropDownList3.Text == "4" || DropDownList3.Text == "6" || DropDownList3.Text == "9" || DropDownList3.Text == "11")
+                {/*4,6,9,11月なら*/
+                    for (int i = 1; i <= 30; i++)
+                    {
+                        DropDownList4.Items.Add(i.ToString());
+                    }
+                }
+                else
+                {/*1,3,5,7,8,10,12月なら*/
+                    for (int i = 1; i <= 31; i++)
+                    {
+                        DropDownList4.Items.Add(i.ToString());
+                    }
+                }
+            }
+        }
 
 
 
         /*====================================================
          * 会員番号の最大値を取得して新しい会員のIDを作成する
          =====================================================*/
-        private string getNewMaxMemberId()
-        {
-            DB_Connection_Open();
+        private string getNewMaxMemberId(){
+            DB_Connection();
             //会員番号の最大番号を取得する
             int MaxMID = 0;
 
             //コマンド指定
             command.CommandText = "SELECT MAX(MEMBER_ID) from TBL_MEMBER";
             command.Connection = cn;
-
+            cn.Open();
             MaxMID = command.ExecuteNonQuery();
 
 
             //会員番号の最大値に+1加算
             String NewMID = (MaxMID + 1).ToString();
             string nd = string.Format("{0:D7}", NewMID);
-
+            cn.Close();
             return nd;
         }
+
+
+        /*====================================================
+        * 登録日（システム内の時間）を取得
+        =====================================================*/
+        DateTime Today = DateTime.Now;
+        private DateTime getToday() {
+            return Today;
+        }
+       
+        
+        
+        
+        /*====================================================
+         * ドロップダウンリストから生年月日を結合、Date型に変換
+        =====================================================*/
+        private DateTime getBirthDay()
+        {
+            DateTime BirthDay = DateTime.Parse(DropDownList2.Text +"/"+ DropDownList3.Text +"/"+ DropDownList4.Text);
+            return BirthDay;
+        }
+
 
 
         protected void Button2_Click(object sender, EventArgs e)
         {
 
-            String InsertStr ="insert into TBL_MEMBER(MEMBER_ID,MEMBER_NAME,MEMBER_KANA,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_BIRTH,MEMBER_TEL,MEMBER_GENDER,MEMBER_DAY,MEMBER_MAIL,MEMBER_PASS) " +
-                                             "values (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY,@MEMBER_MAIL,@MEMBER_PASS)";
-            
-            
-            //DB接続とOpen
-            DB_Connection_Open();
-
-            /*テーブル指定(dt)*/
+            String InsertStr ="INSERT INTO TBL_MEMBER(MEMBER_ID,MEMBER_NAME,MEMBER_KANA,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_BIRTH,MEMBER_TEL,MEMBER_GENDER,MEMBER_DAY,MEMBER_MAIL,MEMBER_PASS) " +
+                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY,@MEMBER_MAIL,@MEMBER_PASS)";
 
 
 
-            //Insertコマンドの値指定
-            command = new OleDbCommand(InsertStr);
+            //Insertコマンドの値をcommandに指定
+            command = new OleDbCommand(InsertStr, cn);
 
-            command.Parameters.AddWithValue("@MEMBER_ID",getNewMaxMemberId());
-            command.Parameters.AddWithValue("@MEMBER_NAME",TextBox2.Text+TextBox3.Text);
-            command.Parameters.AddWithValue("@MEMBER_KANA",TextBox1.Text+TextBox4.Text);
-            command.Parameters.AddWithValue("@MEMBER_POST",TextBox5.Text);
-            command.Parameters.AddWithValue("@MEMBER_ADR1",TextBox6.Text+TextBox7.Text);
-            command.Parameters.AddWithValue("@MEMBER_ADR2",TextBox8);
-            //command.Parameters.AddWithValue("@MEMBER_BIRTH",);
-            command.Parameters.AddWithValue("@MEMBER_TEL",TextBox9.Text);
-            command.Parameters.AddWithValue("@MEMBER_GENDER",DropDownList1.Text);
-            //command.Parameters.AddWithValue("@MEMBER_DAY",);
-            command.Parameters.AddWithValue("@MEMBER_MAIL",TextBox10.Text);
-            command.Parameters.AddWithValue("@MEMBER_PASS",TextBox11.Text);
+            //DB接続
+            DB_Connection();
+
+
+
+/*
+            try
+            {
+*/
+                command.Parameters.AddWithValue("@MEMBER_ID", getNewMaxMemberId());
+
+                if (String.IsNullOrWhiteSpace(TextBox2.Text) != true && String.IsNullOrWhiteSpace(TextBox3.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_NAME", TextBox2.Text + TextBox3.Text);
+
+                if (String.IsNullOrWhiteSpace(TextBox1.Text) != true && String.IsNullOrWhiteSpace(TextBox4.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_KANA", TextBox1.Text + TextBox4.Text);
+
+                if (String.IsNullOrWhiteSpace(TextBox5.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_POST", TextBox5.Text);
+                if (String.IsNullOrWhiteSpace(TextBox6.Text) != true && String.IsNullOrWhiteSpace(TextBox7.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_ADR1", TextBox6.Text + TextBox7.Text);
+                if (String.IsNullOrWhiteSpace(TextBox8.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_ADR2", TextBox8);
+                command.Parameters.AddWithValue("@MEMBER_BIRTH", getBirthDay());
+                if (String.IsNullOrWhiteSpace(TextBox9.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_TEL", TextBox9.Text);
+                if (String.IsNullOrWhiteSpace(DropDownList1.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_GENDER", DropDownList1.Text);
+                command.Parameters.AddWithValue("@MEMBER_DAY", getToday());
+                if (String.IsNullOrWhiteSpace(TextBox10.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_MAIL", TextBox10.Text);
+                if (String.IsNullOrWhiteSpace(TextBox11.Text) != true)
+                    command.Parameters.AddWithValue("@MEMBER_PASS", TextBox11.Text);
+
+
+                cn.Open();
+                int a = command.ExecuteNonQuery();
+                Label20.Text = a.ToString();
+                Label20.Visible = true;
+/*            }
+               catch (System.Data.OleDb.OleDbException)
+            {
+                Label20.Text = "エラー";
+                Label20.Visible = true;
+            }
+*/
+                cn.Close();
         }
-                
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList4.Items.Clear();
+            CalenderAddDay();
+        }
+       
 
     }
 }

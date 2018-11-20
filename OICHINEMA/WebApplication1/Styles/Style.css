@@ -274,11 +274,10 @@ div.menu ul li a:active
     font-size:30px;
 }
 .BirthTextBox{
-    width:80px;
+    width:auto;
     height:30px;
-    font-size:30px;
+    font-size:20px;
 }
-
 .SexPanel{
     width:100%;
     background-color:#ed7f07;
@@ -296,4 +295,10 @@ div.menu ul li a:active
 .SI-KU-GUN{
     float:right;
     width:60%;
+}
+.EnterButton{
+    float:left;
+    width:30%;
+    height:30px;
+    clear:both;
 }

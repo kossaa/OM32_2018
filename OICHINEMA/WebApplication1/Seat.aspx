@@ -8,21 +8,32 @@
         .ChoiceSeat{background-color:gray}
         .FreeSeat{background-color:none}
         .SoldSeat{background-color:red}
+        .labelScreen {
+            margin-left: 10%;
+            background-color: black;
+            color: white;
+            font: large;
+            }
+        
     </style>
 
     <div>
+        <br />
         <asp:Label ID="Label1" runat="server" Text="選択中の席"></asp:Label>
         <br />
+        <br />
+        <asp:Panel ID="Panel1" runat="server" Height="18px">
+
+        <asp:Label ID="LabelScreen" CssClass="labelScreen" runat="server" Text="スクリーン"></asp:Label>
+        </asp:Panel>
         <br />
   
         <asp:Table ID="Table1" runat="server" BorderColor="#3333CC" BorderWidth="1px" GridLines="Both">
         </asp:Table>
         &emsp;
         &emsp;   
-        &emsp;
-        &emsp;    
+        &emsp;  
         <asp:Button ID="Button1" runat="server" Text="確定" Height="50px" Width="100px" OnClick="Button1_Click" />
-        &emsp;
         &emsp;
         &emsp;
         &emsp;

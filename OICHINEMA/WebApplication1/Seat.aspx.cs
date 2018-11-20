@@ -7,12 +7,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Collections;
 
 namespace WebApplication1
 {
     public partial class test : System.Web.UI.Page
     {
-        private ImageButton[] imgBtn;
+        //private ImageButton[] tmpBtn;
         private Image[] image;   
         const int SeatMax = 5;
         string[] seatAll = new string[SeatMax];
@@ -22,7 +23,6 @@ namespace WebApplication1
         private void seatCreate()
         {
             //データベース接続
-            //※パス指定ミス
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             OleDbDataAdapter daScreenId;
             //スクリーン番号取得、セションを使用
@@ -44,13 +44,19 @@ namespace WebApplication1
             TableRow tableRow;
             TableCell tableCell;
             //Seat生成
-            this.imgBtn = new ImageButton[141];
+            //this.imgBtn = new ImageButton[141];
             this.image = new Image[40];
             int imageSeatBtn = 0;
             int imageRoad = 0;
 
+            Hashtable imgBtnTable = new Hashtable();
+
+            //データベースから席数をとる
+            int sheetcount = 141;
+            int row = 14;
+            int col = 10;
             //列を生成
-            for (int i = 0; i < imgBtn.Length / 14; i++)
+            for (int i = 0; i < sheetcount / 14; i++)
             {
                 //Rowの（行）作成
                 tableRow = new TableRow();
@@ -58,7 +64,7 @@ namespace WebApplication1
                 imageSeatBtn = 0;
 
                 //セルを生成
-                for (int j = 0; j < imgBtn.Length / 10; j++)
+                for (int j = 0; j < sheetcount / 10; j++)
                 {
                     //左から４列目のときに画像追加
                     if (j == 3 || j == 10)
@@ -87,22 +93,26 @@ namespace WebApplication1
                         //テーブル内に入れるセル(1マス)を生成
                         tableCell = new TableCell();
                         tableCell.Height = 20;
-                        this.imgBtn[imageSeatBtn - 1] = new ImageButton();
+                        ImageButton tmpBtn = new ImageButton();
                         //プロパティ設定
                         string zero = (imageSeatBtn).ToString();
                         if(zero.Length == 1)
                         {
                             zero = "0" + zero;
                         }
-                        this.imgBtn[imageSeatBtn - 1].ID = seatHead[i] + zero;
-                        this.imgBtn[imageSeatBtn - 1].ImageUrl = "~/img/isu.png";
-                        this.imgBtn[imageSeatBtn - 1].Height = 30;
-                        this.imgBtn[imageSeatBtn - 1].Width = 30;
-                        this.imgBtn[imageSeatBtn - 1].CssClass = "FreeSeat";
+                        tmpBtn.ID = seatHead[i] + zero;
+                        tmpBtn.ImageUrl = "~/img/isu.png";
+                        tmpBtn.Height = 30;
+                        tmpBtn.Width = 30;
+                        tmpBtn.CssClass = "FreeSeat";
+                        //ハッシュテーブルに保存
+                        imgBtnTable.Add( seatHead[i] + zero, tmpBtn);
+
+                        
                         //イベント追加
-                        this.imgBtn[imageSeatBtn - 1].Click += new System.Web.UI.ImageClickEventHandler(this.ImageBtnSeat_Click);
+                        tmpBtn.Click += new System.Web.UI.ImageClickEventHandler(this.ImageBtnSeat_Click);
                         //プロパティを設定したImgBtnをテーブルのセルに追加
-                        tableCell.Controls.Add(this.imgBtn[imageSeatBtn - 1]);
+                        tableCell.Controls.Add(tmpBtn);
                         //中身を設定したセルをテーブルに追加
                         tableRow.Cells.Add(tableCell);
                     }
@@ -110,24 +120,29 @@ namespace WebApplication1
                 //テーブルに追加
                 Table1.Rows.Add(tableRow);
             }
-            
+            //プロパティ設定
+            string seatNum = 1.ToString();
+            if (seatNum.Length == 1)
+            {
+                seatNum = "0" + seatNum;
+            }
+            ImageButton imgButton = imgBtnTable[seatHead[0] + seatNum] as ImageButton;
             //ここで改行される          
         }
             //空席の有無               
-            
-            /*
-            for(int i=0;i<dtseat.Rows.Count;i++)
-            {
 
-                this.imgBtn[imageSeatBtn].CssClass = "SoldSeat";                 
-            }
-            */
-            
+        /*
+        for(int i=0;i<dtseat.Rows.Count;i++)
+        {
+            this.imgBtn[imageSeatBtn].CssClass = "SoldSeat";
+                
+        }
+        */            
         
         protected void Page_Load(object sender, EventArgs e)
         {                                 
             seatCreate();
-        }    
+        }
 
         //席をクリック
         protected void ImageBtnSeat_Click(object sender, ImageClickEventArgs e)
@@ -163,7 +178,7 @@ namespace WebApplication1
                             Type csType = this.GetType();
                             cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('5席まで同時選択可能です。');</script>");
                         }
-                    }             
+                    }
                 }
             }
             else
@@ -176,13 +191,11 @@ namespace WebApplication1
                 {
                     if(seatAll[i] == ((ImageButton)sender).ID)
                     {
-                        seatAll[i] = null;
-                        
+                        seatAll[i] = null;                        
                     }
                 }
             }
             Session["value"] = seatAll;
-
             
             //今までの選択された席をStringの中に入れる
             for (int i = 0; i < SeatMax; i++)
@@ -209,7 +222,6 @@ namespace WebApplication1
         protected void Button2_Click(object sender, EventArgs e)
         {
             //前（スケジュール）画面に戻る
-
         }
      
     }

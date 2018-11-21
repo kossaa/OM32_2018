@@ -57,10 +57,10 @@
 
         <asp:Panel ID="Panel2" CssClass="AddressPanel" runat="server">
             <asp:Label ID="Label11" CssClass="NameText" runat="server" Text="住所（※）"></asp:Label>
-            <asp:Label ID="Label12" runat="server" Text="郵便番号"></asp:Label>
+            <asp:Label ID="Label12" runat="server" Text="郵便番号（ハイフンなし）"></asp:Label>
                 <br />
             <asp:TextBox ID="TextBox5" CssClass="TextBox" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="検索" />
+            <asp:Button ID="Button1" runat="server" Text="検索" OnClick="Button1_Click" />
                 <br />
 
             <asp:Panel ID="Panel8" CssClass="TODOHUKEN" runat="server">

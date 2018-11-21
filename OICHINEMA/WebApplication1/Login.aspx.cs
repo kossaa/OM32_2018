@@ -80,7 +80,6 @@ namespace WebApplication1
                 {/*1,3,5,7,8,10,12月なら*/
                     for (int i = 1; i <= 31; i++){
                         DropDownList4.Items.Add(i.ToString());
-
                     }
                 }
             }
@@ -155,13 +154,47 @@ namespace WebApplication1
             return BirthDay;
         }
 
+        /*========================================================
+         * 郵便番号から住所割り出し
+         ========================================================*/
+        private void Adr_Post(string PostAdr)
+        {
+            string sKey = PostAdr;
+            //文字列の前後のスペースをとる
+            sKey = sKey.Trim(' ');
+
+            // 文字列の長さを取得する
+            int iLength = sKey.Length;
+            if (iLength == 7)　//"-"を含まない
+            {
+                //接続先DBの情報をセット
+                OleDbConnection PostCn = new OleDbConnection();
+                PostCn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|POSTADR.accdb;";
+                //実行するSQL文の指定　@IDはパラメータとして後で指定
+                OleDbCommand PostCommand = new OleDbCommand("SELECT * FROM KEN_ALL WHERE フィールド3 = '" + PostAdr + "';", PostCn);
+                //パラメータの指定　Accessの場合は必ずSQL文で出現したパラメータの順に指定する
+                PostCommand.Parameters.AddWithValue("@PostAdr", PostAdr);
+                //データベースを開く
+                PostCn.Open();
+                //SQL文の実行
+                OleDbDataReader oledr = PostCommand.ExecuteReader();
+                //データの読み込み
+                if (oledr.Read())
+                {
+                    TextBox6.Text = oledr["フィールド7"].ToString() + oledr["フィールド8"].ToString();
+                    TextBox7.Text = oledr["フィールド9"].ToString();
+                }
+                //データベースを閉じる
+                PostCn.Close();
+            }
+        }
 
 
         protected void Button2_Click(object sender, EventArgs e)
         {
 
-            String InsertStr ="INSERT INTO TBL_MEMBER(MEMBER_ID,MEMBER_NAME,MEMBER_KANA,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_BIRTH,MEMBER_TEL,MEMBER_GENDER,MEMBER_DAY,MEMBER_MAIL,MEMBER_PASS) " +
-                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY,@MEMBER_MAIL,@MEMBER_PASS)";
+            String InsertStr ="INSERT INTO TBL_MEMBER(MEMBER_ID,MEMBER_NAME,MEMBER_KANA,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_BIRTH,MEMBER_TEL,MEMBER_GENDER,MEMBER_DAY,MEMBER_POINT,MEMBER_MAIL,MEMBER_PASS) " +
+                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY,0,@MEMBER_MAIL,@MEMBER_PASS)";
 
 
 
@@ -222,7 +255,10 @@ namespace WebApplication1
             DropDownList4.Items.Clear();
             CalenderAddDay();
         }
-       
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Adr_Post(TextBox5.ToString());
+        }
     }
 }

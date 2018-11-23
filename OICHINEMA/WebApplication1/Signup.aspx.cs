@@ -12,25 +12,27 @@ namespace WebApplication1
 {
     public partial class Login : System.Web.UI.Page
     {
+    
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack == true)
+            {
+                Label20.Visible = false;
+            }
+
             CalenderAddYear();
             CalenderAddDay();
-            Label20.Visible = false;
         }
 
         /*=======================================
          *データベースに接続、開くまで
          ======================================*/
         public OleDbCommand command;
-        public OleDbDataAdapter dbAdapter;
         public OleDbConnection cn;
         public bool DB_Connection(){
             try{
                 //コネクションの作成
                 cn = new OleDbConnection();
-                command = new OleDbCommand();
-
                 cn.ConnectionString=@"Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;";
 
             }
@@ -120,16 +122,17 @@ namespace WebApplication1
             int MaxMID = 0;
 
             //コマンド指定
+            command = new OleDbCommand();
             command.CommandText = "SELECT MAX(MEMBER_ID) from TBL_MEMBER";
             command.Connection = cn;
             cn.Open();
             MaxMID = command.ExecuteNonQuery();
-
+            cn.Close();
 
             //会員番号の最大値に+1加算
             String NewMID = (MaxMID + 1).ToString();
             string nd = string.Format("{0:D7}", NewMID);
-            cn.Close();
+
             return nd;
         }
 
@@ -153,6 +156,8 @@ namespace WebApplication1
             DateTime BirthDay = DateTime.Parse(DropDownList2.Text +"/"+ DropDownList3.Text +"/"+ DropDownList4.Text);
             return BirthDay;
         }
+
+
 
         /*========================================================
          * 郵便番号から住所割り出し
@@ -181,8 +186,8 @@ namespace WebApplication1
                 //データの読み込み
                 if (oledr.Read())
                 {
-                    TextBox6.Text = oledr["フィールド7"].ToString() + oledr["フィールド8"].ToString();
-                    TextBox7.Text = oledr["フィールド9"].ToString();
+                    TextBox6.Text = oledr["フィールド7"].ToString() ;
+                    TextBox7.Text = oledr["フィールド8"].ToString() + oledr["フィールド9"].ToString();
                 }
                 //データベースを閉じる
                 PostCn.Close();
@@ -192,18 +197,17 @@ namespace WebApplication1
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-
-            String InsertStr ="INSERT INTO TBL_MEMBER(MEMBER_ID,MEMBER_NAME,MEMBER_KANA,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_BIRTH,MEMBER_TEL,MEMBER_GENDER,MEMBER_DAY,MEMBER_POINT,MEMBER_MAIL,MEMBER_PASS) " +
-                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY,0,@MEMBER_MAIL,@MEMBER_PASS)";
-
-
+            String InsertStr ="INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) " +
+                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY ,0           ,@MEMBER_MAIL ,@MEMBER_PASS)";
 
             //Insertコマンドの値をcommandに指定
-            command = new OleDbCommand(InsertStr, cn);
+            //command = new OleDbCommand(InsertStr, cn);
 
+            command = new OleDbCommand();
+            command.CommandText = InsertStr;
+            command.Connection = cn;
             //DB接続
             DB_Connection();
-
 
 
 /*
@@ -214,10 +218,8 @@ namespace WebApplication1
 
                 if (String.IsNullOrWhiteSpace(TextBox2.Text) != true && String.IsNullOrWhiteSpace(TextBox3.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_NAME", TextBox2.Text + TextBox3.Text);
-
                 if (String.IsNullOrWhiteSpace(TextBox1.Text) != true && String.IsNullOrWhiteSpace(TextBox4.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_KANA", TextBox1.Text + TextBox4.Text);
-
                 if (String.IsNullOrWhiteSpace(TextBox5.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_POST", TextBox5.Text);
                 if (String.IsNullOrWhiteSpace(TextBox6.Text) != true && String.IsNullOrWhiteSpace(TextBox7.Text) != true)
@@ -235,8 +237,8 @@ namespace WebApplication1
                 if (String.IsNullOrWhiteSpace(TextBox11.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_PASS", TextBox11.Text);
 
-
                 cn.Open();
+
                 int a = command.ExecuteNonQuery();
                 Label20.Text = a.ToString();
                 Label20.Visible = true;
@@ -258,7 +260,7 @@ namespace WebApplication1
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Adr_Post(TextBox5.ToString());
+            Adr_Post(TextBox5.Text.ToString());
         }
     }
 }

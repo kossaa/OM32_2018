@@ -12,7 +12,14 @@
 
             <div class="Price">
                 <asp:Label ID="Label1" Cssclass="PriceText" runat="server" Width="170px">料金</asp:Label>
-                <asp:GridView ID="PriceGridView" runat="server"></asp:GridView>
+                <asp:GridView ID="PriceGridView" runat="server" AutoGenerateColumns="False" DataSourceID="PriceDB">
+                    <Columns>
+                        <asp:BoundField DataField="RATE_NAME" HeaderText="チケットの種類" SortExpression="RATE_NAME" ReadOnly="True" />
+                        <asp:BoundField DataField="RATE_PRICE" HeaderText="金額" SortExpression="RATE_PRICE" ReadOnly="True" ValidateRequestMode="Enabled" />
+                    </Columns>
+                </asp:GridView>
+                <asp:SqlDataSource ID="PriceDB" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT [RATE_NAME], [RATE_PRICE] FROM [TBL_RATE]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
             </div>
         </div>
     </div>

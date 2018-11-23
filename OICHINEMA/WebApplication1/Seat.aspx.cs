@@ -53,8 +53,8 @@ namespace WebApplication1
 
             //データベースから席数をとる
             int sheetcount = 141;
-            int row = 14;
-            int col = 10;
+            //int row = 14;
+            //int col = 10;
             //列を生成
             for (int i = 0; i < sheetcount / 14; i++)
             {

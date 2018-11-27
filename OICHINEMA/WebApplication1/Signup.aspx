@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:Panel ID="Panel3" CssClass="AdmissionPanel" runat="server">        
         <asp:Label ID="Label2" CssClass="AdmissionText" runat="server" Text="入会申込"></asp:Label>
     </asp:Panel>
@@ -59,7 +60,7 @@
             <asp:Label ID="Label11" CssClass="NameText" runat="server" Text="住所（※）"></asp:Label>
             <asp:Label ID="Label12" runat="server" Text="郵便番号（ハイフンなし）"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox5" CssClass="TextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox5" CssClass="TextBox" runat="server">0640941</asp:TextBox>
             <asp:Button ID="Button1" type="button" runat="server" Text="検索" OnClick="Button1_Click" />
                 <br />
 
@@ -76,23 +77,25 @@
             <asp:Panel ID="Panel10" CssClass="CHOUSON-BANTI" runat="server">
                 <asp:Label ID="Label15" runat="server" Text="番地・建物名"></asp:Label>
                     <br />
-                <asp:TextBox ID="TextBox8" CssClass="TextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox8" CssClass="TextBox" runat="server">9-2-5</asp:TextBox>
             </asp:Panel>
             <asp:Label ID="Label16" runat="server" Text="電話番号"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox9" CssClass="TextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox9" CssClass="TextBox" runat="server">11111111111</asp:TextBox>
                 <br />
             <asp:Label ID="Label17" runat="server" Text="メールアドレス"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox10" CssClass="TextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox10" CssClass="TextBox" runat="server">aaaa@oic.jp</asp:TextBox>
                  <br />
             <asp:Label ID="Label18" runat="server" Text="パスワード"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox11" CssClass="TextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox11" CssClass="TextBox" runat="server">abc</asp:TextBox>
             <br />
             <asp:Label ID="Label19" runat="server" Text="パスワード（確認）"></asp:Label>
                 <br />
-            <asp:TextBox ID="TextBox12" CssClass="TextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox12" CssClass="TextBox" runat="server">abc</asp:TextBox>
+            <br />
+            <br />
         </asp:Panel>
 
 

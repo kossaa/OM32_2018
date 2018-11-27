@@ -1,0 +1,6 @@
+C:\Users\kyuraku\Desktop\OICHINEMA\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\kyuraku\Desktop\OICHINEMA\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\kyuraku\Desktop\OICHINEMA\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\kyuraku\Desktop\OICHINEMA\OICHINEMA\WebApplication1\obj\Release\OICHINEMA.csprojResolveAssemblyReference.cache
+C:\Users\kyuraku\Desktop\OICHINEMA\OICHINEMA\WebApplication1\obj\Release\WebApplication1.dll
+C:\Users\kyuraku\Desktop\OICHINEMA\OICHINEMA\WebApplication1\obj\Release\WebApplication1.pdb

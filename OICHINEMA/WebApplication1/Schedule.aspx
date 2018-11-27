@@ -17,17 +17,20 @@
     </style>
 
     <br />
-    <asp:Label ID="Label1" runat="server" Text="選択中の座席"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="選択中の座席" Font-Size="20pt"></asp:Label>
+
+    <br />
+    <br />
 
 
 
     <br />
     <br />
    
-    <asp:ImageButton ID="A01" 	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
-    <asp:ImageButton ID="A02"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
-    <asp:ImageButton ID="A03"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
-    <asp:ImageButton ID="A04"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
+    <asp:ImageButton ID="A01" 	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat" />
+    <asp:ImageButton ID="A02"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat" />
+    <asp:ImageButton ID="A03"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat" />
+    <asp:ImageButton ID="A04"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat" />
     <asp:ImageButton ID="A05"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     <asp:ImageButton ID="A06"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     <asp:ImageButton ID="A07"	runat="server" ImageUrl="/img/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -253,7 +256,7 @@
     &emsp;
     &emsp;
 
-    <asp:Button ID="Button1" runat="server" Text="確定" Height="50px" Width="100px" OnClick="Button1_Click" />
+    <asp:Button ID="BtnNext" runat="server" Text="次へ" Height="50px" Width="100px" OnClick="BtnNext_Click" />
 
     &emsp;
     &emsp;
@@ -262,12 +265,10 @@
     &emsp;
     &emsp;
 
-    <asp:Button ID="Button2" runat="server" Text="戻る" Height="50px" Width="100px" OnClick="Button2_Click" /> 
+    <asp:Button ID="BtnBack" runat="server" Text="戻る" Height="50px" Width="100px" OnClick="BtnBack_Click" /> 
     
     <br />
     <br />
-    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-    <br />
-    <br />
+
 
 </asp:Content>

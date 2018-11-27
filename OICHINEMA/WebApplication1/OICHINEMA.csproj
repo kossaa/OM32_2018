@@ -59,12 +59,12 @@
   <ItemGroup>
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="Login.aspx" />
+    <Content Include="Member_info_alter.aspx" />
     <Content Include="Member_MyPage.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
-    <Content Include="WebForm1.aspx" />
-    <Content Include="WebForm2.aspx" />
+    <Content Include="BookingLog.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Login.aspx.cs">
@@ -73,6 +73,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member_info_alter.aspx.cs">
+      <DependentUpon>Member_info_alter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_info_alter.aspx.designer.cs">
+      <DependentUpon>Member_info_alter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member_MyPage.aspx.cs">
       <DependentUpon>Member_MyPage.aspx</DependentUpon>
@@ -96,19 +103,12 @@
     <Compile Include="Schedule.aspx.designer.cs">
       <DependentUpon>Schedule.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="BookingLog.aspx.cs">
+      <DependentUpon>BookingLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="BookingLog.aspx.designer.cs">
+      <DependentUpon>BookingLog.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

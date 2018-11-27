@@ -16,11 +16,13 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
-                String userNo = (string)Session["UserNo"];
+                //String userNo = (string)Session["UserNo"];
+                String userNo = "0000001";
                 OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
                 OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR1,MEMBER_ADR2,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+                //Session["UserInfo"] = dt;
 
                 MemID_lbl.Text = dt.Rows[0][0].ToString();
                 MemName_lbl.Text = dt.Rows[0][1].ToString();
@@ -38,22 +40,17 @@ namespace WebApplication1
 
         }
 
-        protected void Log_linkbtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Purchaselog_linkbtn_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm1.aspx");
+            Response.Redirect("BookingLog.aspx");
         }
 
         protected void Profile_linkbtn_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm2.aspx");
+            Response.Redirect("Member_info_alter.aspx");
         }
 
-        protected void Password_linkbtn_Click1(object sender, EventArgs e)
+        protected void Password_linkbtn_Click1(object sendser, EventArgs e)
         {
 
         }

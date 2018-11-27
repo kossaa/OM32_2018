@@ -12,7 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width:100%;">
         <tr>
-            <td class="auto-style7">会員情報</td>
+            <td>会員情報</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -20,7 +20,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td rowspan="2" class="auto-style7">
+            <td class="auto-style7">
                 <%--<table style="width:100%;" rules="all">--%>
                 <table style="width: 100%;">
                     <tr>
@@ -78,7 +78,7 @@
             </td>
             <td>
                 <%--<table style="width:50%;" rules="all">--%>
-                <table style="width:50%;">
+                <table style="width:100%;">
                     <tr>
                         <td>保有ポイント：</td>
                         <td>
@@ -87,27 +87,16 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:LinkButton ID="Log_linkbtn" runat="server" OnClick="Log_linkbtn_Click">履歴を見る・・・</asp:LinkButton>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table style="width: 50%;">
-                    <tr>
-                        <td>
                             <asp:LinkButton ID="Purchaselog_linkbtn" runat="server" OnClick="Purchaselog_linkbtn_Click1">チケット購入履歴</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <asp:LinkButton ID="Profile_linkbtn" runat="server" OnClick="Profile_linkbtn_Click1">プロフィール変更</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <asp:LinkButton ID="Password_linkbtn" runat="server" OnClick="Password_linkbtn_Click1">パスワード変更</asp:LinkButton>
                         </td>
                     </tr>

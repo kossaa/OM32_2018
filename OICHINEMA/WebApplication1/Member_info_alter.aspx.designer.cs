@@ -10,123 +10,159 @@
 namespace WebApplication1 {
     
     
-    public partial class Member_MyPage1 {
+    public partial class Member_info_alter {
         
         /// <summary>
-        /// MemID_lbl コントロール。
+        /// Label1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemID_lbl;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// MemName_lbl コントロール。
+        /// memname_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemName_lbl;
+        protected global::System.Web.UI.WebControls.TextBox memname_tb;
         
         /// <summary>
-        /// MemNameKana_lbl コントロール。
+        /// Label2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemNameKana_lbl;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// MemBirth_lbl コントロール。
+        /// memnamekana_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemBirth_lbl;
+        protected global::System.Web.UI.WebControls.TextBox memnamekana_tb;
         
         /// <summary>
-        /// MemGender_lbl コントロール。
+        /// memgender_ddl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemGender_lbl;
+        protected global::System.Web.UI.WebControls.DropDownList memgender_ddl;
         
         /// <summary>
-        /// MemTel_lbl コントロール。
+        /// membirthyear_ddl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemTel_lbl;
+        protected global::System.Web.UI.WebControls.DropDownList membirthyear_ddl;
         
         /// <summary>
-        /// MemPost_lbl コントロール。
+        /// membirthmonth_ddl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemPost_lbl;
+        protected global::System.Web.UI.WebControls.DropDownList membirthmonth_ddl;
         
         /// <summary>
-        /// MemAdr_lbl コントロール。
+        /// membirthday_ddl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemAdr_lbl;
+        protected global::System.Web.UI.WebControls.DropDownList membirthday_ddl;
         
         /// <summary>
-        /// MemPoint_lbl コントロール。
+        /// mempost_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemPoint_lbl;
+        protected global::System.Web.UI.WebControls.TextBox mempost_tb;
         
         /// <summary>
-        /// Purchaselog_linkbtn コントロール。
+        /// Button1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Purchaselog_linkbtn;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Profile_linkbtn コントロール。
+        /// memadr_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Profile_linkbtn;
+        protected global::System.Web.UI.WebControls.TextBox memadr_tb;
         
         /// <summary>
-        /// Password_linkbtn コントロール。
+        /// memtel_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Password_linkbtn;
+        protected global::System.Web.UI.WebControls.TextBox memtel_tb;
         
         /// <summary>
-        /// Withdrawal_btn コントロール。
+        /// memmail_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Withdrawal_btn;
+        protected global::System.Web.UI.WebControls.TextBox memmail_tb;
+        
+        /// <summary>
+        /// Label3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// Button2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// Button3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// Button4 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
     }
 }

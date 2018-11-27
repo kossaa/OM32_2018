@@ -26,14 +26,17 @@ namespace WebApplication1
         int[] eventaddrate = new int[1];
         string[] displayticketname = new string[1];//表示されるチケット名を格納
         int[] displayticketrate = new int[1];//表示されるチケット料金を格納
+        string[] displayeventnumber = new string[1];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
+        string[] displaydefaultnumber = new string[1];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する
 
         private DropDownList[] TicketDDL;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //結合準備中
-            Session["ScheduleID"] = "0000005";
-            Session["ScheduleEnd"] = DateTime.Parse("2018/10/25 14:25:00");
+            Session["ScheduleID"] = "0000004";
+            Session["ScheduleEnd"] = DateTime.Parse("2018/12/29 14:25:00");
+            Session["MemberID"] = "0000007";
 
 
             DateTime time = (DateTime)Session["ScheduleEnd"];
@@ -41,7 +44,7 @@ namespace WebApplication1
             //イベントテーブル
             //その上映時に開催しているイベントの一覧を取得する
             //dtEvent.Rows[0][0]イベント番号、[0][1]イベント名、[0][2]イベント料金、[0][3]スケジュール番号、[0][4]料金番号
-            OleDbDataAdapter daEvent = new OleDbDataAdapter("SELECT EVENT_ID,EVENT_NAME,EVENT_RATE,SCHEDULE_ID,RATE_ID FROM TBL_EVENT WHERE EVENT_STARTDAY<=#" + (DateTime)Session["ScheduleEnd"] + "# AND EVENT_ENDDAY>=#" + (DateTime)Session["ScheduleEnd"] + "# ORDER BY RATE_ID", cn);
+            OleDbDataAdapter daEvent = new OleDbDataAdapter("SELECT EVENT_ID,EVENT_NAME,EVENT_RATE,SCHEDULE_ID,RATE_ID FROM TBL_EVENT WHERE EVENT_STARTDAY<=#" + Session["ScheduleEnd"] + "# AND EVENT_ENDDAY>=#" + (DateTime)Session["ScheduleEnd"] + "# ORDER BY RATE_ID", cn);
             DataTable dtEvent = new DataTable();
             daEvent.Fill(dtEvent);
             int scheduleflag = 0;//スケジュール番号がnullでないイベントがあった時にフラグを立てる
@@ -90,14 +93,39 @@ namespace WebApplication1
                 int ticketcount = 0;
                 for (int i = 0; i < dtRate.Rows.Count; i++,ticketcount++)
                 {
-                    Array.Resize(ref displayticketname, i + 1);
-                    Array.Resize(ref displayticketrate, i + 1);
+                    Array.Resize(ref displayeventnumber, i + 2);
+                    Array.Resize(ref displaydefaultnumber, i + 2);
+                    Array.Resize(ref displayticketname, i + 2);
+                    Array.Resize(ref displayticketrate, i + 2);
+                    int inflag = 0;
                     for (int j = 0; j < eventprice.Length; j++)
                     {
-
+                        if (dtRate.Rows[i][0].ToString() == eventprice[j])//イベント料金番号が見つかれば
+                        {
+                            displayeventnumber[i] = eventprice[j];//イベント料金番号を格納する
+                            displaydefaultnumber[i] = "0";//通常料金番号を0として格納する
+                            displayticketname[i] = eventname[j];//イベント料金名を格納する
+                            displayticketrate[i] = eventrate[j];//イベント料金を格納する
+                            inflag = 1;
+                            break;
+                        }
                     }
+                    if (inflag == 1)//イベントがなければ
+                    {
+                        displayeventnumber[i] = "0";//イベント料金番号を0として格納する
+                        displaydefaultnumber[i] = dtRate.Rows[i][0].ToString();//通常料金番号を格納する
+                        displayticketname[i] = dtRate.Rows[i][1].ToString();//通常料金名を格納する
+                        displayticketrate[i] = int.Parse(dtRate.Rows[i][2].ToString());//通常料金を格納する
+                    }
+
                 }
-                TicketDDL[ticketcount].Items.Add("6ポイントで一回無料");
+                if ((string)Session["MemberID"] != "")//ログインされていたら
+                {
+                    displayeventnumber[ticketcount] = "0";
+                    displaydefaultnumber[ticketcount] = "0";
+                    displayticketname[ticketcount] = "6ポイントで一回無料";
+                    displayticketrate[ticketcount] = 0;
+                }
             }
             //ClientScriptManager cs = Page.ClientScript;
             //Type csType = this.GetType();

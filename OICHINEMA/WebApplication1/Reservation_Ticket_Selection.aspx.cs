@@ -13,21 +13,21 @@ namespace WebApplication1
     public partial class Reservation_Ticket_Selection : System.Web.UI.Page
     {
         int seatcount = 0;
-        string[] seatname = new string[1];
+        string[] seatname = new string[0];
         const int Cell2Width = 300;
         string UserID = "";//ログイン時はユーザーのログインIDが格納される
         Button BackBtn = new Button();
         Button NextBtn = new Button();
         TextBox MailAddressTextbox = new TextBox();
-        string[] eventname = new string[1];//イベント名を格納
-        int[] eventrate = new int[1];//イベント料金を格納
-        string[] eventprice = new string[1];//変更する料金番号を格納
-        string[] eventaddname = new string[1];
-        int[] eventaddrate = new int[1];
-        string[] displayticketname = new string[1];//表示されるチケット名を格納
-        int[] displayticketrate = new int[1];//表示されるチケット料金を格納
-        string[] displayeventnumber = new string[1];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
-        string[] displaydefaultnumber = new string[1];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する
+        string[] eventname = new string[0];//イベント名を格納
+        int[] eventrate = new int[0];//イベント料金を格納
+        string[] eventprice = new string[0];//変更する料金番号を格納
+        string[] eventaddname = new string[0];//追加するイベント名を格納
+        int[] eventaddrate = new int[0];//追加するイベント料金を格納
+        string[] displayticketname = new string[0];//表示されるチケット名を格納
+        int[] displayticketrate = new int[0];//表示されるチケット料金を格納
+        string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
+        string[] displaydefaultnumber = new string[0];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する
 
         private DropDownList[] TicketDDL;
 
@@ -35,7 +35,7 @@ namespace WebApplication1
         {
             //結合準備中
             Session["ScheduleID"] = "0000004";
-            Session["ScheduleEnd"] = DateTime.Parse("2018/12/29 14:25:00");
+            Session["ScheduleEnd"] = DateTime.Parse("2019/12/29 14:25:00");
             Session["MemberID"] = "0000007";
 
 
@@ -62,7 +62,8 @@ namespace WebApplication1
             //イベント配列に該当する条件のイベントを格納する
             if (scheduleflag == 0)//スケジュール番号が登録されていなければ
             {
-                for (int i = 0, j = 0,k=0; i < dtEvent.Rows.Count; i++)//イベントテーブルに該当するイベントが登録されていたら
+                int k = 0;
+                for (int i = 0, j = 0; i < dtEvent.Rows.Count; i++)//イベントテーブルに該当するイベントが登録されていたら
                 {
                     if (dtEvent.Rows[i][4].ToString() == "ADD")//追加されるチケットを格納
                     {
@@ -110,7 +111,7 @@ namespace WebApplication1
                             break;
                         }
                     }
-                    if (inflag == 1)//イベントがなければ
+                    if (inflag == 0)//イベントがなければ
                     {
                         displayeventnumber[i] = "0";//イベント料金番号を0として格納する
                         displaydefaultnumber[i] = dtRate.Rows[i][0].ToString();//通常料金番号を格納する
@@ -119,13 +120,24 @@ namespace WebApplication1
                     }
 
                 }
-                if ((string)Session["MemberID"] != "")//ログインされていたら
+                for (; k != 0; k--,ticketcount++)
                 {
+                    Array.Resize(ref displayeventnumber, displayeventnumber.Length+1);
+                    Array.Resize(ref displaydefaultnumber, displaydefaultnumber.Length+1);
+                    Array.Resize(ref displayticketname, displayticketname.Length+1);
+                    Array.Resize(ref displayticketrate, displayticketrate.Length+1);
                     displayeventnumber[ticketcount] = "0";
                     displaydefaultnumber[ticketcount] = "0";
-                    displayticketname[ticketcount] = "6ポイントで一回無料";
-                    displayticketrate[ticketcount] = 0;
+                    displayticketname[ticketcount] = eventaddname[k];
+                    displayticketrate[ticketcount] = eventaddrate[k];
                 }
+                    if ((string)Session["MemberID"] != "")//ログインされていたら
+                    {
+                        displayeventnumber[ticketcount] = "0";
+                        displaydefaultnumber[ticketcount] = "0";
+                        displayticketname[ticketcount] = "6ポイントで一回無料";
+                        displayticketrate[ticketcount] = 0;
+                    }
             }
             //ClientScriptManager cs = Page.ClientScript;
             //Type csType = this.GetType();

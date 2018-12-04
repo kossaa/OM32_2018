@@ -134,6 +134,7 @@ namespace WebApplication1
             da.SelectCommand = getNIDcommand;
             da.Fill(dt);
             MaxMID = dt.Rows[0][0].ToString();
+            dt.Clear();//使い終わったdtを初期化しておく
             cn.Close();
 
             //会員番号の最大値に+1加算
@@ -207,7 +208,7 @@ namespace WebApplication1
         protected void Button2_Click(object sender, EventArgs e)
         {
             String InsertStr ="INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) " +
-                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY ,@MEMBER_POINT,@MEMBER_MAIL ,@MEMBER_PASS)";
+                                             "VALUES ("+"@MEMBER_ID"+","+"@MEMBER_NAME"+",@MEMBER_KANA"+",@MEMBER_POST"+",@MEMBER_ADR1"+",@MEMBER_ADR2"+",@MEMBER_BIRTH"+",@MEMBER_TEL"+",@MEMBER_GENDER"+",@MEMBER_DAY"+",@MEMBER_POINT"+",@MEMBER_MAIL"+",@MEMBER_PASS"+")";
 
             OleDbCommand command = new OleDbCommand();
 
@@ -220,35 +221,32 @@ namespace WebApplication1
             {
 
                 command.Parameters.AddWithValue("@MEMBER_ID", getNewMaxMemberId());
-                //if (String.IsNullOrWhiteSpace(TextBox2.Text) != true && String.IsNullOrWhiteSpace(TextBox3.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox2.Text) != true && String.IsNullOrWhiteSpace(TextBox3.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_NAME", "'"+TextBox2.Text + TextBox3.Text+"'");
-                //if (String.IsNullOrWhiteSpace(TextBox1.Text) != true && String.IsNullOrWhiteSpace(TextBox4.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox1.Text) != true && String.IsNullOrWhiteSpace(TextBox4.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_KANA", "'" + TextBox1.Text + TextBox4.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox5.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox5.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_POST", "'" + TextBox5.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox6.Text) != true && String.IsNullOrWhiteSpace(TextBox7.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox6.Text) != true && String.IsNullOrWhiteSpace(TextBox7.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_ADR1", "'" + TextBox6.Text + TextBox7.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox8.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox8.Text) != true)
                     command.Parameters.AddWithValue("@MEMBER_ADR2", "'" + TextBox8 + "'");
                 command.Parameters.AddWithValue("@MEMBER_BIRTH", getBirthDay());
-                //if (String.IsNullOrWhiteSpace(TextBox9.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox9.Text) != true)
                 command.Parameters.AddWithValue("@MEMBER_TEL", "'" + TextBox9.Text + "'");
-                //if (String.IsNullOrWhiteSpace(DropDownList1.Text) != true)
+                if (String.IsNullOrWhiteSpace(DropDownList1.Text) != true)
                 command.Parameters.AddWithValue("@MEMBER_GENDER", "'" + DropDownList1.Text + "'");
                 command.Parameters.AddWithValue("@MEMBER_DAY", getToday());
                 command.Parameters.AddWithValue("@MEMBER_POINT", 0);
-                //if (String.IsNullOrWhiteSpace(TextBox10.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox10.Text) != true)
                 command.Parameters.AddWithValue("@MEMBER_MAIL", "'" + TextBox10.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox11.Text) != true)
+                if (String.IsNullOrWhiteSpace(TextBox11.Text) != true)
                 command.Parameters.AddWithValue("@MEMBER_PASS", "'" + TextBox11.Text + "'");
 
-
-                String testInsertStr = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) " +
-                                                    "VALUES (" + getNewMaxMemberId() + "," + (TextBox2.Text +TextBox3.Text) + "," + (TextBox1.Text + TextBox4.Text) + "," + TextBox5.Text + "," + TextBox6.Text + TextBox7.Text + "," + TextBox8.Text + "," + getBirthDay() + "," + TextBox9.Text + "," + DropDownList1.Text + "," + getToday() + "," + 0 + "," + TextBox10.Text + "," + TextBox11.Text + ")";
                 /*↓成功*/
-                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('0000010','姓名','セイメイ','0640941','北海道札幌市中央区旭ケ丘','9-2-5',1920/01/01,'11111111111','男',2018/11/27,0,'aaaa@@oic.jp','abc')";
+                //String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('0000010','姓名','セイメイ','640941','北海道札幌市中央区旭ケ丘','9-2-5',1920/01/01,'11111111111','男',2018/11/27,0,'aaaa@@oic.jp','abc')";
 
-                command = new OleDbCommand(testdate);
+                command = new OleDbCommand(InsertStr);
 
                 command.Connection = cn;
                 cn.Open();
@@ -259,9 +257,9 @@ namespace WebApplication1
             }
             catch (OleDbException ode)
             {
-               /* Label20.Text = "エラー";
-                Label20.Visible = true;*/
-                    Console.WriteLine(ode.Message);
+                Label20.Text = "エラー";
+                Label20.Visible = true;
+                Console.WriteLine(ode.Message);
             }
 
                 cn.Close();

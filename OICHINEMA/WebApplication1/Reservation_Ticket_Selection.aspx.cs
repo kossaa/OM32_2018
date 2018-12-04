@@ -10,6 +10,98 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
+    //１つのイベントのデータを管理するクラス
+    class Event
+    {
+        public int rate;//イベント料金を格納
+        public string name;//イベント名を格納
+        public string number;//イベント番号を格納
+        public string price;//変更する料金番号を格納
+
+        //コンストラクタ
+        //書かないと、引数なしのコンストラクタが使えない
+        public Event()
+        {
+            //特に何もしない
+        }
+
+        //引数ありコンストラクタ
+        public Event(int r, string n, string num, string p)
+        {
+            rate = r;
+            name = n;
+            number = num;
+            price = p;
+        }
+
+        public void setData(int r, string n, string num, string p)
+        {
+            rate = r;
+            name = n;
+            number = num;
+            price = p;
+        }
+    }
+
+    //イベントによってデータの変更が行われる
+    //１つのイベントのデータを管理する
+    class AddEvent
+    {
+        public int rate;//イベント料金を格納
+        public string name;//イベント名を格納
+        public string number;//イベント番号を格納
+
+        //コンストラクタ
+        public AddEvent()
+        {
+        }
+        
+        //引数ありコンストラクタ
+        public AddEvent(int r, string n, string num)
+        {
+            rate = r;
+            name = n;
+            number = num;
+        }
+
+        public void setData(int r, string n, string num)
+        {
+            rate = r;
+            name = n;
+            number = num;
+        }
+    }
+
+    class DisplayData
+    {
+        int ticketRate;
+        string ticketName;
+        string eventNumber;
+        string defaultnumber;
+
+            //コンストラクタ
+        public DisplayData()
+        {
+        }
+        
+        //引数ありコンストラクタ
+        public DisplayData(int tr, string tn, string evenum, string defnum)
+        {
+            ticketRate = tr;
+            ticketName = tn;
+            eventNumber = evenum;
+            defaultnumber = defnum;
+        }
+
+        public void setData(int tr, string tn, string evenum, string defnum)
+        {
+            ticketRate = tr;
+            ticketName = tn;
+            eventNumber = evenum;
+            defaultnumber = defnum;
+        }
+    }
+
     public partial class Reservation_Ticket_Selection : System.Web.UI.Page
     {
         int seatcount = 0;
@@ -19,11 +111,11 @@ namespace WebApplication1
         Button BackBtn = new Button();
         Button NextBtn = new Button();
         TextBox MailAddressTextbox = new TextBox();
-        string[] eventname = new string[0];//イベント名を格納
-        int[] eventrate = new int[0];//イベント料金を格納
-        string[] eventprice = new string[0];//変更する料金番号を格納
-        string[] eventaddname = new string[0];//追加するイベント名を格納
-        int[] eventaddrate = new int[0];//追加するイベント料金を格納
+
+        //Listを使って可変長にデータを管理する
+        List<Event> eventList = new List<Event>();
+        List<AddEvent> addEventList = new List<AddEvent>();
+
         string[] displayticketname = new string[0];//表示されるチケット名を格納
         int[] displayticketrate = new int[0];//表示されるチケット料金を格納
         string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
@@ -53,36 +145,42 @@ namespace WebApplication1
                 //スケジュール番号が登録されている場合
                 if (dtEvent.Rows[i][3].ToString() != "")
                 {
-                    scheduleflag = 1;
-                    eventname[0] = dtEvent.Rows[i][1].ToString();
-                    eventrate[0] = int.Parse(dtEvent.Rows[i][2].ToString());
+                    scheduleflag = 1;                                       
+                    Event tmp;
+                    tmp = new Event(
+                        int.Parse(dtEvent.Rows[i][2].ToString()), //イベント料金
+                         dtEvent.Rows[i][1].ToString(), //イベント名
+                        dtEvent.Rows[i][0].ToString(),  //イベント番号
+                        "0" //変更する料金番号
+                        );                                 
+                    eventList.Add(tmp);
                     break;
                 }
             }
             //イベント配列に該当する条件のイベントを格納する
             if (scheduleflag == 0)//スケジュール番号が登録されていなければ
-            {
-                int k = 0;
-                for (int i = 0, j = 0; i < dtEvent.Rows.Count; i++)//イベントテーブルに該当するイベントが登録されていたら
+            {                
+                for (int i = 0; i < dtEvent.Rows.Count; i++)//イベントテーブルに該当するイベントが登録されていたら
                 {
                     if (dtEvent.Rows[i][4].ToString() == "ADD")//追加されるチケットを格納
                     {
-                        Array.Resize(ref eventaddname, k + 1);
-                        Array.Resize(ref eventaddrate, k + 1);
-                        eventaddname[k] = dtEvent.Rows[i][1].ToString();
-                        eventaddrate[k] = int.Parse(dtEvent.Rows[i][2].ToString());
-                        k++;
+                        AddEvent tmp = new AddEvent(
+                            int.Parse(dtEvent.Rows[i][2].ToString()),   //追加イベント料金
+                            dtEvent.Rows[i][1].ToString(),              //追加イベント名
+                            dtEvent.Rows[i][0].ToString()               //イベント番号
+                            );
+                        addEventList.Add(tmp);
                     }
                     else//変更されるチケットを格納
                     {
-                        //配列のサイズをチケットの種類数に合わせて変化させ、イベント内容を格納する
-                        Array.Resize(ref eventname, j + 1);
-                        Array.Resize(ref eventrate, j + 1);
-                        Array.Resize(ref eventprice, j + 1);
-                        eventname[j] = dtEvent.Rows[i][1].ToString();
-                        eventrate[j] = int.Parse(dtEvent.Rows[i][2].ToString());
-                        eventprice[j] = dtEvent.Rows[i][4].ToString();
-                        j++;
+                        Event tmp = new Event();
+                        tmp = new Event(
+                            int.Parse(dtEvent.Rows[i][2].ToString()), //イベント料金
+                             dtEvent.Rows[i][1].ToString(), //イベント名
+                            dtEvent.Rows[i][0].ToString(),  //イベント番号
+                            "0" //変更する料金番号
+                            );
+                        eventList.Add(tmp);
                     }
                 }
                 //料金テーブル
@@ -92,69 +190,58 @@ namespace WebApplication1
                 DataTable dtRate = new DataTable();
                 daRate.Fill(dtRate);
                 int ticketcount = 0;
-                for (int i = 0; i < dtRate.Rows.Count; i++,ticketcount++)
+                //表示されるチケットを確定させて格納する
+                for (int i = 0; i < dtRate.Rows.Count; i++, ticketcount++)
                 {
                     Array.Resize(ref displayeventnumber, i + 2);
                     Array.Resize(ref displaydefaultnumber, i + 2);
                     Array.Resize(ref displayticketname, i + 2);
                     Array.Resize(ref displayticketrate, i + 2);
                     int inflag = 0;
-                    for (int j = 0; j < eventprice.Length; j++)
+                    for (int j = 0; j < eventList.Count; j++)
                     {
-                        if (dtRate.Rows[i][0].ToString() == eventprice[j])//イベント料金番号が見つかれば
+                        if (dtRate.Rows[i][0].ToString() == eventList[j].price)//イベント料金番号が見つかれば
                         {
-                            displayeventnumber[i] = eventprice[j];//イベント料金番号を格納する
-                            displaydefaultnumber[i] = "0";//通常料金番号を0として格納する
-                            displayticketname[i] = eventname[j];//イベント料金名を格納する
-                            displayticketrate[i] = eventrate[j];//イベント料金を格納する
+                            displayeventnumber[ticketcount] = eventList[j].price;//イベント料金番号を格納する
+                            displaydefaultnumber[ticketcount] = "0";//通常料金番号を0として格納する
+                            displayticketname[ticketcount] = eventList[j].name;//イベント料金名を格納する
+                            displayticketrate[ticketcount] = eventList[j].rate;//イベント料金を格納する
                             inflag = 1;
                             break;
                         }
                     }
                     if (inflag == 0)//イベントがなければ
                     {
-                        displayeventnumber[i] = "0";//イベント料金番号を0として格納する
-                        displaydefaultnumber[i] = dtRate.Rows[i][0].ToString();//通常料金番号を格納する
-                        displayticketname[i] = dtRate.Rows[i][1].ToString();//通常料金名を格納する
-                        displayticketrate[i] = int.Parse(dtRate.Rows[i][2].ToString());//通常料金を格納する
+                        displayeventnumber[ticketcount] = "0";//イベント料金番号を0として格納する
+                        displaydefaultnumber[ticketcount] = dtRate.Rows[i][0].ToString();//通常料金番号を格納する
+                        displayticketname[ticketcount] = dtRate.Rows[i][1].ToString();//通常料金名を格納する
+                        displayticketrate[ticketcount] = int.Parse(dtRate.Rows[i][2].ToString());//通常料金を格納する
                     }
-
                 }
-                for (; k != 0; k--,ticketcount++)
+                for (int j=0; j < addEventList.Count; j++,ticketcount++)
                 {
-                    Array.Resize(ref displayeventnumber, displayeventnumber.Length+1);
-                    Array.Resize(ref displaydefaultnumber, displaydefaultnumber.Length+1);
-                    Array.Resize(ref displayticketname, displayticketname.Length+1);
-                    Array.Resize(ref displayticketrate, displayticketrate.Length+1);
+                    Array.Resize(ref displayeventnumber, displayeventnumber.Length + 1);
+                    Array.Resize(ref displaydefaultnumber, displaydefaultnumber.Length + 1);
+                    Array.Resize(ref displayticketname, displayticketname.Length + 1);
+                    Array.Resize(ref displayticketrate, displayticketrate.Length + 1);
                     displayeventnumber[ticketcount] = "0";
                     displaydefaultnumber[ticketcount] = "0";
-                    displayticketname[ticketcount] = eventaddname[k];
-                    displayticketrate[ticketcount] = eventaddrate[k];
+                    displayticketname[ticketcount] = addEventList[j].name;
+                    displayticketrate[ticketcount] = addEventList[j].rate;
                 }
-                    if ((string)Session["MemberID"] != "")//ログインされていたら
-                    {
-                        displayeventnumber[ticketcount] = "0";
-                        displaydefaultnumber[ticketcount] = "0";
-                        displayticketname[ticketcount] = "6ポイントで一回無料";
-                        displayticketrate[ticketcount] = 0;
-                    }
+                if ((string)Session["MemberID"] != "")//ログインされていたら
+                {
+                    displayeventnumber[ticketcount] = "0";
+                    displaydefaultnumber[ticketcount] = "0";
+                    displayticketname[ticketcount] = "6ポイントで一回無料";
+                    displayticketrate[ticketcount] = 0;
+                }
             }
             //ClientScriptManager cs = Page.ClientScript;
             //Type csType = this.GetType();
             //cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('"+表示したい値+"');</script>");
 
-
-              
-
-
-
-            //設定時間のうちイベントテーブルをチェックした結果変更されなかった料金番号を表示する
-
-
-            //取得した料金テーブルの料金番号と料金名を格納する配列をそれぞれ用意し、格納する。
-            //取得したイベントテーブルの料金番号を取得して料金番号配列の料金番号と照らし合わせてその位置にある料金名を置き換える
-
-
+            
             //画面結合時に前の画面からデータを継承する
             //ログイン中の場合会員情報を取得する
             seatcount = 3;//継承した予約席数を格納する
@@ -177,7 +264,6 @@ namespace WebApplication1
             tableCell.Text = "チケットの種類";
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);
-
             this.TicketDDL = new DropDownList[seatname.Length];
             for (int i = 0; i < seatname.Length; i++)
             {
@@ -190,16 +276,15 @@ namespace WebApplication1
                 TicketDDL[i].Items.Add("チケットの種類を選択してください");
                 if (scheduleflag == 0)//スケジュール番号が登録されていないからチケットの種類が一つに絞られない場合
                 {
-                    for (int j = 0; j<displayticketname.Length; j++)//表示チケット名配列の数だけ繰り返す
+                    for (int j = 0; j < displayticketname.Length; j++)//表示チケット名配列の数だけ繰り返す
                         TicketDDL[i].Items.Add(displayticketname[j]);
                 }
                 else//スケジュール番号が登録されているからチケットが一種類しかない場合
-                    TicketDDL[i].Items.Add(eventname[0]);
+                    TicketDDL[i].Items.Add(eventList[0].name);
                 tableCell.Controls.Add(TicketDDL[i]);
                 tableRow.Cells.Add(tableCell);
                 Table1.Rows.Add(tableRow);
             }
-
             if (UserID == "")
             {
                 tableRow = new TableRow();
@@ -285,22 +370,10 @@ namespace WebApplication1
                 tableCell.Text = "メールアドレスを入力してください";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt(seatcount+3,tableRow);
-                return;
-            }
-            if (!isHankaku(MailAddressTextbox.Text))
-            {
-                TableRow tableRow;
-                TableCell tableCell;
-                tableRow = new TableRow();
-                tableCell = new TableCell();
-                tableCell.Text = "半角英数字記号のみ使用できます";
-                tableCell.ColumnSpan = 2;
-                tableRow.Cells.Add(tableCell);
                 Table1.Rows.AddAt(seatcount + 3, tableRow);
                 return;
             }
-            if (CheckMailAddressFormat(MailAddressTextbox.Text) == false)
+            if (FormatCheck.CheckMailAddressFormat(MailAddressTextbox.Text) == false)
             {
                 TableRow tableRow;
                 TableCell tableCell;
@@ -316,33 +389,9 @@ namespace WebApplication1
             Response.Redirect("Reservation_Confirm_Input_Information.aspx");
         }
 
-        bool CheckMailAddressFormat(string address) 
-        {
-            try
-            {
-                System.Net.Mail.MailAddress mailAddress = new System.Net.Mail.MailAddress(address);
-            }
-            catch (FormatException)
-            {
-                //メールアドレスとしての文法エラー
-                return false;
-            }
-            //文法エラーなし
-            return true;
-        }
-
         protected void MemberFormLinkBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("MemberForm.aspx");
-        }
-
-        static Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");//文字コードを指定する
-
-        //半角文字が含まれているかどうかを判定
-        public static bool isHankaku(string str)
-        {
-            int num = sjisEnc.GetByteCount(str);
-            return num == str.Length;
         }
     }
 }

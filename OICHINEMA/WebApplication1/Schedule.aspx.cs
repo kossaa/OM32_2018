@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -15,10 +16,12 @@ namespace WebApplication1
         string[] seatAll = new string[SeatMax];
         string seatChoice = "";
 
+        //-------------     
+
         //データベース接続
         OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
 
-        protected void ImageBtn_Click(object sender,ImageClickEventArgs e)
+        protected void ImageBtn_Click(object sender, ImageClickEventArgs e)
         {
             //クリックされたボタンを取得
             seatFull((ImageButton)sender);
@@ -26,7 +29,7 @@ namespace WebApplication1
 
         public void seatFull(ImageButton SelectedButton)
         {
-            //セッション
+            //Nullじゃないとき＝2席目から
             if (Session["seatInfomation"] != null)
             {
                 seatAll = (string[])Session["seatInfomation"];
@@ -34,7 +37,7 @@ namespace WebApplication1
             //クリックされたら色を変える
             if ((SelectedButton).CssClass == "FreeSeat")
             {
-                
+
                 //一つずつ格納
                 for (int i = 0; i < SeatMax; i++)
                 {
@@ -43,12 +46,12 @@ namespace WebApplication1
                         seatAll[i] = (SelectedButton).ID;
                         //CSSでグレーを挿入
                         (SelectedButton).CssClass = "ChoiceSeat";
+                        //今までの選択中のカウント
+                        Session["counter"] = (int)Session["counter"] + 1;
                         break;
                     }
                     else
                     {
-                        //今までの選択中のカウント
-                        Session["counter"] = (int)Session["counter"] + 1;
                         //席が６席以上選択されたら
                         if ((int)Session["counter"] == SeatMax)
                         {
@@ -76,7 +79,9 @@ namespace WebApplication1
                 }
             }
             Session["seatInfomation"] = seatAll;
-            
+
+            //-----------------------------                  
+
             //ソートする
             StringComparer cmp = StringComparer.OrdinalIgnoreCase;
             Array.Sort(seatAll, cmp);
@@ -101,6 +106,12 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //処理を楽にする
+            if (IsPostBack)
+            {
+                return;
+            }
+
             Session["counter"] = 0;
             //座席の予約済みを取得し昇順で表示
             Session["scheduleId"] = "0000001";
@@ -108,26 +119,20 @@ namespace WebApplication1
 
             //DataTableを作成し実行
             DataTable dtseat = new DataTable();
-            daSeatId.Fill(dtseat);           
-
-            //処理を楽にする
-            if(IsPostBack)
-            {
-                return;
-            }
+            daSeatId.Fill(dtseat);
 
             //ロードに予約されていたら色を変えてクリックできなくする
             for (int i = 0; i < dtseat.Rows.Count; i++)
             {
 
-                ImageButton ibtn = new ImageButton(); 
+                ImageButton ibtn = new ImageButton();
                 //指定したフォームのFindControlで指定したIDを見つけてそのプロパティを変更
                 ibtn = Master.FindControl("MainContent").FindControl(dtseat.Rows[i][0].ToString()) as ImageButton;
                 ibtn.CssClass = "SoldSeat";
                 ibtn.Enabled = false;
             }
 
-            OleDbDataAdapter daBookingId = new OleDbDataAdapter(" SELECT SEAT_ID FROM TBL_BOOKING , TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID = TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID = '" + (string)Session["scheduleId"] + "' ORDER BY SEAT_ID ASC", cn);
+            OleDbDataAdapter daBookingId = new OleDbDataAdapter("SELECT SEAT_ID FROM TBL_BOOKING,TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID=TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID ='" + (string)Session["scheduleId"] + "'ORDER BY SEAT_ID ASC", cn);
 
             //DataTableを作成し実行
             DataTable dtBooking = new DataTable();
@@ -146,15 +151,19 @@ namespace WebApplication1
         protected void BtnNext_Click(object sender, EventArgs e)
         {
             //途中    
-            
+            //seatAllに値が入っていない
             seatAll = (string[])Session["seatInfomation"];
             //選択された席分をデータベースに仮登録
-            for (int i = 0; i < (int)Session["counter"]; i++)
+            for (int i = 0; i <seatAll.Length; i++)
             {
-                OleDbDataAdapter daBookingId = new OleDbDataAdapter(" INSERT INTO TBL_TEMPORARY( TEMPORARY_SCHEDULE , TEMPORARY_SEAT , TEMPORARY_TIME) VALUES ('" + (string)Session["scheduleId"] + "' ,'" + seatAll[i] + "' , #" + DateTime.Now + "# ) ", cn);
+                //Nullならばもう一度回す(continue;)
+                if (seatAll[i] == null) { continue; }
+                OleDbDataAdapter daBookingId = new OleDbDataAdapter("INSERT INTO TBL_TEMPORARY(TEMPORARY_SCHEDULE,TEMPORARY_SEAT,TEMPORARY_TIME)VALUES('" + (string)Session["scheduleId"] + "','" + seatAll[i] + "',#" + DateTime.Now + "# )", cn);
                 //DataTableを作成し実行
                 DataTable dtBooking = new DataTable();
                 daBookingId.Fill(dtBooking);
+                dtBooking.Reset();
+                dtBooking.Clear();
             }
         }
 
@@ -163,7 +172,7 @@ namespace WebApplication1
             //スケジュール画面に戻る
 
         }
-            
+
         /*
             protected void imgBtnA01Click(object sender, ImageClickEventArgs e)
             {

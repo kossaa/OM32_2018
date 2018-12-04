@@ -2,9 +2,6 @@
 
 <!DOCTYPE html>
 
-
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -25,14 +22,16 @@
         <div class="page">
             <div class="header">
                 <div class="title">
-                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server">OICINEMA</asp:LinkButton>
+                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server" PostBackUrl="~/Top.aspx">OICINEMA</asp:LinkButton>
                 </div>
-                <div class="login">
-                    <asp:Panel ID="Panel1" CssClass="Login" runat="server">
-                        <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
-                        <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
-                        <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server">新規登録</asp:LinkButton>
-                    </asp:Panel>
+
+                <div class="MemberOperation">
+                        <asp:Panel ID="Panel1" CssClass="Login" runat="server">
+                            <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
+                            <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
+                            <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server" PostBackUrl="~/Signup.aspx">新規登録</asp:LinkButton>
+                            <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server">ログアウト</asp:LinkButton>
+                        </asp:Panel>
                 </div>
                 <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
@@ -40,8 +39,8 @@
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ" />
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="会員ページ"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
-                            <asp:MenuItem NavigateUrl="~/Introduction_list.aspx" Text="作品案内"/>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="イベント"/>
+                            <asp:MenuItem NavigateUrl="~/Introduction_List.aspx" Text="作品案内"/>
+                            <asp:MenuItem NavigateUrl="~/Event.aspx" Text="イベント"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="販売"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="予約確認"/>
                             <asp:MenuItem NavigateUrl="~/Access.aspx" Text="アクセス"/>
@@ -52,7 +51,9 @@
         </div>
 
     <div class="main">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
         <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+
     </div>
     <div class="footer">
      

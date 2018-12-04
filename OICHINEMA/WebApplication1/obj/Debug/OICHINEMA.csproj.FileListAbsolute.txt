@@ -22,10 +22,9 @@ C:\Users\b6196\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
 C:\Users\b6196\Desktop\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
 C:\Users\b6196\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\b6196\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\bin\WebApplication1.dll
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojAssemblyReference.cache
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csproj.CoreCompileInputs.cache
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
-C:\Users\kosak\Downloads\OM32_2018-Nagao\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\b6101\Desktop\Git集合体\OM32_2018-Nagao\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\b6101\Desktop\Git集合体\OM32_2018-Nagao\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\b6101\Desktop\Git集合体\OM32_2018-Nagao\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\b6101\Desktop\Git集合体\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+C:\Users\b6101\Desktop\Git集合体\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\b6101\Desktop\Git集合体\OM32_2018-Nagao\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

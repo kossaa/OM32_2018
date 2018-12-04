@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,21 +58,54 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Access.aspx" />
+    <Content Include="App_Data\BookingDB.accdb" />
+    <Content Include="App_Data\POSTADR.accdb" />
+    <Content Include="Event.aspx" />
     <Content Include="Image\avengers.JPG" />
+    <Content Include="Image\Avengers01.jpg" />
+    <Content Include="Image\Avengers02.jpg" />
+    <Content Include="Image\Avengers03.jpg" />
+    <Content Include="Image\Avengers04jpg.jpg" />
+    <Content Include="Image\Avengerss.jpg" />
+    <Content Include="Image\FiveHeadJAWS.jpg" />
+    <Content Include="Image\FiveHeadJAWS01.jpg" />
+    <Content Include="Image\FiveHeadJAWS02.jpg" />
+    <Content Include="Image\FiveHeadJAWS03.jpg" />
+    <Content Include="Image\FiveHeadJAWS04.jpg" />
+    <Content Include="Image\MegaShark_vs_MechaShark.jpg" />
+    <Content Include="Image\MegaShark_vs_MechaShark01.jpg" />
+    <Content Include="Image\MegaShark_vs_MechaShark02.jpg" />
+    <Content Include="Image\MegaShark_vs_MechaShark03.jpg" />
+    <Content Include="Image\MegaShark_vs_MechaShark04.jpg" />
+    <Content Include="Image\Soranokanata.jpg" />
+    <Content Include="Image\Soranokanata01.jpg" />
+    <Content Include="Image\Soranokanata02.jpg" />
+    <Content Include="Image\Soranokanata03.jpg" />
+    <Content Include="Image\Soranokanata04.jpg" />
+    <Content Include="Image\spidermen.jpg" />
+    <Content Include="Image\spidermen01.jpg" />
+    <Content Include="Image\spidermen02.jpg" />
+    <Content Include="Image\spidermen03.jpg" />
+    <Content Include="Image\spidermen04.jpg" />
+    <Content Include="Image\WildSpeed.jpg" />
+    <Content Include="Image\WildSpeed01.jpg" />
+    <Content Include="Image\WildSpeed02.jpg" />
+    <Content Include="Image\WildSpeed03.jpg" />
+    <Content Include="Image\WildSpeed04.jpg" />
     <Content Include="Image\アクセス画像.jpg" />
     <Content Include="Introduction_List.aspx" />
+    <Content Include="Signup.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Top.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access.aspx.cs">
-      <DependentUpon>Access.aspx</DependentUpon>
+    <Compile Include="Event.aspx.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Access.aspx.designer.cs">
-      <DependentUpon>Access.aspx</DependentUpon>
+    <Compile Include="Event.aspx.designer.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
     </Compile>
     <Compile Include="Introduction_List.aspx.cs">
       <DependentUpon>Introduction_List.aspx</DependentUpon>
@@ -79,6 +113,13 @@
     </Compile>
     <Compile Include="Introduction_List.aspx.designer.cs">
       <DependentUpon>Introduction_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OICHINEMA.Master.cs">

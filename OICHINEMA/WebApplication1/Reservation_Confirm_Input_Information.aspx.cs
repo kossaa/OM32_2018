@@ -17,6 +17,8 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             //画面結合時に前の画面からデータを継承する
+            //継承内容
+            //座席番号 スケジュール番号 チケットデータ一式 会員番号 メールアドレス
             seatcount = 3;//継承した予約席数を格納する
             Array.Resize(ref seatname, seatcount);//配列の数を継承した予約数に合わせる
             seatname[0] = "c4";

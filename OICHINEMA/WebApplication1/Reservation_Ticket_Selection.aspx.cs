@@ -55,7 +55,7 @@ namespace WebApplication1
         public AddEvent()
         {
         }
-        
+
         //引数ありコンストラクタ
         public AddEvent(int r, string n, string num)
         {
@@ -79,11 +79,11 @@ namespace WebApplication1
         string eventNumber;
         string defaultnumber;
 
-            //コンストラクタ
+        //コンストラクタ
         public DisplayData()
         {
         }
-        
+
         //引数ありコンストラクタ
         public DisplayData(int tr, string tn, string evenum, string defnum)
         {
@@ -120,6 +120,9 @@ namespace WebApplication1
         int[] displayticketrate = new int[0];//表示されるチケット料金を格納
         string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
         string[] displaydefaultnumber = new string[0];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する
+        string[] seatAll = new string[5];//座席番号を格納する配列を最大座席数で宣言する
+        //Session["seatInformation"]=seatAll;
+        //seatAll=(string[])Session["seatInformation"];
 
         private DropDownList[] TicketDDL;
 
@@ -129,6 +132,13 @@ namespace WebApplication1
             Session["ScheduleID"] = "0000004";
             Session["ScheduleEnd"] = DateTime.Parse("2019/12/29 14:25:00");
             Session["MemberID"] = "0000007";
+            //画面結合時に前の画面からデータを継承する
+            //ログイン中の場合会員情報を取得する
+            seatcount = 3;//継承した予約席数を格納する
+            Array.Resize(ref seatname, seatcount);//配列の数を継承した予約数に合わせる
+            seatname[0] = "c4";
+            seatname[1] = "c5";
+            seatname[2] = "c6";
 
 
             DateTime time = (DateTime)Session["ScheduleEnd"];
@@ -145,21 +155,21 @@ namespace WebApplication1
                 //スケジュール番号が登録されている場合
                 if (dtEvent.Rows[i][3].ToString() != "")
                 {
-                    scheduleflag = 1;                                       
+                    scheduleflag = 1;
                     Event tmp;
                     tmp = new Event(
                         int.Parse(dtEvent.Rows[i][2].ToString()), //イベント料金
                          dtEvent.Rows[i][1].ToString(), //イベント名
                         dtEvent.Rows[i][0].ToString(),  //イベント番号
                         "0" //変更する料金番号
-                        );                                 
+                        );
                     eventList.Add(tmp);
                     break;
                 }
             }
-            //イベント配列に該当する条件のイベントを格納する
+            //イベントListに該当する条件のイベントを格納する
             if (scheduleflag == 0)//スケジュール番号が登録されていなければ
-            {                
+            {
                 for (int i = 0; i < dtEvent.Rows.Count; i++)//イベントテーブルに該当するイベントが登録されていたら
                 {
                     if (dtEvent.Rows[i][4].ToString() == "ADD")//追加されるチケットを格納
@@ -176,7 +186,7 @@ namespace WebApplication1
                         Event tmp = new Event();
                         tmp = new Event(
                             int.Parse(dtEvent.Rows[i][2].ToString()), //イベント料金
-                             dtEvent.Rows[i][1].ToString(), //イベント名
+                            dtEvent.Rows[i][1].ToString(), //イベント名
                             dtEvent.Rows[i][0].ToString(),  //イベント番号
                             "0" //変更する料金番号
                             );
@@ -218,7 +228,7 @@ namespace WebApplication1
                         displayticketrate[ticketcount] = int.Parse(dtRate.Rows[i][2].ToString());//通常料金を格納する
                     }
                 }
-                for (int j=0; j < addEventList.Count; j++,ticketcount++)
+                for (int j = 0; j < addEventList.Count; j++, ticketcount++)
                 {
                     Array.Resize(ref displayeventnumber, displayeventnumber.Length + 1);
                     Array.Resize(ref displaydefaultnumber, displaydefaultnumber.Length + 1);
@@ -240,19 +250,6 @@ namespace WebApplication1
             //ClientScriptManager cs = Page.ClientScript;
             //Type csType = this.GetType();
             //cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('"+表示したい値+"');</script>");
-
-            
-            //画面結合時に前の画面からデータを継承する
-            //ログイン中の場合会員情報を取得する
-            seatcount = 3;//継承した予約席数を格納する
-            Array.Resize(ref seatname, seatcount);//配列の数を継承した予約数に合わせる
-            seatname[0] = "c4";
-            seatname[1] = "c5";
-            seatname[2] = "c6";
-
-
-
-
             TableRow tableRow;
             TableCell tableCell;
 
@@ -349,6 +346,7 @@ namespace WebApplication1
                     break;//for文のチェックを抜ける
                 }
             }
+            //入力項目の不備によるエラー表示
             if (noSelectflag == 1)
             {
                 TableRow tableRow;
@@ -386,6 +384,17 @@ namespace WebApplication1
                 return;
             }
             Session["BookingMail"] = MailAddressTextbox.Text;
+            //DropDownListで選択されたチケットの種類をSelectedIndexで取得し、各種チケット配列の何番目かを見てそれぞれのSessionに配列(List)として格納する
+            int[] SeatSelectedIndex = new int[seatcount];
+            for (int i = 0; i < seatcount; i++)
+            {
+
+            }
+            /*
+            string[] displayticketname = new string[0];//表示されるチケット名を格納
+            int[] displayticketrate = new int[0];//表示されるチケット料金を格納
+            string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
+            string[] displaydefaultnumber = new string[0];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する*/
             Response.Redirect("Reservation_Confirm_Input_Information.aspx");
         }
 

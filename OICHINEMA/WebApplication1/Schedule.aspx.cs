@@ -12,12 +12,32 @@ namespace WebApplication1
 {
     public partial class Schedule : System.Web.UI.Page
     {
-        const int SeatMax = 5;
-        string[] seatAll = new string[SeatMax];
-        string seatChoice = "";
+        const int SeatMax = 5;  //席の最大選択数
+        string seatChoice = ""; //ラベル表示
+        List<string> seatList = new List<string>();//選択中の席リスト
+
         //データベース接続
         OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-        
+
+        //SQL(同時に席が選ばれた時の判別)でSEAT_IDかTEMPORARY_SEATでの使用を簡略化した関数
+        private string ssd(string bbb)
+        {
+            string aaa = "";
+            for (int j = 0; j < seatList.Count; j++)
+            {
+                if (j != 0)
+                {
+                    aaa = aaa + " OR  ";
+                }
+                else
+                {
+                    aaa = aaa + " AND ";
+                }
+                aaa = aaa + bbb + "='" + seatList[j] + "'";
+            }
+            return aaa;
+        }
+
         //クリックしているイメージボタンを取得する関数
         protected void ImageBtn_Click(object sender, ImageClickEventArgs e)
         {
@@ -30,61 +50,46 @@ namespace WebApplication1
             //Nullじゃないとき＝2席目から
             if (Session["seatInfomation"] != null)
             {
-                seatAll = (string[])Session["seatInfomation"];
+                seatList = (List<string>)Session["seatInfomation"];
             }
             //クリックされたら色を変える
             if ((SelectedButton).CssClass == "FreeSeat")
             {
-                //一つずつ格納
-                for (int i = 0; i < SeatMax; i++)
+                //席が６席以上選択されたら  
+                if (seatList.Count == SeatMax)
                 {
-                    if (seatAll[i] == null)
-                    {
-                        seatAll[i] = (SelectedButton).ID;
-                        //CSSでグレーを挿入
-                        (SelectedButton).CssClass = "ChoiceSeat";
-                        //今までの選択中のカウント                        
-                        break;
-                    }
-                    else
-                    {
-                        //席が６席以上選択されたら                        
-                        //javascriptでonloadを表示させる
-                        ClientScriptManager cs = Page.ClientScript;
-                        Type csType = this.GetType();
-                        cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('5席まで同時選択可能です。');</script>");
-                    }
+                    //javascriptでonloadを表示させる
+                    ClientScriptManager cs = Page.ClientScript;
+                    Type csType = this.GetType();
+                    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('5席まで同時選択可能です。');</script>");
+                }
+                else
+                {
+                    //今までの座席の選択中をカウントする配列に入れる
+                    seatList.Add((SelectedButton).ID);
+                    //CSSでグレーを挿入
+                    (SelectedButton).CssClass = "ChoiceSeat";
                 }
             }
             else
             {
                 //選択中を解除
+                seatList.Remove((SelectedButton).ID);
                 //CSSで色を元に戻す
                 (SelectedButton).CssClass = "FreeSeat";
-
-                for (int i = 0; i < SeatMax; i++)
-                {
-                    if (seatAll[i] == (SelectedButton).ID)
-                    {
-                        seatAll[i] = null;
-                    }
-                }
             }
-            Session["seatInfomation"] = seatAll;
-            //ソートする
-            StringComparer cmp = StringComparer.OrdinalIgnoreCase;
-            Array.Sort(seatAll, cmp);
+            //クリックされているSession["seatInfomation"]
+            Session["seatInfomation"] = seatList;
+            //昇順でソートする
+            seatList.Sort();
             //今までの選択された席をStringの中に入れる
-            for (int i = 0; i < SeatMax; i++)
+            for (int i = 0; i < seatList.Count; i++)
             {
-                if (seatAll[i] != null)
+                if (i != 0 && seatChoice != "")
                 {
-                    if (i != 0 && seatChoice != "")
-                    {
-                        seatChoice = seatChoice + "、";
-                    }
-                    seatChoice = seatChoice + seatAll[i];
+                    seatChoice = seatChoice + "、";
                 }
+                seatChoice = seatChoice + seatList[i];
             }
             seatChoice = seatChoice + "が選択中です";
             //ラベルに表示
@@ -99,7 +104,7 @@ namespace WebApplication1
                 return ;
             }
             */
-            //仮スケジュールID設定                        
+            //スケジュールID設定(仮)
             Session["scheduleId"] = "0000002";
 
             //座席の予約済みを取得し昇順で表示
@@ -118,94 +123,63 @@ namespace WebApplication1
                 ibtn.CssClass = "SoldSeat";
                 ibtn.Enabled = false;
             }
-
-            
         }
         //次へクリック
         protected void BtnNext_Click(object sender, EventArgs e)
         {
-            
-
-            seatAll = (string[])Session["seatInfomation"];
-
-            //配列をListに変換
-            List<string> stringList = new List<string>();
-            stringList.AddRange(seatAll);
-            // 空要素(null)を一括削除
-            stringList.RemoveAll(item => item == null);
+            //--------ここから途中コード-------
+            //座席の予約済みを取得し昇順で表示
+            OleDbDataAdapter daSeat = new OleDbDataAdapter
+            ("SELECT SEAT_ID FROM TBL_BOOKING,TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID=TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID='" + (string)Session["scheduleId"] + ssd("SEAT_ID") + "'ORDER BY SEAT_ID ASC", cn);
+            //DataTableを作成し実行
+            DataTable dtSeat = new DataTable();
+            daSeat.Fill(dtSeat);
+            //仮登録されたデータ
+            OleDbDataAdapter daInfo = new OleDbDataAdapter
+            ("SELECT TEMPORARY_SEAT FROM TBL_TEMPORARY WHERE SCHEDULE_ID='" + (string)Session["scheduleId"] + "'" + ssd("TEMPORARY_SEAT"), cn);
+            //DataTableを作成し実行
+            DataTable dtInfo = new DataTable();
+            daInfo.Fill(dtInfo);
+            //もし同時に座席が選ばれたら==仮登録を見てあれば座席をロック
+            if (dtSeat.Rows.Count != 0)
+            {
+                //javascriptでonloadを表示させる
+                ClientScriptManager cs = Page.ClientScript;
+                Type csType = this.GetType();
+                cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('もうその席は選択中です');</script>");
+            }
+            //もし同時に座席が選ばれたら==仮登録を見てあれば座席をロック
+            if (dtInfo.Rows.Count != 0)
+            {
+                //javascriptでonloadを表示させる
+                ClientScriptManager cs = Page.ClientScript;
+                Type csType = this.GetType();
+                cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('もうその席は選択中です');</script>");
+            }
+            //クリックされているseatListにSession["seatInfomation"]を入れる
+            seatList = (List<string>)Session["seatInfomation"];
+            //空要素(null)を一括削除
+            seatList.RemoveAll(item => item == null);
 
             //選択された席分をデータベースに仮登録
-            for (int i = 0; i < seatAll.Length; i++)
+            for (int i = 0; i < seatList.Count; i++)
             {
-                //Nullならばもう一度回す(continue;)
-                if (seatAll[i] == null)
-                {
-                    continue;
-                }
                 //仮登録するデータを仮登録テーブルに追加する
-                OleDbDataAdapter daBookingInsert = new OleDbDataAdapter
-                ("INSERT INTO TBL_TEMPORARY(TEMPORARY_SCHEDULE,TEMPORARY_SEAT,TEMPORARY_TIME)VALUES('" + (string)Session["scheduleId"] + "','" + seatAll[i] + "',#" + DateTime.Now + "# )", cn);
+                OleDbDataAdapter daBookingInfo = new OleDbDataAdapter
+                ("INSERT INTO TBL_TEMPORARY(TEMPORARY_SCHEDULE,TEMPORARY_SEAT,TEMPORARY_TIME)VALUES('" + (string)Session["scheduleId"] + "','" + seatList[i] + "',#" + DateTime.Now + "# )", cn);
                 //DataTableを作成し実行
                 DataTable dtBookingIn = new DataTable();
-                daBookingInsert.Fill(dtBookingIn);
+                daBookingInfo.Fill(dtBookingIn);
 
-                //--------ここから追加コード-------
                 
-                //座席の予約済みを取得し昇順で表示
-                OleDbDataAdapter daSeat = new OleDbDataAdapter
-                ("SELECT SEAT_ID FROM TBL_BOOKING,TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID=TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID='" + (string)Session["scheduleId"] + ssd("SEAT_ID") + "'ORDER BY SEAT_ID ASC", cn);
-                //DataTableを作成し実行
-                DataTable dtSeat = new DataTable();
-                daSeat.Fill(dtSeat);
-
-                //仮登録されたデータ
-                OleDbDataAdapter daInfo = new OleDbDataAdapter
-                ("SELECT TEMPORARY_SEAT FROM TBL_TEMPORARY WHERE SCHEDULE_ID='" + (string)Session["scheduleId"] +"'"+ ssd("TEMPORARY_SEAT"), cn);
-                //DataTableを作成し実行
-                DataTable dtInfo = new DataTable();
-                daInfo.Fill(dtInfo);
-
-                if (dtSeat.Rows.Count != 0)
-                {
-                    //javascriptでonloadを表示させる
-                    ClientScriptManager cs = Page.ClientScript;
-                    Type csType = this.GetType();
-                    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('5席まで同時選択可能です。');</script>");
-                }
-                //もし同時に座席が選ばれたら==仮登録を見てあれば座席をロック
-                if(dtInfo.Rows.Count!=0)
-                {
-                    //javascriptでonloadを表示させる
-                    ClientScriptManager cs = Page.ClientScript;
-                    Type csType = this.GetType();
-                    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('5席まで同時選択可能です。');</script>");
-                }
-
-                //次の画面に行く
             }
+            //次の画面に行く
+
         }
         protected void BtnBack_Click(object sender, EventArgs e)
         {
             //スケジュール画面に戻る
-            
-        }
 
-        private string ssd(string bbb)
-        {
-            string aaa = "";
-                for (int j = 0; seatAll[j] == null; j++)
-                {
-                    if (j == 0)
-                    {
-                        aaa = aaa + " AND ";
-                    }
-                    else
-                    {
-                        aaa = aaa + " OR  ";
-                    }
-                    aaa = aaa + bbb + "='" + seatAll[j] + "'";
-                }
-                return aaa;
         }
     }
 }

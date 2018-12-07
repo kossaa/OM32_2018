@@ -12,6 +12,27 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             LogoutButton.Visible = false;
+
+        }
+
+        protected void NavigationMenu_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            if (e.Item.Text=="会員ページ")
+            {
+                TitleLabel.Text = "ああああああああ?";
+                Session["PageID"] = "Member_MyPage.aspx";
+                e.Item.NavigateUrl = "Member_MyPage.aspx";
+            }
+        }
+
+        protected void NavigationMenu_MenuItemDataBound(object sender, MenuEventArgs e)
+        {
+            e.Item.NavigateUrl = "";
+        }
+
+        protected void NavigationMenu_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

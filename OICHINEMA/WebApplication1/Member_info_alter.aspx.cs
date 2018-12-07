@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,25 +16,20 @@ namespace WebApplication1
         //bool memname , memnamekana , memgender , membirthyear , membirthmonth , membirthday , mempost , memadr , memtel,memmail;
         bool flg;
 
+        OleDbConnection cn = new OleDbConnection();
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbDataAdapter da = new OleDbDataAdapter();
+        DataTable dt = new DataTable();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //String userNo = (string)Session["UserNo"];
-
-            //仮
-            //String userNo = "0000001";
-
-            memname_tb.Text = (string)Session["memname"];
-            memkana_tb.Text = (string)Session["memkana"];
-            memgender_ddl.Text = (string)Session["memname"];
+            if (Page.IsPostBack != true)
+            {
+                datelord();
+            }
 
             /*
-            OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            memname_tb.Text = dt.Rows[0][0].ToString();
-            memnamekana_tb.Text = dt.Rows[0][1].ToString();
-            memgender_ddl.Text = dt.Rows[0][2].ToString();
+            
 
 
 
@@ -104,24 +100,42 @@ namespace WebApplication1
 
         protected void Back_btn_Click(object sender, EventArgs e)
         {
-            //if (flg == true)
-            //{
-
-            //}
-            //else if(flg == false)
-            //{
-            //    Response.Redirect("Member_MyPage.aspx");
-            //}
+                Response.Redirect("Member_MyPage.aspx");
         }
 
         protected void Cancel_btn_Click(object sender, EventArgs e)
         {
-
+            datelord();
         }
 
         protected void btn_Click(object sender, EventArgs e)
         {
+            String userno = (string)Session["UserNo"];
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+            //cmd.Connection = cn;
+            //OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
+            //OleDbCommand olecmd = new OleDbCommand("UPDATE MEMBER SET MEMBER_NAME = " + memname_tb.Text + ",MEMBER_KANA = " + memkana_tb.Text + ",MEMBER_GENDER = " + memgender_ddl.Text + ",MEMBER_POST = " + mempost_tb.Text + ",MEMBER_ADR = " + memadr_tb.Text + ",MEMBER_TEL = " + memtel_tb.Text + ",MEMBER_MAIL = " + memmail_tb.Text + "WHERE MEMBER_ID = '" + userNo + "'", cn);
+            cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_NAME = '" +memname_tb.Text+ "' WHERE MEMBER_ID = '" + userno + "'", cn);
+            //cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_NAME = 'aaaa' WHERE MEMBER_ID = '" + userno + "'", cn);
+            cn.Open();
+            datelord();
+        }
 
+        public void datelord()
+        {
+            String userno = (string)Session["UserNo"];
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+            da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + userno + "'", cn);
+            dt = new DataTable();
+            da.Fill(dt);
+            memname_tb.Text = dt.Rows[0][0].ToString();
+            memkana_tb.Text = dt.Rows[0][1].ToString();
+            memgender_ddl.Text = dt.Rows[0][2].ToString();
+
+            mempost_tb.Text = dt.Rows[0][4].ToString();
+            memadr_tb.Text = dt.Rows[0][5].ToString();
+            memtel_tb.Text = dt.Rows[0][6].ToString();
+            memmail_tb.Text = dt.Rows[0][7].ToString();
         }
     }
 }

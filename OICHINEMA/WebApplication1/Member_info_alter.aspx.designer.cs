@@ -13,6 +13,15 @@ namespace WebApplication1 {
     public partial class Member_info_alter {
         
         /// <summary>
+        /// Pagename_lbl コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Pagename_lbl;
+        
+        /// <summary>
         /// Label1 コントロール。
         /// </summary>
         /// <remarks>
@@ -130,13 +139,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox memmail_tb;
         
         /// <summary>
-        /// Label3 コントロール。
+        /// Messe_lbl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label Messe_lbl;
         
         /// <summary>
         /// Back_btn コントロール。
@@ -157,12 +166,12 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button Cancel_btn;
         
         /// <summary>
-        /// btn コントロール。
+        /// Con_btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn;
+        protected global::System.Web.UI.WebControls.Button Con_btn;
     }
 }

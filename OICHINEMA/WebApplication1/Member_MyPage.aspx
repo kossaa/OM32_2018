@@ -12,7 +12,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width:100%;">
         <tr>
-            <td>会員情報</td>
+            <td>
+                <asp:Label ID="Pagename_lbl" runat="server" Text="会員情報"></asp:Label>
+            </td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -27,7 +29,7 @@
                         <td colspan="2">プロフィール</td>
                     </tr>
                     <tr>
-                        <td class="auto-style1">会員ID｛メールアドレス｝</td>
+                        <td class="auto-style1">会員ID（メールアドレス）</td>
                         <td class="auto-style2">
                             <asp:Label ID="MemID_lbl" runat="server" Text="Label"></asp:Label>
                         </td>
@@ -45,21 +47,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style1">生年月日</td>
-                        <td class="auto-style2">
-                            <asp:Label ID="MemBirth_lbl" runat="server" Text="Label"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
                         <td class="auto-style1">性別</td>
                         <td class="auto-style2">
                             <asp:Label ID="MemGender_lbl" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style1">電話番号</td>
+                        <td class="auto-style1">生年月日</td>
                         <td class="auto-style2">
-                            <asp:Label ID="MemTel_lbl" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="MemBirth_lbl" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -72,6 +68,12 @@
                         <td class="auto-style1">住所</td>
                         <td class="auto-style2">
                             <asp:Label ID="MemAdr_lbl" runat="server" Text="Label"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">電話番号</td>
+                        <td class="auto-style2">
+                            <asp:Label ID="MemTel_lbl" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                 </table>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="BookingLog.aspx.cs" Inherits="WebApplication1.BookingLog" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Member_BookingLog.aspx.cs" Inherits="WebApplication1.BookingLog" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -10,12 +10,12 @@
     <table style="width:100%;">
         <tr>
             <td>
-                <asp:Label ID="Label1" runat="server" Text="チケット購入履歴"></asp:Label>
+                <asp:Label ID="Pagename_lbl" runat="server" Text="チケット購入履歴"></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="auto-style1">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="Log_gv" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField DataField="BOOKING_DAY" DataFormatString="{0:yyyy/MM/dd}" HeaderText="購入日" HtmlEncode="False" />
                         <asp:BoundField DataField="WORK_NAME" HeaderText="作品名" />

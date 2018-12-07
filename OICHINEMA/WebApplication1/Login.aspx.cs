@@ -16,7 +16,7 @@ namespace WebApplication1
         {
             Messe_lbl.Visible = false;
 
-            //Session["PageID"] = "Member_MyPage.aspx";
+            Session["PageID"] = "Member_MyPage.aspx";
         }
 
         protected void Login_btn_Click(object sender, EventArgs e)
@@ -24,6 +24,11 @@ namespace WebApplication1
             String userid = MemMail_tb.Text;
             String pass = Pass_tb.Text;
 
+            //仮データ（入力省略用）
+            userid = "Tasaka+yahoo@oic.jp";
+            pass = "qwert12345";
+
+            //データベース接続
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_ID FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "'", cn);
             DataTable dt = new DataTable();
@@ -31,11 +36,13 @@ namespace WebApplication1
 
             if (dt.Rows.Count > 0)    //該当するものがあれば
             {
+                //前のページ名取得
                 String pageid = (string)Session["PageID"];
                 Session["UserNo"] = dt.Rows[0][0];
                 FormsAuthentication.RedirectFromLoginPage(userid, false);
-                //Response.Redirect("Member_MyPage.aspx");
                 Response.Redirect(pageid);
+
+                //Response.Redirect("Member_MyPage.aspx");
             }
             else
             {

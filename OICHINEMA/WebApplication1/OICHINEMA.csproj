@@ -64,7 +64,7 @@
     <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
-    <Content Include="BookingLog.aspx" />
+    <Content Include="Member_BookingLog.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Login.aspx.cs">
@@ -103,12 +103,12 @@
     <Compile Include="Schedule.aspx.designer.cs">
       <DependentUpon>Schedule.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BookingLog.aspx.cs">
-      <DependentUpon>BookingLog.aspx</DependentUpon>
+    <Compile Include="Member_BookingLog.aspx.cs">
+      <DependentUpon>Member_BookingLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BookingLog.aspx.designer.cs">
-      <DependentUpon>BookingLog.aspx</DependentUpon>
+    <Compile Include="Member_BookingLog.aspx.designer.cs">
+      <DependentUpon>Member_BookingLog.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -120,7 +120,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Member_Page\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

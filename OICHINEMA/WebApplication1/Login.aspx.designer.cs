@@ -13,13 +13,22 @@ namespace WebApplication1 {
     public partial class Login {
         
         /// <summary>
-        /// Label2 コントロール。
+        /// Pagename_lbl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Pagename_lbl;
+        
+        /// <summary>
+        /// UserID_lbl コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label UserID_lbl;
         
         /// <summary>
         /// MemMail_tb コントロール。
@@ -31,13 +40,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox MemMail_tb;
         
         /// <summary>
-        /// Label3 コントロール。
+        /// Pass_lbl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label Pass_lbl;
         
         /// <summary>
         /// Pass_tb コントロール。

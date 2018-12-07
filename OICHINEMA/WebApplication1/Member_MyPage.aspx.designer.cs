@@ -13,6 +13,15 @@ namespace WebApplication1 {
     public partial class Member_MyPage1 {
         
         /// <summary>
+        /// Pagename_lbl コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Pagename_lbl;
+        
+        /// <summary>
         /// MemID_lbl コントロール。
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label MemKana_lbl;
         
         /// <summary>
-        /// MemBirth_lbl コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemBirth_lbl;
-        
-        /// <summary>
         /// MemGender_lbl コントロール。
         /// </summary>
         /// <remarks>
@@ -58,13 +58,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label MemGender_lbl;
         
         /// <summary>
-        /// MemTel_lbl コントロール。
+        /// MemBirth_lbl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemTel_lbl;
+        protected global::System.Web.UI.WebControls.Label MemBirth_lbl;
         
         /// <summary>
         /// MemPost_lbl コントロール。
@@ -83,6 +83,15 @@ namespace WebApplication1 {
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label MemAdr_lbl;
+        
+        /// <summary>
+        /// MemTel_lbl コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MemTel_lbl;
         
         /// <summary>
         /// MemPoint_lbl コントロール。

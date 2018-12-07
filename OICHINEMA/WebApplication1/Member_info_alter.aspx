@@ -16,7 +16,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width:100%;">
         <tr>
-            <td style="text-align: center">プロフィール変更</td>
+            <td style="text-align: center">
+                <asp:Label ID="Pagename_lbl" runat="server" Text="プロフィール変更"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td>
@@ -44,6 +46,8 @@
                         <td class="auto-style7">&nbsp;</td>
                         <td colspan="4">性別<br />
                             <asp:DropDownList ID="memgender_ddl" runat="server" OnSelectedIndexChanged="memgender_ddl_SelectedIndexChanged">
+                                <asp:ListItem>男</asp:ListItem>
+                                <asp:ListItem>女</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td class="auto-style7">&nbsp;</td>
@@ -53,9 +57,21 @@
                         <td colspan="4">生年月日<br />
                             （西暦）<asp:DropDownList ID="membirthyear_ddl" runat="server" OnSelectedIndexChanged="membirthyear_ddl_SelectedIndexChanged">
                             </asp:DropDownList>
-                            年<asp:DropDownList ID="membirthmonth_ddl" runat="server" OnSelectedIndexChanged="membirthmonth_ddl_SelectedIndexChanged">
+                            年 <asp:DropDownList ID="membirthmonth_ddl" runat="server" OnSelectedIndexChanged="membirthmonth_ddl_SelectedIndexChanged">
+                                <asp:ListItem>1</asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>3</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>5</asp:ListItem>
+                                <asp:ListItem>6</asp:ListItem>
+                                <asp:ListItem>7</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
+                                <asp:ListItem>9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>11</asp:ListItem>
+                                <asp:ListItem>12</asp:ListItem>
                             </asp:DropDownList>
-                            月<asp:DropDownList ID="membirthday_ddl" runat="server" OnSelectedIndexChanged="membirthday_ddl_SelectedIndexChanged">
+                            月 <asp:DropDownList ID="membirthday_ddl" runat="server" OnSelectedIndexChanged="membirthday_ddl_SelectedIndexChanged">
                             </asp:DropDownList>
                             日</td>
                         <td class="auto-style7">&nbsp;</td>
@@ -88,20 +104,20 @@
                             <asp:TextBox ID="memmail_tb" runat="server" OnTextChanged="memmail_tb_TextChanged"></asp:TextBox>
                             <br />
                             <br />
-                            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="Messe_lbl" runat="server" Text="Label"></asp:Label>
                         </td>
                         <td class="auto-style7">&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style8"></td>
                         <td class="auto-style9">
-                            <asp:Button ID="Back_btn" runat="server" OnClick="Back_btn_Click" Text="戻る" OnClientClick="return confirm(&quot;タイトルを変更してもよろしいですか？&quot;);" />
+                            <asp:Button ID="Back_btn" runat="server" OnClick="Back_btn_Click" Text="戻る" OnClientClick="return confirm(&quot;前のページに戻ります。(変更内容は破棄されます。)&quot;);" />
                         </td>
                         <td class="auto-style9" colspan="2">
-                            <asp:Button ID="Cancel_btn" runat="server" OnClick="Cancel_btn_Click" Text="キャンセル" />
+                            <asp:Button ID="Cancel_btn" runat="server" OnClick="Cancel_btn_Click" Text="キャンセル" OnClientClick="return confirm(&quot;内容を元に戻します。(確定されていない情報は破棄されます。)&quot;);" />
                         </td>
                         <td class="auto-style9">
-                            <asp:Button ID="btn" runat="server" OnClick="btn_Click" Text="確定" />
+                            <asp:Button ID="Con_btn" runat="server" OnClick="btn_Click" Text="確定" OnClientClick="return confirm(&quot;以上の内容で登録情報を変更します。&quot;);" />
                         </td>
                         <td class="auto-style8"></td>
                     </tr>

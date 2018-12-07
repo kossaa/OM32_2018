@@ -16,12 +16,14 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
-                String userNo = (string)Session["UserNo"];
-                //String userNo = "0000001";
+                String userno = (string)Session["UserNo"];
                 OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
+                //退会日が有無を条件に退会判断（未実装）
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID = '" + userno + "'", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
+                //String membirth = dt.Rows[0][3].ToString("yyyy/MM/dd");
 
                 MemID_lbl.Text = dt.Rows[0][0].ToString();
                 MemName_lbl.Text = dt.Rows[0][1].ToString();
@@ -31,17 +33,7 @@ namespace WebApplication1
                 MemTel_lbl.Text = dt.Rows[0][5].ToString();
                 MemPost_lbl.Text = dt.Rows[0][6].ToString();
                 MemAdr_lbl.Text = dt.Rows[0][7].ToString();
-                //MemAdr_lbl.Text += dt.Rows[0][7].ToString();
                 MemPoint_lbl.Text = dt.Rows[0][8].ToString();
-
-                Session["memname"] = MemName_lbl.Text;
-                Session["memkana"] = MemKana_lbl.Text;
-                Session["membirth"] = MemBirth_lbl.Text;
-                Session["memgender"] = MemGender_lbl.Text;
-                Session["memtel"] = MemTel_lbl.Text;
-                Session["menmail"] = MemID_lbl.Text;
-                Session["mempost"] = MemPost_lbl.Text;
-                Session["memadr"] = MemAdr_lbl.Text;
             }
 
             
@@ -50,11 +42,13 @@ namespace WebApplication1
 
         protected void Purchaselog_linkbtn_Click1(object sender, EventArgs e)
         {
+            //Response.Redirect("Member_Page/BookingLog.aspx");
             Response.Redirect("BookingLog.aspx");
         }
 
         protected void Profile_linkbtn_Click1(object sender, EventArgs e)
         {
+            //Response.Redirect("Member_Page/Member_info_alter.aspx");
             Response.Redirect("Member_info_alter.aspx");
         }
 
@@ -65,9 +59,12 @@ namespace WebApplication1
 
         protected void Withdrawal_btn_Click1(object sender, EventArgs e)
         {
+            //とりあえずのログアウト
             FormsAuthentication.SignOut();
             Session["UserNo"] = null;
             Response.Redirect("Login.aspx");
+
+            //退会処理は日付入れるだけ
         }
 
     }

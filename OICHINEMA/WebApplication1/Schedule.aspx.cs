@@ -20,22 +20,22 @@ namespace WebApplication1
         OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
 
         //SQL(同時に席が選ばれた時の判別)でSEAT_IDかTEMPORARY_SEATでの使用を簡略化した関数
-        private string ssd(string bbb)
+        private string Judgment(string character)
         {
-            string aaa = "";
+            string conditions = "";
             for (int j = 0; j < seatList.Count; j++)
             {
                 if (j != 0)
                 {
-                    aaa = aaa + " OR  ";
+                    conditions = conditions + " OR  ";
                 }
                 else
                 {
-                    aaa = aaa + " AND ";
+                    conditions = conditions + " AND ";
                 }
-                aaa = aaa + bbb + "='" + seatList[j] + "'";
+                conditions = conditions + character + "='" + seatList[j] + "'";
             }
-            return aaa;
+            return conditions;
         }
 
         //クリックしているイメージボタンを取得する関数
@@ -106,7 +106,6 @@ namespace WebApplication1
             */
             //スケジュールID設定(仮)
             Session["scheduleId"] = "0000002";
-
             //座席の予約済みを取得し昇順で表示
             OleDbDataAdapter daSeat = new OleDbDataAdapter
             ("SELECT SEAT_ID FROM TBL_BOOKING,TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID=TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID='" + (string)Session["scheduleId"] + "'ORDER BY SEAT_ID ASC", cn);
@@ -130,13 +129,13 @@ namespace WebApplication1
             //--------ここから途中コード-------
             //座席の予約済みを取得し昇順で表示
             OleDbDataAdapter daSeat = new OleDbDataAdapter
-            ("SELECT SEAT_ID FROM TBL_BOOKING,TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID=TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID='" + (string)Session["scheduleId"] + ssd("SEAT_ID") + "'ORDER BY SEAT_ID ASC", cn);
+            ("SELECT SEAT_ID FROM TBL_BOOKING,TBL_BOOKINGDETAIL WHERE TBL_BOOKING.BOOKING_ID=TBL_BOOKINGDETAIL.BOOKING_ID AND SCHEDULE_ID='" + (string)Session["scheduleId"] + Judgment("SEAT_ID") + "'ORDER BY SEAT_ID ASC", cn);
             //DataTableを作成し実行
             DataTable dtSeat = new DataTable();
             daSeat.Fill(dtSeat);
             //仮登録されたデータ
             OleDbDataAdapter daInfo = new OleDbDataAdapter
-            ("SELECT TEMPORARY_SEAT FROM TBL_TEMPORARY WHERE SCHEDULE_ID='" + (string)Session["scheduleId"] + "'" + ssd("TEMPORARY_SEAT"), cn);
+            ("SELECT TEMPORARY_SEAT FROM TBL_TEMPORARY WHERE SCHEDULE_ID='" + (string)Session["scheduleId"] + "'" + Judgment("TEMPORARY_SEAT"), cn);
             //DataTableを作成し実行
             DataTable dtInfo = new DataTable();
             daInfo.Fill(dtInfo);
@@ -170,8 +169,13 @@ namespace WebApplication1
                 //DataTableを作成し実行
                 DataTable dtBookingIn = new DataTable();
                 daBookingInfo.Fill(dtBookingIn);
-
-                
+                //*********選択中の席をロックする*********
+                //イメージボタンを作成し、CSSを変更し入れ替え
+                ImageButton ibtn = new ImageButton();
+                //指定したフォームのFindControlで指定したIDを見つけてそのプロパティを変更
+                ibtn = Master.FindControl("MainContent").FindControl(dtInfo.Rows[i][0].ToString()) as ImageButton;
+                ibtn.CssClass = "SoldSeat";
+                ibtn.Enabled = false;
             }
             //次の画面に行く
 

@@ -15,6 +15,8 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             Messe_lbl.Visible = false;
+
+            //Session["PageID"] = "Member_MyPage.aspx";
         }
 
         protected void Login_btn_Click(object sender, EventArgs e)
@@ -29,9 +31,11 @@ namespace WebApplication1
 
             if (dt.Rows.Count > 0)    //該当するものがあれば
             {
+                String pageid = (string)Session["PageID"];
                 Session["UserNo"] = dt.Rows[0][0];
                 FormsAuthentication.RedirectFromLoginPage(userid, false);
-                Response.Redirect("Member_MyPage.aspx");
+                //Response.Redirect("Member_MyPage.aspx");
+                Response.Redirect(pageid);
             }
             else
             {

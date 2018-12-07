@@ -41,7 +41,7 @@
                     <tr>
                         <td class="auto-style1">フリガナ</td>
                         <td class="auto-style2">
-                            <asp:Label ID="MemNameKana_lbl" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="MemKana_lbl" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>

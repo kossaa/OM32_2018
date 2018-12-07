@@ -36,7 +36,7 @@
                         <td colspan="2">
                             <asp:Label ID="Label2" runat="server" Text="カナ"></asp:Label>
                             <br />
-                            <asp:TextBox ID="memnamekana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged"></asp:TextBox>
+                            <asp:TextBox ID="memkana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged"></asp:TextBox>
                         </td>
                         <td class="auto-style7">&nbsp;</td>
                     </tr>
@@ -64,7 +64,7 @@
                         <td class="auto-style7">&nbsp;</td>
                         <td colspan="4">郵便番号（ハイフンなし）<br />
                             <asp:TextBox ID="mempost_tb" runat="server" OnTextChanged="mempost_tb_TextChanged"></asp:TextBox>
-                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="検索" />
+                            <asp:Button ID="Postsearch_btn" runat="server" OnClick="Postsearch_btn_Click" Text="検索" />
                         </td>
                         <td class="auto-style7">&nbsp;</td>
                     </tr>
@@ -95,13 +95,13 @@
                     <tr>
                         <td class="auto-style8"></td>
                         <td class="auto-style9">
-                            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="戻る" />
+                            <asp:Button ID="Back_btn" runat="server" OnClick="Back_btn_Click" Text="戻る" OnClientClick="return confirm(&quot;タイトルを変更してもよろしいですか？&quot;);" />
                         </td>
                         <td class="auto-style9" colspan="2">
-                            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="キャンセル" />
+                            <asp:Button ID="Cancel_btn" runat="server" OnClick="Cancel_btn_Click" Text="キャンセル" />
                         </td>
                         <td class="auto-style9">
-                            <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="確定" />
+                            <asp:Button ID="btn" runat="server" OnClick="btn_Click" Text="確定" />
                         </td>
                         <td class="auto-style8"></td>
                     </tr>

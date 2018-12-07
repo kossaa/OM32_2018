@@ -12,14 +12,23 @@ namespace WebApplication1
     public partial class Member_info_alter : System.Web.UI.Page
     {
         //bool memname = false,memnamekana = false,memgender = false,membirthyear = false,membirthmonth = false,membirthday = false,mempost = false,memadr = false,memtel = false,memmail = false;
-        bool memname , memnamekana , memgender , membirthyear , membirthmonth , membirthday , mempost , memadr , memtel,memmail;
+        //bool memname , memnamekana , memgender , membirthyear , membirthmonth , membirthday , mempost , memadr , memtel,memmail;
+        bool flg;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //String userNo = (string)Session["UserNo"];
-            String userNo = "0000001";
+
+            //仮
+            //String userNo = "0000001";
+
+            memname_tb.Text = (string)Session["memname"];
+            memkana_tb.Text = (string)Session["memkana"];
+            memgender_ddl.Text = (string)Session["memname"];
+
+            /*
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + UserNo + "'", cn);
+            OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             memname_tb.Text = dt.Rows[0][0].ToString();
@@ -35,81 +44,84 @@ namespace WebApplication1
             memadr_tb.Text = dt.Rows[0][5].ToString();
             memtel_tb.Text = dt.Rows[0][6].ToString();
             memmail_tb.Text = dt.Rows[0][7].ToString();
+            */
         }
 
         protected void memname_tb_TextChanged(object sender, EventArgs e)
         {
-            memname = true;
+            flg = true;
         }
 
         protected void memnamekana_tb_TextChanged(object sender, EventArgs e)
         {
-            memnamekana = true;
+            flg = true;
         }
 
         protected void memgender_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            memgender = true;
+            flg = true;
         }
 
         protected void membirthyear_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            membirthyear = true;
+            flg = true;
         }
 
         protected void membirthmonth_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            membirthmonth = true;
+            flg = true;
         }
 
         protected void membirthday_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            membirthday = true;
+            flg = true;
         }
 
         protected void mempost_tb_TextChanged(object sender, EventArgs e)
         {
-            mempost = true;
+            flg = true;
         }
 
         protected void memadr_tb_TextChanged(object sender, EventArgs e)
         {
-            memadr = true;
+            flg = true;
         }
 
         protected void memtel_tb_TextChanged(object sender, EventArgs e)
         {
-            memtel = true;
+            flg = true;
         }
 
         protected void memmail_tb_TextChanged(object sender, EventArgs e)
         {
-            memmail = true;
+            flg = true;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Postsearch_btn_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Back_btn_Click(object sender, EventArgs e)
+        {
+            //if (flg == true)
+            //{
+
+            //}
+            //else if(flg == false)
+            //{
+            //    Response.Redirect("Member_MyPage.aspx");
+            //}
+        }
+
+        protected void Cancel_btn_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void btn_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void datelord()
-        {
-            
         }
     }
 }

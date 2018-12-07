@@ -40,13 +40,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// memnamekana_tb コントロール。
+        /// memkana_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox memnamekana_tb;
+        protected global::System.Web.UI.WebControls.TextBox memkana_tb;
         
         /// <summary>
         /// memgender_ddl コントロール。
@@ -94,13 +94,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox mempost_tb;
         
         /// <summary>
-        /// Button1 コントロール。
+        /// Postsearch_btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Postsearch_btn;
         
         /// <summary>
         /// memadr_tb コントロール。
@@ -139,30 +139,30 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Button2 コントロール。
+        /// Back_btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button Back_btn;
         
         /// <summary>
-        /// Button3 コントロール。
+        /// Cancel_btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button Cancel_btn;
         
         /// <summary>
-        /// Button4 コントロール。
+        /// btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button btn;
     }
 }

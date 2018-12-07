@@ -264,7 +264,6 @@ div.menu ul li a:active
 }
 .NameInPanel{
     width:100%;
-    background-color:#00dbe2;
 }
 .TextBox{
     width:200px;
@@ -283,13 +282,10 @@ div.menu ul li a:active
 }
 .SexPanel{
     width:100%;
-    background-color:#ed7f07;
 }
 .BirthPanel{
-    background-color:#c9fa00;
 }
 .AddressPanel{
-    background-color:#eef100;
 }
 .TODOHUKEN{
     float:left;

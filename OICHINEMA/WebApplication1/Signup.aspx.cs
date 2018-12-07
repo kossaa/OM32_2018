@@ -17,7 +17,7 @@ namespace WebApplication1
         {
             if (IsPostBack == true)
             {
-                Label20.Visible = false;
+                messageLabel.Visible = false;
             }
 
             CalenderAddYear();
@@ -37,8 +37,8 @@ namespace WebApplication1
 
             }
             catch (Exception){
-                Label20.Text = "DB接続×";
-                Label20.Visible = true;
+                messageLabel.Text = "DB接続×";
+                messageLabel.Visible = true;
                 return false;
             }
 
@@ -54,7 +54,7 @@ namespace WebApplication1
             int year = 1920;//年カウント開始日
 
             for (int i = year; i <= nowyear; i++){
-                DropDownList2.Items.Add(i.ToString());
+                YearDDL.Items.Add(i.ToString());
             }
         }
 
@@ -63,49 +63,49 @@ namespace WebApplication1
          ======================================================*/
         private void CalenderAddDay()
         {
-            int year = int.Parse(DropDownList2.Text);
+            int year = int.Parse(YearDDL.Text);
             if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
               /*うるう年*/
-                if (DropDownList3.Text == "2")
+                if (MonthDDL.Text == "2")
                 {/*2月なら*/
                     for (int i = 1; i <= 29; i++){
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
-                else if (DropDownList3.Text == "4" || DropDownList3.Text == "6" || DropDownList3.Text == "9" || DropDownList3.Text == "11")
+                else if (MonthDDL.Text == "4" || MonthDDL.Text == "6" || MonthDDL.Text == "9" || MonthDDL.Text == "11")
                 {/*4,6,9,11月なら*/
                     for (int i = 1; i <= 30; i++){
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
                 else
                 {/*1,3,5,7,8,10,12月なら*/
                     for (int i = 1; i <= 31; i++){
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
             }
             else/*うるう年じゃない*/
             {
-                if (DropDownList3.Text == "2")
+                if (MonthDDL.Text == "2")
                 {/*2月なら*/
                     for (int i = 1; i <= 28; i++)
                     {
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
-                else if (DropDownList3.Text == "4" || DropDownList3.Text == "6" || DropDownList3.Text == "9" || DropDownList3.Text == "11")
+                else if (MonthDDL.Text == "4" || MonthDDL.Text == "6" || MonthDDL.Text == "9" || MonthDDL.Text == "11")
                 {/*4,6,9,11月なら*/
                     for (int i = 1; i <= 30; i++)
                     {
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
                 else
                 {/*1,3,5,7,8,10,12月なら*/
                     for (int i = 1; i <= 31; i++)
                     {
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
             }
@@ -161,7 +161,7 @@ namespace WebApplication1
         =====================================================*/
         private DateTime getBirthDay()
         {
-            DateTime BirthDay = DateTime.Parse(DropDownList2.Text + "/" + DropDownList3.Text + "/" + DropDownList4.Text);
+            DateTime BirthDay = DateTime.Parse(YearDDL.Text + "/" + MonthDDL.Text + "/" + DayDDL.Text);
             String bd = BirthDay.ToString("yyyy/MM/dd");
             BirthDay = DateTime.Parse(bd);
             return BirthDay;
@@ -196,8 +196,8 @@ namespace WebApplication1
                 //データの読み込み
                 if (oledr.Read())
                 {
-                    TextBox6.Text = oledr["フィールド7"].ToString() ;
-                    TextBox7.Text = oledr["フィールド8"].ToString() + oledr["フィールド9"].ToString();
+                    FADR1Txb.Text = oledr["フィールド7"].ToString() ;
+                    LADR1Txb.Text = oledr["フィールド8"].ToString() + oledr["フィールド9"].ToString();
                 }
                 //データベースを閉じる
                 PostCn.Close();
@@ -205,9 +205,9 @@ namespace WebApplication1
         }
 
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void EnterBtn_Click(object sender, EventArgs e)
         {
-            if (TextBox11.Text != TextBox12.Text)
+            if (PassTxb.Text != PassTxb2.Text)
             {
             string script =
                "<script language=javascript>" +
@@ -258,7 +258,7 @@ namespace WebApplication1
                                 command.Parameters.AddWithValue("@MEMBER_PASS", TextBox11.Text);
                 */
                 /*↓成功*/
-                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + TextBox2.Text + TextBox3.Text + "','" + TextBox1.Text + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + TextBox7.Text + "','" + TextBox8.Text + "',#" + getBirthDay() + "#,'" + TextBox9.Text + "','" + DropDownList1.Text + "',#" + getToday() + "#,'" + TextBox10.Text + "','" + TextBox11.Text + "')";
+                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + LNameTbx.Text + "','" + FKanaTbx.Text + LKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
 
                 command = new OleDbCommand(testdate);
 
@@ -266,8 +266,8 @@ namespace WebApplication1
                 cn.Open();
 
                 int a = command.ExecuteNonQuery();
-                Label20.Text = a.ToString();
-                Label20.Visible = true;
+                messageLabel.Text = a.ToString();
+                messageLabel.Visible = true;
                 /*          }
                             catch (OleDbException ode)
                             {
@@ -279,15 +279,15 @@ namespace WebApplication1
                 cn.Close();
             }
         }
-        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        protected void MonthDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList4.Items.Clear();
+            DayDDL.Items.Clear();
             CalenderAddDay();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void SerchBtn_Click(object sender, EventArgs e)
         {
-            Adr_Post(TextBox5.Text.ToString());
+            Adr_Post(PostTxb.Text.ToString());
         }
     }
 }

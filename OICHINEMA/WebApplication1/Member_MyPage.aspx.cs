@@ -62,7 +62,7 @@ namespace WebApplication1
 
         protected void Profile_linkbtn_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("Member_info_alter2.aspx");
+            Response.Redirect("Member_info_alter.aspx");
         }
 
         protected void Password_linkbtn_Click1(object sendser, EventArgs e)

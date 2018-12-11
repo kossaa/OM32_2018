@@ -60,7 +60,6 @@
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="Login.aspx" />
     <Content Include="Member_info_alter.aspx" />
-    <Content Include="Member_info_alter2.aspx" />
     <Content Include="Member_MyPage.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
@@ -81,13 +80,6 @@
     </Compile>
     <Compile Include="Member_info_alter.aspx.designer.cs">
       <DependentUpon>Member_info_alter.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Member_info_alter2.aspx.cs">
-      <DependentUpon>Member_info_alter2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Member_info_alter2.aspx.designer.cs">
-      <DependentUpon>Member_info_alter2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member_MyPage.aspx.cs">
       <DependentUpon>Member_MyPage.aspx</DependentUpon>

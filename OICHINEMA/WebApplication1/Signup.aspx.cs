@@ -230,7 +230,6 @@ namespace WebApplication1
                 //command = new OleDbCommand(InsertStr);
                 //DB接続
                 DB_Connection();
-
                 /*          try
                             {
 
@@ -266,6 +265,13 @@ namespace WebApplication1
                 cn.Open();
 
                 int a = command.ExecuteNonQuery();
+
+                string script =
+                   "<script language=javascript>" +
+                   "window.alert('登録しました。')" +
+                   "</script>";
+                    Response.Write(script);
+                
                 messageLabel.Text = a.ToString();
                 messageLabel.Visible = true;
                 /*          }

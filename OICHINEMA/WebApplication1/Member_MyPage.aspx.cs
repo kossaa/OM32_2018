@@ -16,24 +16,39 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
-                String userno = (string)Session["UserNo"];
+                String userid = (string)Session["UserID"];
                 OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-                //退会日が有無を条件に退会判断（未実装）
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID = '" + userno + "'", cn);
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_MAIL,MEMBER_NAME,MEMBER_KANA,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_TEL,MEMBER_POST,MEMBER_ADR,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID = '" + userid + "'", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                //String membirth = dt.Rows[0][3].ToString("yyyy/MM/dd");
+                String membirth_str = dt.Rows[0][3].ToString();
+                DateTime membirth = DateTime.Parse(membirth_str);
+                //membirth.ToString("yyyy/MM/dd");
 
                 MemID_lbl.Text = dt.Rows[0][0].ToString();
                 MemName_lbl.Text = dt.Rows[0][1].ToString();
                 MemKana_lbl.Text = dt.Rows[0][2].ToString();
-                MemBirth_lbl.Text = dt.Rows[0][3].ToString();
+                MemBirth_lbl.Text = membirth.ToString("yyyy/MM/dd");
                 MemGender_lbl.Text = dt.Rows[0][4].ToString();
                 MemTel_lbl.Text = dt.Rows[0][5].ToString();
                 MemPost_lbl.Text = dt.Rows[0][6].ToString();
                 MemAdr_lbl.Text = dt.Rows[0][7].ToString();
                 MemPoint_lbl.Text = dt.Rows[0][8].ToString();
+
+                Session["MemMail"] = MemID_lbl.Text;
+                Session["MemName"] = MemName_lbl.Text;
+                Session["MemKana"] = MemKana_lbl.Text;
+
+                Session["MemBirthYear"] = membirth.ToString("yyyy");
+                Session["MemBirthMon"] = membirth.ToString("mm");
+                Session["MemBirthDay"] = membirth.ToString("dd");
+
+                Session["MemGender"] = MemGender_lbl.Text;
+                Session["MemTel"] = MemTel_lbl.Text;
+                Session["MemPost"] = MemPost_lbl.Text;
+                Session["MemPost"] = MemPost_lbl.Text;
+                Session["MemAdr"] = MemAdr_lbl.Text;
             }
 
             
@@ -42,29 +57,41 @@ namespace WebApplication1
 
         protected void Purchaselog_linkbtn_Click1(object sender, EventArgs e)
         {
-            //Response.Redirect("Member_Page/BookingLog.aspx");
-            Response.Redirect("BookingLog.aspx");
+            Response.Redirect("Member_BookingLog.aspx");
         }
 
         protected void Profile_linkbtn_Click1(object sender, EventArgs e)
         {
-            //Response.Redirect("Member_Page/Member_info_alter.aspx");
-            Response.Redirect("Member_info_alter.aspx");
+            Response.Redirect("Member_info_alter2.aspx");
         }
 
         protected void Password_linkbtn_Click1(object sendser, EventArgs e)
         {
-
+            //まだない
         }
 
         protected void Withdrawal_btn_Click1(object sender, EventArgs e)
         {
             //とりあえずのログアウト
+            //FormsAuthentication.SignOut();
+            //Session["UserNo"] = null;
+            //Response.Redirect("Login.aspx");
+
+            DateTime dtToday = DateTime.Today;
+            //退会処理は退会日時を入れるだけ
+            String userid = (string)Session["UserID"];
+            OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+            OleDbCommand cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_OUT = '" + dtToday.ToString() + "' WHERE MEMBER_ID = '" + userid + "'", cn);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
+
             FormsAuthentication.SignOut();
-            Session["UserNo"] = null;
+            Session["UserID"] = null;
+            //テスト用
             Response.Redirect("Login.aspx");
 
-            //退会処理は日付入れるだけ
+            //Response.Redirect("Top.aspx");
         }
 
     }

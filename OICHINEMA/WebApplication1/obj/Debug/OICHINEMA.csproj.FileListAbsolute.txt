@@ -16,3 +16,15 @@ C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\bin\We
 C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
 C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\b6220\Desktop\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+\\stusrv\作業\B6\B6220\作業\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+\\stusrv\作業\B6\B6220\作業\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+\\stusrv\作業\B6\B6220\作業\新しいフォルダー\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+\\stusrv\作業\B6\B6220\作業\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+\\stusrv\作業\B6\B6220\作業\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+\\stusrv\作業\B6\B6220\作業\新しいフォルダー\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

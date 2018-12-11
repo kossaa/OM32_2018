@@ -30,7 +30,8 @@ namespace WebApplication1
 
             //データベース接続
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_ID FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "'", cn);
+            //退会日の有無で退会判断
+            OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_ID FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "' AND MEMBER_OUT IS NULL", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -38,7 +39,7 @@ namespace WebApplication1
             {
                 //前のページ名取得
                 String pageid = (string)Session["PageID"];
-                Session["UserNo"] = dt.Rows[0][0];
+                Session["UserID"] = dt.Rows[0][0];
                 FormsAuthentication.RedirectFromLoginPage(userid, false);
                 Response.Redirect(pageid);
 
@@ -53,7 +54,7 @@ namespace WebApplication1
 
         protected void Signup_btn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Signup.aspx");
         }
     }
 }

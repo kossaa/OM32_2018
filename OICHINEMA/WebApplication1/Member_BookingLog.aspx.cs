@@ -15,15 +15,20 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
-                String userno = (string)Session["UserNo"];
-                OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT BOOKING_DAY,WORK_NAME,SEAT_ID,RATE_NAME,EVENT_NAME,BOOKINGDETAIL_POINT FROM Q_BOOKINGLOG WHERE MEMBER_ID = '" + userno + "'", cn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                //String userno = (string)Session["UserNo"];
+                //OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+                //OleDbDataAdapter da = new OleDbDataAdapter("SELECT BOOKING_DAY,WORK_NAME,SEAT_ID,RATE_NAME,EVENT_NAME,BOOKINGDETAIL_POINT FROM Q_BOOKINGLOG WHERE MEMBER_ID = '" + userno + "'", cn);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
 
-                Log_gv.DataSource = dt;
-                Log_gv.DataBind();
+                //Log_gv.DataSource = dt;
+                //Log_gv.DataBind();
             }
+        }
+
+        protected void Back_btn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Member_MyPage.aspx");
         }
     }
 }

@@ -1,17 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Member_info_alter.aspx.cs" Inherits="WebApplication1.Member_info_alter" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Member_info_alter.aspx.cs" Inherits="WebApplication1.Member_info_alter1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
-    <style type="text/css">
-        .auto-style7 {
-            width: 100px;
-        }
-        .auto-style8 {
-            width: 100px;
-            height: 25px;
-        }
-        .auto-style9 {
-            height: 25px;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width:100%;">
@@ -21,108 +9,99 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <table style="width:100%;">
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">氏名</td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="2">
-                            <asp:Label ID="Label1" runat="server" Text="漢字"></asp:Label>
-                            <br />
-                            <asp:TextBox ID="memname_tb" runat="server" OnTextChanged="memname_tb_TextChanged"></asp:TextBox>
-                        </td>
-                        <td colspan="2">
-                            <asp:Label ID="Label2" runat="server" Text="カナ"></asp:Label>
-                            <br />
-                            <asp:TextBox ID="memkana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged"></asp:TextBox>
-                        </td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">性別<br />
-                            <asp:DropDownList ID="memgender_ddl" runat="server" OnSelectedIndexChanged="memgender_ddl_SelectedIndexChanged">
-                                <asp:ListItem>男</asp:ListItem>
-                                <asp:ListItem>女</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">生年月日<br />
-                            （西暦）<asp:DropDownList ID="membirthyear_ddl" runat="server" OnSelectedIndexChanged="membirthyear_ddl_SelectedIndexChanged">
-                            </asp:DropDownList>
-                            年 <asp:DropDownList ID="membirthmonth_ddl" runat="server" OnSelectedIndexChanged="membirthmonth_ddl_SelectedIndexChanged">
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>5</asp:ListItem>
-                                <asp:ListItem>6</asp:ListItem>
-                                <asp:ListItem>7</asp:ListItem>
-                                <asp:ListItem>8</asp:ListItem>
-                                <asp:ListItem>9</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>11</asp:ListItem>
-                                <asp:ListItem>12</asp:ListItem>
-                            </asp:DropDownList>
-                            月 <asp:DropDownList ID="membirthday_ddl" runat="server" OnSelectedIndexChanged="membirthday_ddl_SelectedIndexChanged">
-                            </asp:DropDownList>
-                            日</td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">郵便番号（ハイフンなし）<br />
-                            <asp:TextBox ID="mempost_tb" runat="server" OnTextChanged="mempost_tb_TextChanged"></asp:TextBox>
-                            <asp:Button ID="Postsearch_btn" runat="server" OnClick="Postsearch_btn_Click" Text="検索" />
-                        </td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">住所<br />
-                            <asp:TextBox ID="memadr_tb" runat="server" OnTextChanged="memadr_tb_TextChanged"></asp:TextBox>
-                        </td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">電話番号<br />
-                            <asp:TextBox ID="memtel_tb" runat="server" OnTextChanged="memtel_tb_TextChanged"></asp:TextBox>
-                        </td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">&nbsp;</td>
-                        <td colspan="4">メールアドレス<br />
-                            <asp:TextBox ID="memmail_tb" runat="server" OnTextChanged="memmail_tb_TextChanged"></asp:TextBox>
-                            <br />
-                            <br />
-                            <asp:Label ID="Messe_lbl" runat="server" Text="Label"></asp:Label>
-                        </td>
-                        <td class="auto-style7">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style8"></td>
-                        <td class="auto-style9">
-                            <asp:Button ID="Back_btn" runat="server" OnClick="Back_btn_Click" Text="戻る" OnClientClick="return confirm(&quot;前のページに戻ります。(変更内容は破棄されます。)&quot;);" />
-                        </td>
-                        <td class="auto-style9" colspan="2">
-                            <asp:Button ID="Cancel_btn" runat="server" OnClick="Cancel_btn_Click" Text="キャンセル" OnClientClick="return confirm(&quot;内容を元に戻します。(確定されていない情報は破棄されます。)&quot;);" />
-                        </td>
-                        <td class="auto-style9">
-                            <asp:Button ID="Con_btn" runat="server" OnClick="btn_Click" Text="確定" OnClientClick="return confirm(&quot;以上の内容で登録情報を変更します。&quot;);" />
-                        </td>
-                        <td class="auto-style8"></td>
-                    </tr>
-                </table>
+            <td style="text-align: center">
+                <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="MEMBER_ID" DataSourceID="SqlDataSource1" Height="50px" Width="300px">
+                    <Fields>
+                        <asp:BoundField DataField="MEMBER_MAIL" HeaderText="ID(メールアドレス)" SortExpression="MEMBER_MAIL" />
+                        <asp:TemplateField HeaderText="氏名" SortExpression="MEMBER_NAME">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("MEMBER_NAME") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("MEMBER_NAME") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("MEMBER_NAME") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="フリガナ" SortExpression="MEMBER_KANA">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("MEMBER_KANA") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("MEMBER_KANA") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("MEMBER_KANA") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="性別" SortExpression="MEMBER_GENDER">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("MEMBER_GENDER") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("MEMBER_GENDER") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("MEMBER_GENDER") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="生年月日" SortExpression="MEMBER_BIRTH">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("MEMBER_BIRTH","{0:yyyy/MM/dd}") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("MEMBER_BIRTH", "{0:yyyy/MM/dd}") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("MEMBER_BIRTH", "{0:yyyy/MM/dd}") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="郵便番号" SortExpression="MEMBER_POST">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("MEMBER_POST") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("MEMBER_POST") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("MEMBER_POST") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="住所" SortExpression="MEMBER_ADR">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("MEMBER_ADR") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("MEMBER_ADR") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("MEMBER_ADR") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="電話番号" SortExpression="MEMBER_TEL">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("MEMBER_TEL") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("MEMBER_TEL") %>'></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("MEMBER_TEL") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ButtonType="Button" DeleteText="" InsertText="" NewText="" SelectText="" ShowEditButton="True" />
+                    </Fields>
+                </asp:DetailsView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT [MEMBER_ID], [MEMBER_NAME], [MEMBER_KANA], [MEMBER_GENDER], [MEMBER_BIRTH], [MEMBER_POST], [MEMBER_ADR], [MEMBER_TEL], [MEMBER_MAIL] FROM [TBL_MEMBER] WHERE ([MEMBER_ID] = ?)" UpdateCommand="UPDATE [TBL_MEMBER] SET [MEMBER_NAME] = ?, [MEMBER_KANA] = ?, [MEMBER_GENDER] = ?, [MEMBER_BIRTH] = ?, [MEMBER_POST] = ?, [MEMBER_ADR] = ?, [MEMBER_TEL] = ?, [MEMBER_MAIL] = ? WHERE ([MEMBER_ID] = ?)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="MEMBER_ID" SessionField="UserID" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </td>
         </tr>
-        </table>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
 </asp:Content>

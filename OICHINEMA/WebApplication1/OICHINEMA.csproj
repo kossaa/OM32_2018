@@ -73,6 +73,8 @@
     <Content Include="Image\FiveHeadJAWS02.jpg" />
     <Content Include="Image\FiveHeadJAWS03.jpg" />
     <Content Include="Image\FiveHeadJAWS04.jpg" />
+    <Content Include="Image\isu.png" />
+    <Content Include="Image\isuSentaku.png" />
     <Content Include="Image\MegaShark_vs_MechaShark.jpg" />
     <Content Include="Image\MegaShark_vs_MechaShark01.jpg" />
     <Content Include="Image\MegaShark_vs_MechaShark02.jpg" />
@@ -88,6 +90,7 @@
     <Content Include="Image\spidermen02.jpg" />
     <Content Include="Image\spidermen03.jpg" />
     <Content Include="Image\spidermen04.jpg" />
+    <Content Include="Image\tuuro.png" />
     <Content Include="Image\WildSpeed.jpg" />
     <Content Include="Image\WildSpeed01.jpg" />
     <Content Include="Image\WildSpeed02.jpg" />
@@ -95,6 +98,7 @@
     <Content Include="Image\WildSpeed04.jpg" />
     <Content Include="Image\アクセス画像.jpg" />
     <Content Include="Introduction_List.aspx" />
+    <Content Include="Schedule.aspx" />
     <Content Include="Signup.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Top.aspx" />
@@ -121,6 +125,13 @@
     </Compile>
     <Compile Include="Introduction_List.aspx.designer.cs">
       <DependentUpon>Introduction_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>

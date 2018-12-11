@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Access.aspx.cs" Inherits="WebApplication1.Access" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <p>
         <asp:Label ID="Label1" CssClass="AccessLabel" runat="server" Text="Label" Font-Size="50px">アクセス</asp:Label>
     </p>

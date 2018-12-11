@@ -38,7 +38,7 @@
                           <Items>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ" />
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="会員ページ"/>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
+                            <asp:MenuItem NavigateUrl="~/Schedule.aspx" Text="スケジュール"/>
                             <asp:MenuItem NavigateUrl="~/Introduction_List.aspx" Text="作品案内"/>
                             <asp:MenuItem NavigateUrl="~/Event.aspx" Text="イベント"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="販売"/>

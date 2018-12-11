@@ -9,25 +9,34 @@ namespace WebApplication1
 {
     public partial class test : System.Web.UI.Page
     {
-        //private Image[] img;
-        int seatcount=0;
-        string[] seatname=new string[1];
         const int Cell2Width = 300;
+        List<string> seatList = new List<string>();//座席選択画面から引き継いだ座席情報を格納
+        List<SelectedTicket> selectedticketList = new List<SelectedTicket>();//チケット選択画面から引き継いだ選択されたチケット情報を格納
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["ScheduleID"] = "0000004";//結合準備
+            
+            
+            
+            
+            if (Session["ScheduleID"] == null)
+            {
+                Response.Redirect("Schedule.aspx");//スケジュール画面に飛ぶ
+                return;
+            }
+            if (Session["SeatInformation"] == null || Session["SelectedTicket"] == null)
+            {
+                Response.Redirect("Reservation_Ticket_Selection.aspx");//チケット選択画面に飛ぶ
+                return;
+            }
             //画面結合時に前の画面からデータを継承する
             //継承内容
             //座席番号 スケジュール番号 チケットデータ一式 会員番号 メールアドレス
-            seatcount = 3;//継承した予約席数を格納する
-            Array.Resize(ref seatname, seatcount);//配列の数を継承した予約数に合わせる
-            seatname[0] = "c4";
-            seatname[1] = "c5";
-            seatname[2] = "c6";
-
-
-
-
+            seatList = (List<string>)Session["SeatInformation"];//Sessionに格納されてる選択された座席情報を使えるようにseatListに展開する
+            selectedticketList = (List<SelectedTicket>)Session["SelectedTicket"];//引き継いだ選択されたチケット情報を格納する
+            
             TableRow tableRow;
             TableCell tableCell;
 
@@ -50,29 +59,6 @@ namespace WebApplication1
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);
-
-
-                //this.img = new Image[10];
-                //for (int i=0;i<img.Length;i++)
-                //{
-                //    tableRow = new TableRow();
-                //    for (int j = 0; j < img.Length; j++) { 
-                //        tableCell = new TableCell();
-
-                //    this.img[i] = new Image();
-                //    //プロパティ設定
-                //    this.img[i].ID = "SeatImage" + i.ToString();
-                //    this.img[i].ImageUrl = "isu.png";
-                //    this.img[i].Height = 30;
-                //    this.img[i].Width = 30;
-                //    //コントロールをフォームに追加
-                //    tableCell.Controls.Add(this.img[i]);
-
-
-                //    tableRow.Cells.Add(tableCell);}
-                //    Table1.Rows.Add(tableRow);
-                //}
-            
 
             tableRow = new TableRow();
             tableCell = new TableCell();
@@ -98,7 +84,7 @@ namespace WebApplication1
             tableRow = new TableRow();
             tableCell = new TableCell();
             tableCell.Text = "予約席及び料金：";
-            tableCell.RowSpan = seatname.Length + 2;
+            tableCell.RowSpan = seatList.Count + 2;
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();
             tableCell.Text = "予約席";
@@ -113,26 +99,26 @@ namespace WebApplication1
             Table1.Rows.Add(tableRow);
             int totalcost = 0;//チケットの合計金額を格納する
 
-            for (int i = 0; i < seatname.Length; i++)
+            for (int i = 0; i < seatList.Count; i++)
             {
                 tableRow = new TableRow();
                 tableCell = new TableCell();
-                tableCell.Text = seatname[i];//予約席名
+                tableCell.Text = seatList[i];//予約席名
                 tableCell.Width = Cell2Width;
                 tableRow.Cells.Add(tableCell);
                 tableCell = new TableCell();
-                tableCell.Text = "";//各予約席のチケットの種類
+                tableCell.Text = selectedticketList[i].ticketName;//各予約席のチケットの種類
                 tableRow.Cells.Add(tableCell);
                 tableCell = new TableCell();
-                tableCell.Text = "";//チケットの種類に基づく料金
+                tableCell.Text = selectedticketList[i].ticketRate.ToString();//チケットの種類に基づく料金
                 tableRow.Cells.Add(tableCell);
                 Table1.Rows.Add(tableRow);
-                totalcost += 0;//チケットの料金を足す
+                totalcost += selectedticketList[i].ticketRate;//チケットの料金を足す
             }
 
             tableRow = new TableRow();
             tableCell = new TableCell();
-            tableCell.Text = "合計" + seatname.Length.ToString() + "席";
+            tableCell.Text = "合計" + seatList.Count.ToString() + "席";
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();

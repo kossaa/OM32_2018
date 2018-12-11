@@ -13,6 +13,14 @@ namespace WebApplication1
         {
             BookingIDLabel.Text = "予約番号：";
             BookingMailAddressLabel.Text = Session["BookingMail"].ToString()+"にメールを送信しました";
+            //各Sessionのクリア
+            Session.Remove("ScheduleID");
+            Session.Remove("ScheduleEnd");
+            Session.Remove("MemberID");
+            Session.Remove("BookingMail");
+            Session.Remove("SeatInformation");
+            Session.Remove("Seatcount");
+            Session.Remove("SelectedTicket");
         }
     }
 }

@@ -74,10 +74,10 @@ namespace WebApplication1
 
     class DisplayData
     {
-        int ticketRate;
-        string ticketName;
-        string eventNumber;
-        string defaultnumber;
+        public int ticketRate;
+        public string ticketName;
+        public string eventNumber;
+        public string defaultnumber;
 
         //コンストラクタ
         public DisplayData()
@@ -102,10 +102,38 @@ namespace WebApplication1
         }
     }
 
+    class SelectedTicket
+    {
+        public int ticketRate;
+        public string ticketName;
+        public string eventNumber;
+        public string defaultnumber;
+
+        //コンストラクタ
+        public SelectedTicket()
+        {
+        }
+
+        //引数ありコンストラクタ
+        public SelectedTicket(int tr, string tn, string evenum, string defnum)
+        {
+            ticketRate = tr;
+            ticketName = tn;
+            eventNumber = evenum;
+            defaultnumber = defnum;
+        }
+
+        public void setData(int tr, string tn, string evenum, string defnum)
+        {
+            ticketRate = tr;
+            ticketName = tn;
+            eventNumber = evenum;
+            defaultnumber = defnum;
+        }
+    }
+
     public partial class Reservation_Ticket_Selection : System.Web.UI.Page
     {
-        int seatcount = 0;
-        string[] seatname = new string[0];
         const int Cell2Width = 300;
         string UserID = "";//ログイン時はユーザーのログインIDが格納される
         Button BackBtn = new Button();
@@ -115,14 +143,15 @@ namespace WebApplication1
         //Listを使って可変長にデータを管理する
         List<Event> eventList = new List<Event>();
         List<AddEvent> addEventList = new List<AddEvent>();
+        List<SelectedTicket> selectedticketList = new List<SelectedTicket>();
+        List<string> seatList = new List<string>();//座席選択画面から引き継いだ座席情報を格納
 
         string[] displayticketname = new string[0];//表示されるチケット名を格納
         int[] displayticketrate = new int[0];//表示されるチケット料金を格納
         string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
         string[] displaydefaultnumber = new string[0];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する
-        string[] seatAll = new string[5];//座席番号を格納する配列を最大座席数で宣言する
-        //Session["seatInformation"]=seatAll;
-        //seatAll=(string[])Session["seatInformation"];
+        //Session["SeatInformation"]=seatList;
+        //seatList=(string[])Session["SeatInformation"];
 
         private DropDownList[] TicketDDL;
 
@@ -132,15 +161,20 @@ namespace WebApplication1
             Session["ScheduleID"] = "0000004";
             Session["ScheduleEnd"] = DateTime.Parse("2019/12/29 14:25:00");
             Session["MemberID"] = "0000007";
+            seatList.Add("c4");
+            seatList.Add("c5");
+            seatList.Add("c6");
+            Session["SeatInformation"] = seatList;
+
+
+
             //画面結合時に前の画面からデータを継承する
             //ログイン中の場合会員情報を取得する
-            seatcount = 3;//継承した予約席数を格納する
-            Array.Resize(ref seatname, seatcount);//配列の数を継承した予約数に合わせる
-            seatname[0] = "c4";
-            seatname[1] = "c5";
-            seatname[2] = "c6";
-
-
+            //seatList = (List<string>)Session["seatInfomation"];//Sessionに格納されてる選択された座席情報を使えるようにseatListに展開する
+            Session["Seatcount"] = seatList.Count;//継承した予約席数を格納する
+            /************************************/
+            /****ここからロードイベントの本体****/
+            /************************************/
             DateTime time = (DateTime)Session["ScheduleEnd"];
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             //イベントテーブル
@@ -261,15 +295,16 @@ namespace WebApplication1
             tableCell.Text = "チケットの種類";
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);
-            this.TicketDDL = new DropDownList[seatname.Length];
-            for (int i = 0; i < seatname.Length; i++)
+            this.TicketDDL = new DropDownList[seatList.Count];
+            for (int i = 0; i < seatList.Count; i++)
             {
                 tableRow = new TableRow();
                 tableCell = new TableCell();
-                tableCell.Text = seatname[i];
+                tableCell.Text = seatList[i];
                 tableRow.Cells.Add(tableCell);
                 tableCell = new TableCell();
                 TicketDDL[i] = new DropDownList();
+                //TicketDDL[i].ID =i.ToString();
                 TicketDDL[i].Items.Add("チケットの種類を選択してください");
                 if (scheduleflag == 0)//スケジュール番号が登録されていないからチケットの種類が一つに絞られない場合
                 {
@@ -337,8 +372,13 @@ namespace WebApplication1
 
         protected void NextBtn_Click(object sender, EventArgs e)
         {
+            //DropDownList wrkdrop = new DropDownList();
+            ////wrkdrop = (DropDownList) this.FindControl("MainContent_0");
+            //wrkdrop = (DropDownList)this.Master.FindControl("MainContent").FindControl("Table1").FindControl("MainContent_0");
+            //string str = wrkdrop.SelectedValue.ToString();
+
             int noSelectflag = 0;
-            for (int i = 0; i < seatname.Length; i++)
+            for (int i = 0; i < seatList.Count; i++)
             {
                 if (TicketDDL[i].SelectedIndex == 0)
                 {
@@ -356,7 +396,7 @@ namespace WebApplication1
                 tableCell.Text = "チケットの種類を選択してください";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt(seatcount + 3, tableRow);
+                Table1.Rows.AddAt((int)Session["Seatcount"] + 3, tableRow);
                 return;
             }
             if (MailAddressTextbox.Text == "")
@@ -368,7 +408,7 @@ namespace WebApplication1
                 tableCell.Text = "メールアドレスを入力してください";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt(seatcount + 3, tableRow);
+                Table1.Rows.AddAt((int)Session["Seatcount"] + 3, tableRow);
                 return;
             }
             if (FormatCheck.CheckMailAddressFormat(MailAddressTextbox.Text) == false)
@@ -380,21 +420,25 @@ namespace WebApplication1
                 tableCell.Text = "正しいメールアドレスではありません";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt(seatcount + 3, tableRow);
+                Table1.Rows.AddAt((int)Session["Seatcount"] + 3, tableRow);
                 return;
             }
-            Session["BookingMail"] = MailAddressTextbox.Text;
+            Session["BookingMail"] = MailAddressTextbox.Text;//メールアドレス
             //DropDownListで選択されたチケットの種類をSelectedIndexで取得し、各種チケット配列の何番目かを見てそれぞれのSessionに配列(List)として格納する
-            int[] SeatSelectedIndex = new int[seatcount];
-            for (int i = 0; i < seatcount; i++)
+            int[] SeatSelectedIndex = new int[(int)Session["Seatcount"]];
+            for (int i = 0; i < (int)Session["Seatcount"]; i++)
             {
-
+                //TicketDDL[i].SelectedIndexを表示されるチケット配列のにより何個目のDropDownListにおいて何個目のItemが選択されたかを取得できる
+                SelectedTicket tmp;
+                tmp = new SelectedTicket(
+                    displayticketrate[TicketDDL[i].SelectedIndex - 1],
+                    displayticketname[TicketDDL[i].SelectedIndex - 1],
+                    displayeventnumber[TicketDDL[i].SelectedIndex - 1],
+                    displaydefaultnumber[TicketDDL[i].SelectedIndex - 1]
+                    );
+                selectedticketList.Add(tmp);//4つの項目をListに加える
             }
-            /*
-            string[] displayticketname = new string[0];//表示されるチケット名を格納
-            int[] displayticketrate = new int[0];//表示されるチケット料金を格納
-            string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
-            string[] displaydefaultnumber = new string[0];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する*/
+            Session["SelectedTicket"] = selectedticketList;//選択されたチケット情報をSessionに格納して次の画面に遷移する
             Response.Redirect("Reservation_Confirm_Input_Information.aspx");
         }
 

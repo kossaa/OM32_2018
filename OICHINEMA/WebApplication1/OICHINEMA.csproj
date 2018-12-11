@@ -59,13 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BookingDB.accdb" />
-    <Content Include="img\isu.png" />
-    <Content Include="img\isuSentaku.png" />
-    <Content Include="img\tuuro.png" />
-    <Content Include="Schedule.aspx" />
-    <Content Include="ScheduleForm.aspx" />
-    <Content Include="Styles\Style.css" />
+    <Content Include="Image\isu.png" />
+    <Content Include="Image\isuSentaku.png" />
+    <Content Include="Image\tuuro.png" />
     <Content Include="Seat.aspx" />
+    <Content Include="Schedule.aspx" />
+    <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,26 +76,19 @@
     <Compile Include="OICHINEMA.Master.designer.cs">
       <DependentUpon>OICHINEMA.Master</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.aspx.cs">
-      <DependentUpon>Schedule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Schedule.aspx.designer.cs">
-      <DependentUpon>Schedule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ScheduleForm.aspx.cs">
-      <DependentUpon>ScheduleForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ScheduleForm.aspx.designer.cs">
-      <DependentUpon>ScheduleForm.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seat.aspx.cs">
       <DependentUpon>Seat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seat.aspx.designer.cs">
       <DependentUpon>Seat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

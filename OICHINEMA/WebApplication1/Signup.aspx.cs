@@ -258,7 +258,7 @@ namespace WebApplication1
                                 command.Parameters.AddWithValue("@MEMBER_PASS", TextBox11.Text);
                 */
                 /*↓成功*/
-                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + LNameTbx.Text + "','" + FKanaTbx.Text + LKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
+                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + LNameTbx.Text + "','" + FKanaTbx.Text + LKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,0,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
 
                 command = new OleDbCommand(testdate);
 

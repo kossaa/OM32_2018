@@ -189,7 +189,7 @@
         <br />
         <asp:Label ID="Label19" runat="server" Text="パスワード（確認）"></asp:Label>
             <br />
-        <asp:TextBox ID="PassTxb2" CssClass="TextBox" runat="server">abc</asp:TextBox>
+        <asp:TextBox ID="PassTxb2" CssClass="TextBox" runat="server" TextMode="Password">abc</asp:TextBox>
         <br />
         <br />
     </asp:Panel>

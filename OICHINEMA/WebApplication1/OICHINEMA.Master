@@ -32,14 +32,14 @@
                             <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
                             <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
                             <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server" PostBackUrl="~/Signup.aspx">新規登録</asp:LinkButton>
-                            <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server">ログアウト</asp:LinkButton>
+                            <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server" OnClick="LogoutButton_Click">ログアウト</asp:LinkButton>
                         </asp:Panel>
                 </div>
                 <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick" OnMenuItemDataBound="NavigationMenu_MenuItemDataBound">
                           <Items>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ"/>
-                            <asp:MenuItem NavigateUrl="~/Signup.aspx" Text="会員ページ" />
+                            <asp:MenuItem Text="会員ページ" />
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="作品案内"/>
                             <asp:MenuItem NavigateUrl="~/Top.aspx" Text="イベント"/>

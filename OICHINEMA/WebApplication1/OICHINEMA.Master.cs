@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,9 +19,13 @@ namespace WebApplication1
         {
             if (e.Item.Text=="会員ページ")
             {
-                TitleLabel.Text = "ああああああああ?";
                 Session["PageID"] = "Member_MyPage.aspx";
-                e.Item.NavigateUrl = "Member_MyPage.aspx";
+                if(Session["UserID"] != null){//セッションの中身が入ってたら
+                    e.Item.NavigateUrl = "Member_MyPage.aspx";
+                }
+                else{
+                    e.Item.NavigateUrl = "Login.aspx";
+                }
             }
         }
 
@@ -29,9 +34,12 @@ namespace WebApplication1
             e.Item.NavigateUrl = "";
         }
 
-        protected void NavigationMenu_Load(object sender, EventArgs e)
+        protected void LogoutButton_Click(object sender, EventArgs e)
         {
-            
+            //ログアウト処理
+            FormsAuthentication.SignOut();
+            Session["UserNo"] = null;
+            Response.Redirect("Top.aspx");
         }
     }
 }

@@ -5,20 +5,42 @@
 
     <!-- CSS設定 -->
     <style type ="text/css" >
-        .ChoiceSeat{background-color:gray}
-        .FreeSeat{background-color:none}
-        .SoldSeat{background-color:red}
-        .labelScreen {
-            margin-left: 10%;
-            background-color: black;
-            color: white;
-            font: large;
-            }
+        .ChoiceSeat {
+            background-color: gray;
+        }
+        .FreeSeat {
+            background-color: none;
+        }
+        .SoldSeat {
+            background-color: red;
+        }
+        .SeatForm {
+            margin: auto;
+            padding: 80px;
+            width: 700px;
+            background-color: green;
+        }
+        /SeatMain {
+            margin: auto;
+            padding: 60px;
+            width: 700px;
+            background-color: green;
+        }
     </style>
+    
+    <div class="SeatForm"> 
 
     <br />
     <asp:Label ID="LabelChoice" runat="server" Text="選択中の座席" Font-Size="20pt"></asp:Label>
+    
+    <br />
+    <br />
+    &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;
 
+    <div class="SeatMain">
+
+    <asp:Label ID="LabelScreen" runat="server" Text="スクリーン" Font-Size="20pt"></asp:Label>
+    
     <br />
     <br />    
     
@@ -57,7 +79,7 @@
     <asp:ImageButton ID="A04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat" />
     
     <!--　　-->
-    <asp:Image ID="ImageRoad1" runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish1"	runat="server" Text="A"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="A05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     <asp:ImageButton ID="A06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -67,7 +89,7 @@
     <asp:ImageButton ID="A10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     <asp:ImageButton ID="A11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     
-    <asp:Image ID="ImageRoad2" runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish2"	runat="server" Text="A"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="A12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     <asp:ImageButton ID="A13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -81,7 +103,7 @@
 	<asp:ImageButton ID="B03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="B04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad3" runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish3"	runat="server" Text="B"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="B05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="B06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -91,7 +113,7 @@
 	<asp:ImageButton ID="B10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="B11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRpad4" runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish4"	runat="server" Text="B"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="B12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>	    
     <asp:ImageButton ID="B13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -99,14 +121,14 @@
 	<asp:ImageButton ID="B15"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="B16"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 
-
     <br />
+
 	<asp:ImageButton ID="C01" 	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="C02"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="C03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="C04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad5" runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish5"	runat="server" Text="C"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
     
     <asp:ImageButton ID="C05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="C06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -116,7 +138,7 @@
 	<asp:ImageButton ID="C10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="C11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="Imageroad6" runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish6"	runat="server" Text="C"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="C12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="C13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -132,7 +154,7 @@
 	<asp:ImageButton ID="D03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="D04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad7"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish7"	runat="server" Text="D"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
     
     <asp:ImageButton ID="D05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="D06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -142,7 +164,7 @@
 	<asp:ImageButton ID="D10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="D11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad8"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish8"	runat="server" Text="D"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
     
     <asp:ImageButton ID="D12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="D13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -158,7 +180,8 @@
 	<asp:ImageButton ID="E03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="E04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad9"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish9"	runat="server" Text="E"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
+
 
     <asp:ImageButton ID="E05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="E06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -168,7 +191,7 @@
 	<asp:ImageButton ID="E10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="E11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad10"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish10"	runat="server" Text="E"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="E12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="E13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -184,7 +207,7 @@
 	<asp:ImageButton ID="F03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="F04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad11"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish11"	runat="server" Text="F"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="F05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="F06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -194,7 +217,7 @@
 	<asp:ImageButton ID="F10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="F11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad12"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish12"	runat="server" Text="F"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="F12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="F13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -210,7 +233,7 @@
 	<asp:ImageButton ID="G03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="G04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad13"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish13"	runat="server" Text="G"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="G05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="G06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -220,7 +243,7 @@
 	<asp:ImageButton ID="G10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="G11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad14"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish14"	runat="server" Text="G"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="G12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="G13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -231,36 +254,35 @@
     
     <br />
 
-    <asp:Image ID="ImageRoad15"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad16"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad17"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad18"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad19"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad20"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad21"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad22"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad23"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad24"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad25"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad26"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad27"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad28"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad29"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad30"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad31"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad32"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad33"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
-    <asp:Image ID="ImageRoad34"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>    
+    <asp:Label ID="LabelNumber19"	runat="server" Text="1"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber20"	runat="server" Text="2"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber21"	runat="server" Text="3"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber22"	runat="server" Text="4"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber23"	runat="server" Text=" "	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber24"	runat="server" Text="5"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber25"	runat="server" Text="6"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber26"	runat="server" Text="7"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber27"	runat="server" Text="8"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber28"	runat="server" Text="9"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber29"	runat="server" Text="10"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber30"	runat="server" Text="11"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber31"	runat="server" Text=" "	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber32"	runat="server" Text="12"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber33"	runat="server" Text="13"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber34"	runat="server" Text="14"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber35"	runat="server" Text="15"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber36"	runat="server" Text="16"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber37"	runat="server" Text="17"	Width="30" Height="30" style="text-align: center"></asp:Label>
+    <asp:Label ID="LabelNumber38"	runat="server" Text="18"	Width="30" Height="30" style="text-align: center"></asp:Label>
 
     <br />
-
 
 	<asp:ImageButton ID="H01" 	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="H02"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="H03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="H04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad35"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish15"	runat="server" Text="H"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="H05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="H06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -270,7 +292,7 @@
 	<asp:ImageButton ID="H10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="H11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad36"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish16"	runat="server" Text="H"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="H12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="H13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -287,7 +309,7 @@
 	<asp:ImageButton ID="I03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="I04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad37"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish17"	runat="server" Text="I"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="I05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="I06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -297,7 +319,7 @@
 	<asp:ImageButton ID="I10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="I11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	    
-    <asp:Image ID="ImageRoad38"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish18"	runat="server" Text="I"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="I12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="I13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -314,7 +336,7 @@
 	<asp:ImageButton ID="J03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="J04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad39"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish19"	runat="server" Text="J"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="J05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="J06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -324,7 +346,8 @@
 	<asp:ImageButton ID="J10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="J11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad40"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish20"	runat="server" Text="J"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
+
 
     <asp:ImageButton ID="J12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="J13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -341,7 +364,7 @@
 	<asp:ImageButton ID="K03"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="K04"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	    
-    <asp:Image ID="ImageRoad41"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish21"	runat="server" Text="K"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
     
     <asp:ImageButton ID="K05"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="K06"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -351,7 +374,7 @@
 	<asp:ImageButton ID="K10"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="K11"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	
-    <asp:Image ID="ImageRoad42"	runat="server" ImageUrl="/Image/tuuro.png" Width="30" Height="30"/>
+    <asp:Label ID="LabelEnglish22"	runat="server" Text="K"	Width="30" Height="30" style="text-align: center" CssClass="FreeSeat"></asp:Label>
 
     <asp:ImageButton ID="K12"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="K13"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
@@ -361,29 +384,21 @@
 	<asp:ImageButton ID="K17"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
 	<asp:ImageButton ID="K18"	runat="server" ImageUrl="/Image/isu.png" Width="30" Height="30" OnClick="ImageBtn_Click" CssClass="FreeSeat"/>
     
+    </div>
     <br />
     <br />
 
-    &emsp;
-    &emsp;
-    &emsp;
-    &emsp;
-    &emsp;
-    &emsp;
+    &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;
 
     <asp:Button ID="BtnNext" runat="server" Text="次へ" Height="50px" Width="100px" OnClick="BtnNext_Click" />
 
-    &emsp;
-    &emsp;
-    &emsp;
-    &emsp;
-    &emsp;
-    &emsp;
-
+    &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;
+ 
     <asp:Button ID="BtnBack" runat="server" Text="戻る" Height="50px" Width="100px" OnClick="BtnBack_Click" /> 
     
     <br />
     <br />
 
+    </div>
 
 </asp:Content>

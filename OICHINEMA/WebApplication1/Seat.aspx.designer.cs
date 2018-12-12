@@ -22,6 +22,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label LabelChoice;
         
         /// <summary>
+        /// LabelScreen コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelScreen;
+        
+        /// <summary>
         /// LabelNumber1 コントロール。
         /// </summary>
         /// <remarks>
@@ -238,13 +247,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton A04;
         
         /// <summary>
-        /// ImageRoad1 コントロール。
+        /// LabelEnglish1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad1;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish1;
         
         /// <summary>
         /// A05 コントロール。
@@ -310,13 +319,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton A11;
         
         /// <summary>
-        /// ImageRoad2 コントロール。
+        /// LabelEnglish2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad2;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish2;
         
         /// <summary>
         /// A12 コントロール。
@@ -391,13 +400,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton B04;
         
         /// <summary>
-        /// ImageRoad3 コントロール。
+        /// LabelEnglish3 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad3;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish3;
         
         /// <summary>
         /// B05 コントロール。
@@ -463,13 +472,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton B11;
         
         /// <summary>
-        /// ImageRpad4 コントロール。
+        /// LabelEnglish4 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRpad4;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish4;
         
         /// <summary>
         /// B12 コントロール。
@@ -553,13 +562,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton C04;
         
         /// <summary>
-        /// ImageRoad5 コントロール。
+        /// LabelEnglish5 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad5;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish5;
         
         /// <summary>
         /// C05 コントロール。
@@ -625,13 +634,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton C11;
         
         /// <summary>
-        /// Imageroad6 コントロール。
+        /// LabelEnglish6 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Imageroad6;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish6;
         
         /// <summary>
         /// C12 コントロール。
@@ -724,13 +733,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton D04;
         
         /// <summary>
-        /// ImageRoad7 コントロール。
+        /// LabelEnglish7 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad7;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish7;
         
         /// <summary>
         /// D05 コントロール。
@@ -796,13 +805,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton D11;
         
         /// <summary>
-        /// ImageRoad8 コントロール。
+        /// LabelEnglish8 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad8;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish8;
         
         /// <summary>
         /// D12 コントロール。
@@ -895,13 +904,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton E04;
         
         /// <summary>
-        /// ImageRoad9 コントロール。
+        /// LabelEnglish9 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad9;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish9;
         
         /// <summary>
         /// E05 コントロール。
@@ -967,13 +976,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton E11;
         
         /// <summary>
-        /// ImageRoad10 コントロール。
+        /// LabelEnglish10 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad10;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish10;
         
         /// <summary>
         /// E12 コントロール。
@@ -1066,13 +1075,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton F04;
         
         /// <summary>
-        /// ImageRoad11 コントロール。
+        /// LabelEnglish11 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad11;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish11;
         
         /// <summary>
         /// F05 コントロール。
@@ -1138,13 +1147,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton F11;
         
         /// <summary>
-        /// ImageRoad12 コントロール。
+        /// LabelEnglish12 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad12;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish12;
         
         /// <summary>
         /// F12 コントロール。
@@ -1237,13 +1246,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton G04;
         
         /// <summary>
-        /// ImageRoad13 コントロール。
+        /// LabelEnglish13 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad13;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish13;
         
         /// <summary>
         /// G05 コントロール。
@@ -1309,13 +1318,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton G11;
         
         /// <summary>
-        /// ImageRoad14 コントロール。
+        /// LabelEnglish14 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad14;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish14;
         
         /// <summary>
         /// G12 コントロール。
@@ -1372,184 +1381,184 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton G17;
         
         /// <summary>
-        /// ImageRoad15 コントロール。
+        /// LabelNumber19 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad15;
+        protected global::System.Web.UI.WebControls.Label LabelNumber19;
         
         /// <summary>
-        /// ImageRoad16 コントロール。
+        /// LabelNumber20 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad16;
+        protected global::System.Web.UI.WebControls.Label LabelNumber20;
         
         /// <summary>
-        /// ImageRoad17 コントロール。
+        /// LabelNumber21 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad17;
+        protected global::System.Web.UI.WebControls.Label LabelNumber21;
         
         /// <summary>
-        /// ImageRoad18 コントロール。
+        /// LabelNumber22 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad18;
+        protected global::System.Web.UI.WebControls.Label LabelNumber22;
         
         /// <summary>
-        /// ImageRoad19 コントロール。
+        /// LabelNumber23 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad19;
+        protected global::System.Web.UI.WebControls.Label LabelNumber23;
         
         /// <summary>
-        /// ImageRoad20 コントロール。
+        /// LabelNumber24 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad20;
+        protected global::System.Web.UI.WebControls.Label LabelNumber24;
         
         /// <summary>
-        /// ImageRoad21 コントロール。
+        /// LabelNumber25 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad21;
+        protected global::System.Web.UI.WebControls.Label LabelNumber25;
         
         /// <summary>
-        /// ImageRoad22 コントロール。
+        /// LabelNumber26 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad22;
+        protected global::System.Web.UI.WebControls.Label LabelNumber26;
         
         /// <summary>
-        /// ImageRoad23 コントロール。
+        /// LabelNumber27 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad23;
+        protected global::System.Web.UI.WebControls.Label LabelNumber27;
         
         /// <summary>
-        /// ImageRoad24 コントロール。
+        /// LabelNumber28 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad24;
+        protected global::System.Web.UI.WebControls.Label LabelNumber28;
         
         /// <summary>
-        /// ImageRoad25 コントロール。
+        /// LabelNumber29 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad25;
+        protected global::System.Web.UI.WebControls.Label LabelNumber29;
         
         /// <summary>
-        /// ImageRoad26 コントロール。
+        /// LabelNumber30 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad26;
+        protected global::System.Web.UI.WebControls.Label LabelNumber30;
         
         /// <summary>
-        /// ImageRoad27 コントロール。
+        /// LabelNumber31 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad27;
+        protected global::System.Web.UI.WebControls.Label LabelNumber31;
         
         /// <summary>
-        /// ImageRoad28 コントロール。
+        /// LabelNumber32 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad28;
+        protected global::System.Web.UI.WebControls.Label LabelNumber32;
         
         /// <summary>
-        /// ImageRoad29 コントロール。
+        /// LabelNumber33 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad29;
+        protected global::System.Web.UI.WebControls.Label LabelNumber33;
         
         /// <summary>
-        /// ImageRoad30 コントロール。
+        /// LabelNumber34 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad30;
+        protected global::System.Web.UI.WebControls.Label LabelNumber34;
         
         /// <summary>
-        /// ImageRoad31 コントロール。
+        /// LabelNumber35 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad31;
+        protected global::System.Web.UI.WebControls.Label LabelNumber35;
         
         /// <summary>
-        /// ImageRoad32 コントロール。
+        /// LabelNumber36 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad32;
+        protected global::System.Web.UI.WebControls.Label LabelNumber36;
         
         /// <summary>
-        /// ImageRoad33 コントロール。
+        /// LabelNumber37 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad33;
+        protected global::System.Web.UI.WebControls.Label LabelNumber37;
         
         /// <summary>
-        /// ImageRoad34 コントロール。
+        /// LabelNumber38 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad34;
+        protected global::System.Web.UI.WebControls.Label LabelNumber38;
         
         /// <summary>
         /// H01 コントロール。
@@ -1588,13 +1597,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton H04;
         
         /// <summary>
-        /// ImageRoad35 コントロール。
+        /// LabelEnglish15 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad35;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish15;
         
         /// <summary>
         /// H05 コントロール。
@@ -1660,13 +1669,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton H11;
         
         /// <summary>
-        /// ImageRoad36 コントロール。
+        /// LabelEnglish16 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad36;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish16;
         
         /// <summary>
         /// H12 コントロール。
@@ -1768,13 +1777,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton I04;
         
         /// <summary>
-        /// ImageRoad37 コントロール。
+        /// LabelEnglish17 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad37;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish17;
         
         /// <summary>
         /// I05 コントロール。
@@ -1840,13 +1849,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton I11;
         
         /// <summary>
-        /// ImageRoad38 コントロール。
+        /// LabelEnglish18 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad38;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish18;
         
         /// <summary>
         /// I12 コントロール。
@@ -1948,13 +1957,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton J04;
         
         /// <summary>
-        /// ImageRoad39 コントロール。
+        /// LabelEnglish19 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad39;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish19;
         
         /// <summary>
         /// J05 コントロール。
@@ -2020,13 +2029,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton J11;
         
         /// <summary>
-        /// ImageRoad40 コントロール。
+        /// LabelEnglish20 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad40;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish20;
         
         /// <summary>
         /// J12 コントロール。
@@ -2128,13 +2137,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton K04;
         
         /// <summary>
-        /// ImageRoad41 コントロール。
+        /// LabelEnglish21 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad41;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish21;
         
         /// <summary>
         /// K05 コントロール。
@@ -2200,13 +2209,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.ImageButton K11;
         
         /// <summary>
-        /// ImageRoad42 コントロール。
+        /// LabelEnglish22 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageRoad42;
+        protected global::System.Web.UI.WebControls.Label LabelEnglish22;
         
         /// <summary>
         /// K12 コントロール。

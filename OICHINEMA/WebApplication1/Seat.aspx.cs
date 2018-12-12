@@ -107,7 +107,8 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             //　　if (IsPostBack)  {return ;}
-            
+
+
             //スケジュールID設定(仮)
             Session["ScheduleID"] = "0000002";
             //座席の予約済みを取得し昇順で表示

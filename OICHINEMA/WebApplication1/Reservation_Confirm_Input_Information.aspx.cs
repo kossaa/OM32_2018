@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,30 +15,26 @@ namespace WebApplication1
         List<string> seatList = new List<string>();//座席選択画面から引き継いだ座席情報を格納
         List<SelectedTicket> selectedticketList = new List<SelectedTicket>();//チケット選択画面から引き継いだ選択されたチケット情報を格納
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["ScheduleID"] = "0000004";//結合準備
-            
-            
-            
-            
-            if (Session["ScheduleID"] == null)
+            if ((string)Session["PageID"] != "Reservation_Ticket_Selection")//正規の手順でこのフォームを表示しなかった場合
             {
-                Response.Redirect("Schedule.aspx");//スケジュール画面に飛ぶ
+                //各Sessionのクリア
+                Session.Remove("ScheduleID");
+                Session.Remove("ScheduleEnd");
+                Session.Remove("BookingMail");
+                Session.Remove("SeatInformation");
+                Session.Remove("SelectedTicket");
+                Session.Remove("WorkName");
+                Session.Remove("ScheduleStart");
+                Response.Redirect("https://www.yahoo.co.jp/");
+                //Response.Redirect("Schedule.aspx");//TOP画面に飛ぶ
                 return;
             }
-            if (Session["SeatInformation"] == null || Session["SelectedTicket"] == null)
-            {
-                Response.Redirect("Reservation_Ticket_Selection.aspx");//チケット選択画面に飛ぶ
-                return;
-            }
-            //画面結合時に前の画面からデータを継承する
-            //継承内容
-            //座席番号 スケジュール番号 チケットデータ一式 会員番号 メールアドレス
+            Session["PageID"] = "Reservation_Confirm_Input_Information";
             seatList = (List<string>)Session["SeatInformation"];//Sessionに格納されてる選択された座席情報を使えるようにseatListに展開する
             selectedticketList = (List<SelectedTicket>)Session["SelectedTicket"];//引き継いだ選択されたチケット情報を格納する
-            
+
             TableRow tableRow;
             TableCell tableCell;
 
@@ -45,17 +43,26 @@ namespace WebApplication1
             tableCell.Text = "上映タイトル：";
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();
-            tableCell.Text = "セル2";
+            tableCell.Text = (string)Session["WorkName"];
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);
-            
+
             tableRow = new TableRow();
             tableCell = new TableCell();
             tableCell.Text = "氏名：";
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();
-            tableCell.Text = "セルB";
+            if ((string)Session["MemberID"] != "")//ログインされていたら会員番号から会員名を取り出して表示する
+            {
+                OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+                OleDbDataAdapter daRate = new OleDbDataAdapter("SELECT MEMBER_NAME FROM TBL_RATE WHERE MEMBER_ID='" + (string)Session["MemberID"] + "'", cn);
+                DataTable dtRate = new DataTable();
+                daRate.Fill(dtRate);
+                tableCell.Text = dtRate.Rows[0][0].ToString();
+            }
+            else
+                tableCell.Text = "ログインされていません";
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);
@@ -65,7 +72,7 @@ namespace WebApplication1
             tableCell.Text = "上映予定日時：";
             tableRow.Cells.Add(tableCell);
             tableCell = new TableCell();
-            tableCell.Text = "8888年88月88日 88時88分～8888年88月88日 88時88分";
+            tableCell.Text = ((DateTime)Session["ScheduleStart"]).ToString("yyyy年M月d日 H時m分") + "～" + ((DateTime)Session["ScheduleEnd"]).ToString("yyyy年M月d日 H時m分");
             tableCell.ColumnSpan = 2;
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
@@ -137,7 +144,7 @@ namespace WebApplication1
             Table1.Rows.Add(tableRow);
 
             tableRow = new TableRow();
-            tableCell=new TableCell();
+            tableCell = new TableCell();
             Button BackBtn = new Button();
             BackBtn.Text = "戻る";
             BackBtn.Click += new System.EventHandler(this.BackBtn_Click);

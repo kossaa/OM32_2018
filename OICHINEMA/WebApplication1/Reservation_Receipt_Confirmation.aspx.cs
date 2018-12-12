@@ -11,16 +11,22 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((string)Session["PageID"] != "Reservation_Ticket_Selection")
+            {
+                Response.Redirect("https://www.yahoo.co.jp/");
+                //Response.Redirect("Schedule.aspx");//TOP画面に飛ぶ
+                return;
+            }
             BookingIDLabel.Text = "予約番号：";
             BookingMailAddressLabel.Text = Session["BookingMail"].ToString()+"にメールを送信しました";
             //各Sessionのクリア
             Session.Remove("ScheduleID");
             Session.Remove("ScheduleEnd");
-            Session.Remove("MemberID");
             Session.Remove("BookingMail");
             Session.Remove("SeatInformation");
-            Session.Remove("Seatcount");
             Session.Remove("SelectedTicket");
+            Session.Remove("WorkName");
+            Session.Remove("ScheduleStart");
         }
     }
 }

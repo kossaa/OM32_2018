@@ -165,16 +165,34 @@ namespace WebApplication1
             seatList.Add("c5");
             seatList.Add("c6");
             Session["SeatInformation"] = seatList;
+            Session["ScheduleStart"] = DateTime.Parse("2019/12/29 12:20:00");
+            Session["WorkName"] = "アベンジャーズ／インフィニティ・ウォー";
 
 
 
             //画面結合時に前の画面からデータを継承する
             //ログイン中の場合会員情報を取得する
             //seatList = (List<string>)Session["seatInfomation"];//Sessionに格納されてる選択された座席情報を使えるようにseatListに展開する
-            Session["Seatcount"] = seatList.Count;//継承した予約席数を格納する
             /************************************/
             /****ここからロードイベントの本体****/
             /************************************/
+            /*
+            if ((string)Session["PageID"] != "Seat")//正規の手順でこのフォームを表示しなかった場合
+            {
+                //各Sessionのクリア
+                Session.Remove("ScheduleID");
+                Session.Remove("ScheduleEnd");
+                Session.Remove("BookingMail");
+                Session.Remove("SeatInformation");
+                Session.Remove("SelectedTicket");
+                Session.Remove("WorkName");
+                Session.Remove("ScheduleStart");
+                Response.Redirect("https://www.yahoo.co.jp/");
+                //Response.Redirect("Schedule.aspx");//TOP画面に飛ぶ
+                return;
+            }
+             * */
+
             DateTime time = (DateTime)Session["ScheduleEnd"];
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             //イベントテーブル
@@ -396,7 +414,7 @@ namespace WebApplication1
                 tableCell.Text = "チケットの種類を選択してください";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt((int)Session["Seatcount"] + 3, tableRow);
+                Table1.Rows.AddAt(seatList.Count + 3, tableRow);
                 return;
             }
             if (MailAddressTextbox.Text == "")
@@ -408,7 +426,7 @@ namespace WebApplication1
                 tableCell.Text = "メールアドレスを入力してください";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt((int)Session["Seatcount"] + 3, tableRow);
+                Table1.Rows.AddAt(seatList.Count + 3, tableRow);
                 return;
             }
             if (FormatCheck.CheckMailAddressFormat(MailAddressTextbox.Text) == false)
@@ -420,13 +438,13 @@ namespace WebApplication1
                 tableCell.Text = "正しいメールアドレスではありません";
                 tableCell.ColumnSpan = 2;
                 tableRow.Cells.Add(tableCell);
-                Table1.Rows.AddAt((int)Session["Seatcount"] + 3, tableRow);
+                Table1.Rows.AddAt(seatList.Count + 3, tableRow);
                 return;
             }
             Session["BookingMail"] = MailAddressTextbox.Text;//メールアドレス
             //DropDownListで選択されたチケットの種類をSelectedIndexで取得し、各種チケット配列の何番目かを見てそれぞれのSessionに配列(List)として格納する
-            int[] SeatSelectedIndex = new int[(int)Session["Seatcount"]];
-            for (int i = 0; i < (int)Session["Seatcount"]; i++)
+            int[] SeatSelectedIndex = new int[seatList.Count];
+            for (int i = 0; i < seatList.Count; i++)
             {
                 //TicketDDL[i].SelectedIndexを表示されるチケット配列のにより何個目のDropDownListにおいて何個目のItemが選択されたかを取得できる
                 SelectedTicket tmp;

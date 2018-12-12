@@ -94,6 +94,7 @@
     <Compile Include="Reservation_Confirm_Input_Information.aspx.designer.cs">
       <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SQLWhereMaker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="OICHINEMA.Master" />

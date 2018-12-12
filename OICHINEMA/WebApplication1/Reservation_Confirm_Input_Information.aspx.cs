@@ -166,6 +166,28 @@ namespace WebApplication1
 
         protected void AcceptBtn_Click(object sender, EventArgs e)
         {
+            seatList = (List<string>)Session["SeatInformation"];//Sessionに格納されてる選択された座席情報を使えるようにseatListに展開する
+            selectedticketList = (List<SelectedTicket>)Session["SelectedTicket"];//引き継いだ選択されたチケット情報を格納する
+            //仮予約テーブルの該当する席を削除する
+            OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+            OleDbDataAdapter daTemporary = new OleDbDataAdapter("DELETE FROM TBL_TEMPORARY WHERE TEMPORARY_SCHEDULE='" + (string)Session["ScheduleID"] + "'" + SQLWhereMaker.SQLMakeAND(seatList, "TEMPORARY_SEAT"), cn);
+            DataTable dtTemporary = new DataTable();
+            daTemporary.Fill(dtTemporary);
+            //ログイン中の時に会員テーブルのポイントの更新
+            if ((string)Session["MemberID"] != "")
+            {
+                int SUMPoint = 0;
+                for (int i = 0; i < selectedticketList.Count; i++)
+                {
+                    if (selectedticketList[i].ticketName == "6ポイントで一回無料")
+                        SUMPoint -= 6;
+                    else
+                        SUMPoint += 1;
+                }
+                OleDbDataAdapter daMember = new OleDbDataAdapter("UPDATE TBL_MEMBER SET MEMBER_POINT = MEMBER_POINT +" + SUMPoint + "  WHERE MEMBER_ID='" + (string)Session["MemberID"] + "'", cn);
+                DataTable dtMember = new DataTable();
+                daMember.Fill(dtMember);
+            }
             Response.Redirect("Reservation_Receipt_Confirmation.aspx");
         }
     }

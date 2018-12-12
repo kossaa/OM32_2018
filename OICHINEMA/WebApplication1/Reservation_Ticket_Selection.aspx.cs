@@ -135,7 +135,6 @@ namespace WebApplication1
     public partial class Reservation_Ticket_Selection : System.Web.UI.Page
     {
         const int Cell2Width = 300;
-        string UserID = "";//ログイン時はユーザーのログインIDが格納される
         Button BackBtn = new Button();
         Button NextBtn = new Button();
         TextBox MailAddressTextbox = new TextBox();
@@ -192,7 +191,7 @@ namespace WebApplication1
                 return;
             }
              * */
-
+            Session["PageID"] = "Reservation_Ticket_Selection";
             DateTime time = (DateTime)Session["ScheduleEnd"];
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             //イベントテーブル
@@ -335,7 +334,7 @@ namespace WebApplication1
                 tableRow.Cells.Add(tableCell);
                 Table1.Rows.Add(tableRow);
             }
-            if (UserID == "")
+            if ((string)Session["MemberID"] == "")
             {
                 tableRow = new TableRow();
                 tableCell = new TableCell();

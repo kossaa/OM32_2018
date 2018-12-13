@@ -16,3 +16,9 @@ C:\Users\b6116\Desktop\OM32_2018-Sakurai\OM32_2018-Sakurai\OICHINEMA\WebApplicat
 \\stusrv\作業\B6\B6116\OM32_2018-Sakurai\OM32_2018-Sakurai\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
 \\stusrv\作業\B6\B6116\OM32_2018-Sakurai\OM32_2018-Sakurai\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
 \\stusrv\作業\B6\B6116\OM32_2018-Sakurai\OM32_2018-Sakurai\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\b6116\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\b6116\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\b6116\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\b6116\Desktop\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+C:\Users\b6116\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\b6116\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

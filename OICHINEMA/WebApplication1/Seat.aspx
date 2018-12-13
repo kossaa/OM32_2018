@@ -15,21 +15,20 @@
             background-color: red;
         }
         .SeatForm {
-            margin: auto;
-            padding: 80px;
             width: 700px;
-            background-color: green;
+            margin: auto;
+            padding: 30px;
+            background: silver;
         }
-        /SeatMain {
+        .SeatMain {
+            width: 100%;
             margin: auto;
-            padding: 60px;
-            width: 700px;
-            background-color: green;
+            padding: 10px;
+            background: green;
         }
     </style>
     
     <div class="SeatForm"> 
-
     <br />
     <asp:Label ID="LabelChoice" runat="server" Text="選択中の座席" Font-Size="20pt"></asp:Label>
     
@@ -41,9 +40,8 @@
 
     <asp:Label ID="LabelScreen" runat="server" Text="スクリーン" Font-Size="20pt"></asp:Label>
     
-    <br />
-    <br />    
-    
+    <br />    <br />    <br />    <br />
+            
     <asp:Label ID="LabelNumber1" runat="server" Text="1" Width="30" Height="30" style="text-align: center"></asp:Label>
     <asp:Label ID="LabelNumber2" runat="server" Text="2" Width="30" Height="30" style="text-align: center"></asp:Label>
     <asp:Label ID="LabelNumber3" runat="server" Text="3" Width="30" Height="30" style="text-align: center"></asp:Label>
@@ -69,6 +67,7 @@
     <asp:Label ID="LabelNumber17" runat="server" Text="17" Width="30" Height="30" style="text-align: center"></asp:Label>
     <asp:Label ID="LabelNumber18" runat="server" Text="18" Width="30" Height="30" style="text-align: center"></asp:Label>
             
+    <asp:Label ID="LabelInOut" runat="server" Text="出入口" Font-Size="20pt" Width="30" Height="30"></asp:Label>
     <br />
     
     <!--　計188席　-->

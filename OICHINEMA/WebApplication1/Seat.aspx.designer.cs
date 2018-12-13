@@ -211,6 +211,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label LabelNumber18;
         
         /// <summary>
+        /// LabelInOut コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelInOut;
+        
+        /// <summary>
         /// A01 コントロール。
         /// </summary>
         /// <remarks>

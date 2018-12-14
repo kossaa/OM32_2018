@@ -61,6 +61,7 @@
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="App_Data\POSTADR.accdb" />
     <Content Include="Image\avengers.JPG" />
+    <Content Include="Image\OICHINEMA.jpg" />
     <Content Include="Image\アクセス画像.jpg" />
     <Content Include="Signup.aspx" />
     <Content Include="Styles\Style.css" />

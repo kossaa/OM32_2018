@@ -116,7 +116,7 @@ namespace WebApplication1
         /*====================================================
          * 会員番号の最大値を取得して新しい会員のIDを作成する
          =====================================================*/
-        private string getNewMaxMemberId(){
+            private string getNewMaxMemberId(){
             OleDbCommand getNIDcommand = new OleDbCommand();
             DataTable dt = new DataTable();
             OleDbDataAdapter da = new OleDbDataAdapter();
@@ -225,6 +225,7 @@ namespace WebApplication1
                 //                                             "VALUES ('@MEMBER_ID','@MEMBER_NAME','@MEMBER_KANA','@MEMBER_POST','@MEMBER_ADR1','@MEMBER_ADR2',@MEMBER_BIRTH,'@MEMBER_TEL','@MEMBER_GENDER',#@MEMBER_DAY#,@MEMBER_POINT,'@MEMBER_MAIL','@MEMBER_PASS')";
 
                 OleDbCommand command = new OleDbCommand();
+
 
                 //Insertコマンドの値をcommandに指定
                 //command = new OleDbCommand(InsertStr);

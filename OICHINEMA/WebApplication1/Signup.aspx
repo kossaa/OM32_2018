@@ -196,7 +196,7 @@
 
         <asp:Panel ID="Panel11" runat="server">
         <asp:Button ID="EnterBtn" CssClass="EnterButton" runat="server" Text="確定" OnClick="EnterBtn_Click" />
-        <asp:Label ID="messageLabel" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="messageLabel" runat="server" Text="Label" Visible="False"></asp:Label>
         </asp:Panel>
 
 

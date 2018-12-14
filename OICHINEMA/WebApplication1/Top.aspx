@@ -3,7 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="Body">
-        <asp:ImageButton ID="ImageButton1" CssClass="AdImage" runat="server" ImageUrl="~/Image/avengers.JPG"/>
+
+        <asp:Panel CssClass="" ID="Panel2" runat="server">
+                    <asp:ImageButton ID="ImageButton1" CssClass="AdImage" runat="server" ImageUrl="~/Image/OICHINEMA.jpg"/>
+        </asp:Panel>
         <div class="GridView">
             <div class="MainMovie">
                 <asp:Label ID="Label2" CssClass="MainMText" runat="server" Width="180px">注目の映画</asp:Label>

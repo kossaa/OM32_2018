@@ -31,7 +31,7 @@
                         <asp:Panel ID="Panel1" CssClass="Login" runat="server">
                             <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
                             <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
-                            <asp:LinkButton CssClass="SignupButton" ID="Signup" runat="server" PostBackUrl="~/Signup.aspx">新規登録</asp:LinkButton>
+                            <asp:LinkButton CssClass="SignupButton" ID="SignupButton" runat="server" PostBackUrl="~/Signup.aspx">新規登録</asp:LinkButton>
                             <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server" OnClick="LogoutButton_Click">ログアウト</asp:LinkButton>
                         </asp:Panel>
                 </div>

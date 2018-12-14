@@ -78,12 +78,10 @@
             .TODOHUKEN, .CHOUSON-BANTI {
                 clear: both;
             }
-
             .SI-KU-GUN {
                 float: left;
                 clear: both;
             }
-
             @media screen and (max-width: 620px){
                 .KanaPanel{
                     float:left;

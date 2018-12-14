@@ -7,7 +7,12 @@
         <div class="GridView">
             <div class="MainMovie">
                 <asp:Label ID="Label2" CssClass="MainMText" runat="server" Width="180px">注目の映画</asp:Label>
-                <asp:GridView CssClass="MainMovieInfo" runat="server"></asp:GridView>
+                <asp:GridView CssClass="MainMovieInfo" runat="server" AutoGenerateColumns="False" DataSourceID="BookingRanking">
+                    <Columns>
+                        <asp:BoundField DataField="WORK_NAME" HeaderText="映画タイトル" SortExpression="WORK_NAME" />
+                    </Columns>
+                </asp:GridView>
+                <asp:SqlDataSource ID="BookingRanking" runat="server" ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\BookingDB.accdb" ProviderName="System.Data.OleDb" SelectCommand="SELECT [WORK_NAME] FROM [QBookingRanking]"></asp:SqlDataSource>
             </div>
 
             <div class="Price">

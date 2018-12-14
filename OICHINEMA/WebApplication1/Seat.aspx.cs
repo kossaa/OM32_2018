@@ -100,14 +100,21 @@ namespace WebApplication1
             }
             seatChoice = seatChoice + "が選択中です";
             //ラベルに表示
-            LabelChoice.Text = seatChoice;
-        
+            LabelChoice.Text = seatChoice;        
         }
         //ロード時
         protected void Page_Load(object sender, EventArgs e)
         {
-            //　　if (IsPostBack)  {return ;}
-
+            //マスターからセションクリアする関数を実行する
+            //前のスケジュール画面以外から飛んできた場合
+            /*
+            if((string)Session["PageID"] != "Schedule" && !IsPostBack)
+            {
+                //トップへ飛ぶ
+                Response.Redirect("Top.aspx");
+                return;
+            }
+            */
 
             //スケジュールID設定(仮)
             Session["ScheduleID"] = "0000002";
@@ -184,19 +191,30 @@ namespace WebApplication1
                 daBookingInfo.Fill(dtBookingIn);
             }
             //Session2個必要。座席画面用と予約画面用を作成
-            //this
-            //----------12/11-------------
-            Session["ThisSchedule"] = "0000002";
-            Session.Remove("ThisSchedule");
-
+            Session["ThisSeat"] = "0000002";
+            Session.Remove("ThisSeat");
 
             //次の（チケット選択）画面に行く
-            //
+            Response.Redirect("Reservation_Ticket_Selection");
         }
         protected void BtnBack_Click(object sender, EventArgs e)
         {
             //スケジュール画面に戻る
-            //
+            Response.Redirect("Schedule.aspx");
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+          
+        }
+        window.onunload = function() 
+            {
+                alert('Back buttom is pushed ??');
+                location.replace(document.location);
+               <script type="text/javascript">
+    function goNextPage() {
+        window.onunload = null;
+    };
+</script>
     }
 }

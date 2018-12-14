@@ -60,8 +60,6 @@
   <ItemGroup>
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="Image\isu.png" />
-    <Content Include="Image\isuSentaku.png" />
-    <Content Include="Image\tuuro.png" />
     <Content Include="Seat.aspx" />
     <Content Include="Schedule.aspx" />
     <Content Include="Styles\Style.css" />
@@ -100,6 +98,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

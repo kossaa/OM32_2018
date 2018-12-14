@@ -61,12 +61,16 @@
     <Content Include="Login.aspx" />
     <Content Include="Member_info_alter.aspx" />
     <Content Include="Member_MyPage.aspx" />
+    <Content Include="Member_pass_alter.aspx" />
+    <Content Include="Member_pass_alter2.aspx" />
     <Content Include="Styles\Style.css" />
+    <Content Include="Top.aspx" />
     <Content Include="Web.config" />
     <Content Include="Schedule.aspx" />
     <Content Include="Member_BookingLog.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvalidInputEventArgs.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,6 +92,21 @@
     <Compile Include="Member_MyPage.aspx.designer.cs">
       <DependentUpon>Member_MyPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Member_pass_alter.aspx.cs">
+      <DependentUpon>Member_pass_alter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_pass_alter.aspx.designer.cs">
+      <DependentUpon>Member_pass_alter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member_pass_alter2.aspx.cs">
+      <DependentUpon>Member_pass_alter2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_pass_alter2.aspx.designer.cs">
+      <DependentUpon>Member_pass_alter2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OnClientClickreturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OICHINEMA.Master.cs">
       <DependentUpon>OICHINEMA.Master</DependentUpon>
@@ -110,6 +129,13 @@
     <Compile Include="Member_BookingLog.aspx.designer.cs">
       <DependentUpon>Member_BookingLog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Top.aspx.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Top.aspx.designer.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="OICHINEMA.Master" />
@@ -120,9 +146,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Member_Page\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,8 +13,8 @@ namespace WebApplication1
 {
     public partial class Member_info_alter : System.Web.UI.Page
     {
-        //bool memname = false,memnamekana = false,memgender = false,membirthyear = false,membirthmonth = false,membirthday = false,mempost = false,memadr = false,memtel = false,memmail = false;
-        //bool memname , memnamekana , memgender , membirthyear , membirthmonth , membirthday , mempost , memadr , memtel,memmail;
+        int year = 1900,month = 1;
+        
         bool flg;
 
         OleDbConnection cn = new OleDbConnection();
@@ -25,22 +26,34 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
+                //必要な変数を宣言する
+                DateTime dtNow = DateTime.Now;
+
+                //年 (Year) を取得する
+                int maxyear = dtNow.Year;
+
+                //今年までの年を作る
+                for (year = 1900; year <= maxyear; year++)
+                {
+                    membirthyear_ddl.Items.Add(year.ToString());
+                }
+
                 datelord();
+
+                //年と月を変数に入れる
+                year = int.Parse(membirthyear_ddl.SelectedValue);
+                month = int.Parse(membirthmonth_ddl.SelectedValue);
+
+                //日数を取得する
+                int iDaysInMonth = DateTime.DaysInMonth(year, month);
+                for (int iday = 1; iday <= iDaysInMonth; iday++)
+                {
+                    membirthday_ddl.Items.Add(iday.ToString());
+                }
+
+                membirthday_ddl.SelectedValue = (string)Session["MemBirthDay"];
+
             }
-
-            /*
-            
-
-
-
-            //membirthyear_ddl.Text = dt.Rows[0][3].ToString();
-            //membirthmonth_ddl.Text = dt.Rows[0][4].ToString();
-            //membirthday_ddl.Text = dt.Rows[0][5].ToString();
-            mempost_tb.Text = dt.Rows[0][4].ToString();
-            memadr_tb.Text = dt.Rows[0][5].ToString();
-            memtel_tb.Text = dt.Rows[0][6].ToString();
-            memmail_tb.Text = dt.Rows[0][7].ToString();
-            */
         }
 
         protected void memname_tb_TextChanged(object sender, EventArgs e)
@@ -61,11 +74,37 @@ namespace WebApplication1
         protected void membirthyear_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
             flg = true;
+
+            //年と月を変数に入れる
+            year = int.Parse(membirthyear_ddl.SelectedValue);
+            month = int.Parse(membirthmonth_ddl.SelectedValue);
+
+            //リストクリア
+            membirthday_ddl.Items.Clear();
+
+            //日数を取得する
+            int iDaysInMonth = DateTime.DaysInMonth(year, month);
+            for (int iday = 1; iday <= iDaysInMonth; iday++)
+            {
+                membirthday_ddl.Items.Add(iday.ToString());
+            }
         }
 
         protected void membirthmonth_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
             flg = true;
+
+            year = int.Parse(membirthyear_ddl.SelectedValue);
+            month = int.Parse(membirthmonth_ddl.SelectedValue);
+
+            //リストクリア
+            membirthday_ddl.Items.Clear();
+
+            int iDaysInMonth = DateTime.DaysInMonth(year, month);
+            for (int iday = 1; iday <= iDaysInMonth; iday++)
+            {
+                membirthday_ddl.Items.Add(iday.ToString());
+            }
         }
 
         protected void membirthday_ddl_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +134,20 @@ namespace WebApplication1
 
         protected void Postsearch_btn_Click(object sender, EventArgs e)
         {
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|POSTADR.accdb;");
+            da = new OleDbDataAdapter("SELECT フィールド7,フィールド8 FROM KEN_ALL WHERE フィールド3 = '" + mempost_tb.Text + "'", cn);
+            dt = new DataTable();
+            da.Fill(dt);
 
+            if (dt.Rows.Count != 0)
+            {
+                memadr_tb.Text = dt.Rows[0][0].ToString() + dt.Rows[0][1].ToString();
+            }
+            else if (dt.Rows.Count == 0)
+            {
+
+            }
+            
         }
 
         protected void Back_btn_Click(object sender, EventArgs e)
@@ -108,14 +160,12 @@ namespace WebApplication1
             datelord();
         }
 
-        protected void btn_Click(object sender, EventArgs e)
+        protected void Con_btn_Click(object sender, EventArgs e)
         {
             String userid = (string)Session["UserID"];
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             cmd.Connection = cn;
-            //OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + userNo + "'", cn);
-            //OleDbCommand olecmd = new OleDbCommand("UPDATE MEMBER SET MEMBER_NAME = " + memname_tb.Text + ",MEMBER_KANA = " + memkana_tb.Text + ",MEMBER_GENDER = " + memgender_ddl.Text + ",MEMBER_POST = " + mempost_tb.Text + ",MEMBER_ADR = " + memadr_tb.Text + ",MEMBER_TEL = " + memtel_tb.Text + ",MEMBER_MAIL = " + memmail_tb.Text + "WHERE MEMBER_ID = '" + userNo + "'", cn);
-            cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_NAME = '" + memname_tb.Text + "' WHERE MEMBER_ID = '" + userid + "'", cn);
+            cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_NAME = '" + memname_tb.Text + "',MEMBER_KANA = '" + memkana_tb.Text + "',MEMBER_GENDER = '" + memgender_ddl.Text + "',MEMBER_BIRTH = '" + membirthyear_ddl.Text + "/" + membirthmonth_ddl.Text + "/" + membirthday_ddl.Text + "',MEMBER_POST = '" + mempost_tb.Text + "',MEMBER_ADR = '" + memadr_tb.Text + "',MEMBER_MAIL = '" + memmail_tb.Text + "' WHERE MEMBER_ID = '" + userid + "'", cn);
             cn.Open();
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -124,18 +174,12 @@ namespace WebApplication1
 
         public void datelord()
         {
-            //String userno = (string)Session["UserNo"];
-            //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            //da = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_KANA,MEMBER_GENDER,MEMBER_BIRTH,MEMBER_POST,MEMBER_ADR,MEMBER_TEL,MEMBER_MAIL FROM TBL_MEMBER WHERE MEMBER_ID = '" + userno + "'", cn);
-            //dt = new DataTable();
-            //da.Fill(dt);
-
             memname_tb.Text = (string)Session["MemName"];
             memkana_tb.Text = (string)Session["MemKana"];
             memgender_ddl.Text = (string)Session["MemGender"];
-            membirthyear_ddl.Text = (string)Session["MemBirthYear"];
-            membirthmonth_ddl.Text = (string)Session["MemBirthMon"];
-            membirthday_ddl.Text = (string)Session["MemBirthDay"];
+            membirthyear_ddl.SelectedValue = (string)Session["MemBirthYear"];
+            membirthmonth_ddl.SelectedValue = (string)Session["MemBirthMon"];
+            membirthday_ddl.SelectedValue = (string)Session["MemBirthDay"];
             mempost_tb.Text = (string)Session["MemPost"];
             memadr_tb.Text = (string)Session["MemAdr"];
             memtel_tb.Text = (string)Session["MemTel"];

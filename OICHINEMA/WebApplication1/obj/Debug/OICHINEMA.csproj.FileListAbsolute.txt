@@ -28,3 +28,9 @@ C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
 C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
 C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\b6220\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Hiiragi\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\Hiiragi\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+C:\Users\Hiiragi\Desktop\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Hiiragi\Desktop\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+C:\Users\Hiiragi\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Hiiragi\Desktop\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

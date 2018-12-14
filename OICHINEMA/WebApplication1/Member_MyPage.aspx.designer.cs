@@ -121,13 +121,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.LinkButton Profile_linkbtn;
         
         /// <summary>
-        /// Password_linkbtn コントロール。
+        /// Passalter_linkbtn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Password_linkbtn;
+        protected global::System.Web.UI.WebControls.LinkButton Passalter_linkbtn;
         
         /// <summary>
         /// Withdrawal_btn コントロール。

@@ -89,17 +89,17 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:LinkButton ID="Purchaselog_linkbtn" runat="server" OnClick="Purchaselog_linkbtn_Click1">チケット購入履歴</asp:LinkButton>
+                            <asp:LinkButton ID="Purchaselog_linkbtn" runat="server" OnClick="Purchaselog_linkbtn_Click1" PostBackUrl="~/Member_BookingLog.aspx">チケット購入履歴</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:LinkButton ID="Profile_linkbtn" runat="server" OnClick="Profile_linkbtn_Click1">プロフィール変更</asp:LinkButton>
+                            <asp:LinkButton ID="Profile_linkbtn" runat="server" OnClick="Profile_linkbtn_Click1" PostBackUrl="~/Member_info_alter.aspx">プロフィール変更</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:LinkButton ID="Password_linkbtn" runat="server" OnClick="Password_linkbtn_Click1">パスワード変更</asp:LinkButton>
+                            <asp:LinkButton ID="Passalter_linkbtn" runat="server" OnClick="Passalter_linkbtn_Click">パスワード変更</asp:LinkButton>
                         </td>
                     </tr>
                 </table>

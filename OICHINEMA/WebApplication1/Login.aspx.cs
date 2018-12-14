@@ -17,6 +17,8 @@ namespace WebApplication1
             Messe_lbl.Visible = false;
 
             Session["PageID"] = "Member_MyPage.aspx";
+
+            string MemPageID = "Login.aspx";
         }
 
         protected void Login_btn_Click(object sender, EventArgs e)

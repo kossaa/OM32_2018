@@ -15,6 +15,7 @@ namespace WebApplication1
     
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (IsPostBack == true)
             {
                 messageLabel.Visible = false;
@@ -197,7 +198,7 @@ namespace WebApplication1
                 if (oledr.Read())
                 {
                     FADR1Txb.Text = oledr["フィールド7"].ToString() ;
-                    LADR1Txb.Text = oledr["フィールド8"].ToString() + oledr["フィールド9"].ToString();
+                    LADR1Txb.Text = oledr["フィールド8"].ToString() ;
                 }
                 //データベースを閉じる
                 PostCn.Close();
@@ -206,88 +207,54 @@ namespace WebApplication1
 
 
         protected void EnterBtn_Click(object sender, EventArgs e)
-        {
-            if (PassTxb.Text != PassTxb2.Text)
-            {
-            string script =
-               "<script language=javascript>" +
-               "window.alert('パスワードが違います')" +
-               "</script>";
-                Response.Write(script);
-
-            }
-            else
-            {
-
-
-
-                //            String InsertStr ="INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) " +
-                //                                             "VALUES ('@MEMBER_ID','@MEMBER_NAME','@MEMBER_KANA','@MEMBER_POST','@MEMBER_ADR1','@MEMBER_ADR2',@MEMBER_BIRTH,'@MEMBER_TEL','@MEMBER_GENDER',#@MEMBER_DAY#,@MEMBER_POINT,'@MEMBER_MAIL','@MEMBER_PASS')";
-
+        {          
                 OleDbCommand command = new OleDbCommand();
 
 
                 //Insertコマンドの値をcommandに指定
                 //command = new OleDbCommand(InsertStr);
                 //DB接続
-                DB_Connection();
-                /*          try
-                            {
+                DB_Connection();              
 
-                                command.Parameters.AddWithValue("@MEMBER_ID", getNewMaxMemberId());
-                                if (String.IsNullOrWhiteSpace(TextBox2.Text) != true && String.IsNullOrWhiteSpace(TextBox3.Text) != true)
-                                    command.Parameters.AddWithValue("@MEMBER_NAME", TextBox2.Text + TextBox3.Text);
-                                if (String.IsNullOrWhiteSpace(TextBox1.Text) != true && String.IsNullOrWhiteSpace(TextBox4.Text) != true)
-                                    command.Parameters.AddWithValue("@MEMBER_KANA", TextBox1.Text + TextBox4.Text);
-                                if (String.IsNullOrWhiteSpace(TextBox5.Text) != true)
-                                    command.Parameters.AddWithValue("@MEMBER_POST", TextBox5.Text);
-                                if (String.IsNullOrWhiteSpace(TextBox6.Text) != true && String.IsNullOrWhiteSpace(TextBox7.Text) != true)
-                                    command.Parameters.AddWithValue("@MEMBER_ADR1",  TextBox6.Text + TextBox7.Text );
-                                if (String.IsNullOrWhiteSpace(TextBox8.Text) != true)
-                                    command.Parameters.AddWithValue("@MEMBER_ADR2", TextBox8);
-                                command.Parameters.AddWithValue("@MEMBER_BIRTH", "#"+getBirthDay()+"#");
-                                if (String.IsNullOrWhiteSpace(TextBox9.Text) != true)
-                                command.Parameters.AddWithValue("@MEMBER_TEL",  TextBox9.Text );
-                                if (String.IsNullOrWhiteSpace(DropDownList1.Text) != true)
-                                command.Parameters.AddWithValue("@MEMBER_GENDER", DropDownList1.Text );
-                                command.Parameters.AddWithValue("@MEMBER_DAY", getToday());
-                                command.Parameters.AddWithValue("@MEMBER_POINT", 0);
-                                if (String.IsNullOrWhiteSpace(TextBox10.Text) != true)
-                                command.Parameters.AddWithValue("@MEMBER_MAIL",  TextBox10.Text );
-                                if (String.IsNullOrWhiteSpace(TextBox11.Text) != true)
-                                command.Parameters.AddWithValue("@MEMBER_PASS", TextBox11.Text);
-                */
-                /*↓成功*/
-                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + LNameTbx.Text + "','" + FKanaTbx.Text + LKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,0,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
+                if (String.IsNullOrWhiteSpace(FNameTxb.Text) != true && String.IsNullOrWhiteSpace(FKanaTbx.Text) != true && String.IsNullOrWhiteSpace(PostTxb.Text) != true && String.IsNullOrWhiteSpace(FADR1Txb.Text) != true && String.IsNullOrWhiteSpace(LADR1Txb.Text) != true && String.IsNullOrWhiteSpace(TELTxb.Text) != true && String.IsNullOrWhiteSpace(MailTxb.Text) != true && String.IsNullOrWhiteSpace(PassTxb.Text) != true)
+                {
+                    if (PassTxb.Text != PassTxb2.Text)
+                    {
+                        messageLabel.Text = "パスワードが一致しません。";
+                        messageLabel.Visible = true;
+                        return;
+                    }
 
-                command = new OleDbCommand(testdate);
+                    /*↓成功*/
+                    String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + "','" + FKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,0,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
 
-                command.Connection = cn;
-                cn.Open();
+                    command = new OleDbCommand(testdate);
 
-                int a = command.ExecuteNonQuery();
+                    command.Connection = cn;
+                    cn.Open();
 
-                string script =
-                   "<script language=javascript>" +
-                   "window.alert('登録しました。')" +
-                   "</script>";
-                    Response.Write(script);
-                
-                messageLabel.Text = a.ToString();
-                messageLabel.Visible = true;
-                /*          }
-                            catch (OleDbException ode)
-                            {
-                                Label20.Text = "エラー";
-                                Label20.Visible = true;
-                                Console.WriteLine(ode.Message);
-                            }
-                */
-                cn.Close();
+                    int a = command.ExecuteNonQuery();
+
+                    if (a != 0)
+                    {
+                        EnterBtn.Attributes["onclick"] = "return confirm('登録完了しました。');";
+                    }
+
+                    cn.Close();
+
+
+                }
+                else
+                {
+
+                    messageLabel.Text = "未入力の箇所があります。";
+                    messageLabel.Visible = true;
+                }
             }
-        }
+        
         protected void MonthDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             DayDDL.Items.Clear();
             CalenderAddDay();
         }

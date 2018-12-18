@@ -76,15 +76,6 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox FNameTxb;
         
         /// <summary>
-        /// LNameTbx コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LNameTbx;
-        
-        /// <summary>
         /// Panel4 コントロール。
         /// </summary>
         /// <remarks>
@@ -110,15 +101,6 @@ namespace WebApplication1 {
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox FKanaTbx;
-        
-        /// <summary>
-        /// LKanaTbx コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LKanaTbx;
         
         /// <summary>
         /// Panel6 コントロール。

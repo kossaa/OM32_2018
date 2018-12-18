@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="WebApplication1.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="WebApplication1.Login" MaintainScrollPositionOnPostback="true"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -107,16 +107,14 @@
             <asp:Panel ID="Panel1" CssClass="KanjiPanel" runat="server">
                 <asp:Label ID="Label4" runat="server" Text="漢字"></asp:Label>
                 <br />
-                <asp:TextBox ID="FNameTxb" CssClass="TextBox" runat="server" Text="姓"></asp:TextBox>
+                <asp:TextBox ID="FNameTxb" CssClass="TextBox" runat="server" Text="姓名"></asp:TextBox>
                 <br />
-                <asp:TextBox ID="LNameTbx" CssClass="TextBox" runat="server" Text="名"></asp:TextBox>
             </asp:Panel>
             <asp:Panel ID="Panel4" CssClass="KanaPanel" runat="server">
                 <asp:Label ID="Label1" runat="server" Text="カナ"></asp:Label>
                 <br />
-                <asp:TextBox ID="FKanaTbx" CssClass="TextBox" runat="server" Text="セイ"></asp:TextBox>
+                <asp:TextBox ID="FKanaTbx" CssClass="TextBox" runat="server" Text="セイメイ"></asp:TextBox>
                 <br />
-                <asp:TextBox ID="LKanaTbx" CssClass="TextBox" runat="server" Text="メイ"></asp:TextBox>
             </asp:Panel>
     </asp:Panel>
     <asp:Panel ID="Panel6" CssClass="SexPanel" runat="server">

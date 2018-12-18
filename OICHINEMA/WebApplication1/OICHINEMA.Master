@@ -6,205 +6,205 @@
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <style>
-        /*マスター
---------------------------------------------------------------------------------*/
+
+<style>
+    /*マスター
+    --------------------------------------------------------------------------------*/
 
 
-/*会員情報表示・ログアウトボタン設定
------------------------------*/
-.MemberInfo{
-    float:left;
-    width:70%;
-}
-
-
-
-/*タイトルラベル設定
------------------------------*/
-.TitleLabel{
-    text-decoration:none;
-    color:white !important;
-    height:150px;
-    border-left: 2px solid #aaaaaa;
-    border-right: 2px solid #444444;
-    border-top: 2px solid #aaaaaa;
-    border-bottom: 2px solid #444444;
-    font-size:40px;
-    color:white;
-    background-color:black;
-    text-decoration:none;
-    display:block;
-    padding-top:10px;
-    padding-bottom:10px;
-    vertical-align:middle;
-    text-align:center;
-    line-height:150px;
-}
-
-/*ログイン、新規登録ボタンのコンテナ設定
------------------------------*/
-.MemberOperation{
-    float:right;
-    width:30%;
-    margin-left:70%;
-    padding: 10px,5px,10px,5px;
-}
+    /*会員情報表示・ログアウトボタン設定
+    -----------------------------*/
+    .MemberInfo{
+        float:left;
+        width:70%;
+    }
 
 
 
-/*ログイン、新規登録ボタン設定 W715pxでボタン改行
-----------------------------*/
-.Loginslash{
-    font-size:30px;
-}
-.LoginButton,.SignupButton{
-    table-layout:fixed;
-    color:#424242;
-    border: solid 1px;
-    border-color:#424242;
-    background-color:#424242;
-    color:white;
-    border-radius:10px;
-    text-decoration:none;
-    box-sizing:border-box;
-    width:50%;
-    font-size:2.5vmax;
-    white-space:nowrap;   
-    padding:0 0 0 0;
-}
-.LoginButton:hover{
+    /*タイトルラベル設定
+    -----------------------------*/
+    .TitleLabel{
+        text-decoration:none;
+        color:white !important;
+        height:150px;
+        border-left: 2px solid #aaaaaa;
+        border-right: 2px solid #444444;
+        border-top: 2px solid #aaaaaa;
+        border-bottom: 2px solid #444444;
+        font-size:40px;
+        color:white;
+        background-color:black;
+        text-decoration:none;
+        display:block;
+        padding-top:10px;
+        padding-bottom:10px;
+        vertical-align:middle;
+        text-align:center;
+        line-height:150px;
+    }
+
+    /*ログイン、新規登録ボタンのコンテナ設定
+    -----------------------------*/
+    .MemberOperation{
+        float:right;
+        width:30%;
+        margin-left:70%;
+        padding: 10px,5px,10px,5px;
+    }
+
+
+
+    /*ログイン、新規登録ボタン設定 W715pxでボタン改行
+    ----------------------------*/
+    .Loginslash{
+        font-size:30px;
+    }
+    .LoginButton,.SignupButton{
+        table-layout:fixed;
+        color:#424242;
+        border: solid 1px;
+        border-color:#424242;
+        background-color:#424242;
+        color:white;
+        border-radius:10px;
+        text-decoration:none;
+        width:50%;
+        font-size:28px;
+        white-space:nowrap;   
+        padding:0 0 0 0;
+    }
+    .LoginButton:hover{
     
-    background-color:white;
-    color:#424242;
-}
-.SignupButton:hover{
+        background-color:white;
+        color:#424242;
+    }
+    .SignupButton:hover{
     
-    background-color:white;
-    color:#424242;
-}
+        background-color:white;
+        color:#424242;
+    }
 
 
-/* トップメニューバー設定
----------------------------*/
+    /* トップメニューバー設定
+    ---------------------------*/
 
 
-div.hideSkiplink/*メニューバーの背景*/
-{
-    background-color:gray; 
-    width:100%;
-}
+    div.hideSkiplink/*メニューバーの背景*/
+    {
+        background-color:gray; 
+        width:100%;
+    }
 
-div.menu/*メニューバー全体の指定*/
-{
-    padding: 0px 0px 0px 0px;
-    display: table;
-    table-layout: fixed;
-    width:100%;
-    font-size:2.5vmax;
-    white-space:nowrap;
-}
+    div.menu/*メニューバー全体の指定*/
+    {
+        padding: 0px 0px 0px 0px;
+        display: table;
+        table-layout: fixed;
+        width:100%;
+        font-size:2.5vmax;
+        white-space:nowrap;
+    }
 
-div.menu ul
-{
-    width: 80%;
-    list-style: none;
-    margin: 0px;
-    padding:0px;
+    div.menu ul
+    {
+        width: 80%;
+        list-style: none;
+        margin: 0px;
+        padding:0px;
 
-}
+    }
 
-div.menu ul li a, div.menu ul li a:visited
-{
+    div.menu ul li a, div.menu ul li a:visited
+    {
 
-    height:50px;
-    font-size:30px;
-    font-weight: 400;
-    background-color: #808080;  /*ボタンの枠内の色*/
-    color: #ffffff;             /*文字の色*/
-    display: table-cell;
-    vertical-align:middle;
-    padding: 4px 20px;
-    text-decoration: none;
-    white-space: nowrap;
-    width:12.5%;
-    height:auto;
-}
+        height:50px;
+        font-size:30px;
+        font-weight: 400;
+        background-color: #808080;  /*ボタンの枠内の色*/
+        color: #ffffff;             /*文字の色*/
+        display: table-cell;
+        vertical-align:middle;
+        padding: 4px 20px;
+        text-decoration: none;
+        white-space: nowrap;
+        width:12.5%;
+        height:auto;
+    }
 
 
-div.menu ul li a:hover
-{
-    background-color: #bfcbd6;
-    color: #465c71;
-    text-decoration: none;
-    width:100%;
-}
+    div.menu ul li a:hover
+    {
+        background-color: #bfcbd6;
+        color: #465c71;
+        text-decoration: none;
+        width:100%;
+    }
 
-div.menu ul li a:active
-{
-    background-color: #465c71;
-    color: #cfdbe6;
-    text-decoration: none;
-}
+    div.menu ul li a:active
+    {
+        background-color: #465c71;
+        color: #cfdbe6;
+        text-decoration: none;
+    }
 
     </style>
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+
+    <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title></title>
     
-    <link href="~/Styles/Style.css" rel="stylesheet" type="text/css" />
+        <link href="~/Styles/Style.css" rel="stylesheet" type="text/css" />
     
-    <asp:ContentPlaceHolder ID="headContents" runat="server"></asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="headContents" runat="server"></asp:ContentPlaceHolder>
 
-</head>
-
-
+    </head>
 
 
-<body>
-    <form id="form1" runat="server">
-        <div class="page">
-            <div class="header">
-                <div class="title">
-                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server" PostBackUrl="~/Top.aspx">OICINEMA</asp:LinkButton>
-                </div>
 
-                <div class="MemberOperation">
-                        <asp:Panel ID="Panel1" CssClass="Login" runat="server">
-                            <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
-                            <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
-                            <asp:LinkButton CssClass="SignupButton" ID="SignupButton" runat="server" PostBackUrl="~/Signup.aspx">新規登録</asp:LinkButton>
-                            <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server" OnClick="LogoutButton_Click">ログアウト</asp:LinkButton>
-                        </asp:Panel>
-                </div>
-                <div class="clear hideSkiplink">
-                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick" OnMenuItemDataBound="NavigationMenu_MenuItemDataBound">
-                          <Items>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ"/>
-                            <asp:MenuItem Text="会員ページ" />
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="作品案内"/>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="イベント"/>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="販売"/>
-                            <asp:MenuItem NavigateUrl="~/Top.aspx" Text="予約確認"/>
-                            <asp:MenuItem NavigateUrl="~/Access.aspx" Text="アクセス"/>
-                        </Items>
-                    </asp:Menu>
+
+    <body>
+        <form id="form1" runat="server">
+            <div class="page">
+                <div class="header">
+                    <div class="title">
+                            &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server" PostBackUrl="~/Top.aspx">OICINEMA</asp:LinkButton>
+                    </div>
+
+                    <div class="MemberOperation">
+                            <asp:Panel ID="Panel1" CssClass="Login" runat="server">
+                                <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>
+                                <asp:Label CssClass="Loginslash" ID="Label1" runat="server" Text="/"></asp:Label>
+                                <asp:LinkButton CssClass="SignupButton" ID="SignupButton" runat="server" PostBackUrl="~/Signup.aspx">新規登録</asp:LinkButton>
+                                <asp:LinkButton ID="LogoutButton" CssClass="LoginButton" runat="server" OnClick="LogoutButton_Click">ログアウト</asp:LinkButton>
+                            </asp:Panel>
+                    </div>
+                    <div class="clear hideSkiplink">
+                        <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick" OnMenuItemDataBound="NavigationMenu_MenuItemDataBound">
+                              <Items>
+                                <asp:MenuItem NavigateUrl="~/Top.aspx" Text="トップ"/>
+                                <asp:MenuItem Text="会員ページ" />
+                                <asp:MenuItem NavigateUrl="~/Top.aspx" Text="スケジュール"/>
+                                <asp:MenuItem NavigateUrl="~/Top.aspx" Text="作品案内"/>
+                                <asp:MenuItem NavigateUrl="~/Top.aspx" Text="イベント"/>
+                                <asp:MenuItem NavigateUrl="~/Top.aspx" Text="販売"/>
+                                <asp:MenuItem NavigateUrl="~/Top.aspx" Text="予約確認"/>
+                                <asp:MenuItem NavigateUrl="~/Access.aspx" Text="アクセス"/>
+                            </Items>
+                        </asp:Menu>
+                    </div>
                 </div>
             </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
         </div>
-
-    <div class="main">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
-    </div>
-    <div class="footer">
+        <div class="footer">
      
 
      
-    </div>
+        </div>
         
 
 
-    </form>
-</body>
+        </form>
+    </body>
 </html>

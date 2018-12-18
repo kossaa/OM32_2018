@@ -10,6 +10,7 @@ namespace WebApplication1
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] == null)
@@ -78,7 +79,7 @@ namespace WebApplication1
         {
             //ログアウト処理
             FormsAuthentication.SignOut();
-            Session["UserNo"] = null;
+            Session["UserID"] = null;
             Response.Redirect("Top.aspx");
         }
     }

@@ -13,5 +13,15 @@ namespace WebApplication1
         {
 
         }
+
+        protected void ChangePasswordPushButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CancelPushButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

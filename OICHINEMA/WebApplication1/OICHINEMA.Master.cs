@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,7 +12,18 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //LogoutButton.Visible = false;
+            if (Session["UserID"] == null)
+            {
+                LogoutButton.Visible = false;
+            }
+            else
+            {
+                SignupButton.Visible = false;
+                LoginButton.Visible = false;
+                Label1.Visible = false;
+                LogoutButton.Visible = true;
+            }
+
 
         }
 
@@ -35,9 +47,12 @@ namespace WebApplication1
             e.Item.NavigateUrl = "";
         }
 
-        protected void NavigationMenu_Load(object sender, EventArgs e)
+        protected void LogoutButton_Click(object sender, EventArgs e)
         {
-            
+            //ログアウト処理
+            FormsAuthentication.SignOut();
+            Session["UserID"] = null;
+            Response.Redirect("Top.aspx");
         }
     }
 }

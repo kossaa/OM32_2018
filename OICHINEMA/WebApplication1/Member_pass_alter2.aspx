@@ -26,7 +26,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="NewPassword" runat="server" MaxLength="20" TextMode="Password"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" ControlToValidate="NewPassword" ErrorMessage="新しいパスワードが必要です。" ToolTip="新しいパスワードが必要です。" ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" ControlToValidate="CurrentPassword" ErrorMessage="新しいパスワードが必要です。" ToolTip="新しいパスワードが必要です。" ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>

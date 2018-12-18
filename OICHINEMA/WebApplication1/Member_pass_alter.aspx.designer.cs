@@ -13,31 +13,22 @@ namespace WebApplication1 {
     public partial class Member_pass_alter {
         
         /// <summary>
-        /// Label2 コントロール。
+        /// Pass_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox Pass_tb;
         
         /// <summary>
-        /// Oldpass_tb コントロール。
+        /// IconP_lbl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Oldpass_tb;
-        
-        /// <summary>
-        /// Label3 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label IconP_lbl;
         
         /// <summary>
         /// Newpass_tb コントロール。
@@ -49,22 +40,31 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox Newpass_tb;
         
         /// <summary>
-        /// Label4 コントロール。
+        /// IconNp_lbl コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label IconNp_lbl;
         
         /// <summary>
-        /// Newpass2_tb コントロール。
+        /// CnewPass_tb コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Newpass2_tb;
+        protected global::System.Web.UI.WebControls.TextBox CnewPass_tb;
+        
+        /// <summary>
+        /// IconCnp_lbl コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label IconCnp_lbl;
         
         /// <summary>
         /// Messe_lbl コントロール。
@@ -76,30 +76,21 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label Messe_lbl;
         
         /// <summary>
-        /// Messe2_lbl コントロール。
+        /// Com_btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Messe2_lbl;
+        protected global::System.Web.UI.WebControls.Button Com_btn;
         
         /// <summary>
-        /// Con_btn コントロール。
+        /// Cancel_btn コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Con_btn;
-        
-        /// <summary>
-        /// Back_btn コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Back_btn;
+        protected global::System.Web.UI.WebControls.Button Cancel_btn;
     }
 }

@@ -45,24 +45,24 @@
             <asp:Panel ID="Panel1" runat="server">
             </asp:Panel>
         <asp:Label ID="ScreenLabel" runat="server" Text="スクリーン名"></asp:Label>
-        <table border="0">
+        <table ID="ScreenTable" runat="server" border="0">
             <tr>
                <td class="auto-style1">
                    <table border="1">
                         <tr>
-                            <td class="auto-style1">テーブル1</td>
-                            <td class="auto-style1">テーブル2</td>
-                            <td class="auto-style1">テーブル3</td>
+                            <td class="auto-style1" id="ScreenLabel1">エリア1</td>
+                            <td class="auto-style1">エリア2</td>
+                            <td class="auto-style1">エリア3</td>
                         </tr>
                             <tr>
-                            <td class="auto-style1">テーブル4</td>
-                            <td class="auto-style1">テーブル5</td>
-                            <td class="auto-style1">テーブル6</td>
+                            <td class="auto-style1">エリア4</td>
+                            <td class="auto-style1">エリア5</td>
+                            <td class="auto-style1">エリア6</td>
                         </tr>
                             <tr>
-                            <td class="auto-style1">テーブル7</td>
-                            <td class="auto-style1">テーブル8</td>
-                            <td class="auto-style1">テーブル9</td>
+                            <td class="auto-style1">エリア7</td>
+                            <td class="auto-style1">エリア8</td>
+                            <td class="auto-style1">エリア9</td>
                         </tr>
                     </table>
                 </td>

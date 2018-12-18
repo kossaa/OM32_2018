@@ -11,6 +11,14 @@ namespace WebApplication1
 {
     public partial class Introduction_List : System.Web.UI.Page
     {
+
+        void MoveScreen(object sender, EventArgs e)
+        {
+            ImageButton btn = (ImageButton)sender;
+            Session["introID"] =    btn.ID.Substring(6);
+            Response.Redirect("Individual_Page.aspx");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             int cnt;
@@ -21,7 +29,7 @@ namespace WebApplication1
             da.Fill(dtc);
             cnt = int.Parse(dtc.Rows[0][0].ToString());
 
-            da = new OleDbDataAdapter("SELECT WORK_NAME,WORK_PASS1 FROM TBL_WORK WHERE WORK_END>Date()", cn);
+            da = new OleDbDataAdapter("SELECT WORK_NAME,WORK_PASS1,WORK_ID FROM TBL_WORK WHERE WORK_END>Date()", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -43,7 +51,11 @@ namespace WebApplication1
                     MainTable.Rows.Add(tblRow);
                     tblRow = new TableRow();
                 }
-                
+
+                if (i == cnt - 1&&(i+1)%3!=0)
+                {
+                    MainTable.Rows.Add(tblRow);
+                }
             }
 
             for (int i = 0; i < cnt; i++)
@@ -51,13 +63,14 @@ namespace WebApplication1
                 tblCell = new TableCell();
                 tblRow = new TableRow();
                 imgbtn = new ImageButton();
-                imgbtn.ID = "imgbtn" + (i + 1);
+                imgbtn.ID = "imgbtn" + dt.Rows[i][2].ToString();
                 imgbtn.Width = 300;
                 imgbtn.Height = 300;
                 imgbtn.ImageUrl = dt.Rows[i][1].ToString();
+                imgbtn.Click += MoveScreen;
+
                 tblCell.Controls.Add(imgbtn);
                 tblRow.Cells.Add(tblCell);
-                
                 Table tbl = (Table)Master.FindControl("MainContent").FindControl("tbl" + i.ToString());
                 if (tbl != null)
                 {

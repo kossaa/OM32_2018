@@ -1,0 +1,62 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Individual_Page.aspx.cs" Inherits="WebApplication1.Individual_Page" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
+    <style type="text/css">
+        .auto-style7 {
+            width: 317px;
+            height: 21px;
+        }
+        .auto-style8 {
+            height: 21px;
+        }
+        .auto-style9 {
+            width: 420px;
+        }
+        .auto-style11 {
+            height: 10%;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <table style="width:100%;">
+        <tr>
+            <td class="auto-style7">
+                <asp:Label ID="PublicationDateLabel" runat="server"></asp:Label>
+            </td>
+            <td class="auto-style8">
+                <asp:Label ID="MovieTitleLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table style="width:100%;">
+        <tr>
+            <td class="auto-style9" rowspan="4">
+                <asp:Image ID="MovieSignbordImage" runat="server" Height="300px" Width="420px" />
+                <br />
+                <asp:Image ID="MovieCaptureImage1" runat="server" Height="100px" Width="135px" />
+                <asp:Image ID="MovieCaptureImage2" runat="server" Height="100px" Width="135px" />
+                <asp:Image ID="MovieCaptureImage3" runat="server" Height="100px" Width="135px" />
+            </td>
+            <td height="10%">
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+
+        <tr>
+            <td valign="top">
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style11">
+                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+    </table>
+    <br />
+    </asp:Content>

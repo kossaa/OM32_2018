@@ -60,11 +60,36 @@
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="Event.aspx" />
     <Content Include="Images\Avengers.jpg" />
+    <Content Include="Images\Avengers01.jpg" />
+    <Content Include="Images\Avengers02.jpg" />
+    <Content Include="Images\Avengers03.jpg" />
+    <Content Include="Images\Avengers04jpg.jpg" />
     <Content Include="Images\FiveHeadJAWS.jpg" />
+    <Content Include="Images\FiveHeadJAWS01.jpg" />
+    <Content Include="Images\FiveHeadJAWS02.jpg" />
+    <Content Include="Images\FiveHeadJAWS03.jpg" />
+    <Content Include="Images\FiveHeadJAWS04.jpg" />
     <Content Include="Images\MegaShark_vs_MechaShark.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark01.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark02.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark03.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark04.jpg" />
     <Content Include="Images\Soranokanata.jpg" />
+    <Content Include="Images\Soranokanata01.jpg" />
+    <Content Include="Images\Soranokanata02.jpg" />
+    <Content Include="Images\Soranokanata03.jpg" />
+    <Content Include="Images\Soranokanata04.jpg" />
     <Content Include="Images\spidermen.jpg" />
+    <Content Include="Images\spidermen01.jpg" />
+    <Content Include="Images\spidermen02.jpg" />
+    <Content Include="Images\spidermen03.jpg" />
+    <Content Include="Images\spidermen04.jpg" />
     <Content Include="Images\WildSpeed.jpg" />
+    <Content Include="Images\WildSpeed01.jpg" />
+    <Content Include="Images\WildSpeed02.jpg" />
+    <Content Include="Images\WildSpeed03.jpg" />
+    <Content Include="Images\WildSpeed04.jpg" />
+    <Content Include="Individual_Page.aspx" />
     <Content Include="Introduction_List.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Web.config" />
@@ -77,6 +102,13 @@
     </Compile>
     <Compile Include="Event.aspx.designer.cs">
       <DependentUpon>Event.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Individual_Page.aspx.cs">
+      <DependentUpon>Individual_Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Individual_Page.aspx.designer.cs">
+      <DependentUpon>Individual_Page.aspx</DependentUpon>
     </Compile>
     <Compile Include="Introduction_List.aspx.cs">
       <DependentUpon>Introduction_List.aspx</DependentUpon>

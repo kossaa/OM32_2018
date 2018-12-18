@@ -76,6 +76,8 @@ namespace WebApplication1
                     seatList.Add((SelectedButton).ID);
                     //CSSでグレーを挿入
                     (SelectedButton).CssClass = "ChoiceSeat";
+                    //席が選択されてため次へボタンを出現させる
+                    BtnNext.Enabled = true;
                 }
             }
             else
@@ -84,6 +86,15 @@ namespace WebApplication1
                 seatList.Remove((SelectedButton).ID);
                 //CSSで色を元に戻す
                 (SelectedButton).CssClass = "FreeSeat";
+                //席が０席なら次へボタンを隠す
+                if (seatList.Count == 0)
+                {
+                    BtnNext.Enabled = false;
+                }
+                else
+                {
+                    BtnNext.Enabled = true;
+                }
             }
             //クリックされているSession["SeatInfomation"]
             Session["SeatInfomation"] = seatList;
@@ -100,7 +111,7 @@ namespace WebApplication1
             }
             seatChoice = seatChoice + "が選択中です";
             //ラベルに表示
-            LabelChoice.Text = seatChoice;        
+            LabelChoice.Text = seatChoice;
         }
         //ロード時
         protected void Page_Load(object sender, EventArgs e)
@@ -115,7 +126,12 @@ namespace WebApplication1
                 return;
             }
             */
+           
 
+            if (!IsPostBack)
+            {
+                Session.Remove("SeatInfomation");
+            }
             //スケジュールID設定(仮)
             Session["ScheduleID"] = "0000002";
             //座席の予約済みを取得し昇順で表示
@@ -145,6 +161,8 @@ namespace WebApplication1
             {
                 changeImgBtn(dtInfo.Rows[i][0].ToString());
             }
+            //ロード時に次へボタンを隠す
+            BtnNext.Enabled = false;
         }
 
         //次へクリック
@@ -175,11 +193,11 @@ namespace WebApplication1
                     //javascriptでonloadを表示させる
                     ClientScriptManager cs = Page.ClientScript;
                     Type csType = this.GetType();
-                    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('その席は他の人が予約済みです');</script>");                    
+                    cs.RegisterStartupScript(csType, "onload", "<script type=\"text/javascript\">alert('その席は他の人が予約済みです');</script>");
                 }
                 return;
             }
-                        
+
             //選択された席分をデータベースに仮登録
             for (int i = 0; i < seatList.Count; i++)
             {
@@ -195,26 +213,15 @@ namespace WebApplication1
             Session.Remove("ThisSeat");
 
             //次の（チケット選択）画面に行く
-            Response.Redirect("Reservation_Ticket_Selection");
+            //Response.Redirect("Reservation_Ticket_Selection");
         }
         protected void BtnBack_Click(object sender, EventArgs e)
         {
             //スケジュール画面に戻る
             Response.Redirect("Schedule.aspx");
         }
+       
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-          
-        }
-        window.onunload = function() 
-            {
-                alert('Back buttom is pushed ??');
-                location.replace(document.location);
-               <script type="text/javascript">
-    function goNextPage() {
-        window.onunload = null;
-    };
-</script>
+
     }
 }

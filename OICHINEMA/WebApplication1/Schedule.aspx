@@ -33,12 +33,17 @@
         <asp:Button ID="GoBtn" runat="server" ForeColor="Red" Text="▶" />
         <br />
         
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
+        
         <div>
         <p>
             <asp:Image ID="MovieImage" runat="server" />
             <asp:Label ID="TitleLabel" runat="server" Text="映画タイトル"></asp:Label>
             <asp:LinkButton ID="DetailsLinkBtn" runat="server">作品詳細</asp:LinkButton>
         </p>
+            <asp:Panel ID="Panel1" runat="server">
+            </asp:Panel>
         <asp:Label ID="ScreenLabel" runat="server" Text="スクリーン名"></asp:Label>
         <table border="0">
             <tr>

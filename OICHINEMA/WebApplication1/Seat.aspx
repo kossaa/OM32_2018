@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <asp:Panel ID="Panel1" runat="server">
+    </asp:Panel>
+
     <!-- CSS設定 -->
     <style type ="text/css" >
         .ChoiceSeat {
@@ -48,8 +51,6 @@
     &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;  &emsp;
 
     <div class="SeatMain">
-
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
 
     <asp:Label ID="LabelScreen" CssClass="LabelScreen" runat="server" Text="スクリーン" Font-Size="20pt" ></asp:Label>
     

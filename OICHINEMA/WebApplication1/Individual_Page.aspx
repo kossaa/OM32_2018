@@ -37,24 +37,26 @@
                 <asp:Image ID="MovieCaptureImage2" runat="server" Height="100px" Width="135px" />
                 <asp:Image ID="MovieCaptureImage3" runat="server" Height="100px" Width="135px" />
             </td>
-            <td height="10%">
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <td height="10%" style="background-color: #FDF0BB">
+                <asp:Label ID="SummaryLabel" runat="server" Text="あらすじ"></asp:Label>
             </td>
         </tr>
 
         <tr>
-            <td valign="top">
-                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            <td valign="top" style="background-color: #F1FFDB">
+                <asp:Table ID="SummaryTable" runat="server">
+                </asp:Table>
             </td>
         </tr>
         <tr>
-            <td class="auto-style11">
-                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            <td class="auto-style11" style="background-color: #FDF0BB">
+                <asp:Label ID="CastLabel" runat="server" Text="キャスト"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td valign="top">
-                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            <td valign="top" style="background-color: #F1FFDB">
+                <asp:Table ID="CastTable" runat="server">
+                </asp:Table>
             </td>
         </tr>
     </table>

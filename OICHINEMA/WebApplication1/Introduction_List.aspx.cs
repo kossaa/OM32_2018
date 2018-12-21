@@ -24,12 +24,12 @@ namespace WebApplication1
             int cnt;
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             OleDbDataAdapter da;
-            da = new OleDbDataAdapter("SELECT COUNT(*) FROM TBL_WORK WHERE WORK_END>Date()", cn);
+            da = new OleDbDataAdapter("SELECT COUNT(WORK_ID) FROM (SELECT DISTINCT w.WORK_ID FROM TBL_WORK w INNER JOIN TBL_SCHEDULE s ON w.WORK_ID = s.WORK_ID WHERE s.SCHEDULE_START>=DATE())", cn);
             DataTable dtc = new DataTable();
             da.Fill(dtc);
             cnt = int.Parse(dtc.Rows[0][0].ToString());
 
-            da = new OleDbDataAdapter("SELECT WORK_NAME,WORK_PASS1,WORK_ID FROM TBL_WORK WHERE WORK_END>Date()", cn);
+            da = new OleDbDataAdapter("SELECT WORK_NAME,WORK_PASS1,WORK_ID FROM TBL_WORK WHERE WORK_ID IN (SELECT DISTINCT w.WORK_ID FROM TBL_WORK w INNER JOIN TBL_SCHEDULE s ON w.WORK_ID = s.WORK_ID WHERE s.SCHEDULE_START>=DATE())", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,15 +13,16 @@ namespace WebApplication1
 {
     public partial class Login : System.Web.UI.Page
     {
-    
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            EnterBtn.Attributes["onclick"] = "";
             if (IsPostBack == true)
             {
                 messageLabel.Visible = false;
             }
-
             CalenderAddYear();
             CalenderAddDay();
         }
@@ -29,7 +31,6 @@ namespace WebApplication1
          *データベースに接続、開くまで
          ======================================*/
         public OleDbConnection cn = new OleDbConnection();
-
         public bool DB_Connection(){
             try{
                 //コネクションの作成
@@ -52,7 +53,7 @@ namespace WebApplication1
          ======================================================*/
         private void CalenderAddYear(){
             int nowyear = Today.Year;
-            int year = 1920;//年カウント開始日
+            int year = 1900;//年カウント開始日
 
             for (int i = year; i <= nowyear; i++){
                 YearDDL.Items.Add(i.ToString());
@@ -125,7 +126,7 @@ namespace WebApplication1
 
             DB_Connection();
             //会員番号の最大番号を取得する
-            string MaxMID = "";
+            String MaxMID ;
 
             //コマンド指定
             getNIDcommand = new OleDbCommand();
@@ -139,7 +140,7 @@ namespace WebApplication1
             cn.Close();
 
             //会員番号の最大値に+1加算
-            int NewMID = int.Parse(MaxMID)+1;
+            int NewMID = int.Parse(MaxMID+1);
             string nd = string.Format("{0:D7}", NewMID);
 
             return nd;
@@ -205,56 +206,98 @@ namespace WebApplication1
             }
         }
 
+        /*====================================================
+        * SQLに影響の出る文字の検索
+        =====================================================*/
+        int TxbCheck = -1;
+        protected void SQLInjectionCheck(string txbStr)
+        {
+            char[] CheckChar = {'=',  ';', '\'',  '"',    '\\',    '*',    '#',    '$'};
+            string checkStr = txbStr;
+            TxbCheck = checkStr.IndexOfAny(CheckChar);
+        }
+
+        /*====================================================
+        * パスワードに大文字小文字の英数が入っているかのチェック
+        =====================================================*/
+        Boolean passCheck = false;
+        protected bool PasswordCheck(string passStr)
+        {
+            string password = passStr;
+            passCheck = Regex.IsMatch(password, @"[a-zA-Z]") &&
+            Regex.IsMatch(password, @"\d");
+            return passCheck;
+        }
+        
 
         protected void EnterBtn_Click(object sender, EventArgs e)
-        {          
-                OleDbCommand command = new OleDbCommand();
+        {
+            TextBox[] TextBoxArray = new TextBox[10];
+            TextBoxArray[0] = FNameTxb;
+            TextBoxArray[1] = FKanaTbx;
+            TextBoxArray[2] = PostTxb;
+            TextBoxArray[3] = FADR1Txb;
+            TextBoxArray[4] = LADR1Txb;
+            TextBoxArray[5] = ADR2Txb;
+            TextBoxArray[6] = TELTxb;
+            TextBoxArray[7] = MailTxb;
+            TextBoxArray[8] = PassTxb;
+            TextBoxArray[9] = PassTxb2;
+            
+            OleDbCommand command = new OleDbCommand();
 
+            //Insertコマンドの値をcommandに指定
+            //command = new OleDbCommand(InsertStr);
+            //DB接続
+            DB_Connection();
 
-                //Insertコマンドの値をcommandに指定
-                //command = new OleDbCommand(InsertStr);
-                //DB接続
-                DB_Connection();              
-
-                if (String.IsNullOrWhiteSpace(FNameTxb.Text) != true && String.IsNullOrWhiteSpace(FKanaTbx.Text) != true && String.IsNullOrWhiteSpace(PostTxb.Text) != true && String.IsNullOrWhiteSpace(FADR1Txb.Text) != true && String.IsNullOrWhiteSpace(LADR1Txb.Text) != true && String.IsNullOrWhiteSpace(TELTxb.Text) != true && String.IsNullOrWhiteSpace(MailTxb.Text) != true && String.IsNullOrWhiteSpace(PassTxb.Text) != true)
-                {
-                    if (PassTxb.Text != PassTxb2.Text)
+            if (String.IsNullOrWhiteSpace(FNameTxb.Text) != true && String.IsNullOrWhiteSpace(FKanaTbx.Text) != true && String.IsNullOrWhiteSpace(PostTxb.Text) != true && String.IsNullOrWhiteSpace(FADR1Txb.Text) != true && String.IsNullOrWhiteSpace(LADR1Txb.Text) != true && String.IsNullOrWhiteSpace(TELTxb.Text) != true && String.IsNullOrWhiteSpace(MailTxb.Text) != true && String.IsNullOrWhiteSpace(PassTxb.Text) != true)
+            {
+            //各テキストボックスに'の文字が含まれてたらInsert処理しない
+                for(int i = 0;i < TextBoxArray.Length; i++){
+                    SQLInjectionCheck(TextBoxArray[i].Text);
+                    if (TxbCheck > -1)
                     {
-                        messageLabel.Text = "パスワードが一致しません。";
+                        messageLabel.Text = "無効な文字が含まれています。";
                         messageLabel.Visible = true;
                         return;
                     }
-
-                    /*↓成功*/
-                    String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + "','" + FKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,0,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
-
-                    command = new OleDbCommand(testdate);
-
-                    command.Connection = cn;
-                    cn.Open();
-
-                    int a = command.ExecuteNonQuery();
-
-                    if (a != 0)
-                    {
-                        EnterBtn.Attributes["onclick"] = "return confirm('登録完了しました。');";
-                    }
-
-                    cn.Close();
-
-
                 }
-                else
+            //パスワードに大文字、小文字の英数が入っているか
+                if (PasswordCheck(PassTxb.Text) == false)
                 {
-
-                    messageLabel.Text = "未入力の箇所があります。";
+                    messageLabel.Text = "パスワードには大文字、小文字の英数字で登録してください。";
                     messageLabel.Visible = true;
+                    return;
                 }
+            //パスワードと確認用のパスワードが一致するか
+                if (PassTxb.Text != PassTxb2.Text)
+                {
+                    messageLabel.Text = "パスワードが一致しません。";
+                    messageLabel.Visible = true;
+                    return;
+                }
+                /*↓成功*/
+                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + "','" + FKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,0,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
+                command = new OleDbCommand(testdate);
+                command.Connection = cn;
+                cn.Open();
+                int a = command.ExecuteNonQuery();
+                if (a != 0)
+                {
+                    EnterBtn.Attributes["onclick"] = "return confirm('登録完了しました。');";
+                }
+                cn.Close();
             }
+            else
+            {
+                messageLabel.Text = "未入力の箇所があります。";
+                messageLabel.Visible = true;
+            }
+        }
         
         protected void MonthDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             DayDDL.Items.Clear();
             CalenderAddDay();
         }

@@ -26,6 +26,8 @@ namespace WebApplication1
             }
         }
 
+
+
         protected void NavigationMenu_MenuItemClick(object sender, MenuEventArgs e)
         {
             if (e.Item.Text == "トップ")

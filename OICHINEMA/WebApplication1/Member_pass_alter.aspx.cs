@@ -21,7 +21,7 @@ namespace WebApplication1
         {
             if (IsPostBack == true)
             {
-                
+                Messe_lbl.Visible = false;
             }
         }
 
@@ -49,24 +49,22 @@ namespace WebApplication1
                     cn.Close();
                     Response.Redirect("Member_MyPage.aspx");
                 }
-            }            
+                else
+                {
+                    Messe_lbl.Text = "新しいパスワードの確認入力は、新しいパスワードの入力と一致しなければなりません。";
+                    Messe_lbl.Visible = true;
+                }
+            }
+            else
+            {
+                Messe_lbl.Text = "パスワードが違います。";
+                Messe_lbl.Visible = true;
+            }
         }
 
         protected void Cancel_btn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Member_MyPage.aspx");
         }
-
-        //protected void Pass_tb_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (String.IsNullOrEmpty(Pass_tb.Text))
-        //    {
-        //        IconP_lbl.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        IconP_lbl.Visible = false;
-        //    }
-        //}
     }
 }

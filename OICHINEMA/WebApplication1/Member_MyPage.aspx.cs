@@ -69,6 +69,7 @@ namespace WebApplication1
         protected void Passalter_linkbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Member_pass_alter.aspx");
+            //Response.Redirect("Top.aspx");
         }
 
         protected void Withdrawal_btn_Click1(object sender, EventArgs e)

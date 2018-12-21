@@ -9,9 +9,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
         <tr>
-            <td>
+            <td style="text-align: center">
                 <asp:Label ID="Pagename_lbl" runat="server" Text="チケット購入履歴"></asp:Label>
             </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                &nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style1">

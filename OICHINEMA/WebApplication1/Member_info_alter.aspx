@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Member_info_alter.aspx.cs" Inherits="WebApplication1.Member_info_alter" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Member_Info_Alter.aspx.cs" Inherits="WebApplication1.Member_info_alter" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -21,25 +21,28 @@
             <td>
                 <table style="width:100%;">
                     <tr>
-                        <td class="auto-style1" rowspan="9">&nbsp;</td>
+                        <td class="auto-style1" rowspan="10">&nbsp;</td>
+                        <td colspan="4">&nbsp;</td>
+                        <td class="auto-style1" rowspan="10">&nbsp;</td>
+                    </tr>
+                    <tr>
                         <td colspan="4">氏名</td>
-                        <td class="auto-style1" rowspan="9">&nbsp;</td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <asp:Label ID="Label1" runat="server" Text="漢字"></asp:Label>
                             <br />
-                            <asp:TextBox ID="memname_tb" runat="server" OnTextChanged="memname_tb_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="memname_tb" runat="server" OnTextChanged="memname_tb_TextChanged" MaxLength="50"></asp:TextBox>
                         </td>
                         <td colspan="2">
                             <asp:Label ID="Label2" runat="server" Text="カナ"></asp:Label>
                             <br />
-                            <asp:TextBox ID="memkana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="memkana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged" MaxLength="50"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">性別<br />
-                            <asp:DropDownList ID="memgender_ddl" runat="server" OnSelectedIndexChanged="memgender_ddl_SelectedIndexChanged" AutoPostBack="True">
+                            <asp:DropDownList ID="memgender_ddl" runat="server" OnSelectedIndexChanged="memgender_ddl_SelectedIndexChanged">
                                 <asp:ListItem>男</asp:ListItem>
                                 <asp:ListItem>女</asp:ListItem>
                             </asp:DropDownList>
@@ -63,29 +66,29 @@
                                 <asp:ListItem>11</asp:ListItem>
                                 <asp:ListItem>12</asp:ListItem>
                             </asp:DropDownList>
-                            月 <asp:DropDownList ID="membirthday_ddl" runat="server" OnSelectedIndexChanged="membirthday_ddl_SelectedIndexChanged" AutoPostBack="True">
+                            月 <asp:DropDownList ID="membirthday_ddl" runat="server" OnSelectedIndexChanged="membirthday_ddl_SelectedIndexChanged">
                             </asp:DropDownList>
                             日</td>
                     </tr>
                     <tr>
                         <td colspan="4">郵便番号（ハイフンなし）<br />
-                            <asp:TextBox ID="mempost_tb" runat="server" OnTextChanged="mempost_tb_TextChanged" MaxLength="7" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="mempost_tb" runat="server" OnTextChanged="mempost_tb_TextChanged" MaxLength="7"></asp:TextBox>
                             <asp:Button ID="Postsearch_btn" runat="server" OnClick="Postsearch_btn_Click" Text="検索" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">住所<br />
-                            <asp:TextBox ID="memadr_tb" runat="server" OnTextChanged="memadr_tb_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="memadr_tb" runat="server" OnTextChanged="memadr_tb_TextChanged" ></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">電話番号<br />
-                            <asp:TextBox ID="memtel_tb" runat="server" OnTextChanged="memtel_tb_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="memtel_tb" runat="server" OnTextChanged="memtel_tb_TextChanged" MaxLength="11"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">メールアドレス<br />
-                            <asp:TextBox ID="memmail_tb" runat="server" OnTextChanged="memmail_tb_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="memmail_tb" runat="server" OnTextChanged="memmail_tb_TextChanged" MaxLength="50"></asp:TextBox>
                             <br />
                             <br />
                             <asp:Label ID="Messe_lbl" runat="server"></asp:Label>

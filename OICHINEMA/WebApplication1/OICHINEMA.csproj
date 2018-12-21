@@ -58,11 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BookingDB.accdb" />
+    <Content Include="App_Data\POSTADR.accdb" />
+    <Content Include="Buycon_Info.aspx" />
+    <Content Include="Buycon_Search.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Member_info_alter.aspx" />
+    <Content Include="Member_Info_Alter.aspx" />
     <Content Include="Member_MyPage.aspx" />
-    <Content Include="Member_pass_alter.aspx" />
-    <Content Include="Member_pass_alter2.aspx" />
+    <Content Include="Member_Pass_Alter.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Top.aspx" />
     <Content Include="Web.config" />
@@ -70,6 +72,20 @@
     <Content Include="Member_BookingLog.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buycon_Info.aspx.cs">
+      <DependentUpon>Buycon_Info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buycon_Info.aspx.designer.cs">
+      <DependentUpon>Buycon_Info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Buycon_Search.aspx.cs">
+      <DependentUpon>Buycon_Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buycon_Search.aspx.designer.cs">
+      <DependentUpon>Buycon_Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -77,12 +93,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Member_info_alter.aspx.cs">
-      <DependentUpon>Member_info_alter.aspx</DependentUpon>
+    <Compile Include="Member_Info_Alter.aspx.cs">
+      <DependentUpon>Member_Info_Alter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Member_info_alter.aspx.designer.cs">
-      <DependentUpon>Member_info_alter.aspx</DependentUpon>
+    <Compile Include="Member_Info_Alter.aspx.designer.cs">
+      <DependentUpon>Member_Info_Alter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member_MyPage.aspx.cs">
       <DependentUpon>Member_MyPage.aspx</DependentUpon>
@@ -91,19 +107,12 @@
     <Compile Include="Member_MyPage.aspx.designer.cs">
       <DependentUpon>Member_MyPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Member_pass_alter.aspx.cs">
-      <DependentUpon>Member_pass_alter.aspx</DependentUpon>
+    <Compile Include="Member_Pass_Alter.aspx.cs">
+      <DependentUpon>Member_Pass_Alter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Member_pass_alter.aspx.designer.cs">
-      <DependentUpon>Member_pass_alter.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Member_pass_alter2.aspx.cs">
-      <DependentUpon>Member_pass_alter2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Member_pass_alter2.aspx.designer.cs">
-      <DependentUpon>Member_pass_alter2.aspx</DependentUpon>
+    <Compile Include="Member_Pass_Alter.aspx.designer.cs">
+      <DependentUpon>Member_Pass_Alter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OICHINEMA.Master.cs">

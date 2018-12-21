@@ -44,7 +44,7 @@
                             <asp:MenuItem Text="作品案内"/>
                             <asp:MenuItem Text="イベント"/>
                             <asp:MenuItem Text="販売"/>
-                            <asp:MenuItem Text="予約確認"/>
+                            <asp:MenuItem NavigateUrl="Buycon_Search.aspx" Text="購入情報の確認"/>
                             <asp:MenuItem Text="アクセス"/>
                         </Items>
                     </asp:Menu>

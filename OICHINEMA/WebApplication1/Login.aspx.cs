@@ -18,7 +18,7 @@ namespace WebApplication1
 
             Session["PageID"] = "Member_MyPage.aspx";
 
-            string MemPageID = "Login.aspx";
+            //string MemPageID = "Login.aspx";
         }
 
         protected void Login_btn_Click(object sender, EventArgs e)
@@ -27,8 +27,8 @@ namespace WebApplication1
             String pass = Pass_tb.Text;
 
             //仮データ（入力省略用）
-            userid = "Tasaka+yahoo@oic.jp";
-            pass = "qwert12345";
+            //userid = "Tasaka+yahoo@oic.jp";
+            //pass = "a123456789";
 
             //データベース接続
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");

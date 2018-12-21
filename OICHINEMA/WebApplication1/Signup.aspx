@@ -198,8 +198,6 @@
         <asp:Label ID="messageLabel" runat="server" Text="Label" Visible="False" Font-Size="20px"></asp:Label>
         </asp:Panel>
 
-
-
     </div>
 
 </asp:Content>

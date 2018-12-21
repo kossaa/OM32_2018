@@ -13,19 +13,19 @@ namespace WebApplication1
 {
     public partial class Login : System.Web.UI.Page
     {
-
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            EnterBtn.Attributes["onclick"] = "";
-            if (IsPostBack == true)
+            if (!IsPostBack)
             {
                 messageLabel.Visible = false;
+            }
+            else
+            {
             }
             CalenderAddYear();
             CalenderAddDay();
         }
+
 
         /*=======================================
          *データベースに接続、開くまで
@@ -43,11 +43,8 @@ namespace WebApplication1
                 messageLabel.Visible = true;
                 return false;
             }
-
             return true;
         }
-
-
         /*=====================================================
          * ドロップダウンの年に当年までの年を追加
          ======================================================*/
@@ -123,7 +120,6 @@ namespace WebApplication1
             DataTable dt = new DataTable();
             OleDbDataAdapter da = new OleDbDataAdapter();
 
-
             DB_Connection();
             //会員番号の最大番号を取得する
             String MaxMID ;
@@ -140,7 +136,8 @@ namespace WebApplication1
             cn.Close();
 
             //会員番号の最大値に+1加算
-            int NewMID = int.Parse(MaxMID+1);
+            int NewMID = int.Parse(MaxMID)+1;
+            
             string nd = string.Format("{0:D7}", NewMID);
 
             return nd;
@@ -155,8 +152,7 @@ namespace WebApplication1
             String std = Today.ToString("yyyy/MM/dd");
             Today = DateTime.Parse(std);
             return Today;
-        }
-    
+        }    
         
         /*====================================================
          * ドロップダウンリストから生年月日を結合、Date型に変換
@@ -168,8 +164,6 @@ namespace WebApplication1
             BirthDay = DateTime.Parse(bd);
             return BirthDay;
         }
-
-
 
         /*========================================================
          * 郵便番号から住所割り出し
@@ -232,6 +226,7 @@ namespace WebApplication1
 
         protected void EnterBtn_Click(object sender, EventArgs e)
         {
+
             TextBox[] TextBoxArray = new TextBox[10];
             TextBoxArray[0] = FNameTxb;
             TextBoxArray[1] = FKanaTbx;
@@ -246,14 +241,12 @@ namespace WebApplication1
             
             OleDbCommand command = new OleDbCommand();
 
-            //Insertコマンドの値をcommandに指定
-            //command = new OleDbCommand(InsertStr);
             //DB接続
             DB_Connection();
 
             if (String.IsNullOrWhiteSpace(FNameTxb.Text) != true && String.IsNullOrWhiteSpace(FKanaTbx.Text) != true && String.IsNullOrWhiteSpace(PostTxb.Text) != true && String.IsNullOrWhiteSpace(FADR1Txb.Text) != true && String.IsNullOrWhiteSpace(LADR1Txb.Text) != true && String.IsNullOrWhiteSpace(TELTxb.Text) != true && String.IsNullOrWhiteSpace(MailTxb.Text) != true && String.IsNullOrWhiteSpace(PassTxb.Text) != true)
             {
-            //各テキストボックスに'の文字が含まれてたらInsert処理しない
+            //各テキストボックスに特定の文字が含まれてたらInsert処理しない
                 for(int i = 0;i < TextBoxArray.Length; i++){
                     SQLInjectionCheck(TextBoxArray[i].Text);
                     if (TxbCheck > -1)
@@ -285,7 +278,7 @@ namespace WebApplication1
                 int a = command.ExecuteNonQuery();
                 if (a != 0)
                 {
-                    EnterBtn.Attributes["onclick"] = "return confirm('登録完了しました。');";
+
                 }
                 cn.Close();
             }
@@ -295,6 +288,8 @@ namespace WebApplication1
                 messageLabel.Visible = true;
             }
         }
+
+       
         
         protected void MonthDDL_SelectedIndexChanged(object sender, EventArgs e)
         {

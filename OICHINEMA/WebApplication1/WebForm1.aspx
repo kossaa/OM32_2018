@@ -1,10 +1,13 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Schedule.aspx.cs" Inherits="Schedule.ScheduleForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
@@ -21,10 +24,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
     <div>
-    
-    </div>
         <asp:Button ID="BackBtn" runat="server" ForeColor="Red" Text="◀" />
         <asp:Button ID="DayBtn1" runat="server" Text="XX月YY日" />
         <asp:Button ID="DayBtn2" runat="server" Text="XX月YY日" />
@@ -50,9 +50,9 @@
                <td class="auto-style1">
                    <table border="1">
                         <tr>
-                            <td class="auto-style1" id="ClassArea1" runat="server">エリア1</td>
-                            <td class="auto-style1" id="ClassArea2" runat="server">エリア2</td>
-                            <td class="auto-style1" id="ClassArea3" runat="server">エリア3</td>
+                            <td class="auto-style1" id="ClassArea1" runat="server" >エリア1</td>
+                            <td class="auto-style1" id="ClassArea2" runat="server" >エリア2</td>
+                            <td class="auto-style1" id="ClassArea3" runat="server" >エリア3</td>
                         </tr>
                             <tr>
                             <td class="auto-style1" id="ClassArea4" runat="server">エリア4</td>
@@ -71,6 +71,7 @@
         <asp:Button ID="TimeBtn" runat="server" Text="上映時間" />
 
         </div>
-    </form>
+        </div>
 </body>
 </html>
+</asp:Content>

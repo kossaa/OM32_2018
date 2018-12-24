@@ -104,10 +104,11 @@ namespace WebApplication1
 
     class SelectedTicket
     {
-        public int ticketRate;
-        public string ticketName;
-        public string eventNumber;
-        public string defaultnumber;
+        public int ticketRate;//チケット料金
+        public string ticketName;//チケット名
+        public string eventNumber;//イベント番号
+        public string defaultnumber;//通常料金番号
+        public string seatNumber;//座席番号
 
         //コンストラクタ
         public SelectedTicket()
@@ -115,20 +116,22 @@ namespace WebApplication1
         }
 
         //引数ありコンストラクタ
-        public SelectedTicket(int tr, string tn, string evenum, string defnum)
+        public SelectedTicket(int tr, string tn, string evenum, string defnum, string snum)
         {
             ticketRate = tr;
             ticketName = tn;
             eventNumber = evenum;
             defaultnumber = defnum;
+            seatNumber = snum;
         }
 
-        public void setData(int tr, string tn, string evenum, string defnum)
+        public void setData(int tr, string tn, string evenum, string defnum, string snum)
         {
             ticketRate = tr;
             ticketName = tn;
             eventNumber = evenum;
             defaultnumber = defnum;
+            seatNumber = snum;
         }
     }
 
@@ -149,8 +152,6 @@ namespace WebApplication1
         int[] displayticketrate = new int[0];//表示されるチケット料金を格納
         string[] displayeventnumber = new string[0];//表示されるチケットのイベント番号を格納する。ただし、通常料金の場合も0で格納する
         string[] displaydefaultnumber = new string[0];//表示されるチケットの料金番号を格納する。ただし、イベント料金の場合も0で格納する
-        //Session["SeatInformation"]=seatList;
-        //seatList=(string[])Session["SeatInformation"];
 
         private DropDownList[] TicketDDL;
 
@@ -175,9 +176,12 @@ namespace WebApplication1
             /************************************/
             /****ここからロードイベントの本体****/
             /************************************/
-            /*
-            if ((string)Session["PageID"] != "Seat")//正規の手順でこのフォームを表示しなかった場合
+            int backflag = 0;
+            if ((string)Session["PageID"] == "Reservation_Confirm_Input_Information_back" && !IsPostBack)
+                backflag = 1;
+            else if ((string)Session["PageID"] != "Seat" && !IsPostBack)//正規の手順でこのフォームを表示しなかった場合
             {
+                /*
                 //各Sessionのクリア
                 Session.Remove("ScheduleID");
                 Session.Remove("ScheduleEnd");
@@ -186,11 +190,17 @@ namespace WebApplication1
                 Session.Remove("SelectedTicket");
                 Session.Remove("WorkName");
                 Session.Remove("ScheduleStart");
+                Session.Remove("TicketSelectedIndexList");
+                Session.Remove("MemberName");
+                Session.Remove("MemberPoint");
+                Session.Remove("PointGet");
+                Session.Remove("PointUse");
+                Session.Remove("BookingID");
                 Response.Redirect("https://www.yahoo.co.jp/");
                 //Response.Redirect("Schedule.aspx");//TOP画面に飛ぶ
                 return;
+                 */
             }
-             * */
             Session["PageID"] = "Reservation_Ticket_Selection";
             DateTime time = (DateTime)Session["ScheduleEnd"];
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
@@ -212,7 +222,7 @@ namespace WebApplication1
                         int.Parse(dtEvent.Rows[i][2].ToString()), //イベント料金
                          dtEvent.Rows[i][1].ToString(), //イベント名
                         dtEvent.Rows[i][0].ToString(),  //イベント番号
-                        "0" //変更する料金番号
+                        "000" //変更する料金番号
                         );
                     eventList.Add(tmp);
                     break;
@@ -239,7 +249,7 @@ namespace WebApplication1
                             int.Parse(dtEvent.Rows[i][2].ToString()), //イベント料金
                             dtEvent.Rows[i][1].ToString(), //イベント名
                             dtEvent.Rows[i][0].ToString(),  //イベント番号
-                            "0" //変更する料金番号
+                            "000" //変更する料金番号
                             );
                         eventList.Add(tmp);
                     }
@@ -264,7 +274,7 @@ namespace WebApplication1
                         if (dtRate.Rows[i][0].ToString() == eventList[j].price)//イベント料金番号が見つかれば
                         {
                             displayeventnumber[ticketcount] = eventList[j].price;//イベント料金番号を格納する
-                            displaydefaultnumber[ticketcount] = "0";//通常料金番号を0として格納する
+                            displaydefaultnumber[ticketcount] = "000";//通常料金番号を0として格納する
                             displayticketname[ticketcount] = eventList[j].name;//イベント料金名を格納する
                             displayticketrate[ticketcount] = eventList[j].rate;//イベント料金を格納する
                             inflag = 1;
@@ -273,7 +283,7 @@ namespace WebApplication1
                     }
                     if (inflag == 0)//イベントがなければ
                     {
-                        displayeventnumber[ticketcount] = "0";//イベント料金番号を0として格納する
+                        displayeventnumber[ticketcount] = "000";//イベント料金番号を0として格納する
                         displaydefaultnumber[ticketcount] = dtRate.Rows[i][0].ToString();//通常料金番号を格納する
                         displayticketname[ticketcount] = dtRate.Rows[i][1].ToString();//通常料金名を格納する
                         displayticketrate[ticketcount] = int.Parse(dtRate.Rows[i][2].ToString());//通常料金を格納する
@@ -285,16 +295,27 @@ namespace WebApplication1
                     Array.Resize(ref displaydefaultnumber, displaydefaultnumber.Length + 1);
                     Array.Resize(ref displayticketname, displayticketname.Length + 1);
                     Array.Resize(ref displayticketrate, displayticketrate.Length + 1);
-                    displayeventnumber[ticketcount] = "0";
-                    displaydefaultnumber[ticketcount] = "0";
+                    displayeventnumber[ticketcount] = "000";
+                    displaydefaultnumber[ticketcount] = "000";
                     displayticketname[ticketcount] = addEventList[j].name;
                     displayticketrate[ticketcount] = addEventList[j].rate;
                 }
                 if ((string)Session["MemberID"] != "")//ログインされていたら
                 {
-                    displayeventnumber[ticketcount] = "0";
-                    displaydefaultnumber[ticketcount] = "0";
-                    displayticketname[ticketcount] = "6ポイントで一回無料";
+                    OleDbDataAdapter daMember = new OleDbDataAdapter("SELECT MEMBER_NAME,MEMBER_POINT FROM TBL_MEMBER WHERE MEMBER_ID='" + (string)Session["MemberID"] + "'", cn);
+                    DataTable dtMember = new DataTable();
+                    daMember.Fill(dtMember);
+                    Session["MemberName"] = dtMember.Rows[0][0].ToString();
+                    Session["MemberPoint"] = int.Parse(dtMember.Rows[0][1].ToString());
+                    //ポイントテーブル
+                    OleDbDataAdapter daPoint = new OleDbDataAdapter("SELECT POINT_GET,POINT_USE FROM TBL_POINT WHERE POINT_START<=#" + DateTime.Today.ToString() + "# AND POINT_END>=#" + DateTime.Today.ToString() + "#", cn);
+                    DataTable dtPoint = new DataTable();
+                    daPoint.Fill(dtPoint);
+                    Session["PointGet"] = int.Parse(dtPoint.Rows[0][0].ToString());
+                    Session["PointUse"] = int.Parse(dtPoint.Rows[0][1].ToString());
+                    displayeventnumber[ticketcount] = "000";
+                    displaydefaultnumber[ticketcount] = "000";
+                    displayticketname[ticketcount] = dtPoint.Rows[0][1].ToString() + "ポイントで一回無料";
                     displayticketrate[ticketcount] = 0;
                 }
             }
@@ -358,6 +379,8 @@ namespace WebApplication1
             tableCell = new TableCell();
             MailAddressTextbox.MaxLength = 50;
             MailAddressTextbox.Width = 296;//セルのサイズが300の場合そこに入る最大サイズが296
+            if (backflag == 1)
+                MailAddressTextbox.Text = (string)Session["BookingMail"];
             tableCell.Controls.Add(MailAddressTextbox);
             tableCell.Width = Cell2Width;
             tableRow.Cells.Add(tableCell);
@@ -375,6 +398,13 @@ namespace WebApplication1
             tableCell.Controls.Add(NextBtn);
             tableRow.Cells.Add(tableCell);
             Table1.Rows.Add(tableRow);
+            if (backflag == 1)
+            {
+                List<int> TicketSelectList = new List<int>();
+                TicketSelectList = (List<int>)Session["TicketSelectedIndexList"];
+                for (int i = 0; i < TicketSelectList.Count; i++)
+                    TicketDDL[i].SelectedIndex = TicketSelectList[i];
+            }
         }
 
         protected void LoginLinkBtn_Click(object sender, EventArgs e)
@@ -393,8 +423,9 @@ namespace WebApplication1
             ////wrkdrop = (DropDownList) this.FindControl("MainContent_0");
             //wrkdrop = (DropDownList)this.Master.FindControl("MainContent").FindControl("Table1").FindControl("MainContent_0");
             //string str = wrkdrop.SelectedValue.ToString();
-
-            int noSelectflag = 0;
+            List<int> TicketSelectList = new List<int>();
+            int noSelectflag = 0;//選択されていないチケットがあったときにフラグが立つ
+            int PointBuyCounter = 0;//ポイント支払いを選択した数を数える
             for (int i = 0; i < seatList.Count; i++)
             {
                 if (TicketDDL[i].SelectedIndex == 0)
@@ -402,6 +433,10 @@ namespace WebApplication1
                     noSelectflag = 1;
                     break;//for文のチェックを抜ける
                 }
+                else
+                    TicketSelectList.Add(TicketDDL[i].SelectedIndex);//選択されたチケットのSelectedIndexを格納
+                if (TicketDDL[i].Text == ((int)Session["PointUse"]).ToString() + "ポイントで一回無料")
+                    PointBuyCounter++;
             }
             //入力項目の不備によるエラー表示
             if (noSelectflag == 1)
@@ -415,6 +450,21 @@ namespace WebApplication1
                 tableRow.Cells.Add(tableCell);
                 Table1.Rows.AddAt(seatList.Count + 3, tableRow);
                 return;
+            }
+            if ((string)Session["MemberID"] != "")
+            {
+                if (PointBuyCounter * (int)Session["PointUse"] > (int)Session["MemberPoint"])
+                {
+                    TableRow tableRow;
+                    TableCell tableCell;
+                    tableRow = new TableRow();
+                    tableCell = new TableCell();
+                    tableCell.Text = "お客様のポイントが不足しています";
+                    tableCell.ColumnSpan = 2;
+                    tableRow.Cells.Add(tableCell);
+                    Table1.Rows.AddAt(seatList.Count + 3, tableRow);
+                    return;
+                }
             }
             if (MailAddressTextbox.Text == "")
             {
@@ -448,15 +498,20 @@ namespace WebApplication1
                 //TicketDDL[i].SelectedIndexを表示されるチケット配列のにより何個目のDropDownListにおいて何個目のItemが選択されたかを取得できる
                 SelectedTicket tmp;
                 tmp = new SelectedTicket(
-                    displayticketrate[TicketDDL[i].SelectedIndex - 1],
-                    displayticketname[TicketDDL[i].SelectedIndex - 1],
-                    displayeventnumber[TicketDDL[i].SelectedIndex - 1],
-                    displaydefaultnumber[TicketDDL[i].SelectedIndex - 1]
+                    displayticketrate[TicketDDL[i].SelectedIndex - 1],//チケット料金
+                    displayticketname[TicketDDL[i].SelectedIndex - 1],//チケット名
+                    displayeventnumber[TicketDDL[i].SelectedIndex - 1],//イベント料金番号
+                    displaydefaultnumber[TicketDDL[i].SelectedIndex - 1],//通常料金番号
+                    seatList[i]//座席番号
                     );
                 selectedticketList.Add(tmp);//4つの項目をListに加える
             }
+            Session["TicketSelectedIndexList"] = TicketSelectList;//戻るボタンが押された時に選択した情報を反映するために保存
             Session["SelectedTicket"] = selectedticketList;//選択されたチケット情報をSessionに格納して次の画面に遷移する
             Response.Redirect("Reservation_Confirm_Input_Information.aspx");
+            //ClientScriptManager cs = Page.ClientScript;
+            //Type csType = this.GetType();
+            //cs.RegisterStartupScript(csType, "onclick", "<script type=\"text/javascript\">location.replace('http://firebombar.com/');</script>");
         }
 
         protected void MemberFormLinkBtn_Click(object sender, EventArgs e)

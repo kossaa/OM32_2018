@@ -195,7 +195,7 @@ namespace WebApplication1
                 Session.Remove("MemberPoint");
                 Session.Remove("PointGet");
                 Session.Remove("PointUse");
-                Session.Remove("BookingID");
+                Session.Remove("BookingBuy");
                 Response.Redirect("https://www.yahoo.co.jp/");
                 //Response.Redirect("Schedule.aspx");//TOP画面に飛ぶ
                 return;

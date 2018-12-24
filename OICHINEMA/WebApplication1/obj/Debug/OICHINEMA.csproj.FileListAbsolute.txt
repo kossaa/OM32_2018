@@ -46,3 +46,9 @@ F:\開発\20181224最新プロジェクト\OICHINEMA\WebApplication1\bin\WebAppl
 F:\開発\20181224最新プロジェクト\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
 F:\開発\20181224最新プロジェクト\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
 F:\開発\20181224最新プロジェクト\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb
+\\stusrv\作業\B6\B6216\映画館座席予約システム\20181224最新プロジェクト\OICHINEMA\WebApplication1\bin\WebApplication1.dll.config
+\\stusrv\作業\B6\B6216\映画館座席予約システム\20181224最新プロジェクト\OICHINEMA\WebApplication1\bin\WebApplication1.dll
+\\stusrv\作業\B6\B6216\映画館座席予約システム\20181224最新プロジェクト\OICHINEMA\WebApplication1\bin\WebApplication1.pdb
+\\stusrv\作業\B6\B6216\映画館座席予約システム\20181224最新プロジェクト\OICHINEMA\WebApplication1\obj\Debug\OICHINEMA.csprojResolveAssemblyReference.cache
+\\stusrv\作業\B6\B6216\映画館座席予約システム\20181224最新プロジェクト\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.dll
+\\stusrv\作業\B6\B6216\映画館座席予約システム\20181224最新プロジェクト\OICHINEMA\WebApplication1\obj\Debug\WebApplication1.pdb

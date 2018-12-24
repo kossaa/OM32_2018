@@ -32,7 +32,7 @@ namespace WebApplication1
                 Session.Remove("MemberPoint");
                 Session.Remove("PointGet");
                 Session.Remove("PointUse");
-                Session.Remove("BookingID");
+                Session.Remove("BookingBuy");
                 Response.Redirect("Reservation_Ticket_Selection.aspx");
                 //Response.Redirect("TOP.aspx");//TOP画面に飛ぶ
                 return;
@@ -194,20 +194,21 @@ namespace WebApplication1
             OleDbDataAdapter daNumbering = new OleDbDataAdapter("SELECT NUMBERING_BOOKING,NUMBERING_BOOKINGBUY,NUMBERING_BOOKINGDETAIL,NUMBERING_SALES FROM TBL_NUMBERING", cn);
             DataTable dtNumbering = new DataTable();
             daNumbering.Fill(dtNumbering);
-            Session["BookingID"] = (int.Parse(dtNumbering.Rows[0][0].ToString()) + 1).ToString("00000000");//一番大きい予約番号+1を格納
+            int NumberingBooking = int.Parse(dtNumbering.Rows[0][0].ToString()) + 1;//一番大きい予約番号+1を格納
             int NumberingBuy = int.Parse(dtNumbering.Rows[0][1].ToString());
             if (NumberingBuy == 99999)
                 NumberingBuy = 1;
             else
                 NumberingBuy += 1;
+            Session["BookingBuy"] = NumberingBuy.ToString("00000");
             int NumberingDetail = int.Parse(dtNumbering.Rows[0][2].ToString());//予約詳細番号を格納
             int NumberingSales = int.Parse(dtNumbering.Rows[0][3].ToString());//売上番号を格納
             //予約テーブルに予約情報を格納
             string strSQL = "";
             if ((string)Session["MemberID"] != "")
-                strSQL = "INSERT INTO TBL_BOOKING (BOOKING_ID,BOOKING_BUYID,BOOKING_MAIL,SCHEDULE_ID,MEMBER_ID,BOOKING_DAY) VALUES ('" + Session["BookingID"].ToString() + "','" + NumberingBuy.ToString("00000") + "','" + Session["BookingMail"].ToString() + "','" + Session["ScheduleID"] + "','" + Session["MemberID"].ToString() + "','" + DateTime.Now.ToString() + "')";
+                strSQL = "INSERT INTO TBL_BOOKING (BOOKING_ID,BOOKING_BUYID,BOOKING_MAIL,SCHEDULE_ID,MEMBER_ID,BOOKING_DAY) VALUES ('" + NumberingBooking.ToString("00000000") + "','" + Session["BookingBuy"].ToString() + "','" + Session["BookingMail"].ToString() + "','" + Session["ScheduleID"] + "','" + Session["MemberID"].ToString() + "','" + DateTime.Now.ToString() + "')";
             else
-                strSQL = "INSERT INTO TBL_BOOKING (BOOKING_ID,BOOKING_BUYID,BOOKING_MAIL,SCHEDULE_ID,BOOKING_DAY) VALUES ('" + Session["BookingID"].ToString() + "','" + NumberingBuy.ToString("00000") + "','" + Session["BookingMail"].ToString() + "','" + Session["ScheduleID"] + "','" + DateTime.Now.ToString() + "')";
+                strSQL = "INSERT INTO TBL_BOOKING (BOOKING_ID,BOOKING_BUYID,BOOKING_MAIL,SCHEDULE_ID,BOOKING_DAY) VALUES ('" + NumberingBooking.ToString("00000000") + "','" + Session["BookingBuy"].ToString() + "','" + Session["BookingMail"].ToString() + "','" + Session["ScheduleID"] + "','" + DateTime.Now.ToString() + "')";
             OleDbDataAdapter daBooking = new OleDbDataAdapter(strSQL, cn);
             DataTable dtBooking = new DataTable();
             daBooking.Fill(dtBooking);
@@ -217,7 +218,7 @@ namespace WebApplication1
                 //予約詳細テーブル
                 NumberingDetail++;//予約詳細番号を最大値+1する
                 int point = selectedticketList[i].ticketName == ((int)Session["PointUse"]).ToString() + "ポイントで一回無料" ? -6 : 1;
-                OleDbDataAdapter daBookingDetail = new OleDbDataAdapter("INSERT INTO TBL_BOOKINGDETAIL (BOOKINGDETAIL_ID,BOOKING_ID,SEAT_ID,EVENT_ID,RATE_ID,BOOKINGDETAIL_POINT) VALUES ('" + NumberingDetail.ToString("00000000") + "','" + Session["BookingID"].ToString() + "','" + selectedticketList[i].seatNumber + "','" + selectedticketList[i].eventNumber + "','" + selectedticketList[i].defaultnumber + "','" + point + "')", cn);
+                OleDbDataAdapter daBookingDetail = new OleDbDataAdapter("INSERT INTO TBL_BOOKINGDETAIL (BOOKINGDETAIL_ID,BOOKING_ID,SEAT_ID,EVENT_ID,RATE_ID,BOOKINGDETAIL_POINT) VALUES ('" + NumberingDetail.ToString("00000000") + "','" + NumberingBooking.ToString("00000000") + "','" + selectedticketList[i].seatNumber + "','" + selectedticketList[i].eventNumber + "','" + selectedticketList[i].defaultnumber + "','" + point + "')", cn);
                 DataTable dtBookingDetail = new DataTable();
                 daBookingDetail.Fill(dtBookingDetail);
                 //売上テーブル
@@ -227,7 +228,7 @@ namespace WebApplication1
                 daSales.Fill(dtSales);
             }
             //採番テーブルの予約番号、購入番号、予約詳細番号、売上番号の最大値を更新する
-            OleDbDataAdapter daNumberingUp = new OleDbDataAdapter("UPDATE TBL_NUMBERING SET NUMBERING_BOOKING = '" + Session["BookingID"].ToString() + "',NUMBERING_BOOKINGBUY='" + NumberingBuy.ToString("00000") + "',NUMBERING_BOOKINGDETAIL='" + NumberingDetail.ToString("00000000") + "',NUMBERING_SALES='" + NumberingSales.ToString("00000000") + "'", cn);
+            OleDbDataAdapter daNumberingUp = new OleDbDataAdapter("UPDATE TBL_NUMBERING SET NUMBERING_BOOKING = '" + NumberingBooking.ToString("00000000") + "',NUMBERING_BOOKINGBUY='" + Session["BookingBuy"].ToString() + "',NUMBERING_BOOKINGDETAIL='" + NumberingDetail.ToString("00000000") + "',NUMBERING_SALES='" + NumberingSales.ToString("00000000") + "'", cn);
             DataTable dtNumberingUp = new DataTable();
             daNumberingUp.Fill(dtNumberingUp);
             Response.Redirect("Reservation_Receipt_Confirmation.aspx");

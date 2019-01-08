@@ -1,0 +1,13 @@
+変更点
+・Seat.aspx(Screen01)とSchedule.aspxを桜井陸のプロジェクトより既存の項目を追加
+・Screen01.aspxにおいてSession["Infomation"]をSession["Information"]に変更
+・次へボタンを押すときにSession["PageID"]に受け渡し用のページ名を格納し、次の画面ではそのSession["PageID"]を見るようにする。
+・ソースを開くと行の終わりが一貫していませんと表示されるページにおいて行の終わりをUnixのLFの形式にした
+・
+
+
+問題点
+・Screen01.aspxにおいて6個目の座席を選択してエラーが表示され、エラー表示を消すと次へボタンが押せなくなるが、選択された座席を一度解除すると元に戻る。これをエラー表示後一度解除しなくても次へボタンを押せるようにする
+・動的に作られてるScreen01.aspx、Reservation_Ticket_Selection、Reservation_Confirm_Input_InformationとReservation_Receipt_Confirmationの一部は問題ないが、静的に作られているReservation_Receipt_Confirmationの一部に限り文字化けが発生する
+・アクセス画面の画像ファイル名が日本語になっているため文字化けの可能性がある
+・

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CB3EEFB2-D3C4-4B1F-A753-04DA905EB93E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Avengers01.jpg" />
+    <Content Include="Images\Avengers02.jpg" />
+    <Content Include="Images\Avengers03.jpg" />
+    <Content Include="Images\Avengers04jpg.jpg" />
+    <Content Include="Images\Avengerss.jpg" />
+    <Content Include="Images\FiveHeadJAWS.jpg" />
+    <Content Include="Images\FiveHeadJAWS01.jpg" />
+    <Content Include="Images\FiveHeadJAWS02.jpg" />
+    <Content Include="Images\FiveHeadJAWS03.jpg" />
+    <Content Include="Images\FiveHeadJAWS04.jpg" />
+    <Content Include="Images\isu.png" />
+    <Content Include="Images\MegaShark_vs_MechaShark.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark01.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark02.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark03.jpg" />
+    <Content Include="Images\MegaShark_vs_MechaShark04.jpg" />
+    <Content Include="Images\Soranokanata.jpg" />
+    <Content Include="Images\Soranokanata01.jpg" />
+    <Content Include="Images\Soranokanata02.jpg" />
+    <Content Include="Images\Soranokanata03.jpg" />
+    <Content Include="Images\Soranokanata04.jpg" />
+    <Content Include="Images\spidermen.jpg" />
+    <Content Include="Images\spidermen01.jpg" />
+    <Content Include="Images\spidermen02.jpg" />
+    <Content Include="Images\spidermen03.jpg" />
+    <Content Include="Images\spidermen04.jpg" />
+    <Content Include="Images\WildSpeed.jpg" />
+    <Content Include="Images\WildSpeed01.jpg" />
+    <Content Include="Images\WildSpeed02.jpg" />
+    <Content Include="Images\WildSpeed03.jpg" />
+    <Content Include="Images\WildSpeed04.jpg" />
+    <Content Include="Reservation_Confirm_Input_Information.aspx" />
+    <Content Include="Reservation_Receipt_Confirmation.aspx" />
+    <Content Include="Reservation_Ticket_Selection.aspx" />
+    <Content Include="Schedule.aspx" />
+    <Content Include="Screen01.aspx" />
+    <Content Include="Styles\Style.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormatCheck.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OICINEMA.Master.cs">
+      <DependentUpon>OICINEMA.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OICINEMA.Master.designer.cs">
+      <DependentUpon>OICINEMA.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation_Confirm_Input_Information.aspx.cs">
+      <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation_Confirm_Input_Information.aspx.designer.cs">
+      <DependentUpon>Reservation_Confirm_Input_Information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation_Receipt_Confirmation.aspx.cs">
+      <DependentUpon>Reservation_Receipt_Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation_Receipt_Confirmation.aspx.designer.cs">
+      <DependentUpon>Reservation_Receipt_Confirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation_Ticket_Selection.aspx.cs">
+      <DependentUpon>Reservation_Ticket_Selection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation_Ticket_Selection.aspx.designer.cs">
+      <DependentUpon>Reservation_Ticket_Selection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Screen01.aspx.cs">
+      <DependentUpon>Screen01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Screen01.aspx.designer.cs">
+      <DependentUpon>Screen01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SQLWhereMaker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OICINEMA.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50133</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57052/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -74,37 +74,15 @@ namespace WebApplication1
 
         protected void Withdrawal_btn_Click1(object sender, EventArgs e)
         {
-            //とりあえずのログアウト
-            FormsAuthentication.SignOut();
-            Session["UserID"] = null;
-            Session["MemName"] = null;
-            Session["MemKana"] = null;
-            Session["MemGender"] = null;
-            Session["MemBirthYear"] = null;
-            Session["MemBirthMon"] = null;
-            Session["MemBirthDay"] = null;
-            Session["MemPost"] = null;
-            Session["MemAdr"] = null;
-            Session["MemTel"] = null;
-            Session["MemBirthDay"] = null;
-            Response.Redirect("Login.aspx");
-
-            //DateTime dtToday = DateTime.Today;
-            ////退会処理は退会日時を入れるだけ
-            //String userid = (string)Session["UserID"];
-            //OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            //OleDbCommand cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_OUT = '" + dtToday.ToString() + "' WHERE MEMBER_ID = '" + userid + "'", cn);
-            //cn.Open();
-            //cmd.ExecuteNonQuery();
-            //cn.Close();
-
-            //FormsAuthentication.SignOut();
-            //Session["UserID"] = null;
-            ////テスト用
-            //Response.Redirect("Login.aspx");
-
-            //本来
-            //Response.Redirect("Top.aspx");
+            DateTime dtToday = DateTime.Today;
+            //退会処理は退会日時を入れるだけ
+            String userid = (string)Session["UserID"];
+            OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+            OleDbCommand cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_OUT = '" + dtToday.ToString() + "' WHERE MEMBER_ID = '" + userid + "'", cn);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
+            Response.Redirect("Top.aspx");
         }
     }
 }

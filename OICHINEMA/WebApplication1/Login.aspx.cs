@@ -27,13 +27,19 @@ namespace WebApplication1
             String pass = Pass_tb.Text;
 
             //仮データ（入力省略用）
-            //userid = "Tasaka+yahoo@oic.jp";
-            //pass = "a123456789";
+            userid = "Tasaka+yahoo@oic.jp";
+            pass = "qwert12345";
+
+            //（退会済み）
+            //userid = "aaa@aaa.a";
+            //pass = "1111111111";
 
             //データベース接続
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             //退会日の有無で退会判断
             OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_ID FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "' AND MEMBER_OUT IS NULL", cn);
+            //OleDbDataAdapter da = new OleDbDataAdapter("SELECT MEMBER_ID FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "' AND MEMBER_OUT IS NULL OR 7 > (SELECT DATEDIFF(DAY,MEMBER_OUT,GETDATE) FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "')", cn);
+            //OleDbDataAdapter da = new OleDbDataAdapter("SELECT DATEDIFF(DAY,MEMBER_OUT,NOW()) FROM TBL_MEMBER WHERE MEMBER_MAIL = '" + userid + "' AND MEMBER_PASS = '" + pass + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 

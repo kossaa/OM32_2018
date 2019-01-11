@@ -32,12 +32,12 @@
                         <td colspan="2">
                             <asp:Label ID="Label1" runat="server" Text="漢字"></asp:Label>
                             <br />
-                            <asp:TextBox ID="memname_tb" runat="server" OnTextChanged="memname_tb_TextChanged" MaxLength="50"></asp:TextBox>
+                            <asp:TextBox ID="memname_tb" runat="server" OnTextChanged="memname_tb_TextChanged" MaxLength="50" required></asp:TextBox>
                         </td>
                         <td colspan="2">
                             <asp:Label ID="Label2" runat="server" Text="カナ"></asp:Label>
                             <br />
-                            <asp:TextBox ID="memkana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged" MaxLength="50"></asp:TextBox>
+                            <asp:TextBox ID="memkana_tb" runat="server" OnTextChanged="memnamekana_tb_TextChanged" MaxLength="50" required></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -72,23 +72,23 @@
                     </tr>
                     <tr>
                         <td colspan="4">郵便番号（ハイフンなし）<br />
-                            <asp:TextBox ID="mempost_tb" runat="server" OnTextChanged="mempost_tb_TextChanged" MaxLength="7"></asp:TextBox>
+                            <asp:TextBox ID="mempost_tb" runat="server" OnTextChanged="mempost_tb_TextChanged" MaxLength="7" required></asp:TextBox>
                             <asp:Button ID="Postsearch_btn" runat="server" OnClick="Postsearch_btn_Click" Text="検索" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">住所<br />
-                            <asp:TextBox ID="memadr_tb" runat="server" OnTextChanged="memadr_tb_TextChanged" ></asp:TextBox>
+                            <asp:TextBox ID="memadr_tb" runat="server" OnTextChanged="memadr_tb_TextChanged"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4">電話番号<br />
-                            <asp:TextBox ID="memtel_tb" runat="server" OnTextChanged="memtel_tb_TextChanged" MaxLength="11"></asp:TextBox>
+                        <td colspan="4">電話番号（ハイフンなし）<br />
+                            <asp:TextBox ID="memtel_tb" runat="server" OnTextChanged="memtel_tb_TextChanged" MaxLength="11" type="tel" pattern="[0-9]*" required></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">メールアドレス<br />
-                            <asp:TextBox ID="memmail_tb" runat="server" OnTextChanged="memmail_tb_TextChanged" MaxLength="50"></asp:TextBox>
+                            <asp:TextBox ID="memmail_tb" runat="server" OnTextChanged="memmail_tb_TextChanged" MaxLength="50" type="email" required></asp:TextBox>
                             <br />
                             <br />
                             <asp:Label ID="Messe_lbl" runat="server"></asp:Label>

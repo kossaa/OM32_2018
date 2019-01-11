@@ -30,7 +30,7 @@
     </tr>
     <tr>
         <td style="text-align: center">
-            <asp:TextBox ID="Pass_tb" runat="server" TextMode="Password" pattern="[A-Z,a-z,1-9]*" title="大小英数字のみで入力して下さい。"></asp:TextBox>
+            <asp:TextBox ID="Pass_tb" runat="server" TextMode="Password" pattern="[A-Z,a-z,0-9]*" title="大小英数字のみで入力して下さい。"></asp:TextBox>
         </td>
     </tr>
     <tr>

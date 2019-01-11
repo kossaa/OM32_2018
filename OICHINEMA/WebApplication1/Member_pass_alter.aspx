@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td style="text-align: center" colspan="2">
-                <asp:TextBox ID="Pass_tb" runat="server" MaxLength="20" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="Pass_tb" runat="server" MaxLength="20" TextMode="Password" pattern="[A-Z,a-z,0-9]*"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td style="text-align: center" colspan="2">
-                <asp:TextBox ID="Newpass_tb" runat="server" MaxLength="20" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="Newpass_tb" runat="server" MaxLength="20" minlength="10" TextMode="Password" pattern="[A-Z,a-z,0-9]*"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td style="text-align: center" colspan="2">
-                <asp:TextBox ID="CnewPass_tb" runat="server" MaxLength="20" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="CnewPass_tb" runat="server" MaxLength="20" TextMode="Password" pattern="[A-Z,a-z,0-9]*"></asp:TextBox>
             </td>
         </tr>
         <tr>

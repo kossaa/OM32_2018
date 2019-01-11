@@ -15,7 +15,8 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            EnterBtn.Attributes["onclick"] = "登録完了しました。";
+            EnterBtn.Attributes["onclick"]
+                = "return confirm('登録完了しました。');";
             if (!IsPostBack)
             {
                 messageLabel.Visible = false;

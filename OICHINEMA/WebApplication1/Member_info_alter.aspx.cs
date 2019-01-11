@@ -14,8 +14,6 @@ namespace WebApplication1
     public partial class Member_info_alter : System.Web.UI.Page
     {
         int year = 1900,month = 1;
-        
-        bool flg;
 
         OleDbConnection cn = new OleDbConnection();
         OleDbCommand cmd = new OleDbCommand();
@@ -26,6 +24,8 @@ namespace WebApplication1
         {
             if (Page.IsPostBack != true)
             {
+                Messe_lbl.Visible = false;
+
                 //必要な変数を宣言する
                 DateTime dtNow = DateTime.Now;
 
@@ -56,25 +56,8 @@ namespace WebApplication1
             }
         }
 
-        protected void memname_tb_TextChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
-        protected void memnamekana_tb_TextChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
-        protected void memgender_ddl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
         protected void membirthyear_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            flg = true;
-
             //年と月を変数に入れる
             year = int.Parse(membirthyear_ddl.SelectedValue);
             month = int.Parse(membirthmonth_ddl.SelectedValue);
@@ -92,8 +75,6 @@ namespace WebApplication1
 
         protected void membirthmonth_ddl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            flg = true;
-
             year = int.Parse(membirthyear_ddl.SelectedValue);
             month = int.Parse(membirthmonth_ddl.SelectedValue);
 
@@ -105,31 +86,6 @@ namespace WebApplication1
             {
                 membirthday_ddl.Items.Add(iday.ToString());
             }
-        }
-
-        protected void membirthday_ddl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
-        protected void mempost_tb_TextChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
-        protected void memadr_tb_TextChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
-        protected void memtel_tb_TextChanged(object sender, EventArgs e)
-        {
-            flg = true;
-        }
-
-        protected void memmail_tb_TextChanged(object sender, EventArgs e)
-        {
-            flg = true;
         }
 
         protected void Postsearch_btn_Click(object sender, EventArgs e)
@@ -162,14 +118,22 @@ namespace WebApplication1
 
         protected void Con_btn_Click(object sender, EventArgs e)
         {
-            String userid = (string)Session["UserID"];
-            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-            cmd.Connection = cn;
-            cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_NAME = '" + memname_tb.Text + "',MEMBER_KANA = '" + memkana_tb.Text + "',MEMBER_GENDER = '" + memgender_ddl.Text + "',MEMBER_BIRTH = '" + membirthyear_ddl.Text + "/" + membirthmonth_ddl.Text + "/" + membirthday_ddl.Text + "',MEMBER_POST = '" + mempost_tb.Text + "',MEMBER_ADR = '" + memadr_tb.Text + "',MEMBER_MAIL = '" + memmail_tb.Text + "' WHERE MEMBER_ID = '" + userid + "'", cn);
-            cn.Open();
-            cmd.ExecuteNonQuery();
-            cn.Close();
-            Response.Redirect("Member_MyPage.aspx");
+            if (string.IsNullOrWhiteSpace(memname_tb.Text) == false && string.IsNullOrWhiteSpace(memkana_tb.Text) == false && string.IsNullOrWhiteSpace(mempost_tb.Text) == false && string.IsNullOrWhiteSpace(memadr_tb.Text) == false && string.IsNullOrWhiteSpace(memmail_tb.Text) == false)
+            {
+                String userid = (string)Session["UserID"];
+                cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+                cmd.Connection = cn;
+                cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_NAME = '" + memname_tb.Text + "',MEMBER_KANA = '" + memkana_tb.Text + "',MEMBER_GENDER = '" + memgender_ddl.Text + "',MEMBER_BIRTH = '" + membirthyear_ddl.Text + "/" + membirthmonth_ddl.Text + "/" + membirthday_ddl.Text + "',MEMBER_POST = '" + mempost_tb.Text + "',MEMBER_ADR = '" + memadr_tb.Text + "',MEMBER_MAIL = '" + memmail_tb.Text + "' WHERE MEMBER_ID = '" + userid + "'", cn);
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+                Response.Redirect("Member_MyPage.aspx");
+            }
+            else
+            {
+                Messe_lbl.Text = "入力されていない欄があります。";
+                Messe_lbl.Visible = true;
+            }
         }
 
         public void datelord()

@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                <asp:Button ID="Com_btn" runat="server" OnClick="Com_btn_Click" Text="確定" />
+                <asp:Button ID="Com_btn" runat="server" OnClick="Com_btn_Click" Text="確定" OnClientClick="return confirm(&quot;変更内容を確定します。&quot;); " />
             </td>
             <td style="text-align: center">
                 <asp:Button ID="Cancel_btn" runat="server" CommandName="Cancel" OnClick="Cancel_btn_Click" Text="キャンセル" />

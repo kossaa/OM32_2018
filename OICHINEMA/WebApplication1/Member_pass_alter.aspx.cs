@@ -59,7 +59,7 @@ namespace WebApplication1
             {
                 Messe_lbl.Text = "パスワードが違います。";
                 Messe_lbl.Visible = true;
-            }
+            } 
         }
 
         protected void Cancel_btn_Click(object sender, EventArgs e)

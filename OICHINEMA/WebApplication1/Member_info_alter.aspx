@@ -78,7 +78,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">住所<br />
-                            <asp:TextBox ID="memadr_tb" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="memadr_tb" runat="server" Width="180px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

@@ -13,10 +13,17 @@ namespace WebApplication1
 {
     public partial class Login : System.Web.UI.Page
     {
+        public int a = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
-            EnterBtn.Attributes["onclick"]
-                = "return confirm('登録完了しました。');";
+            if(Session["sqlflug"]!=null)
+            a = (int)Session["sqlflug"];
+            if (a == 1)
+            {
+                EnterBtn.Attributes["onclick"]
+                    = "return confirm('登録完了しました。');";
+            }
+
             if (!IsPostBack)
             {
                 messageLabel.Visible = false;
@@ -27,7 +34,6 @@ namespace WebApplication1
             CalenderAddYear();
             CalenderAddDay();
         }
-
 
         /*=======================================
          *データベースに接続、開くまで
@@ -277,11 +283,13 @@ namespace WebApplication1
                 command = new OleDbCommand(testdate);
                 command.Connection = cn;
                 cn.Open();
-                int a = command.ExecuteNonQuery();
+                a = command.ExecuteNonQuery();
                 if (a == 1)
                 {
+                    Session["sqlflug"] = a;
                     messageLabel.Visible = false;
                     Response.Redirect("Login.aspx");
+
                 }
                 cn.Close();
             }

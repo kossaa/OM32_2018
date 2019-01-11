@@ -63,6 +63,7 @@
     <Content Include="Image\monsto.jpg" />
     <Content Include="Image\oichinema.jpg" />
     <Content Include="Image\アクセス画像.jpg" />
+    <Content Include="Login.aspx" />
     <Content Include="Signup.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Top.aspx" />
@@ -71,6 +72,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

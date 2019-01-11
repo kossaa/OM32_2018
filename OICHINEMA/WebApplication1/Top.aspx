@@ -9,7 +9,7 @@
     margin-right:5%;
 }
 
-@media screen and (max-width:767px) {//ページの横幅767px以下 
+@media screen and (max-width:899px) {//ページの横幅899px以下 
     .Body{
         width:100vw;
         margin-left:0;
@@ -34,7 +34,7 @@
     }
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:900px) {
     .AdImage {
         clear:both;
         width: 800px;
@@ -46,7 +46,7 @@
     .GridView{
         float:left;
         clear:both;
-        width:50%;
+        width:800px;
     }
 
     /*注目映画と料金表のテキスト*/
@@ -63,14 +63,14 @@
     }
 
     .MainMovieInfo {
-        width: 250px;
+        width: 300px;
         height: auto;
         border: 2px solid;
     }
     /*料金表*/
     .Price {
         float: right;
-        width:45%;
+        width:auto;
         margin-top: 5%;
     }
 

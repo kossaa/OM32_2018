@@ -15,6 +15,7 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            EnterBtn.Attributes["onclick"] = "登録完了しました。";
             if (!IsPostBack)
             {
                 messageLabel.Visible = false;
@@ -276,9 +277,10 @@ namespace WebApplication1
                 command.Connection = cn;
                 cn.Open();
                 int a = command.ExecuteNonQuery();
-                if (a != 0)
+                if (a == 1)
                 {
-
+                    messageLabel.Visible = false;
+                    Response.Redirect("Login.aspx");
                 }
                 cn.Close();
             }

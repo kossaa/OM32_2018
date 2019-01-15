@@ -13,6 +13,15 @@ namespace WebApplication1 {
     public partial class Login {
         
         /// <summary>
+        /// ScriptManager1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// Panel3 コントロール。
         /// </summary>
         /// <remarks>
@@ -425,6 +434,15 @@ namespace WebApplication1 {
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EnterBtn;
+        
+        /// <summary>
+        /// dummyButton コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button dummyButton;
         
         /// <summary>
         /// messageLabel コントロール。

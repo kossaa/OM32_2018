@@ -10,16 +10,13 @@
 <style>
     /*マスター
     --------------------------------------------------------------------------------*/
-
-
+    
     /*会員情報表示・ログアウトボタン設定
     -----------------------------*/
     .MemberInfo{
         float:left;
         width:70%;
     }
-
-
 
     /*タイトルラベル設定
     -----------------------------*/
@@ -52,8 +49,6 @@
         padding: 10px,5px,10px,5px;
     }
 
-
-
     /*ログイン、新規登録ボタン設定 W715pxでボタン改行
     ----------------------------*/
     .Loginslash{
@@ -83,7 +78,6 @@
         background-color:white;
         color:#424242;
     }
-
 
     /* トップメニューバー設定
     ---------------------------*/
@@ -131,7 +125,6 @@
         height:auto;
     }
 
-
     div.menu ul li a:hover
     {
         background-color: #bfcbd6;
@@ -146,30 +139,22 @@
         color: #cfdbe6;
         text-decoration: none;
     }
-
     </style>
 
     <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title></title>
-    
-        <link href="~/Styles/Style.css" rel="stylesheet" type="text/css" />
-    
+        <title></title>    
+        <link href="~/Styles/Style.css" rel="stylesheet" type="text/css" />    
         <asp:ContentPlaceHolder ID="headContents" runat="server"></asp:ContentPlaceHolder>
-
     </head>
-
-
-
 
     <body>
         <form id="form1" runat="server">
             <div class="page">
                 <div class="header">
                     <div class="title">
-                            &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server" PostBackUrl="~/Top.aspx">OICINEMA</asp:LinkButton>
+                        &nbsp;<asp:LinkButton CssClass="TitleLabel" ID="TitleLabel" runat="server" PostBackUrl="~/Top.aspx">OICINEMA</asp:LinkButton>
                     </div>
-
                     <div class="MemberOperation">
                             <asp:Panel ID="Panel1" CssClass="Login" runat="server">
                                 <asp:LinkButton CssClass="LoginButton" runat="server" ID="LoginButton">ログイン</asp:LinkButton>

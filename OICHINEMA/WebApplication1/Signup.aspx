@@ -2,6 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+
+<script>
+    function Enter() {
+        PageMethods.Enter(0, onSuccess, onError);
+    }
+    function onSuccess(result, userContext, methodName) {
+        if (result === true) {
+            alert("登録完了しました。");
+        }
+    }
+    function onError(result, userContext, methodName) {
+        alert("エラー:" + result.get_message());
+    }
+</script>
+
     <style>
 /*新規登録ページ
 --------------------------------------------------------------------------------------------*/
@@ -182,11 +198,11 @@
                 <br />
         <asp:Label ID="Label18" runat="server" Text="パスワード"></asp:Label>
             <br />
-        <asp:TextBox ID="PassTxb" CssClass="TextBox" runat="server" TabIndex="13">abc</asp:TextBox>
+        <asp:TextBox ID="PassTxb" CssClass="TextBox" runat="server" TabIndex="13">Abc01</asp:TextBox>
         <br />
         <asp:Label ID="Label19" runat="server" Text="パスワード（確認）"></asp:Label>
             <br />
-        <asp:TextBox ID="PassTxb2" CssClass="TextBox" runat="server" TextMode="Password" TabIndex="14">abc</asp:TextBox>
+        <asp:TextBox ID="PassTxb2" CssClass="TextBox" runat="server" TextMode="Password" TabIndex="14"></asp:TextBox>
         <br />
         <br />
     </asp:Panel>
@@ -194,7 +210,8 @@
 
 
         <asp:Panel ID="Panel11" CssClass="EnterButton" runat="server">
-        <asp:Button ID="EnterBtn" CssClass="EnterButton" runat="server" Text="確定" OnClick="EnterBtn_Click" TabIndex="15" />
+        <asp:Button ID="EnterBtn" CssClass="EnterButton" runat="server" Text="確定" OnClick="EnterBtn_Click"  TabIndex="15"/>
+        <asp:Button ID="dummyButton" runat="server" OnClick="dummyButton_Click" Text="Button" Visible="False"  OnClientClick="Enter();"/>
         <asp:Label ID="messageLabel" runat="server" Text="Label" Visible="False" Font-Size="20px"></asp:Label>
         </asp:Panel>
 

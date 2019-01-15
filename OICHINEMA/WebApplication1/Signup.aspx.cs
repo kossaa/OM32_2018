@@ -13,17 +13,10 @@ namespace WebApplication1
 {
     public partial class Login : System.Web.UI.Page
     {
+
         public int a = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["sqlflug"]!=null)
-            a = (int)Session["sqlflug"];
-            if (a == 1)
-            {
-                EnterBtn.Attributes["onclick"]
-                    = "return confirm('登録完了しました。');";
-            }
-
             if (!IsPostBack)
             {
                 messageLabel.Visible = false;
@@ -33,6 +26,13 @@ namespace WebApplication1
             }
             CalenderAddYear();
             CalenderAddDay();
+        }
+
+
+        [System.Web.Services.WebMethod]
+        public static bool Enter(int count)
+        {
+            return count == 0 ? true : false;
         }
 
         /*=======================================
@@ -286,7 +286,7 @@ namespace WebApplication1
                 a = command.ExecuteNonQuery();
                 if (a == 1)
                 {
-                    Session["sqlflug"] = a;
+                    Enter(0);
                     messageLabel.Visible = false;
                     Response.Redirect("Login.aspx");
 
@@ -298,9 +298,7 @@ namespace WebApplication1
                 messageLabel.Text = "未入力の箇所があります。";
                 messageLabel.Visible = true;
             }
-        }
-
-       
+        }       
         
         protected void MonthDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -311,6 +309,11 @@ namespace WebApplication1
         protected void SerchBtn_Click(object sender, EventArgs e)
         {
             Adr_Post(PostTxb.Text.ToString());
+        }
+
+        protected void dummyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

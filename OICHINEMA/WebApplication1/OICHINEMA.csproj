@@ -97,6 +97,7 @@
     <Content Include="Image\WildSpeed03.jpg" />
     <Content Include="Image\WildSpeed04.jpg" />
     <Content Include="Image\アクセス画像.jpg" />
+    <Content Include="Individual_Page.aspx" />
     <Content Include="Introduction_List.aspx" />
     <Content Include="Schedule.aspx" />
     <Content Include="Signup.aspx" />
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="Event.aspx.designer.cs">
       <DependentUpon>Event.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Individual_Page.aspx.cs">
+      <DependentUpon>Individual_Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Individual_Page.aspx.designer.cs">
+      <DependentUpon>Individual_Page.aspx</DependentUpon>
     </Compile>
     <Compile Include="Introduction_List.aspx.cs">
       <DependentUpon>Introduction_List.aspx</DependentUpon>

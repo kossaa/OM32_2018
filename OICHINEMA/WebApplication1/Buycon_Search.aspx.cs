@@ -33,7 +33,7 @@ namespace WebApplication1
             }
             else
             {
-                Messe_lbl.Text = "ご入力されたメールアドレス、購入番号のご購入情報がございませんでした。ご入力内容をご確認ください。";
+                Messe_lbl.Text = "ご入力情報に合致するご購入情報がございませんでした。ご入力内容をご確認ください。";
                 Messe_lbl.Visible = true;
             }
         }

@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class Top : System.Web.UI.Page
+    public partial class Signup : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["PageID"] = "Top.aspx";
+
         }
     }
 }

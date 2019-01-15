@@ -28,9 +28,7 @@ namespace WebApplication1
             }
         }
 
-        /*====================================================
-        * パスワードに大文字小文字の英数が入っているかのチェック
-        =====================================================*/
+        //パスワードに大文字小文字の英数が入っているかのチェック
         Boolean passCheck = false;
         protected bool PasswordCheck(string passStr)
         {
@@ -75,6 +73,11 @@ namespace WebApplication1
                         Messe_lbl.Visible = true;
                     }
                 }
+                else
+                {
+                    Messe_lbl.Text = "新しいパスワードは半角英数字が一文字づつ必要です。";
+                    Messe_lbl.Visible = true;
+                }
             }
             else
             {
@@ -86,6 +89,11 @@ namespace WebApplication1
         protected void Cancel_btn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Member_MyPage.aspx");
+        }
+
+        public static bool sayHello(int count)
+        {
+            return count == 0 ? true : false;
         }
     }
 }

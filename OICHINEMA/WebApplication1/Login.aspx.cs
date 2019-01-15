@@ -16,23 +16,19 @@ namespace WebApplication1
         {
             Messe_lbl.Visible = false;
 
-            Session["PageID"] = "Member_MyPage.aspx";
+            //仮データ（入力省略用）
+            MemMail_tb.Text = "Tasaka+yahoo@oic.jp";
+            Pass_tb.Text = "qwert12345";
 
-            //string MemPageID = "Login.aspx";
+            //（退会済み）
+            //MemMail_tb.Text = "aaa@aaa.a";
+            //Pass_tb.Text = "1111111111";
         }
 
         protected void Login_btn_Click(object sender, EventArgs e)
         {
             String userid = MemMail_tb.Text;
             String pass = Pass_tb.Text;
-
-            //仮データ（入力省略用）
-            userid = "Tasaka+yahoo@oic.jp";
-            pass = "A123456789";
-
-            //（退会済み）
-            //userid = "aaa@aaa.a";
-            //pass = "1111111111";
 
             //データベース接続
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
@@ -49,8 +45,6 @@ namespace WebApplication1
                 Session["UserID"] = dt.Rows[0][0];
                 FormsAuthentication.RedirectFromLoginPage(userid, false);
                 Response.Redirect(pageid);
-
-                //Response.Redirect("Member_MyPage.aspx");
             }
             else
             {

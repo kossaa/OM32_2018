@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td style="text-align: center" colspan="2">
-                <asp:TextBox ID="Newpass_tb" runat="server" MaxLength="20" minlength="10" TextMode="Password" ></asp:TextBox>
+                <asp:TextBox ID="Newpass_tb" runat="server" MaxLength="20" TextMode="Password" ></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -53,7 +53,7 @@
                 <asp:Button ID="Com_btn" runat="server" OnClick="Com_btn_Click" Text="確定" OnClientClick="return confirm(&quot;変更内容を確定します。&quot;); " />
             </td>
             <td style="text-align: center">
-                <asp:Button ID="Cancel_btn" runat="server" OnClick="Cancel_btn_Click" Text="キャンセル" />
+                <asp:Button ID="Cancel_btn" runat="server" OnClick="Cancel_btn_Click" Text="キャンセル" OnClientClick="return confirm(&quot;変更をやめて前の画面に戻ります。&quot;); " />
             </td>
         </tr>
         </table>

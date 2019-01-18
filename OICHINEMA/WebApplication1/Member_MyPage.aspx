@@ -1,16 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Member_MyPage.aspx.cs" Inherits="WebApplication1.Member_MyPage1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
     <style type="text/css">
-        .auto-style1 {
+        .auto-style2 {
             width: 60px;
         }
-        .auto-style2 {
+        .auto-style3 {
             width: 30px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"><%-- MainContent %>--%>
-    <table style="width:100%;">
+    <table class="auto-style1" style="width:100%;">
         <tr>
             <td>
                 <asp:Label ID="Pagename_lbl" runat="server" Text="会員情報"></asp:Label>
@@ -18,7 +18,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style7">&nbsp;</td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -109,7 +109,7 @@
             <td>
                 &nbsp;</td>
             <td style="text-align: center">
-                            <asp:Button ID="Withdrawal_btn" runat="server" Text="退会" style="text-align: left" OnClick="Withdrawal_btn_Click1" />
+                            <asp:Button ID="Withdrawal_btn" runat="server" Text="退会" style="text-align: left" OnClick="Withdrawal_btn_Click1" OnClientClick="return confirm(&quot;退会します。); " />
                         </td>
         </tr>
         </table>

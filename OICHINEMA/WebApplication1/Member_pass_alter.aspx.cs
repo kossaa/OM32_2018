@@ -57,19 +57,27 @@ namespace WebApplication1
                 if (passCheck == true)
                 {
                     dt.Clear();
-                    if (np == cnp)
+                    if (np.Length >= 10)
                     {
-                        cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
-                        cmd.Connection = cn;
-                        cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_PASS = '" + np + "' WHERE MEMBER_ID = '" + userid + "'", cn);
-                        cn.Open();
-                        cmd.ExecuteNonQuery();
-                        cn.Close();
-                        Response.Redirect("Member_MyPage.aspx");
+                        if (np == cnp)
+                        {
+                            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
+                            cmd.Connection = cn;
+                            cmd = new OleDbCommand("UPDATE TBL_MEMBER SET MEMBER_PASS = '" + np + "' WHERE MEMBER_ID = '" + userid + "'", cn);
+                            cn.Open();
+                            cmd.ExecuteNonQuery();
+                            cn.Close();
+                            Response.Redirect("Member_MyPage.aspx");
+                        }
+                        else
+                        {
+                            Messe_lbl.Text = "新しいパスワードの確認入力は、新しいパスワードの入力と一致しなければなりません。";
+                            Messe_lbl.Visible = true;
+                        }
                     }
                     else
                     {
-                        Messe_lbl.Text = "新しいパスワードの確認入力は、新しいパスワードの入力と一致しなければなりません。";
+                        Messe_lbl.Text = "新しいパスワードは、10桁以上必要です。";
                         Messe_lbl.Visible = true;
                     }
                 }
@@ -89,11 +97,6 @@ namespace WebApplication1
         protected void Cancel_btn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Member_MyPage.aspx");
-        }
-
-        public static bool sayHello(int count)
-        {
-            return count == 0 ? true : false;
         }
     }
 }

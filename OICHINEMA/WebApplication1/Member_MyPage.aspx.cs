@@ -82,6 +82,18 @@ namespace WebApplication1
             cn.Open();
             cmd.ExecuteNonQuery();
             cn.Close();
+            FormsAuthentication.SignOut();
+            Session["UserID"] = null;
+            Session["MemName"] = null;
+            Session["MemKana"] = null;
+            Session["MemGender"] = null;
+            Session["MemBirthYear"] = null;
+            Session["MemBirthMon"] = null;
+            Session["MemBirthDay"] = null;
+            Session["MemPost"] = null;
+            Session["MemAdr"] = null;
+            Session["MemTel"] = null;
+            Session["MemBirthDay"] = null;
             Response.Redirect("Top.aspx");
         }
     }

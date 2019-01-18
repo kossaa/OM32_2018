@@ -46,7 +46,7 @@ namespace WebApplication1 {
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image MovieCaptureImage1;
+        protected global::System.Web.UI.WebControls.ImageButton MovieCaptureImage1;
         
         /// <summary>
         /// MovieCaptureImage2 コントロール。
@@ -55,7 +55,7 @@ namespace WebApplication1 {
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image MovieCaptureImage2;
+        protected global::System.Web.UI.WebControls.ImageButton MovieCaptureImage2;
         
         /// <summary>
         /// MovieCaptureImage3 コントロール。
@@ -64,7 +64,7 @@ namespace WebApplication1 {
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image MovieCaptureImage3;
+        protected global::System.Web.UI.WebControls.ImageButton MovieCaptureImage3;
         
         /// <summary>
         /// SummaryLabel コントロール。
@@ -76,13 +76,22 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Label SummaryLabel;
         
         /// <summary>
-        /// SummaryTable コントロール。
+        /// MainSummaryLabel コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table SummaryTable;
+        protected global::System.Web.UI.WebControls.Label MainSummaryLabel;
+        
+        /// <summary>
+        /// TimeLabel コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeLabel;
         
         /// <summary>
         /// CastLabel コントロール。

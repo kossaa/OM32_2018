@@ -33,9 +33,9 @@
             <td class="auto-style9" rowspan="4">
                 <asp:Image ID="MovieSignbordImage" runat="server" Height="300px" Width="420px" />
                 <br />
-                <asp:Image ID="MovieCaptureImage1" runat="server" Height="100px" Width="135px" />
-                <asp:Image ID="MovieCaptureImage2" runat="server" Height="100px" Width="135px" />
-                <asp:Image ID="MovieCaptureImage3" runat="server" Height="100px" Width="135px" />
+                <asp:ImageButton ID="MovieCaptureImage1" runat="server" Height="100px" OnClick="MovieCaptureImage1_Click"  Width="135px" />
+                <asp:ImageButton ID="MovieCaptureImage2" runat="server" Height="100px" OnClick="MovieCaptureImage2_Click"  Width="135px" />
+                <asp:ImageButton ID="MovieCaptureImage3" runat="server" Height="100px" OnClick="MovieCaptureImage3_Click"  Width="135px" />
             </td>
             <td height="10%" style="background-color: #FDF0BB">
                 <asp:Label ID="SummaryLabel" runat="server" Text="あらすじ"></asp:Label>
@@ -44,8 +44,18 @@
 
         <tr>
             <td valign="top" style="background-color: #F1FFDB">
-                <asp:Table ID="SummaryTable" runat="server">
-                </asp:Table>
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <asp:Label ID="MainSummaryLabel" runat="server" Width="850px"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="TimeLabel" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>

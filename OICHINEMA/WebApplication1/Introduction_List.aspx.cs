@@ -15,7 +15,7 @@ namespace WebApplication1
         void MoveScreen(object sender, EventArgs e)
         {
             ImageButton btn = (ImageButton)sender;
-            Session["introID"] =    btn.ID.Substring(6);
+            Session["introID"] = btn.ID.Substring(6);
             Response.Redirect("Individual_Page.aspx");
         }
 
@@ -51,11 +51,13 @@ namespace WebApplication1
                     MainTable.Rows.Add(tblRow);
                     tblRow = new TableRow();
                 }
+                
 
                 if (i == cnt - 1&&(i+1)%3!=0)
                 {
                     MainTable.Rows.Add(tblRow);
                 }
+                 
             }
 
             for (int i = 0; i < cnt; i++)

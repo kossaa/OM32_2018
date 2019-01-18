@@ -11,6 +11,7 @@ namespace WebApplication1
 {
     public partial class Introduction_List : System.Web.UI.Page
     {
+
         void MoveScreen(object sender, EventArgs e)
         {
             ImageButton btn = (ImageButton)sender;
@@ -18,20 +19,17 @@ namespace WebApplication1
             Response.Redirect("Individual_Page.aspx");
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             int cnt;
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             OleDbDataAdapter da;
-            da = new OleDbDataAdapter("SELECT COUNT(*) FROM TBL_WORK WHERE WORK_END>Date()", cn);
+            da = new OleDbDataAdapter("SELECT COUNT(WORK_ID) FROM (SELECT DISTINCT w.WORK_ID FROM TBL_WORK w INNER JOIN TBL_SCHEDULE s ON w.WORK_ID = s.WORK_ID WHERE s.SCHEDULE_START>=DATE())", cn);
             DataTable dtc = new DataTable();
             da.Fill(dtc);
             cnt = int.Parse(dtc.Rows[0][0].ToString());
 
-            da = new OleDbDataAdapter("SELECT WORK_NAME,WORK_PASS1,WORK_ID FROM TBL_WORK WHERE WORK_END>Date()", cn);
+            da = new OleDbDataAdapter("SELECT WORK_NAME,WORK_PASS1,WORK_ID FROM TBL_WORK WHERE WORK_ID IN (SELECT DISTINCT w.WORK_ID FROM TBL_WORK w INNER JOIN TBL_SCHEDULE s ON w.WORK_ID = s.WORK_ID WHERE s.SCHEDULE_START>=DATE())", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -54,10 +52,12 @@ namespace WebApplication1
                     tblRow = new TableRow();
                 }
 
+
                 if (i == cnt - 1 && (i + 1) % 3 != 0)
                 {
                     MainTable.Rows.Add(tblRow);
                 }
+
             }
 
             for (int i = 0; i < cnt; i++)
@@ -70,10 +70,10 @@ namespace WebApplication1
                 imgbtn.Height = 300;
                 imgbtn.ImageUrl = dt.Rows[i][1].ToString();
                 imgbtn.Click += MoveScreen;
-                
+
                 tblCell.Controls.Add(imgbtn);
                 tblRow.Cells.Add(tblCell);
-                Table tbl = (Table)Master.FindControl("MainContent").FindControl("tbl" + i.ToString());
+                Table tbl = (Table)Master.FindControl("ContentPlaceHolder1").FindControl("tbl" + i.ToString());
                 if (tbl != null)
                 {
                     tbl.Rows.Add(tblRow);

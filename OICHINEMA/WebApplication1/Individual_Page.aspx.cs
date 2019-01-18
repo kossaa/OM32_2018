@@ -11,17 +11,24 @@ namespace WebApplication1
 {
     public partial class Individual_Page : System.Web.UI.Page
     {
+        String signBord;
         protected void Page_Load(object sender, EventArgs e)
         {
             OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
             OleDbDataAdapter da;
-            da = new OleDbDataAdapter("SELECT WORK_PASS1,WORK_PASS2,WORK_PASS3,WORK_PASS4,WORK_COMMENT,WORK_ACTOR FROM TBL_WORK WHERE WORK_ID = '" + Session["IntroID"] + "'", cn);
+            da = new OleDbDataAdapter("SELECT WORK_PASS1,WORK_PASS2,WORK_PASS3,WORK_PASS4,WORK_COMMENT,WORK_ACTOR,WORK_TIME,WORK_NAME,format(WORK_START,'yyyy年 mm月 dd日') FROM TBL_WORK WHERE WORK_ID = '" + Session["IntroID"] + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            MovieSignbordImage.ImageUrl = dt.Rows[0][0].ToString();
-            MovieCaptureImage1.ImageUrl = dt.Rows[0][1].ToString();
-            MovieCaptureImage2.ImageUrl = dt.Rows[0][2].ToString();
-            MovieCaptureImage3.ImageUrl = dt.Rows[0][3].ToString();
+            signBord = dt.Rows[0][0].ToString();
+            if (IsPostBack == false)
+            {
+                MovieSignbordImage.ImageUrl = dt.Rows[0][0].ToString();
+                MovieCaptureImage1.ImageUrl = dt.Rows[0][1].ToString();
+                MovieCaptureImage2.ImageUrl = dt.Rows[0][2].ToString();
+                MovieCaptureImage3.ImageUrl = dt.Rows[0][3].ToString();
+                PublicationDateLabel.Text = dt.Rows[0][8].ToString();
+                MovieTitleLabel.Text = dt.Rows[0][7].ToString();
+            }
 
             String[] actors = dt.Rows[0][5].ToString().Split(',');
             TableCell tblCell;
@@ -29,74 +36,71 @@ namespace WebApplication1
 
             for (int i = 0; i < actors.Length; i++)
             {
-                Table Tbl = new Table();
-                Tbl.ID = "CastTbl" + i.ToString();
-                tblCell = new TableCell();
-                tblCell.Controls.Add(Tbl);
-                tblRow.Cells.Add(tblCell);
-                CastTable.Rows.Add(tblRow);
                 tblRow = new TableRow();
-
+                tblCell = new TableCell();
+                if (i == 6)
+                {
+                    Label slbl = (Label)Master.FindControl("ContentPlaceHolder1").FindControl("CastLabel" + (i - 1).ToString());
+                    slbl.Text = "...etc";
+                    break;
+                }
                 Label lbl = new Label();
                 lbl.ID = "CastLabel" + i.ToString();
                 lbl.Text = actors[i];
 
                 tblCell.Controls.Add(lbl);
                 tblRow.Cells.Add(tblCell);
-                Table tbl = (Table)Master.FindControl("MainContent").FindControl("CastTbl" + i.ToString());
-                if (tbl != null)
-                {
-                    tbl.Rows.Add(tblRow);
-                }
+                CastTable.Rows.Add(tblRow);
             }
-            CastTable.Rows.Add(tblRow);
+            MainSummaryLabel.Text = dt.Rows[0][4].ToString();
+            TimeLabel.Text = "上映時間：" + dt.Rows[0][6].ToString() + "分";
+        }
 
-            int flag = 0;
-            int cnt = 0;
-            int sumCnt = 0;
-            String str = dt.Rows[0][4].ToString();
-            String[] Summary = new String[str.Length / 40 + 1];
+        String work;
+        protected void MovieCaptureImage1_Click(object sender, ImageClickEventArgs e)
+        {
 
-            while (flag == 0)
+
+            work = MovieSignbordImage.ImageUrl;
+            MovieSignbordImage.ImageUrl = MovieCaptureImage1.ImageUrl;
+            MovieCaptureImage1.ImageUrl = work;
+
+        }
+
+        protected void MovieCaptureImage2_Click(object sender, ImageClickEventArgs e)
+        {
+            String work2;
+            work = MovieSignbordImage.ImageUrl;
+            if (work == signBord)
             {
-                if (str.Length - cnt >= 40)
-                {
-                    Summary[sumCnt] = str.Substring(cnt, 40);
-                    sumCnt++;
-                    cnt += 40;
-                }
-                else
-                {
-                    Summary[sumCnt] = str.Substring(cnt, str.Length - cnt);
-                    flag = 1;
-                    sumCnt++;
-                }
+                work2 = MovieCaptureImage1.ImageUrl;
+                MovieCaptureImage1.ImageUrl = MovieSignbordImage.ImageUrl;
+                MovieSignbordImage.ImageUrl = MovieCaptureImage2.ImageUrl;
+                MovieCaptureImage2.ImageUrl = work2;
             }
-
-            for (int i = 0; i < sumCnt; i++)
+            else
             {
-                Table Tbl = new Table();
-                Tbl.ID = "SummaryTbl" + i.ToString();
-                tblCell = new TableCell();
-                tblCell.Controls.Add(Tbl);
-                tblRow.Cells.Add(tblCell);
-                SummaryTable.Rows.Add(tblRow);
-                tblRow = new TableRow();
-
-                Label lbl = new Label();
-                lbl.ID = "SummaryLabel" + i.ToString();
-                lbl.Text = Summary[i];
-
-                tblCell.Controls.Add(lbl);
-                tblRow.Cells.Add(tblCell);
-                Table tbl = (Table)Master.FindControl("MainContent").FindControl("SummaryTbl" + i.ToString());
-                if (tbl != null)
-                {
-                    tbl.Rows.Add(tblRow);
-                }
+                MovieSignbordImage.ImageUrl = MovieCaptureImage2.ImageUrl;
+                MovieCaptureImage2.ImageUrl = work;
             }
+        }
 
-            SummaryTable.Rows.Add(tblRow);
+        protected void MovieCaptureImage3_Click(object sender, ImageClickEventArgs e)
+        {
+            String work2;
+            work = MovieSignbordImage.ImageUrl;
+            if (work == signBord)
+            {
+                work2 = MovieCaptureImage1.ImageUrl;
+                MovieCaptureImage1.ImageUrl = MovieSignbordImage.ImageUrl;
+                MovieSignbordImage.ImageUrl = MovieCaptureImage3.ImageUrl;
+                MovieCaptureImage3.ImageUrl = work2;
+            }
+            else
+            {
+                MovieSignbordImage.ImageUrl = MovieCaptureImage3.ImageUrl;
+                MovieCaptureImage3.ImageUrl = work;
+            }
         }
     }
 }

@@ -61,49 +61,27 @@
     <Content Include="Access.aspx" />
     <Content Include="App_Data\BookingDB.accdb" />
     <Content Include="App_Data\POSTADR.accdb" />
+    <Content Include="Buycon_Info.aspx" />
+    <Content Include="Buycon_Search.aspx" />
     <Content Include="Event.aspx" />
-    <Content Include="Image\avengers.JPG" />
-    <Content Include="Image\Avengers01.jpg" />
-    <Content Include="Image\Avengers02.jpg" />
-    <Content Include="Image\Avengers03.jpg" />
-    <Content Include="Image\Avengers04jpg.jpg" />
-    <Content Include="Image\Avengerss.jpg" />
-    <Content Include="Image\FiveHeadJAWS.jpg" />
-    <Content Include="Image\FiveHeadJAWS01.jpg" />
-    <Content Include="Image\FiveHeadJAWS02.jpg" />
-    <Content Include="Image\FiveHeadJAWS03.jpg" />
-    <Content Include="Image\FiveHeadJAWS04.jpg" />
-    <Content Include="Image\isu.png" />
-    <Content Include="Image\isuSentaku.png" />
-    <Content Include="Image\MegaShark_vs_MechaShark.jpg" />
-    <Content Include="Image\MegaShark_vs_MechaShark01.jpg" />
-    <Content Include="Image\MegaShark_vs_MechaShark02.jpg" />
-    <Content Include="Image\MegaShark_vs_MechaShark03.jpg" />
-    <Content Include="Image\MegaShark_vs_MechaShark04.jpg" />
-    <Content Include="Image\Soranokanata.jpg" />
-    <Content Include="Image\Soranokanata01.jpg" />
-    <Content Include="Image\Soranokanata02.jpg" />
-    <Content Include="Image\Soranokanata03.jpg" />
-    <Content Include="Image\Soranokanata04.jpg" />
-    <Content Include="Image\spidermen.jpg" />
-    <Content Include="Image\spidermen01.jpg" />
-    <Content Include="Image\spidermen02.jpg" />
-    <Content Include="Image\spidermen03.jpg" />
-    <Content Include="Image\spidermen04.jpg" />
-    <Content Include="Image\tuuro.png" />
-    <Content Include="Image\WildSpeed.jpg" />
-    <Content Include="Image\WildSpeed01.jpg" />
-    <Content Include="Image\WildSpeed02.jpg" />
-    <Content Include="Image\WildSpeed03.jpg" />
-    <Content Include="Image\WildSpeed04.jpg" />
+    <Content Include="Image\avengers.jpg" />
+    <Content Include="Image\monsto.jpg" />
+    <Content Include="Image\oichinema.jpg" />
     <Content Include="Image\アクセス画像.jpg" />
     <Content Include="Individual_Page.aspx" />
     <Content Include="Introduction_List.aspx" />
-    <Content Include="Schedule.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Market.aspx" />
+    <Content Include="Member_BookingLog.aspx" />
+    <Content Include="Member_info_alter.aspx" />
+    <Content Include="Member_MyPage.aspx" />
+    <Content Include="Member_Pass_Alter.aspx" />
     <Content Include="Signup.aspx" />
     <Content Include="Styles\Style.css" />
     <Content Include="Top.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access.aspx.cs">
@@ -112,6 +90,20 @@
     </Compile>
     <Compile Include="Access.aspx.designer.cs">
       <DependentUpon>Access.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Buycon_Info.aspx.cs">
+      <DependentUpon>Buycon_Info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buycon_Info.aspx.designer.cs">
+      <DependentUpon>Buycon_Info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Buycon_Search.aspx.cs">
+      <DependentUpon>Buycon_Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buycon_Search.aspx.designer.cs">
+      <DependentUpon>Buycon_Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Event.aspx.cs">
       <DependentUpon>Event.aspx</DependentUpon>
@@ -134,12 +126,47 @@
     <Compile Include="Introduction_List.aspx.designer.cs">
       <DependentUpon>Introduction_List.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.aspx.cs">
-      <DependentUpon>Schedule.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Schedule.aspx.designer.cs">
-      <DependentUpon>Schedule.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Market.aspx.cs">
+      <DependentUpon>Market.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Market.aspx.designer.cs">
+      <DependentUpon>Market.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member_BookingLog.aspx.cs">
+      <DependentUpon>Member_BookingLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_BookingLog.aspx.designer.cs">
+      <DependentUpon>Member_BookingLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member_info_alter.aspx.cs">
+      <DependentUpon>Member_info_alter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_info_alter.aspx.designer.cs">
+      <DependentUpon>Member_info_alter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member_MyPage.aspx.cs">
+      <DependentUpon>Member_MyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_MyPage.aspx.designer.cs">
+      <DependentUpon>Member_MyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member_Pass_Alter.aspx.cs">
+      <DependentUpon>Member_Pass_Alter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_Pass_Alter.aspx.designer.cs">
+      <DependentUpon>Member_Pass_Alter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
@@ -168,9 +195,11 @@
     <Content Include="OICHINEMA.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <PropertyGroup>

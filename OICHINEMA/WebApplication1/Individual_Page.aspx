@@ -17,14 +17,14 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
         <tr>
-            <td class="auto-style7">
-                <asp:Label ID="PublicationDateLabel" runat="server"></asp:Label>
+            <td class="auto-style7" style="background-color: #F1FFDB">
+                <asp:Label ID="PublicationDateLabel" runat="server" Font-Size="Larger"></asp:Label>
             </td>
-            <td class="auto-style8">
-                <asp:Label ID="MovieTitleLabel" runat="server"></asp:Label>
+            <td class="auto-style8" style="background-color: #F1FFDB">
+                <asp:Label ID="MovieTitleLabel" runat="server" Font-Size="Larger"></asp:Label>
             </td>
         </tr>
     </table>
@@ -34,9 +34,9 @@
             <td class="auto-style9" rowspan="4">
                 <asp:Image ID="MovieSignbordImage" runat="server" Height="300px" Width="420px" />
                 <br />
-                <asp:Image ID="MovieCaptureImage1" runat="server" Height="100px" Width="135px" />
-                <asp:Image ID="MovieCaptureImage2" runat="server" Height="100px" Width="135px" />
-                <asp:Image ID="MovieCaptureImage3" runat="server" Height="100px" Width="135px" />
+                <asp:ImageButton ID="MovieCaptureImage1" runat="server" Height="100px" OnClick="MovieCaptureImage1_Click" Width="135px" />
+                <asp:ImageButton ID="MovieCaptureImage2" runat="server" Height="100px" OnClick="MovieCaptureImage2_Click" Width="135px" />
+                <asp:ImageButton ID="MovieCaptureImage3" runat="server" Height="100px" OnClick="MovieCaptureImage3_Click" Width="135px" />
             </td>
             <td height="10%" style="background-color: #FDF0BB">
                 <asp:Label ID="SummaryLabel" runat="server" Text="あらすじ"></asp:Label>
@@ -44,8 +44,18 @@
         </tr>
         <tr>
             <td style="background-color: #F1FFDB" valign="top">
-                <asp:Table ID="SummaryTable" runat="server">
-                </asp:Table>
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <asp:Label ID="MainSummaryLabel" runat="server" Width="850px"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="TimeLabel" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>

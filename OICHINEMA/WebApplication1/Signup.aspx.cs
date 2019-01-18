@@ -4,31 +4,40 @@ using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Signup : System.Web.UI.Page
     {
-    
-        protected void Page_Load(object sender, EventArgs e)
+        public int a = -1;
+        protected void Page_Load0(object sender, EventArgs e)
         {
-            if (IsPostBack == true)
+            if (!IsPostBack)
             {
-                Label20.Visible = false;
+                messageLabel.Visible = false;
             }
-
+            else
+            {
+            }
             CalenderAddYear();
             CalenderAddDay();
+        }
+
+
+        [System.Web.Services.WebMethod]
+        public static bool Enter(int count)
+        {
+            return count == 0 ? true : false;
         }
 
         /*=======================================
          *データベースに接続、開くまで
          ======================================*/
         public OleDbConnection cn = new OleDbConnection();
-
         public bool DB_Connection(){
             try{
                 //コネクションの作成
@@ -37,24 +46,21 @@ namespace WebApplication1
 
             }
             catch (Exception){
-                Label20.Text = "DB接続×";
-                Label20.Visible = true;
+                messageLabel.Text = "DB接続×";
+                messageLabel.Visible = true;
                 return false;
             }
-
             return true;
         }
-
-
         /*=====================================================
          * ドロップダウンの年に当年までの年を追加
          ======================================================*/
         private void CalenderAddYear(){
             int nowyear = Today.Year;
-            int year = 1920;//年カウント開始日
+            int year = 1900;//年カウント開始日
 
             for (int i = year; i <= nowyear; i++){
-                DropDownList2.Items.Add(i.ToString());
+                YearDDL.Items.Add(i.ToString());
             }
         }
 
@@ -63,68 +69,80 @@ namespace WebApplication1
          ======================================================*/
         private void CalenderAddDay()
         {
-            int year = int.Parse(DropDownList2.Text);
+            int year = int.Parse(YearDDL.Text);
             if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
               /*うるう年*/
-                if (DropDownList3.Text == "2")
+                if (MonthDDL.Text == "2")
                 {/*2月なら*/
                     for (int i = 1; i <= 29; i++){
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
-                else if (DropDownList3.Text == "4" || DropDownList3.Text == "6" || DropDownList3.Text == "9" || DropDownList3.Text == "11")
+                else if (MonthDDL.Text == "4" || MonthDDL.Text == "6" || MonthDDL.Text == "9" || MonthDDL.Text == "11")
                 {/*4,6,9,11月なら*/
                     for (int i = 1; i <= 30; i++){
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
                 else
                 {/*1,3,5,7,8,10,12月なら*/
                     for (int i = 1; i <= 31; i++){
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
             }
             else/*うるう年じゃない*/
             {
-                if (DropDownList3.Text == "2")
+                if (MonthDDL.Text == "2")
                 {/*2月なら*/
                     for (int i = 1; i <= 28; i++)
                     {
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
-                else if (DropDownList3.Text == "4" || DropDownList3.Text == "6" || DropDownList3.Text == "9" || DropDownList3.Text == "11")
+                else if (MonthDDL.Text == "4" || MonthDDL.Text == "6" || MonthDDL.Text == "9" || MonthDDL.Text == "11")
                 {/*4,6,9,11月なら*/
                     for (int i = 1; i <= 30; i++)
                     {
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
                 else
                 {/*1,3,5,7,8,10,12月なら*/
                     for (int i = 1; i <= 31; i++)
                     {
-                        DropDownList4.Items.Add(i.ToString());
+                        DayDDL.Items.Add(i.ToString());
                     }
                 }
             }
         }
 
+        /*====================================================
+         * パスワード最小10桁か
+         =====================================================*/
+        bool lengthflug = false;
+        private bool lengthCheck(string passStr)
+        {
+            string checkstr = passStr;
+            if (checkstr.Length > 9)
+            {
+                lengthflug = true;
+            }
+            return lengthflug;
+        }
 
 
         /*====================================================
          * 会員番号の最大値を取得して新しい会員のIDを作成する
          =====================================================*/
-        private string getNewMaxMemberId(){
+            private string getNewMaxMemberId(){
             OleDbCommand getNIDcommand = new OleDbCommand();
             DataTable dt = new DataTable();
             OleDbDataAdapter da = new OleDbDataAdapter();
 
-
             DB_Connection();
             //会員番号の最大番号を取得する
-            string MaxMID = "";
+            String MaxMID ;
 
             //コマンド指定
             getNIDcommand = new OleDbCommand();
@@ -134,10 +152,12 @@ namespace WebApplication1
             da.SelectCommand = getNIDcommand;
             da.Fill(dt);
             MaxMID = dt.Rows[0][0].ToString();
+            dt.Clear();//使い終わったdtを初期化しておく
             cn.Close();
 
             //会員番号の最大値に+1加算
             int NewMID = int.Parse(MaxMID)+1;
+            
             string nd = string.Format("{0:D7}", NewMID);
 
             return nd;
@@ -152,21 +172,18 @@ namespace WebApplication1
             String std = Today.ToString("yyyy/MM/dd");
             Today = DateTime.Parse(std);
             return Today;
-        }
-    
+        }    
         
         /*====================================================
          * ドロップダウンリストから生年月日を結合、Date型に変換
         =====================================================*/
         private DateTime getBirthDay()
         {
-            DateTime BirthDay = DateTime.Parse(DropDownList2.Text + "/" + DropDownList3.Text + "/" + DropDownList4.Text);
+            DateTime BirthDay = DateTime.Parse(YearDDL.Text + "/" + MonthDDL.Text + "/" + DayDDL.Text);
             String bd = BirthDay.ToString("yyyy/MM/dd");
             BirthDay = DateTime.Parse(bd);
             return BirthDay;
         }
-
-
 
         /*========================================================
          * 郵便番号から住所割り出し
@@ -195,87 +212,124 @@ namespace WebApplication1
                 //データの読み込み
                 if (oledr.Read())
                 {
-                    TextBox6.Text = oledr["フィールド7"].ToString() ;
-                    TextBox7.Text = oledr["フィールド8"].ToString() + oledr["フィールド9"].ToString();
+                    FADR1Txb.Text = oledr["フィールド7"].ToString() ;
+                    LADR1Txb.Text = oledr["フィールド8"].ToString() ;
                 }
                 //データベースを閉じる
                 PostCn.Close();
             }
         }
 
-
-        protected void Button2_Click(object sender, EventArgs e)
+        /*====================================================
+        * SQLに影響の出る文字の検索
+        =====================================================*/
+        int TxbCheck = -1;
+        protected void SQLInjectionCheck(string txbStr)
         {
-            String InsertStr ="INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) " +
-                                             "VALUES (@MEMBER_ID,@MEMBER_NAME,@MEMBER_KANA,@MEMBER_POST,@MEMBER_ADR1,@MEMBER_ADR2,@MEMBER_BIRTH,@MEMBER_TEL,@MEMBER_GENDER,@MEMBER_DAY ,@MEMBER_POINT,@MEMBER_MAIL ,@MEMBER_PASS)";
+            char[] CheckChar = {'=',  ';', '\'',  '"',    '\\',    '*',    '#',    '$'};
+            string checkStr = txbStr;
+            TxbCheck = checkStr.IndexOfAny(CheckChar);
+        }
 
+        /*====================================================
+        * パスワードに大文字小文字の英数が入っているかのチェック
+        =====================================================*/
+        Boolean passCheck = false;
+        protected bool PasswordCheck(string passStr)
+        {
+            string password = passStr;
+            passCheck = Regex.IsMatch(password, @"[a-zA-Z]") &&
+            Regex.IsMatch(password, @"\d");
+            return passCheck;
+        }
+        
+
+        protected void EnterBtn_Click(object sender, EventArgs e)
+        {
+
+            TextBox[] TextBoxArray = new TextBox[10];
+            TextBoxArray[0] = FNameTxb;
+            TextBoxArray[1] = FKanaTbx;
+            TextBoxArray[2] = PostTxb;
+            TextBoxArray[3] = FADR1Txb;
+            TextBoxArray[4] = LADR1Txb;
+            TextBoxArray[5] = ADR2Txb;
+            TextBoxArray[6] = TELTxb;
+            TextBoxArray[7] = MailTxb;
+            TextBoxArray[8] = PassTxb;
+            TextBoxArray[9] = PassTxb2;
+            
             OleDbCommand command = new OleDbCommand();
 
-            //Insertコマンドの値をcommandに指定
-            //command = new OleDbCommand(InsertStr);
             //DB接続
             DB_Connection();
 
-            try
+            if (String.IsNullOrWhiteSpace(FNameTxb.Text) != true && String.IsNullOrWhiteSpace(FKanaTbx.Text) != true && String.IsNullOrWhiteSpace(PostTxb.Text) != true && String.IsNullOrWhiteSpace(FADR1Txb.Text) != true && String.IsNullOrWhiteSpace(LADR1Txb.Text) != true && String.IsNullOrWhiteSpace(TELTxb.Text) != true && String.IsNullOrWhiteSpace(MailTxb.Text) != true && String.IsNullOrWhiteSpace(PassTxb.Text) != true)
             {
+            //各テキストボックスに特定の文字が含まれてたらInsert処理しない
+                for(int i = 0;i < TextBoxArray.Length; i++){
+                    SQLInjectionCheck(TextBoxArray[i].Text);
+                    if (TxbCheck > -1)
+                    {
+                        messageLabel.Text = "無効な文字が含まれています。";
+                        messageLabel.Visible = true;
+                        return;
+                    }
+                }
+            //パスワードに大文字、小文字の英数が入っているか
+                if (PasswordCheck(PassTxb.Text) == false)
+                {
+                    messageLabel.Text = "パスワードには大文字、小文字の英数字で登録してください。";
+                    messageLabel.Visible = true;
+                    return;
+                }
 
-                command.Parameters.AddWithValue("@MEMBER_ID", getNewMaxMemberId());
-                //if (String.IsNullOrWhiteSpace(TextBox2.Text) != true && String.IsNullOrWhiteSpace(TextBox3.Text) != true)
-                    command.Parameters.AddWithValue("@MEMBER_NAME", "'"+TextBox2.Text + TextBox3.Text+"'");
-                //if (String.IsNullOrWhiteSpace(TextBox1.Text) != true && String.IsNullOrWhiteSpace(TextBox4.Text) != true)
-                    command.Parameters.AddWithValue("@MEMBER_KANA", "'" + TextBox1.Text + TextBox4.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox5.Text) != true)
-                    command.Parameters.AddWithValue("@MEMBER_POST", "'" + TextBox5.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox6.Text) != true && String.IsNullOrWhiteSpace(TextBox7.Text) != true)
-                    command.Parameters.AddWithValue("@MEMBER_ADR1", "'" + TextBox6.Text + TextBox7.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox8.Text) != true)
-                    command.Parameters.AddWithValue("@MEMBER_ADR2", "'" + TextBox8 + "'");
-                command.Parameters.AddWithValue("@MEMBER_BIRTH", getBirthDay());
-                //if (String.IsNullOrWhiteSpace(TextBox9.Text) != true)
-                command.Parameters.AddWithValue("@MEMBER_TEL", "'" + TextBox9.Text + "'");
-                //if (String.IsNullOrWhiteSpace(DropDownList1.Text) != true)
-                command.Parameters.AddWithValue("@MEMBER_GENDER", "'" + DropDownList1.Text + "'");
-                command.Parameters.AddWithValue("@MEMBER_DAY", getToday());
-                command.Parameters.AddWithValue("@MEMBER_POINT", 0);
-                //if (String.IsNullOrWhiteSpace(TextBox10.Text) != true)
-                command.Parameters.AddWithValue("@MEMBER_MAIL", "'" + TextBox10.Text + "'");
-                //if (String.IsNullOrWhiteSpace(TextBox11.Text) != true)
-                command.Parameters.AddWithValue("@MEMBER_PASS", "'" + TextBox11.Text + "'");
+            //パスワードが10桁以上か
+                if (lengthCheck(PassTxb.Text) == false)
+                {
+                    messageLabel.Text = "パスワードは10桁以上で登録してください。";
+                    messageLabel.Visible = true;
+                    return;
+                }
 
-
-                String testInsertStr = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) " +
-                                                    "VALUES (" + getNewMaxMemberId() + "," + (TextBox2.Text +TextBox3.Text) + "," + (TextBox1.Text + TextBox4.Text) + "," + TextBox5.Text + "," + TextBox6.Text + TextBox7.Text + "," + TextBox8.Text + "," + getBirthDay() + "," + TextBox9.Text + "," + DropDownList1.Text + "," + getToday() + "," + 0 + "," + TextBox10.Text + "," + TextBox11.Text + ")";
+            //パスワードと確認用のパスワードが一致するか
+                if (PassTxb.Text != PassTxb2.Text)
+                {
+                    messageLabel.Text = "パスワードが一致しません。";
+                    messageLabel.Visible = true;
+                    return;
+                }
                 /*↓成功*/
-                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('0000010','姓名','セイメイ','0640941','北海道札幌市中央区旭ケ丘','9-2-5',1920/01/01,'11111111111','男',2018/11/27,0,'aaaa@@oic.jp','abc')";
-
+                String testdate = "INSERT INTO TBL_MEMBER( MEMBER_ID ,MEMBER_NAME ,MEMBER_KANA ,MEMBER_POST ,MEMBER_ADR1 ,MEMBER_ADR2 ,MEMBER_BIRTH ,MEMBER_TEL ,MEMBER_GENDER ,MEMBER_DAY  ,MEMBER_POINT ,MEMBER_MAIL  ,MEMBER_PASS) VALUES ('" + getNewMaxMemberId() + "','" + FNameTxb.Text + "','" + FKanaTbx.Text + "','" + PostTxb.Text + "','" + FADR1Txb.Text + LADR1Txb.Text + "','" + ADR2Txb.Text + "',#" + getBirthDay() + "#,'" + TELTxb.Text + "','" + SexDDL.Text + "',#" + getToday() + "#,0,'" + MailTxb.Text + "','" + PassTxb.Text + "')";
                 command = new OleDbCommand(testdate);
-
                 command.Connection = cn;
                 cn.Open();
+                a = command.ExecuteNonQuery();
+                if (a == 1)
+                {
+                    Enter(0);
+                    messageLabel.Visible = false;
+                    Response.Redirect("Login.aspx");
 
-                int a = command.ExecuteNonQuery();
-                Label20.Text = a.ToString();
-                Label20.Visible = true;
-            }
-            catch (OleDbException ode)
-            {
-               /* Label20.Text = "エラー";
-                Label20.Visible = true;*/
-                    Console.WriteLine(ode.Message);
-            }
-
+                }
                 cn.Close();
-        }
-
-        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+            }
+            else
+            {
+                messageLabel.Text = "未入力の箇所があります。";
+                messageLabel.Visible = true;
+            }
+        }       
+        
+        protected void MonthDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList4.Items.Clear();
+            DayDDL.Items.Clear();
             CalenderAddDay();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void SerchBtn_Click(object sender, EventArgs e)
         {
-            Adr_Post(TextBox5.Text.ToString());
+            Adr_Post(PostTxb.Text.ToString());
         }
     }
 }

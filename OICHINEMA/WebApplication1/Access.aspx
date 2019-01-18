@@ -1,15 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OICHINEMA.Master" AutoEventWireup="true" CodeBehind="Access.aspx.cs" Inherits="WebApplication1.Access" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContents" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
-        <asp:Label ID="Label1" CssClass="AccessLabel" runat="server" Text="Label" Font-Size="50px">アクセス</asp:Label>
+        <asp:Label ID="Label1" runat="server" CssClass="AccessLabel" Font-Size="50px" Text="Label">アクセス</asp:Label>
     </p>
-    <asp:Panel CssClass="ImagePanel" runat="server">
-        <asp:Image CssClass="AccessImage" runat="server" ImageUrl="~/Image/アクセス画像.jpg" Width="100%" BorderStyle="Solid"/>
+    <asp:Panel ID="Panel2" runat="server" CssClass="ImagePanel">
+        <asp:Image runat="server" BorderStyle="Solid" CssClass="AccessImage" ImageUrl="~/Image/アクセス画像.jpg" Width="100%" />
     </asp:Panel>
-    <asp:Panel CssClass="TextPanel" runat="server">
-        <asp:Label ID="Label2" runat="server" Text="Label" Font-Size="17px">
+    <asp:Panel ID="Panel3" runat="server" CssClass="TextPanel">
+        <asp:Label ID="Label2" runat="server" Font-Size="17px" Text="Label">
 住所：543-0001　大阪市天王寺区上本町６-８-４ <br />
 TEL：06-6772-2233　FAX：06-6772-1272<br />
 <br />

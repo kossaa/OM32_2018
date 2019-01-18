@@ -42,14 +42,14 @@ namespace WebApplication1
             dtcnt = int.Parse(dtc.Rows[0][0].ToString());
 
             DataTable dt = new DataTable();
-            da = new OleDbDataAdapter("SELECT format(EVENT_STARTDAY,'M月D日'),EVENT_NAME,EVENT_COMMENT,WeekDay(EVENT_STARTDAY),FORMAT(EVENT_ENDDAY,'M月D日'),EVENT_ENDDAY-EVENT_STARTDAY FROM TBL_EVENT WHERE EVENT_STARTDAY>Date()", cn);
+            da = new OleDbDataAdapter("SELECT format(EVENT_STARTDAY,'M月D日'),EVENT_NAME,EVENT_COMMENT,WeekDay(EVENT_STARTDAY),FORMAT(EVENT_ENDDAY,'M月D日'),EVENT_ENDDAY-EVENT_STARTDAY FROM TBL_EVENT WHERE EVENT_ENDDAY>Date()", cn);
             da.Fill(dt);
 
             for (int i = 0; i < dtcnt; i++)
             {
                 if (int.Parse(dt.Rows[i][5].ToString()) != 0)
                 {
-                    Label lbl = (Label)Master.FindControl("MainContent").FindControl("PeriodLabel" + i.ToString());
+                    Label lbl = (Label)Master.FindControl("ContentPlaceHolder1").FindControl("PeriodLabel" + i.ToString());
                     if (lbl != null)
                     {
                         lbl.Text = dt.Rows[i][4].ToString() + "まで";

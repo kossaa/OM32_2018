@@ -19,11 +19,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width:100%;">
         <tr>
-            <td class="auto-style7">
-                <asp:Label ID="PublicationDateLabel" runat="server"></asp:Label>
+            <td class="auto-style7" style="background-color: #F1FFDB">
+                <asp:Label ID="PublicationDateLabel" runat="server" Font-Size="Larger"></asp:Label>
             </td>
-            <td class="auto-style8">
-                <asp:Label ID="MovieTitleLabel" runat="server"></asp:Label>
+            <td class="auto-style8" style="background-color: #F1FFDB">
+                <asp:Label ID="MovieTitleLabel" runat="server" Font-Size="Larger"></asp:Label>
             </td>
         </tr>
     </table>

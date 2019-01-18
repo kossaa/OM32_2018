@@ -16,7 +16,7 @@ namespace WebApplication1
         {
                 OleDbConnection cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|BookingDB.accdb;");
                 OleDbDataAdapter da;
-                da = new OleDbDataAdapter("SELECT WORK_PASS1,WORK_PASS2,WORK_PASS3,WORK_PASS4,WORK_COMMENT,WORK_ACTOR,WORK_TIME FROM TBL_WORK WHERE WORK_ID = '" + Session["IntroID"] + "'", cn);
+                da = new OleDbDataAdapter("SELECT WORK_PASS1,WORK_PASS2,WORK_PASS3,WORK_PASS4,WORK_COMMENT,WORK_ACTOR,WORK_TIME,WORK_NAME,format(WORK_START,'yyyy年 mm月 dd日') FROM TBL_WORK WHERE WORK_ID = '" + Session["IntroID"] + "'", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 signBord = dt.Rows[0][0].ToString();
@@ -26,8 +26,10 @@ namespace WebApplication1
                     MovieCaptureImage1.ImageUrl = dt.Rows[0][1].ToString();
                     MovieCaptureImage2.ImageUrl = dt.Rows[0][2].ToString();
                     MovieCaptureImage3.ImageUrl = dt.Rows[0][3].ToString();
+                    PublicationDateLabel.Text = dt.Rows[0][8].ToString();
+                    MovieTitleLabel.Text = dt.Rows[0][7].ToString();
                 }
-
+                
                 String[] actors = dt.Rows[0][5].ToString().Split(',');
                 TableCell tblCell;
                 TableRow tblRow=new TableRow();
